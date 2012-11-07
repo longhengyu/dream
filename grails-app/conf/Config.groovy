@@ -110,3 +110,6 @@ grails {
                 "mail.smtp.socketFactory.fallback":"false"]
     }
 }
+
+// for heroku
+grails.plugin.databasesession.enabled = false
