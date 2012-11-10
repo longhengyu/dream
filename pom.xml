@@ -51,6 +51,15 @@
 
         <dependency>
             <groupId>org.grails.plugins</groupId>
+            <artifactId>cloud-support</artifactId>
+            <version>1.0.11</version>
+            <scope>compile</scope>
+            <type>zip</type>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.grails.plugins</groupId>
             <artifactId>cache</artifactId>
             <version>1.0.0</version>
             <scope>compile</scope>
@@ -60,9 +69,9 @@
 
         <dependency>
             <groupId>org.grails.plugins</groupId>
-            <artifactId>resources</artifactId>
-            <version>1.1.6</version>
-            <scope>runtime</scope>
+            <artifactId>database-session</artifactId>
+            <version>1.1.2</version>
+            <scope>compile</scope>
             <type>zip</type>
         </dependency>
 
@@ -71,42 +80,6 @@
             <groupId>org.grails.plugins</groupId>
             <artifactId>hibernate</artifactId>
             <version>2.1.1</version>
-            <scope>runtime</scope>
-            <type>zip</type>
-        </dependency>
-
-
-        <dependency>
-            <groupId>org.grails.plugins</groupId>
-            <artifactId>spring-security-core</artifactId>
-            <version>1.2.7.3</version>
-            <scope>runtime</scope>
-            <type>zip</type>
-        </dependency>
-
-
-        <dependency>
-            <groupId>org.grails.plugins</groupId>
-            <artifactId>database-migration</artifactId>
-            <version>1.1</version>
-            <scope>runtime</scope>
-            <type>zip</type>
-        </dependency>
-
-
-        <dependency>
-            <groupId>org.grails.plugins</groupId>
-            <artifactId>famfamfam</artifactId>
-            <version>1.0.1</version>
-            <scope>runtime</scope>
-            <type>zip</type>
-        </dependency>
-
-
-        <dependency>
-            <groupId>org.grails.plugins</groupId>
-            <artifactId>mail</artifactId>
-            <version>1.0</version>
             <scope>runtime</scope>
             <type>zip</type>
         </dependency>
@@ -123,8 +96,53 @@
 
         <dependency>
             <groupId>org.grails.plugins</groupId>
+            <artifactId>database-migration</artifactId>
+            <version>1.1</version>
+            <scope>runtime</scope>
+            <type>zip</type>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.grails.plugins</groupId>
+            <artifactId>spring-security-core</artifactId>
+            <version>1.2.7.3</version>
+            <scope>runtime</scope>
+            <type>zip</type>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.grails.plugins</groupId>
+            <artifactId>resources</artifactId>
+            <version>1.1.6</version>
+            <scope>runtime</scope>
+            <type>zip</type>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.grails.plugins</groupId>
+            <artifactId>heroku</artifactId>
+            <version>1.0.1</version>
+            <scope>runtime</scope>
+            <type>zip</type>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.grails.plugins</groupId>
             <artifactId>jquery</artifactId>
             <version>1.8.0</version>
+            <scope>runtime</scope>
+            <type>zip</type>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.grails.plugins</groupId>
+            <artifactId>famfamfam</artifactId>
+            <version>1.0.1</version>
             <scope>runtime</scope>
             <type>zip</type>
         </dependency>
@@ -145,6 +163,32 @@
             <scope>test</scope>
         </dependency>
 
+        <dependency>
+            <groupId>org.grails.plugins</groupId>
+            <artifactId>cloud-foundry</artifactId>
+            <version>1.2.3</version>
+            <scope>runtime</scope>
+            <type>zip</type>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.grails.plugins</groupId>
+            <artifactId>mail</artifactId>
+            <version>1.0</version>
+            <scope>runtime</scope>
+            <type>zip</type>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.grails.plugins</groupId>
+            <artifactId>webxml</artifactId>
+            <version>1.4.1</version>
+            <scope>provided</scope>
+            <type>zip</type>
+        </dependency>
+
 
     </dependencies>
 
@@ -153,43 +197,43 @@
         <pluginManagement/>
 
         <plugins>
-
             <!-- Disables the Maven surefire plugin for Grails applications, as we have our own test runner -->
-            <!--<plugin>-->
-            <!--<groupId>org.apache.maven.plugins</groupId>-->
-            <!--<artifactId>maven-surefire-plugin</artifactId>-->
-            <!--<configuration>-->
-            <!--<skip>true</skip>-->
-            <!--</configuration>-->
-            <!--<executions>-->
-            <!--<execution>-->
-            <!--<id>surefire-it</id>-->
-            <!--<phase>integration-test</phase>-->
-            <!--<goals>-->
-            <!--<goal>test</goal>-->
-            <!--</goals>-->
-            <!--<configuration>-->
-            <!--<skip>false</skip>-->
-            <!--</configuration>-->
-            <!--</execution>-->
-            <!--</executions>-->
-            <!--</plugin>-->
-            <!--<plugin>-->
-            <!--<groupId>org.apache.maven.plugins</groupId>-->
-            <!--<artifactId>maven-clean-plugin</artifactId>-->
-            <!--<version>2.4.1</version>-->
-            <!--<configuration>-->
-            <!--<filesets>-->
-            <!--<fileset>-->
-            <!--<directory>plugins</directory>-->
-            <!--<includes>-->
-            <!--<include>**/*</include>-->
-            <!--</includes>-->
-            <!--<followSymlinks>false</followSymlinks>-->
-            <!--</fileset>-->
-            <!--</filesets>-->
-            <!--</configuration>-->
-            <!--</plugin>-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.12.4</version>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>surefire-it</id>
+                        <phase>integration-test</phase>
+                        <goals>
+                            <goal>test</goal>
+                        </goals>
+                        <configuration>
+                            <skip>false</skip>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-clean-plugin</artifactId>
+                <version>2.4.1</version>
+                <configuration>
+                    <filesets>
+                        <fileset>
+                            <directory>plugins</directory>
+                            <includes>
+                                <include>**/*</include>
+                            </includes>
+                            <followSymlinks>false</followSymlinks>
+                        </fileset>
+                    </filesets>
+                </configuration>
+            </plugin>
 
             <plugin>
                 <groupId>org.grails</groupId>
@@ -201,12 +245,17 @@
                 </configuration>
                 <extensions>true</extensions>
             </plugin>
+
+            <!-- cloudfoundry -->
             <plugin>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>2.5.1</version>
+                <groupId>org.cloudfoundry</groupId>
+                <artifactId>cf-maven-plugin</artifactId>
+                <version>1.0.0.M1</version>
                 <configuration>
-                    <source>1.6</source>
-                    <target>1.6</target>
+                    <server>cloudfoundry</server>
+                    <target>http://api.cloudfoundry.com</target>
+                    <url>pkg-dream.cloudfoundry.com</url>
+                    <memory>256</memory>
                 </configuration>
             </plugin>
         </plugins>
@@ -223,9 +272,24 @@
             <name>grails-plugins</name>
             <url>http://repo.grails.org/grails/plugins</url>
         </repository>
+        <repository>
+            <id>repository.springframework.maven.milestone</id>
+            <name>Spring Framework Maven Milestone Repository</name>
+            <url>http://maven.springframework.org/milestone</url>
+        </repository>
     </repositories>
 
-    <profiles>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>repository.springframework.maven.milestone</id>
+            <name>Spring Framework Maven Milestone Repository</name>
+            <url>http://maven.springframework.org/milestone</url>
+        </pluginRepository>
+        <pluginRepository>
+            <id>grails</id>
+            <name>grails</name>
+            <url>http://repo.grails.org/grails/core</url>
+        </pluginRepository>
+    </pluginRepositories>
 
-    </profiles>
 </project>
