@@ -6,9 +6,9 @@
     <groupId>com.pkgplan</groupId>
     <artifactId>dream</artifactId>
     <packaging>grails-app</packaging>
-    <version>0.1</version>
+    <version>1.0.0</version>
     <name>dream</name>
-    <description>dream</description>
+    <description>we have a dream</description>
 
     <properties>
         <grails.version>2.1.1</grails.version>
