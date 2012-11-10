@@ -47,9 +47,15 @@ class ProfileController {
     def show(Long id) {
         def profileInstance = Profile.get(id)
         if (!profileInstance) {
-            flash.message = message(code: 'default.not.found.message', args: [message(code: 'profile.label', default: 'Profile'), id])
-            redirect(action: "list")
-            return
+            if (userService.isAdminLoggedIn()) {
+                flash.message = message(code: 'default.not.found.message', args: [message(code: 'profile.label', default: 'Profile'), id])
+                redirect(action: "list")
+                return
+            } else {
+                // create a new profile if nothing found
+                redirect(action: "create")
+                return
+            }
         }
 
         [profileInstance: profileInstance]

@@ -1,3 +1,4 @@
+<%@ page import="com.pkgplan.auth.User" %>
 <!DOCTYPE html>
 
 
@@ -13,22 +14,26 @@
 <h3>Controllers</h3>
 <div class="dialog" style="margin-left:20px;width:60%;">
     <ul>
-        <g:each var="c" in="${grailsApplication.controllerClasses.sort { it.fullName } }">
-            <g:if test="${c.fullName == 'LoginController'}">
-                <sec:ifNotLoggedIn>
-                    <li class="controller"><g:link controller="${c.logicalPropertyName}">${c.fullName}</g:link></li>
-                </sec:ifNotLoggedIn>
-            </g:if><g:elseif test="${c.fullName == 'LogoutController'}">
-                <sec:ifLoggedIn>
-                    <li class="controller"><g:link controller="${c.logicalPropertyName}">${c.fullName}</g:link></li>
-                </sec:ifLoggedIn>
-            </g:elseif><g:else>
-                <sec:ifAllGranted roles="ROLE_ADMIN">
-                    <li class="controller"><g:link controller="${c.logicalPropertyName}">${c.fullName}</g:link></li>
-                </sec:ifAllGranted>
-            </g:else>
-        </g:each>
+        <sec:ifLoggedIn>
+            <sec:ifAllGranted roles="ROLE_USER">
+                <g:set var="userInstance" value="${User.findByUsername(sec.loggedInUserInfo(field:'username'))}"/>
+                <li class="controller"><g:link controller="user" action="show" id="${userInstance.id}">My Account</g:link></li>
+                <li class="controller"><g:link controller="profile" action="show" id="${userInstance.profile?.id}">My Profile</g:link></li>
+                <li class="controller"><g:link controller="logout">Logout</g:link></li>
+            </sec:ifAllGranted>
+        </sec:ifLoggedIn>
+        <sec:ifNotLoggedIn>
+            <li class="controller"><g:link controller="login">Login</g:link></li>
+        </sec:ifNotLoggedIn>
     </ul>
+    <sec:ifAllGranted roles="ROLE_ADMIN">
+        <h2>Admin Tool</h2>
+        <ul>
+            <g:each var="c" in="${grailsApplication.controllerClasses.sort { it.fullName } }">
+                <li class="controller"><g:link controller="${c.logicalPropertyName}">${c.fullName}</g:link></li>
+            </g:each>
+        </ul>
+    </sec:ifAllGranted>
 </div>
 </body>
 </html>
