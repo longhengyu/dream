@@ -42,9 +42,9 @@
 					
 						<td>${fieldValue(bean: profileInstance, field: "gender")}</td>
 					
-						<td>${fieldValue(bean: profileInstance, field: "country")}</td>
+						<td>${country(code: fieldValue(bean: profileInstance, field: "country"))}</td>
 					
-						<td>${fieldValue(bean: profileInstance, field: "timezone")}</td>
+						<td>${profileInstance.timezone.displayName}</td>
 					
 					</tr>
 				</g:each>

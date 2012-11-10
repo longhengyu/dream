@@ -15,7 +15,8 @@
 		<g:message code="profile.gender.label" default="Gender" />
 		
 	</label>
-	<g:select name="gender" from="${profileInstance.constraints.gender.inList}" value="${profileInstance?.gender}" valueMessagePrefix="profile.gender" noSelection="['': '']"/>
+	<g:select name="gender" from="${profileInstance.constraints.gender.inList}"
+              value="${profileInstance?.gender}" valueMessagePrefix="profile.gender" noSelection="['': '-Please Choose-']"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: profileInstance, field: 'country', 'error')} ">
@@ -23,7 +24,8 @@
 		<g:message code="profile.country.label" default="Country" />
 		
 	</label>
-	<g:textField name="country" value="${profileInstance?.country}"/>
+	<g:countrySelect name="country" value="${profileInstance?.country}"
+                     noSelection="['':'-Choose your country-']"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: profileInstance, field: 'timezone', 'error')} ">
@@ -31,6 +33,7 @@
 		<g:message code="profile.timezone.label" default="Timezone" />
 		
 	</label>
-	<g:textField name="timezone" value="${profileInstance?.timezone}"/>
+    <g:timeZoneSelect name="timezone" value="${profileInstance?.timezone}" />
+
 </div>
 

@@ -1,27 +1,41 @@
 package com.pkgplan.dream
 
 import org.springframework.dao.DataIntegrityViolationException
+import com.pkgplan.auth.User
+import grails.plugins.springsecurity.Secured
 
+@Secured(['ROLE_ADMIN','ROLE_USER'])
 class ProfileController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
+
+    def userService
 
     def index() {
         redirect(action: "list", params: params)
     }
 
+    @Secured(['ROLE_ADMIN'])
     def list(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         [profileInstanceList: Profile.list(params), profileInstanceTotal: Profile.count()]
     }
 
     def create() {
+
         [profileInstance: new Profile(params)]
     }
 
     def save() {
         def profileInstance = new Profile(params)
         if (!profileInstance.save(flush: true)) {
+            render(view: "create", model: [profileInstance: profileInstance])
+            return
+        }
+        // bind user with profile
+        def userInstance = params.get("userId")? User.get(params.get("userId")):userService.currentUser()
+        userInstance.profile = profileInstance
+        if (!userInstance.save(flush: true)) {
             render(view: "create", model: [profileInstance: profileInstance])
             return
         }

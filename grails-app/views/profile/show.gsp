@@ -44,7 +44,8 @@
 				<li class="fieldcontain">
 					<span id="country-label" class="property-label"><g:message code="profile.country.label" default="Country" /></span>
 					
-						<span class="property-value" aria-labelledby="country-label"><g:fieldValue bean="${profileInstance}" field="country"/></span>
+						<span class="property-value" aria-labelledby="country-label">${country(code: fieldValue(bean: profileInstance, field: "country"))}</span>
+
 					
 				</li>
 				</g:if>
@@ -53,7 +54,7 @@
 				<li class="fieldcontain">
 					<span id="timezone-label" class="property-label"><g:message code="profile.timezone.label" default="Timezone" /></span>
 					
-						<span class="property-value" aria-labelledby="timezone-label"><g:fieldValue bean="${profileInstance}" field="timezone"/></span>
+						<span class="property-value" aria-labelledby="timezone-label">${profileInstance.timezone.displayName}</span>
 					
 				</li>
 				</g:if>

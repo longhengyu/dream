@@ -1,24 +1,34 @@
 package com.pkgplan.auth
 
 import org.springframework.dao.DataIntegrityViolationException
+import grails.plugins.springsecurity.Secured
+import org.codehaus.groovy.grails.plugins.springsecurity.SpringSecurityUtils
 
+@Secured(['ROLE_ADMIN','ROLE_USER'])
 class UserController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
+
+    def springSecurityService
+    def userService
+
 
     def index() {
         redirect(action: "list", params: params)
     }
 
+    @Secured(['ROLE_ADMIN'])
     def list(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         [userInstanceList: User.list(params), userInstanceTotal: User.count()]
     }
 
+    @Secured(['ROLE_ADMIN'])
     def create() {
         [userInstance: new User(params)]
     }
 
+    @Secured(['ROLE_ADMIN'])
     def save() {
         def userInstance = new User(params)
         if (!userInstance.save(flush: true)) {
@@ -30,7 +40,22 @@ class UserController {
         redirect(action: "show", id: userInstance.id)
     }
 
+    /**
+     * if the user hack the url trying to edit or show another id,
+     * we should change the id value to current user id.
+     * for admin, we use whatever id specified
+     * @param id
+     * @return
+     */
+    private Long correctId(Long id) {
+        if (userService.isUserLonggedIn()) {
+            return userService.currentUser().id
+        }
+        return id
+    }
+
     def show(Long id) {
+        id = correctId(id)
         def userInstance = User.get(id)
         if (!userInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'user.label', default: 'User'), id])
@@ -41,6 +66,7 @@ class UserController {
         [userInstance: userInstance]
     }
 
+    @Secured(['ROLE_ADMIN'])
     def edit(Long id) {
         def userInstance = User.get(id)
         if (!userInstance) {
@@ -52,6 +78,7 @@ class UserController {
         [userInstance: userInstance]
     }
 
+    @Secured(['ROLE_ADMIN'])
     def update(Long id, Long version) {
         def userInstance = User.get(id)
         if (!userInstance) {
@@ -81,6 +108,7 @@ class UserController {
         redirect(action: "show", id: userInstance.id)
     }
 
+    @Secured(['ROLE_ADMIN'])
     def delete(Long id) {
         def userInstance = User.get(id)
         if (!userInstance) {

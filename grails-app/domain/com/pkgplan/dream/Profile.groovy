@@ -8,13 +8,13 @@ class Profile {
     String fullName
     String gender
     String country
-    String timezone
+    TimeZone timezone
 
     static constraints = {
-        fullName(nullable: true)
-        gender(inList: ['M','F','X'])
-        country(nullable: true)
-        timezone(nullable: true)
+        fullName(blank: false)
+        gender(inList: ['Male','Female','Don\'t want to say'], blank: false)
+        country(blank: false)
+        timezone(blank: false)
     }
 
     String toString() {

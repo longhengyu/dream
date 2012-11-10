@@ -55,7 +55,7 @@
                             <td><g:link controller="profile" action="show" id="${userInstance.profile.id}">${fieldValue(bean: userInstance, field: "profile")}</g:link></td>
                         </g:if>
                         <g:else>
-                            <td><g:link controller="profile" action="create">Create</g:link></td>
+                            <td><g:link controller="profile" action="create" params="[userId: userInstance.id]">Create</g:link></td>
                         </g:else>
 
                     </tr>

@@ -95,8 +95,6 @@ grails.plugins.springsecurity.userLookup.userDomainClassName = 'com.pkgplan.auth
 grails.plugins.springsecurity.userLookup.authorityJoinClassName = 'com.pkgplan.auth.UserRole'
 grails.plugins.springsecurity.authority.className = 'com.pkgplan.auth.Role'
 
-// Spring Security UI plugin
-grails.plugins.springsecurity.securityConfigType = 'Requestmap'
 
 grails {
     mail {

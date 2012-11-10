@@ -1,6 +1,7 @@
 package com.pkgplan.dream
 
 import com.pkgplan.auth.User
+import org.codehaus.groovy.grails.plugins.springsecurity.SpringSecurityUtils
 
 class UserService {
 
@@ -12,5 +13,13 @@ class UserService {
 
     def currentUser() {
         return User.get(springSecurityService.principal.id)
+    }
+
+    def isAdminLoggedIn() {
+        SpringSecurityUtils.ifAnyGranted("ROLE_ADMIN")
+    }
+
+    def isUserLonggedIn() {
+        SpringSecurityUtils.ifAnyGranted("ROLE_USER")
     }
 }
