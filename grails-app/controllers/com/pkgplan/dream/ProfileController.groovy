@@ -22,8 +22,7 @@ class ProfileController {
     }
 
     def create() {
-
-        [profileInstance: new Profile(params)]
+        [profileInstance: new Profile(params), userId: params.get("userId")]
     }
 
     def save() {

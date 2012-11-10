@@ -28,6 +28,7 @@
 			</ul>
 			</g:hasErrors>
 			<g:form action="save" >
+                <g:hiddenField name="userId" value="${userId}" />
 				<fieldset class="form">
 					<g:render template="form"/>
 				</fieldset>
