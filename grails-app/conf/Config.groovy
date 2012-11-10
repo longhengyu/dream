@@ -109,5 +109,22 @@ grails {
     }
 }
 
+// sprint security limit
+grails.plugins.springsecurity.controllerAnnotations.staticRules = [
+        '/aclClass/**': ['ROLE_ADMIN'],
+        '/aclSid/**': ['ROLE_ADMIN'],
+        '/aclObjectIdentity/**': ['ROLE_ADMIN'],
+        '/aclEntry/**': ['ROLE_ADMIN'],
+        '/persistentLogin/**': ['ROLE_ADMIN'],
+        '/requestmap/**': ['ROLE_ADMIN'],
+        '/securityInfo/**': ['ROLE_ADMIN'],
+        '/registrationCode/**': ['ROLE_ADMIN'],
+        '/role/**': ['ROLE_ADMIN'],
+        '/user/**': ['ROLE_USER'],
+        '/console/**': ['ROLE_ADMIN'],
+
+        '/register/**': ['IS_AUTHENTICATED_ANONYMOUSLY']
+]
+
 // for heroku
 grails.plugin.databasesession.enabled = false
