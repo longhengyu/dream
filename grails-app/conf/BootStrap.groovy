@@ -1,4 +1,5 @@
 import com.pkgplan.auth.*
+import com.pkgplan.dream.Server
 
 class BootStrap {
 
@@ -19,7 +20,29 @@ class BootStrap {
             assert User.count() == 2
             assert Role.count() == 2
             assert UserRole.count() == 2
+
+            if (Server.count() == 0) {
+                def newServer = new Server(ipAddr: '173.255.217.70', hostname: 'vps001', capacity: 20, users: [testAdmin]);
+                newServer.save(flush: true)
+                def newServer2 = new Server(ipAddr: '173.255.217.71', hostname: 'vps002', capacity: 20, users: [testUser]);
+                newServer2.save(flush: true)
+            }
+            def s = Server.createCriteria().list{
+                users{
+                    eq("username", "user")
+                }
+            }
+            s.size()
+            Server sin = Server.withCriteria(uniqueResult: true) {
+                users{
+                    eq("username", "admin")
+                }
+            }
+
+            sin.ipAddr
+
         }
+
     }
     def destroy = {
     }

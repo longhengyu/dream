@@ -22,11 +22,20 @@
 			</g:if>
 			<ol class="property-list server">
 			
-				<g:if test="${serverInstance?.activeUserNum}">
+				<g:if test="${serverInstance?.hostname}">
 				<li class="fieldcontain">
-					<span id="activeUserNum-label" class="property-label"><g:message code="server.activeUserNum.label" default="Active User Num" /></span>
+					<span id="hostname-label" class="property-label"><g:message code="server.hostname.label" default="Hostname" /></span>
 					
-						<span class="property-value" aria-labelledby="activeUserNum-label"><g:fieldValue bean="${serverInstance}" field="activeUserNum"/></span>
+						<span class="property-value" aria-labelledby="hostname-label"><g:fieldValue bean="${serverInstance}" field="hostname"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${serverInstance?.ipAddr}">
+				<li class="fieldcontain">
+					<span id="ipAddr-label" class="property-label"><g:message code="server.ipAddr.label" default="Ip Addr" /></span>
+					
+						<span class="property-value" aria-labelledby="ipAddr-label"><g:fieldValue bean="${serverInstance}" field="ipAddr"/></span>
 					
 				</li>
 				</g:if>
@@ -49,20 +58,13 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${serverInstance?.hostname}">
+				<g:if test="${serverInstance?.users}">
 				<li class="fieldcontain">
-					<span id="hostname-label" class="property-label"><g:message code="server.hostname.label" default="Hostname" /></span>
+					<span id="users-label" class="property-label"><g:message code="server.users.label" default="Users" /></span>
 					
-						<span class="property-value" aria-labelledby="hostname-label"><g:fieldValue bean="${serverInstance}" field="hostname"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${serverInstance?.ipAddr}">
-				<li class="fieldcontain">
-					<span id="ipAddr-label" class="property-label"><g:message code="server.ipAddr.label" default="Ip Addr" /></span>
-					
-						<span class="property-value" aria-labelledby="ipAddr-label"><g:fieldValue bean="${serverInstance}" field="ipAddr"/></span>
+						<g:each in="${serverInstance.users}" var="u">
+						<span class="property-value" aria-labelledby="users-label"><g:link controller="user" action="show" id="${u.id}">${u?.encodeAsHTML()}</g:link></span>
+						</g:each>
 					
 				</li>
 				</g:if>

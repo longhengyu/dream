@@ -1,7 +1,9 @@
 package com.pkgplan.dream
 
 import org.springframework.dao.DataIntegrityViolationException
+import grails.plugins.springsecurity.Secured
 
+@Secured(['ROLE_ADMIN'])
 class ServerController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
