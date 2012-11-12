@@ -1,8 +1,6 @@
 package com.pkgplan
-import grails.plugins.springsecurity.Secured
-import com.apple.eawt.Application
+
 import javax.servlet.http.HttpServletResponse
-import com.pkgplan.dream.Server
 
 // this class is public, the caller should provide the service Key
 class SecureController {
