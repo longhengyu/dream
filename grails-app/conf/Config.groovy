@@ -126,3 +126,7 @@ grails.plugins.springsecurity.controllerAnnotations.staticRules = [
 
 // for heroku
 grails.plugin.databasesession.enabled = false
+
+api {
+    serviceKey = 'abcdefg'
+}
