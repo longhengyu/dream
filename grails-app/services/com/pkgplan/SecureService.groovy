@@ -27,6 +27,9 @@ class SecureService {
      * @param password
      */
     def encodePasswordForVpn(String password) {
-        return password.encodeAsSHA1().substring(0,8)
+        if (password) {
+            return password.encodeAsSHA1().substring(0,8)
+        }
+        return password;
     }
 }
