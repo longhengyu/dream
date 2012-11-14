@@ -1,0 +1,51 @@
+#loginForm {
+    padding: 0px;
+    background-color: #FAFAFA;
+}
+
+#loginForm table tr.namepasswd {
+    line-height: 28px;
+}
+
+#loginForm table td label {
+    margin-right:3px;
+}
+
+#loginForm table td span {
+    padding-left: 40px;
+    line-height: 18px
+}
+
+#loginForm table td span:before {
+    color: #9DDCFF;
+    content: "///";
+    margin-left: -2em;
+    padding-right: 0.3em;
+}
+
+.sign-in table {
+    border: none;
+}
+.sign-in table td {
+    border: none;
+}
+
+.right {
+    text-align: right;
+}
+
+.left {
+    text-align: left;
+}
+
+#loginButton {
+    margin: 6px 0 16px 22px;
+}
+
+#loginForm tr:hover {
+    background: #FAFAFA;
+}
+
+#loginForm tr.namepasswd:hover {
+    background: #E1F2B6;
+}

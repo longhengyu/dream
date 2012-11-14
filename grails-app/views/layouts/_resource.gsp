@@ -7,7 +7,8 @@
 <link rel="stylesheet" type="text/css" href="${resource(dir:'css',file:'stylesheet.css')}" media="screen" />
 <link rel="stylesheet" type="text/css" href="${resource(dir:'css',file:'pygment_trac.css')}" media="screen" />
 <link rel="stylesheet" type="text/css" href="${resource(dir:'css',file:'print.css')}" media="print" />
-<g:javascript library="prototype"/>
+<link rel="stylesheet" href="${resource(dir:'css',file:'dream-common.css')}" />
+
 
 <!--[if lt IE 9]>
 <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>

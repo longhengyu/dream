@@ -1,6 +1,7 @@
 package com.pkgplan
 
 import com.pkgplan.dream.Server
+import org.codehaus.groovy.grails.plugins.springsecurity.SpringSecurityUtils
 
 class SecureService {
 
@@ -31,5 +32,14 @@ class SecureService {
             return password.encodeAsSHA1().substring(0,8)
         }
         return password;
+    }
+
+    static def getLoginUrl() {
+
+        return SpringSecurityUtils.securityConfig.apf.filterProcessesUrl
+    }
+
+    static def getRememberMeParam() {
+        return SpringSecurityUtils.securityConfig.rememberMe.parameter
     }
 }
