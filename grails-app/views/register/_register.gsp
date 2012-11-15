@@ -4,7 +4,13 @@
 
         <g:if test='${emailSent}'>
             <br/>
-            <g:message code='spring.security.ui.register.sent'/>
+            <table class="left">
+                <tr>
+                    <td>
+                        <g:message code='spring.security.ui.register.sent'/>
+                    </td>
+                </tr>
+            </table>
         </g:if>
         <g:else>
 

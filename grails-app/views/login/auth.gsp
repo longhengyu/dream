@@ -8,7 +8,7 @@
 <body>
 <h1><g:message code='spring.security.ui.login.signin'/></h1>
 <div class="noSideBar">
-    <div id="loginBlock">
+    <div class="centerBlockFun">
         <g:render template="/login/form"/>
     </div>
 </div>

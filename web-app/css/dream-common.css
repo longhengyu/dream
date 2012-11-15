@@ -11,7 +11,7 @@
     text-align: center;
 }
 
-#loginBlock {
+.centerBlockFun {
     width: 520px;
     margin-left:140px;
 }
@@ -54,6 +54,10 @@
     padding: 20px !important;
 }
 
+.nosidebar form tr.prop input {
+    width: 237px;
+}
+
 .right {
     text-align: right;
 }
@@ -68,6 +72,10 @@
 
 #loginButton {
     margin: 10px 0 16px 22px;
+}
+
+#getPassButton {
+    margin: 18px 0 16px 40px;
 }
 
 table.hoverAble tr:hover {
