@@ -112,3 +112,7 @@ ul.floatList li {
     margin-right: 6%;
     margin-bottom: 8px;
 }
+
+.ui-corner-all {
+    border-radius: 3px 3px 3px 3px;
+}

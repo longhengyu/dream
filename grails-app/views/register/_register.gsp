@@ -31,7 +31,7 @@
                 <tbody>
                 <tr class="hoverNone">
                     <td colspan="2" class="center">
-                        <g:submitButton class="buttonsub" id="registerButton" name="register" value="Create Your New Account" />
+                        <g:submitButton class="buttonsub ui-corner-all" id="registerButton" name="register" value="Create Your New Account" />
                     </td>
                 </tr>
                 </tbody>

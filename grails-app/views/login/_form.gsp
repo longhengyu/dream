@@ -19,7 +19,7 @@
 
                         <input type="checkbox" class="checkbox" name="${com.pkgplan.SecureService.getRememberMeParam()}" id="remember_me" checked="checked" />
                         <label for='remember_me'><g:message code='spring.security.ui.login.rememberme'/></label>
-                        <g:submitButton class="buttonsub" id="loginButton" name="login" value="Login" />
+                        <g:submitButton class="buttonsub ui-corner-all" id="loginButton" name="login" value="Login" />
 
                     </td>
                 </tr>
