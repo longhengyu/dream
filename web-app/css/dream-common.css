@@ -1,3 +1,22 @@
+.buttonsub {
+    border: 1px solid #ccf;
+}
+.buttonsub:hover {
+    border: 1px solid #006;
+    background: #E1F2B6;
+}
+
+.pkgw {
+    width: 100% !important;
+    text-align: center;
+}
+
+#loginBlock {
+    width: 520px;
+    margin-left:140px;
+}
+
+
 #loginForm {
     padding: 0px;
     background-color: #FAFAFA;
@@ -16,18 +35,23 @@
     line-height: 18px
 }
 
-#loginForm table td span:before {
+#loginForm ul li span:before {
     color: #9DDCFF;
     content: "///";
     margin-left: -2em;
     padding-right: 0.3em;
 }
 
-.sign-in table {
+.sign-in table, .noSideBar table {
     border: none;
 }
-.sign-in table td {
+.sign-in table td, .noSideBar table td {
     border: none;
+}
+
+.noSideBar form {
+    background: none repeat scroll 0 0 #F2F2F2 !important;
+    padding: 20px !important;
 }
 
 .right {
@@ -38,14 +62,53 @@
     text-align: left;
 }
 
+.center {
+    text-align: center;
+}
+
 #loginButton {
-    margin: 6px 0 16px 22px;
+    margin: 10px 0 16px 22px;
 }
 
-#loginForm tr:hover {
-    background: #FAFAFA;
-}
-
-#loginForm tr.namepasswd:hover {
+table.hoverAble tr:hover {
     background: #E1F2B6;
+}
+
+.noSideBar {
+    width: 800px;
+    margin-left:70px;
+    text-align: left;
+    margin-top: 9px;
+}
+
+.noSideBar table tr {
+    line-height: 33px !important;
+}
+
+#registerButton {
+    margin-top: 8px;
+}
+
+.value {
+    text-align: left;
+}
+
+.name {
+    text-align: right;
+    padding-right: 23px;
+}
+
+ul.noListType li {
+    list-style-type: none;
+}
+ul.floatList li {
+    float:left;
+}
+
+.loginFloat {
+    margin-left: 15%;
+}
+.loginFloat li{
+    margin-right: 6%;
+    margin-bottom: 8px;
 }
