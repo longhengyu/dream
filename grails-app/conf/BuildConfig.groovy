@@ -58,12 +58,6 @@ grails.project.dependency.resolution = {
 
 
 // load config
-grails.war.resources = { stagingDir, args ->
-    copy(todir: "${stagingDir}/WEB-INF/shared"){
-        fileset(dir:"shared",includes:"**")
-    }
-}
-
 if (System.properties["${appName}.config.location"]) {
     grails.config.locations = ["file:" + System.properties["${appName}.config.location"]]
 }
