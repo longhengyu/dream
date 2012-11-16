@@ -124,6 +124,9 @@ grails.plugins.springsecurity.controllerAnnotations.staticRules = [
         '/register/**': ['IS_AUTHENTICATED_ANONYMOUSLY']
 ]
 
+// This doesn't mean not encode the password, but not to do it 2 times, because security core is doing it
+// security ui doesn't need to do
+grails.plugins.springsecurity.ui.encodePassword = false
 // password strength
 grails.plugins.springsecurity.ui.password.minLength=6
 grails.plugins.springsecurity.ui.password.maxLength=12
