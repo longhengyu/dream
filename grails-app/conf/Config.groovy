@@ -124,9 +124,18 @@ grails.plugins.springsecurity.controllerAnnotations.staticRules = [
         '/register/**': ['IS_AUTHENTICATED_ANONYMOUSLY']
 ]
 
+// password strength
+grails.plugins.springsecurity.ui.password.minLength=6
+grails.plugins.springsecurity.ui.password.maxLength=12
+grails.plugins.springsecurity.ui.password.validationRegex='^.*(?=.*\\d)(?=.*[a-zA-Z]).*$'
+
 // for heroku
 grails.plugin.databasesession.enabled = false
 
 api {
     serviceKey = 'abcdefg'
 }
+
+// load config from
+grails.config.locations =
+    ["file:grails-app/conf/PrivateConfig.groovy"]

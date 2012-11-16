@@ -55,3 +55,15 @@ grails.project.dependency.resolution = {
         compile ':cache:1.0.0'
     }
 }
+
+
+// load config
+grails.war.resources = { stagingDir, args ->
+    copy(todir: "${stagingDir}/WEB-INF/shared"){
+        fileset(dir:"shared",includes:"**")
+    }
+}
+
+if (System.properties["${appName}.config.location"]) {
+    grails.config.locations = ["file:" + System.properties["${appName}.config.location"]]
+}
