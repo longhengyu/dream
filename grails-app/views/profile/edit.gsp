@@ -17,7 +17,7 @@
                 </div>
         </sec:ifAllGranted>
 		<div id="edit-profile" class="content scaffold-edit" role="main">
-			<h1><g:message code="default.edit.label" args="[entityName]" /></h1>
+			<h2><g:message code="default.edit.label" args="[entityName]" /></h2>
 			<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
@@ -31,15 +31,26 @@
 			<g:form method="post" >
 				<g:hiddenField name="id" value="${profileInstance?.id}" />
 				<g:hiddenField name="version" value="${profileInstance?.version}" />
-				<fieldset class="form">
-					<g:render template="form"/>
-				</fieldset>
-				<fieldset class="buttons">
-					<g:actionSubmit class="save" action="update" value="${message(code: 'default.button.update.label', default: 'Update')}" />
-                    <sec:ifAllGranted roles="ROLE_ADMIN">
+				<g:render template="form"/>
+
+                <div class="pkgsubmit">
+                    <table>
+                        <tr>
+                            <td class="right">
+                                <g:actionSubmit action="show" controller="user" class="buttonsub ui-corner-all" value="${message(code: 'default.button.cancel.label', default: 'Cancel')}"/>
+                            </td>
+                            <td class="left">
+                                <g:actionSubmit action="update" class="buttonsub ui-corner-all" value="${message(code: 'default.button.update.label', default: 'Update')}" />
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+                <sec:ifAllGranted roles="ROLE_ADMIN">
+                    <fieldset class="buttons">
                         <g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" formnovalidate="" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
-                    </sec:ifAllGranted>
-				</fieldset>
+                    </fieldset>
+                </sec:ifAllGranted>
 			</g:form>
 		</div>
 	</body>

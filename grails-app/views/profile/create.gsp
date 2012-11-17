@@ -16,7 +16,7 @@
             </div>
         </sec:ifAllGranted>
 		<div id="create-profile" class="content scaffold-create" role="main">
-			<h1><g:message code="default.create.label" args="[entityName]" /></h1>
+			<h2><g:message code="default.create.label" args="[entityName]" /></h2>
 			<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
@@ -29,12 +29,21 @@
 			</g:hasErrors>
 			<g:form action="save" >
                 <g:hiddenField name="userId" value="${userId}" />
-				<fieldset class="form">
-					<g:render template="form"/>
-				</fieldset>
-				<fieldset class="buttons">
-					<g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />
-				</fieldset>
+
+                <g:render template="form"/>
+
+                <div class="pkgsubmit">
+                    <table>
+                        <tr>
+                            <td class="right">
+                                <g:actionSubmit action="show" controller="user" class="buttonsub ui-corner-all" value="${message(code: 'default.button.cancel.label', default: 'Cancel')}"/>
+                            </td>
+                            <td class="left">
+                                <g:submitButton name="create" class="buttonsub ui-corner-all" value="${message(code: 'default.button.submit.label', default: 'Submit')}" />
+                            </td>
+                        </tr>
+                    </table>
+                </div>
 			</g:form>
 		</div>
 	</body>

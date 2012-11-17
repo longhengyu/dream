@@ -63,7 +63,7 @@ class UserController {
             return
         }
 
-        [userInstance: userInstance]
+        [userInstance: userInstance, profileInstance: userInstance.profile]
     }
 
     @Secured(['ROLE_ADMIN'])

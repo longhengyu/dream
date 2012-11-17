@@ -42,10 +42,10 @@
     padding-right: 0.3em;
 }
 
-.sign-in table, .noSideBar table {
+.sign-in table, .noSideBar table, .pkgsubmit table {
     border: none;
 }
-.sign-in table td, .noSideBar table td {
+.sign-in table td, .noSideBar table td, .pkgsubmit table td {
     border: none;
 }
 
@@ -123,4 +123,12 @@ ul.floatList li {
 
 .ui-corner-all {
     border-radius: 3px 3px 3px 3px;
+}
+
+.pkgsubmit {
+    margin-top: 24px;
+}
+
+.pkgsubmit tr td {
+    padding: 10px;
 }

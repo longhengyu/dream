@@ -1,19 +1,16 @@
 <%@ page import="com.pkgplan.dream.Profile" %>
 
-
-
 <div class="fieldcontain ${hasErrors(bean: profileInstance, field: 'fullName', 'error')} ">
 	<label for="fullName">
 		<g:message code="profile.fullName.label" default="Full Name" />
-		
 	</label>
-	<g:textField name="fullName" value="${profileInstance?.fullName}"/>
+	<td><g:textField name="fullName" value="${profileInstance?.fullName}"/></td>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: profileInstance, field: 'gender', 'error')} ">
 	<label for="gender">
 		<g:message code="profile.gender.label" default="Gender" />
-		
+
 	</label>
 	<g:select name="gender" from="${profileInstance.constraints.gender.inList}"
               value="${profileInstance?.gender}" valueMessagePrefix="profile.gender" noSelection="['': '-Please Choose-']"/>

@@ -40,7 +40,7 @@ class ProfileController {
         }
 
         flash.message = message(code: 'default.created.message', args: [message(code: 'profile.label', default: 'Profile'), profileInstance.id])
-        redirect(action: "show", id: profileInstance.id)
+        redirect(controller: "user", action: "show", id: userInstance.id)
     }
 
     def show(Long id) {
@@ -96,8 +96,10 @@ class ProfileController {
             return
         }
 
+        def userInstance = User.findByProfile(profileInstance)
+
         flash.message = message(code: 'default.updated.message', args: [message(code: 'profile.label', default: 'Profile'), profileInstance.id])
-        redirect(action: "show", id: profileInstance.id)
+        redirect(controller: "user", action: "show", id: userInstance.id)
     }
 
     def delete(Long id) {
