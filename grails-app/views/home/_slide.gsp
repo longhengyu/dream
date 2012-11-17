@@ -74,27 +74,27 @@
     <div style="position:relative" class="wrap clearfix">
         <ul id="slide">
             <li style="opacity: 0; z-index: 1; transition-property: none; transition-duration: 500ms; transition-timing-function: ease;">
-                <img src="/images/p1.jpg">
+                <img src="images/sites/facebook.jpg">
                 <em>One Man Band</em>
             </li>
             <li style="opacity: 0; z-index: 1; transition-property: none; transition-duration: 500ms; transition-timing-function: ease;">
-                <img src="/images/p2.jpg">
+                <img src="images/sites/twitter.png">
                 <em>Geri’s Game</em>
             </li>
             <li style="opacity: 0; z-index: 1; transition-property: none; transition-duration: 500ms; transition-timing-function: ease;">
-                <img src="/images/p3.jpg">
+                <img src="images/sites/wikipedia.png">
                 <em>WALL E</em>
             </li>
             <li style="opacity: 1; z-index: 4; transition-property: none; transition-duration: 500ms; transition-timing-function: ease;">
-                <img src="/images/p4.jpg">
+                <img src="images/sites/wikipedia.png">
                 <em>The Incredibles</em>
             </li>
         </ul>
         <ul id="triggers">
-            <li class=""><img src="/images/p1.jpg"></li>
-            <li class=""><img src="/images/p2.jpg"></li>
-            <li class=""><img src="/images/p3.jpg"></li>
-            <li class="current"><img src="/images/p4.jpg"></li>
+            <li class=""><img src="images/sites/facebook.jpg"></li>
+            <li class=""><img src="images/sites/twitter.png"></li>
+            <li class=""><img src="images/sites/wikipedia.png"></li>
+            <li class="current"><img src="images/sites/youtube.jpg"></li>
         </ul>
         <div id="mask" style="top: 253px; transition-property: none; transition-duration: 500ms; transition-timing-function: ease;"></div>
     </div>
