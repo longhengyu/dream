@@ -7,10 +7,13 @@
 <head>
     <title>Welcome to Dream VPN</title>
     <meta name="layout" content="pkglayout" />
+    <
 </head>
 <body>
 <h3>Welcome to Dream VPN</h3>
 <p>This is a demo vpn provider site.</p>
+<h3>Feel Free To Surf These Sites</h3>
+<g:render template="/"
 <h3>Status</h3>
 <p>Developing...</p>
 <div class="dialog" style="margin-left:20px;width:60%;">
