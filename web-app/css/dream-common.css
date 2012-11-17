@@ -106,8 +106,8 @@ table.hoverAble tr:hover {
     padding-right: 23px;
 }
 
-ul.noListType li {
-    list-style-type: none;
+body li {
+    list-style-type: none !important;
 }
 ul.floatList li {
     float:left;
