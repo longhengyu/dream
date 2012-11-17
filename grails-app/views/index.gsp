@@ -7,12 +7,8 @@
 <head>
     <title>Welcome to Dream VPN</title>
     <meta name="layout" content="pkglayout" />
-    <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
-    <script src="http://cloud.github.com/downloads/jsw0528/jQuery.Switchable/jquery.switchable-2.0.min.js"></script>
 </head>
 <body>
-<h3>Welcome to Dream VPN</h3>
-<p>This is a demo vpn provider site.</p>
 <h3>Feel Free To Surf These Sites</h3>
 <g:render template="/home/slide"/>
 <h3>Status</h3>
