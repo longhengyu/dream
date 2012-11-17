@@ -141,4 +141,5 @@ api {
 
 // load config from
 grails.config.locations =
-    ["file:grails-app/conf/PrivateConfig.groovy"]
+    ["file:${userHome}/.grails/${appName}-config.groovy",
+            "file:${userHome}/.grails/${appName}-dataSource.groovy"]
