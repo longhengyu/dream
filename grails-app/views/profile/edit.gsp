@@ -52,6 +52,9 @@
                     </fieldset>
                 </sec:ifAllGranted>
 			</g:form>
+            <span class="forgot-link">
+                <g:link controller='register' action='resetPasswordWithoutToken'><g:message code='spring.security.ui.forgotPassword.submit'/></g:link>
+            </span>
 		</div>
 	</body>
 </html>
