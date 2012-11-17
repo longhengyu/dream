@@ -49,7 +49,10 @@ class User {
         return this.username
     }
 
-	protected void encodePassword() {
-		password = springSecurityService.encodePassword(password)
-	}
+    protected void encodePassword() {
+        if (springSecurityService.passwordEncoder != null){
+            password = springSecurityService.encodePassword(password)
+        }
+
+    }
 }
