@@ -3,7 +3,6 @@
     <g:form action='register' name='registerForm'>
 
         <g:if test='${emailSent}'>
-            <br/>
             <table class="left">
                 <tr>
                     <td>
@@ -13,8 +12,6 @@
             </table>
         </g:if>
         <g:else>
-
-            <br/>
 
             <table class="hoverAble">
                 <tbody>

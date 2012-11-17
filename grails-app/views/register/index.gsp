@@ -6,8 +6,8 @@
 </head>
 
 <body>
-<h1><g:message code='spring.security.ui.register.title'/></h1>
-
+<h4 style="position: absolute;left: 292px; top:13px">Register a new user and get ready for all sites</h4>
+<g:render template="/common/slide"/>
 <g:render template="/register/register"/>
 
 
