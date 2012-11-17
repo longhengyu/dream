@@ -36,7 +36,7 @@
                     <table>
                         <tr>
                             <td class="right">
-                                <g:actionSubmit action="show" controller="user" class="buttonsub ui-corner-all" value="${message(code: 'default.button.cancel.label', default: 'Cancel')}"/>
+                                <g:actionSubmit action="cancel" class="buttonsub ui-corner-all" value="${message(code: 'default.button.cancel.label', default: 'Cancel')}"/>
                             </td>
                             <td class="left">
                                 <g:submitButton name="create" class="buttonsub ui-corner-all" value="${message(code: 'default.button.submit.label', default: 'Submit')}" />

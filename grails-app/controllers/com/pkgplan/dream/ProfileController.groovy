@@ -120,4 +120,8 @@ class ProfileController {
             redirect(action: "show", id: id)
         }
     }
+
+    def cancel() {
+        redirect(action: "show", controller: "user")
+    }
 }
