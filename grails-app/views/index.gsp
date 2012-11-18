@@ -3,16 +3,19 @@
 
 
 
-<html>
+<html xmlns:wb=“http://open.weibo.com/wb”>
 <head>
     <title>Welcome to Dream VPN</title>
     <meta name="layout" content="pkglayout" />
+    <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
 </head>
 <h3>Feel Free To Surf These Sites</h3>
 <g:render template="/common/jiathis"/>
 <g:render template="/home/slide"/>
-<h3>Status</h3>
-<p>Developing...</p>
+<h3>What's New?</h3>
+<p>Developing ... You can find us on Weibo.
+<wb:follow-button uid="3123398953" type="red_1" width="67" height="24" ></wb:follow-button>
+</p>
 <div class="dialog" style="margin-left:20px;width:60%;">
     <ul>
         <sec:ifLoggedIn>
