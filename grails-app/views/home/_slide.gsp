@@ -74,33 +74,33 @@
     <div style="position:relative" class="wrap clearfix">
         <ul id="slide">
             <li style="padding-left:0;opacity: 0; z-index: 1; transition-property: none; transition-duration: 500ms; transition-timing-function: ease;">
-                <img src="images/sites/facebook.jpg">
+                <img src="${resource(dir:'images/sites',file:'facebook.jpg')}">
                 <em>Facebook</em>
             </li>
             <li style="padding-left:0;opacity: 0; z-index: 1; transition-property: none; transition-duration: 500ms; transition-timing-function: ease;">
-                <img src="images/sites/twitter.png">
+                <img src="${resource(dir:'images/sites',file:'twitter.png')}">
                 <em>Twitter</em>
             </li>
             <li style="padding-left:0;opacity: 0; z-index: 1; transition-property: none; transition-duration: 500ms; transition-timing-function: ease;">
-                <img src="images/sites/youtube.jpg">
+                <img src="${resource(dir:'images/sites',file:'youtube.jpg')}">
                 <em>YouTube</em>
             </li>
             <li style="padding-left:0;opacity: 1; z-index: 1; transition-property: none; transition-duration: 500ms; transition-timing-function: ease;">
-                <img src="images/sites/wikipedia.png">
+                <img src="${resource(dir:'images/sites',file:'wikipedia.png')}">
                 <em>Wiki pedia</em>
             </li>
         </ul>
         <ul id="triggers">
-            <li><img src="images/sites/facebook.jpg"></li>
-            <li><img src="images/sites/twitter.png"></li>
-            <li><img src="images/sites/youtube.jpg"></li>
-            <li><img src="images/sites/wikipedia.png"></li>
+            <li><img src="${resource(dir:'images/sites',file:'facebook.jpg')}"></li>
+            <li><img src="${resource(dir:'images/sites',file:'twitter.png')}"></li>
+            <li><img src="${resource(dir:'images/sites',file:'youtube.jpg')}"></li>
+            <li><img src="${resource(dir:'images/sites',file:'wikipedia.png')}"></li>
         </ul>
         <div id="mask"></div>
     </div>
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-    <g:javascript src="lib/switchable-2.0.min.js"/>
+    <script src="${resource(dir:'js/lib',file:'switchable-2.0.min.js')}"/>
     <script>
         $(function() {
             $('#slide').switchable({

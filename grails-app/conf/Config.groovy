@@ -142,6 +142,7 @@ dream {
         serviceKey = 'abcdefg'
     }
     timestamp = "default"
+    resourceRoot = ""
 }
 
 

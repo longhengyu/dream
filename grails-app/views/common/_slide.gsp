@@ -47,15 +47,14 @@
 
 <div id="scrollable-1">
     <ul style="position: absolute; left: 0px; width: 2640px; transition-property: none; transition-duration: 500ms; transition-timing-function: ease-in-out;">
-
-        <li><img src="../images/sites/facebook.jpg"></li>
-        <li><img src="../images/sites/twitter.png"></li>
-        <li><img src="../images/sites/wikipedia.png"></li>
-        <li><img src="../images/sites/youtube.jpg"></li>
-        <li><img src="../images/sites/pandora_m.jpg"></li>
-        <li><img src="../images/sites/hulu_m.jpg"></li>
-        <li><img src="../images/sites/picasa_m.jpg"></li>
-        <li><img src="../images/sites/appengine_m.png"></li>
+        <li><img src="${resource(dir:'images/sites',file:'facebook.jpg')}"></li>
+        <li><img src="${resource(dir:'images/sites',file:'twitter.png')}"></li>
+        <li><img src="${resource(dir:'images/sites',file:'wikipedia.png')}"></li>
+        <li><img src="${resource(dir:'images/sites',file:'youtube.jpg')}"></li>
+        <li><img src="${resource(dir:'images/sites',file:'pandora_m.jpg')}"></li>
+        <li><img src="${resource(dir:'images/sites',file:'hulu_m.jpg')}"></li>
+        <li><img src="${resource(dir:'images/sites',file:'picasa_m.jpg')}"></li>
+        <li><img src="${resource(dir:'images/sites',file:'appengine_m.png')}"></li>
     </ul>
 </div>
 </div>
