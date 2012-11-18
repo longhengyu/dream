@@ -135,9 +135,15 @@ grails.plugins.springsecurity.ui.password.validationRegex='^.*(?=.*\\d)(?=.*[a-z
 // for heroku
 grails.plugin.databasesession.enabled = false
 
-api {
-    serviceKey = 'abcdefg'
+
+// dream vpn settings
+dream {
+    api {
+        serviceKey = 'abcdefg'
+    }
+    timestamp = "default"
 }
+
 
 // load config from
 grails.config.locations =

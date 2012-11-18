@@ -3,6 +3,8 @@ import com.pkgplan.dream.Server
 
 class BootStrap {
 
+    def grailsApplication
+
     def init = { servletContext ->
         if (User.count() == 0 && Role.count() == 0) {
             def adminRole = new Role(authority: 'ROLE_ADMIN').save(flush: true)
@@ -42,6 +44,9 @@ class BootStrap {
             sin.ipAddr
 
         }
+
+        // generate a new timestamp
+        grailsApplication.config.dream.timestamp = System.currentTimeMillis().toString()
 
     }
     def destroy = {

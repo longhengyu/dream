@@ -14,7 +14,7 @@ class SecureController {
     def chapSec = {
         def serviceKey = params.get("serviceKey")
 
-        if (grailsApplication.config.api["serviceKey"] != serviceKey) {
+        if (grailsApplication.config.dream.api["serviceKey"] != serviceKey) {
             response.status = HttpServletResponse.SC_NOT_ACCEPTABLE
             return
         }
