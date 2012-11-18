@@ -100,7 +100,7 @@
     </div>
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-    <script src="${resource(dir:'js/lib',file:'switchable-2.0.min.js')}"/>
+    <g:javascript src="lib/switchable-2.0.min.js"/>
     <script>
         $(function() {
             $('#slide').switchable({
