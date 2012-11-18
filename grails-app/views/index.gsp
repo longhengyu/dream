@@ -8,8 +8,8 @@
     <title>Welcome to Dream VPN</title>
     <meta name="layout" content="pkglayout" />
 </head>
-<body>
 <h3>Feel Free To Surf These Sites</h3>
+<g:render template="/common/jiathis"/>
 <g:render template="/home/slide"/>
 <h3>Status</h3>
 <p>Developing...</p>

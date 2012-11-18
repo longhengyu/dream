@@ -2,4 +2,5 @@
 <sec:ifAnyGranted roles="ROLE_ADMIN">Some admin info</sec:ifAnyGranted>
 <sec:ifNotLoggedIn>
     <g:render template="/login/form"/>
+
 </sec:ifNotLoggedIn>

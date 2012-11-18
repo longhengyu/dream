@@ -105,8 +105,9 @@ header h2 {
 }
 
 #main-content {
-  width: 672px;
-  float: left;
+    width: 672px;
+    float: left;
+    position: relative;
 }
 
 #main-content img {
