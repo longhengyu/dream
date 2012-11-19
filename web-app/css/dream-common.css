@@ -132,3 +132,27 @@ ul.floatList li {
 .pkgsubmit tr td {
     padding: 10px;
 }
+
+.lang-select {
+    position:absolute;
+    top: 82px;
+    right:225px;
+}
+.lang-comp {
+    float: left;
+    line-height: 22px;
+    padding: 0 !important;
+}
+.lang-selected span{
+    background-color: #fff;
+    padding: 3px 6px 1px;
+    border-radius: 2px
+}
+.lang-selected a {
+    color: #1e2eac !important;
+    font-weight: bolder;
+    cursor: default;
+}
+.lang-comp span {
+    margin: 5px;
+}
