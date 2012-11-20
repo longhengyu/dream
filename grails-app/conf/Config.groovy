@@ -143,3 +143,7 @@ api {
 grails.config.locations =
     ["file:${userHome}/.grails/${appName}-config.groovy",
             "file:${userHome}/.grails/${appName}-dataSource.groovy"]
+
+grails.plugin.databasemigration.changelogLocation = "changelogs"
+//grails.plugin.databasemigration.updateOnStart = true
+//grails.plugin.databasemigration.updateOnStartFileNames = ["../changelogs/changelog.groovy"]

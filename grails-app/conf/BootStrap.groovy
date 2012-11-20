@@ -1,21 +1,26 @@
 import com.pkgplan.auth.*
 import com.pkgplan.dream.Server
+import ch.gstream.grails.plugins.dbunitoperator.DbUnitOperator
 
 class BootStrap {
 
     def init = { servletContext ->
         if (User.count() == 0 && Role.count() == 0) {
-            def adminRole = new Role(authority: 'ROLE_ADMIN').save(flush: true)
-            def userRole = new Role(authority: 'ROLE_USER').save(flush: true)
 
-            def testUser = new User(username: 'user', enabled: true, password: 'user', email: 'user@pkgplan.com')
-            testUser.save(flush: true)
+            //init data
+            DbUnitOperator.create();
 
-            def testAdmin = new User(username: 'admin', enabled: true, password: 'admin', email: 'admin@pkgplan.com')
-            testAdmin.save(flush: true)
-
-            UserRole.create testUser, userRole, true
-            UserRole.create testAdmin, adminRole, true
+//            def adminRole = new Role(authority: 'ROLE_ADMIN').save(flush: true)
+//            def userRole = new Role(authority: 'ROLE_USER').save(flush: true)
+//
+//            def testUser = new User(username: 'user', enabled: true, password: 'user', email: 'user@pkgplan.com')
+//            testUser.save(flush: true)
+//
+//            def testAdmin = new User(username: 'admin', enabled: true, password: 'admin', email: 'admin@pkgplan.com')
+//            testAdmin.save(flush: true)
+//
+//            UserRole.create testUser, userRole, true
+//            UserRole.create testAdmin, adminRole, true
 
             assert User.count() == 2
             assert Role.count() == 2

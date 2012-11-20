@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- DBUnit flat XML file -->
+
+<!-- Real INIT data -->
+
+<dataset>
+
+    <Role
+            authority="ROLE_ADMIN"
+            version="1"
+            />
+    <Role
+            authority="ROLE_USER"
+            version="1"
+            />
+    <User
+            username="user"
+            enabled= "true"
+            password="user"
+            email="user@pkgplan.com"
+            version="1"
+            />
+    <User
+            username="admin"
+            enabled= "true"
+            password="admin"
+            email="admin@pkgplan.com"
+            version="1"
+            />
+
+</dataset>
