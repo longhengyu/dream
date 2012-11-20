@@ -3,7 +3,7 @@
 %>
 <sec:ifLoggedIn>
     <div class="helloMessage">
-        <g:message code="login.msg.hello" args="${[sec.loggedInUserInfo(field:'username')]}"/> (<g:link controller='logout' action="index"><g:message code="login.msg.logout"/></g:link> )
+        <g:message code="login.msg.hello" args="${[sec.loggedInUserInfo(field:'username')]}"/> (<g:link controller='logout' action="index"><g:message code="login.msg.logout"/></g:link>)
     </div>
     <g:render template="/common/usermenu"/>
 </sec:ifLoggedIn>

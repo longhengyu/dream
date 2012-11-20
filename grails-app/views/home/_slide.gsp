@@ -99,7 +99,6 @@
         <div id="mask"></div>
     </div>
 
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <g:javascript src="lib/switchable-2.0.min.js"/>
     <script>
         $(function() {

@@ -6,6 +6,7 @@
 <link rel="stylesheet" type="text/css" href="${resource(dir:'css',file:'pygment_trac.css')}?${grailsApplication.config.dream.timestamp}" media="screen" />
 <link rel="stylesheet" type="text/css" href="${resource(dir:'css',file:'print.css')}?${grailsApplication.config.dream.timestamp}" media="print" />
 <link rel="stylesheet" href="${resource(dir:'css',file:'dream-common.css')}?${grailsApplication.config.dream.timestamp}" />
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 
 
 <!--[if lt IE 9]>
