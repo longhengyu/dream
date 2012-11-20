@@ -12,6 +12,7 @@ class RegisterController extends grails.plugins.springsecurity.ui.RegisterContro
     def resetPasswordWithoutToken = { ResetPasswordCommand command ->
 
         if (!request.post) {
+            log.info("just load for the page.")
             return [command: new ResetPasswordCommand()]
         }
 

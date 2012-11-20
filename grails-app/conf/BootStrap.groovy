@@ -5,6 +5,8 @@ class BootStrap {
 
     def init = { servletContext ->
         if (User.count() == 0 && Role.count() == 0) {
+
+            log.info("Init data for Role and User start.")
             def adminRole = new Role(authority: 'ROLE_ADMIN').save(flush: true)
             def userRole = new Role(authority: 'ROLE_USER').save(flush: true)
 
@@ -38,9 +40,9 @@ class BootStrap {
                     eq("username", "admin")
                 }
             }
-
             sin.ipAddr
 
+            log.info("Init data for Role and User end.")
         }
 
     }
