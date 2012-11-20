@@ -156,3 +156,7 @@ ul.floatList li {
 .lang-comp span {
     margin: 5px;
 }
+
+.helloMessage {
+    padding-left: 1.25em;
+}
