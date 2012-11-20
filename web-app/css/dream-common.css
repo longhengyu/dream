@@ -142,11 +142,12 @@ ul.floatList li {
     float: left;
     line-height: 22px;
     padding: 0 !important;
+
 }
 .lang-selected span{
-    background-color: #fff;
-    padding: 3px 6px 1px;
-    border-radius: 2px
+    background-color: #EEEEEE;
+    border: medium none !important;
+    box-shadow: 2px 1px 15px #FFFFFF !important;
 }
 .lang-selected a {
     color: #1e2eac !important;
@@ -154,7 +155,15 @@ ul.floatList li {
     cursor: default;
 }
 .lang-comp span {
-    margin: 5px;
+    margin: 10px;
+    border: 1px solid #9DDCFF;
+    border-radius: 0 6px 1px 8px;
+    box-shadow: 2px 2px 1px #9DDCFF;
+    padding: 3px 6px 1px;
+}
+
+.lang-comp:not(.lang-selected) span:hover {
+    background-color: #99D9EF;
 }
 
 .helloMessage {
