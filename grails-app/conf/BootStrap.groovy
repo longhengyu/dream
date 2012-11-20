@@ -1,11 +1,16 @@
 import com.pkgplan.auth.*
 import com.pkgplan.dream.Server
+import javax.servlet.http.HttpServletRequest
 
 class BootStrap {
 
     def grailsApplication
 
     def init = { servletContext ->
+
+        HttpServletRequest.metaClass.isXhr = {->
+                'XMLHttpRequest' == delegate.getHeader('X-Requested-With')
+        }
         if (User.count() == 0 && Role.count() == 0) {
             def adminRole = new Role(authority: 'ROLE_ADMIN').save(flush: true)
             def userRole = new Role(authority: 'ROLE_USER').save(flush: true)

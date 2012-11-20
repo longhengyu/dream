@@ -61,6 +61,10 @@ class UserController {
             redirect(action: "list")
             return
         }
+        if(request.xhr) {
+            render(view: "_showBody", model: [userInstance: userInstance, profileInstance: userInstance.profile])
+            return
+        }
 
         [userInstance: userInstance, profileInstance: userInstance.profile]
     }

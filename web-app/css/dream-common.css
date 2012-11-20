@@ -160,3 +160,46 @@ ul.floatList li {
 .helloMessage {
     padding-left: 1.25em;
 }
+
+.userMenu {
+    padding: 10px 4px;
+    margin: 6px;
+}
+.side-menu {
+    margin-top: 14px;
+    position: relative;
+}
+
+.side-menu div{
+    background-color: #317CCF;
+    padding: 5px 10px 4px;
+    border-radius: 0px 6px 1px 8px;
+    margin: -12px;
+    width: 125px;
+    text-align: center;
+    box-shadow: 2px 2px 1px #888888;
+    position: relative;
+}
+.side-menu a {
+    color: #FFFFFF !important;
+    font-weight: bolder;
+}
+
+.side-menu a:hover {
+    color: #9DDCFF !important;
+}
+
+.side-menu div:hover{
+    background-color: #29306d;
+    margin-left:-11px;
+}
+
+.side-menu-selected{
+    background-color: rgba(28, 30, 82, 0.77) !important;
+    margin-left:-11px !important;
+}
+
+a .side-menu-selected {
+    color: #9DDCFF !important;
+    cursor: default;
+}
