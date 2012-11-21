@@ -1,7 +1,7 @@
 <div id="show-profile" class="content scaffold-show" role="main">
-    <h2><sec:ifAllGranted roles="ROLE_ADMIN"><g:message code="profile.show.title.admin" default="User Profile"/></sec:ifAllGranted>
+    <h3><sec:ifAllGranted roles="ROLE_ADMIN"><g:message code="profile.show.title.admin" default="User Profile"/></sec:ifAllGranted>
         <sec:ifAllGranted roles="ROLE_USER"><g:message code="profile.show.title" default="My Profile" /></sec:ifAllGranted>
-    </h2>
+    </h3>
     <g:if test="${profileInstance}">
 
         <ol class="property-list profile">

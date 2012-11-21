@@ -205,11 +205,10 @@ img {
 
 fieldset,
 .property-list {
-	margin: 0.6em 1.25em 0 1.25em;
-	padding: 0.3em 1.8em 1.25em;
+    box-shadow: 1px 1px 2px rgba(28, 30, 82, 0.77) !important;
+	padding: 8px;
 	position: relative;
-	zoom: 1;
-	border: none;
+    border-radius: 3px 3px 8px 3px;
 }
 
 .property-list .fieldcontain {
@@ -219,23 +218,29 @@ fieldset,
 }
 
 .fieldcontain {
-	margin-top: 1em;
+    padding-left: 0;
 }
 
 .fieldcontain label,
 .fieldcontain .property-label {
-	color: #666666;
+	color: #505179;
 	text-align: right;
-	width: 25%;
+	width: 160px;
 }
 
 .fieldcontain .property-label {
 	float: left;
+    background-color: #8AB4E5;
+    margin: 3px 12px 3px 3px;
+    padding: 3px 12px;
 }
 
 .fieldcontain .property-value {
 	display: block;
-	margin-left: 27%;
+	margin: 3px 3px 3px 193px;
+    background-color: #C8D6E7;
+    padding: 3px 12px 3px 12px;
+
 }
 
 label {
