@@ -1,12 +1,12 @@
 <div class="userMenu">
     <ul>
         <li class="side-menu">
-            <g:remoteLink controller="home" action="index" update="[success:'main-content']" onSuccess="decorateMenu()">
+            <g:remoteLink id="side-menu-home" controller="home" action="index" update="[success:'main-content']" onclick="" onSuccess="decorateMenu('side-menu-home')">
                 <div class="<g:if test="${controllerName == 'home'}">side-menu-selected</g:if>"><g:message code="side.menu.home"/></div>
             </g:remoteLink>
         </li>
         <li class="side-menu">
-            <g:remoteLink controller="user" action="show" update="[success:'main-content']" onSuccess="decorateMenu()">
+            <g:remoteLink id="side-menu-user" controller="user" action="show" update="[success:'main-content']" onclick="" onSuccess="decorateMenu('side-menu-user')">
                 <div><g:message code="side.menu.my.account"/></div>
             </g:remoteLink>
         </li>
@@ -22,14 +22,10 @@
     </ul>
 </div>
 <script type="text/javascript">
-    function decorateMenu() {
-        $(".side-menu-selected").each(function(){$(this).removeClass("side-menu-selected")});
-        $(".menu-clicked").each(function(){$(this).find("div").addClass("side-menu-selected")});
+    function decorateMenu(myId) {
+        $(".side-menu .side-menu-selected").each(function(){
+            $(this).removeClass("side-menu-selected");
+        });
+        $("#" + myId).find("div").addClass("side-menu-selected");
     }
-    $(".side-menu a").mouseover(function() {
-        $(this).addClass("menu-clicked");
-    });
-    $(".side-menu a").mouseout(function() {
-        $(this).removeClass("menu-clicked");
-    });
 </script>
