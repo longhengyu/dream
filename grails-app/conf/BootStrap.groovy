@@ -6,9 +6,8 @@ class BootStrap {
 
     def init = { servletContext ->
         if (User.count() == 0 && Role.count() == 0) {
-
             //init data
-            DbUnitOperator.create();
+            DbUnitOperator.create()
 
 //            def adminRole = new Role(authority: 'ROLE_ADMIN').save(flush: true)
 //            def userRole = new Role(authority: 'ROLE_USER').save(flush: true)
@@ -27,10 +26,8 @@ class BootStrap {
             assert UserRole.count() == 2
 
             if (Server.count() == 0) {
-                def newServer = new Server(ipAddr: '173.255.217.70', hostname: 'vps001', capacity: 20, users: [testAdmin]);
-                newServer.save(flush: true)
-                def newServer2 = new Server(ipAddr: '173.255.217.71', hostname: 'vps002', capacity: 20, users: [testUser]);
-                newServer2.save(flush: true)
+                //init server data
+                DbUnitOperator.operate("INSERT","../data/dev/init-server.xml")
             }
             def s = Server.createCriteria().list{
                 users{
@@ -47,7 +44,6 @@ class BootStrap {
             sin.ipAddr
 
         }
-
     }
     def destroy = {
     }

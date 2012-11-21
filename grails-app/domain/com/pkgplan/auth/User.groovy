@@ -9,7 +9,7 @@ class User {
 	String username
 	String password
     String email
-    Date dateCreated
+    Date dateCreated = new Date()
     Date dateExpired = new Date()
 	boolean enabled
 	boolean accountExpired
@@ -27,7 +27,6 @@ class User {
 
 	static mapping = {
         table('pkguser')
-		password column: '`password`'
         profile(lazy: false)
 	}
 
