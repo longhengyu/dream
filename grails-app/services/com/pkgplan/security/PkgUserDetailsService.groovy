@@ -19,8 +19,10 @@ class PkgUserDetailsService implements GrailsUserDetailsService {
 
         User.withTransaction { status ->
             User user = User.findByUsernameOrEmail(username, username)
-            if (!user)
+            if (!user){
+                log.error('User not found,username:' + username)
                 throw new UsernameNotFoundException('User not found', username)
+            }
 
             def authorities = user.authorities.collect {new GrantedAuthorityImpl(it.authority)}
 

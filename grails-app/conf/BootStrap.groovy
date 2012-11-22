@@ -12,6 +12,8 @@ class BootStrap {
                 'XMLHttpRequest' == delegate.getHeader('X-Requested-With')
         }
         if (User.count() == 0 && Role.count() == 0) {
+
+            log.info("Init data for Role and User start.")
             def adminRole = new Role(authority: 'ROLE_ADMIN').save(flush: true)
             def userRole = new Role(authority: 'ROLE_USER').save(flush: true)
 
@@ -45,9 +47,9 @@ class BootStrap {
                     eq("username", "admin")
                 }
             }
-
             sin.ipAddr
 
+            log.info("Init data for Role and User end.")
         }
 
         // generate a new timestamp
