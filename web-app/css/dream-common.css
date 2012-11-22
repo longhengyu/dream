@@ -223,3 +223,7 @@ a .side-menu-selected {
 .form-no-decorate form ol {
     background-color: rgba(244, 250, 229, 0.35);
 }
+
+.limit-width-select {
+    width:447px;
+}

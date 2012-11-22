@@ -28,7 +28,7 @@
         </li>
         <li class="fieldcontain ${hasErrors(bean: profileInstance, field: 'timezone', 'error')}">
             <span id="timezone-label" class="property-label"><label for="timezone"><g:message code="user.profile.label.timezone"/></label></span>
-            <span class="property-value-edit" aria-labelledby="timezone-label"><g:timeZoneSelect name="timezone" value="${profileInstance?.timezone}" /></span>
+            <span class="property-value-edit" aria-labelledby="timezone-label"><pkg:timeZoneSelect class="limit-width-select" name="timezone" value="${profileInstance?.timezone}" /></span>
         </li>
 
     </ol>
