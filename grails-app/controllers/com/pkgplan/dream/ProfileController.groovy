@@ -22,25 +22,25 @@ class ProfileController {
     }
 
     def create() {
-        [profileInstance: new Profile(params), userId: params.get("userId")]
+        render(view: "_form", model: [profileInstance: new Profile(params), userId: params.get("userId"), isCreate: true])
     }
 
     def save() {
         def profileInstance = new Profile(params)
         if (!profileInstance.save(flush: true)) {
-            render(view: "create", model: [profileInstance: profileInstance])
+            render(view: "_form", model: [profileInstance: profileInstance, isCreate: true])
             return
         }
         // bind user with profile
         def userInstance = params.get("userId")? User.get(params.get("userId")):userService.currentUser()
         userInstance.profile = profileInstance
         if (!userInstance.save(flush: true)) {
-            render(view: "create", model: [profileInstance: profileInstance])
+            render(view: "_form", model: [profileInstance: profileInstance])
             return
         }
 
         flash.message = message(code: 'default.created.message', args: [message(code: 'profile.label', default: 'Profile'), profileInstance.id])
-        redirect(controller: "user", action: "show", id: userInstance.id)
+        render(view: "_panelBody", model: [profileInstance: profileInstance])
     }
 
     def show(Long id) {
@@ -56,7 +56,6 @@ class ProfileController {
                 return
             }
         }
-
         [profileInstance: profileInstance]
     }
 
@@ -68,7 +67,9 @@ class ProfileController {
             return
         }
 
-        [profileInstance: profileInstance]
+
+        render(view: "_form", model: [profileInstance: profileInstance])
+        return
     }
 
     def update(Long id, Long version) {
@@ -92,14 +93,13 @@ class ProfileController {
         profileInstance.properties = params
 
         if (!profileInstance.save(flush: true)) {
-            render(view: "edit", model: [profileInstance: profileInstance])
+            render(view: "_form", model: [profileInstance: profileInstance])
             return
         }
 
-        def userInstance = User.findByProfile(profileInstance)
-
         flash.message = message(code: 'default.updated.message', args: [message(code: 'profile.label', default: 'Profile'), profileInstance.id])
-        redirect(controller: "user", action: "show", id: userInstance.id)
+
+        render(view: "_panelBody", model: [profileInstance: profileInstance])
     }
 
     def delete(Long id) {
@@ -122,6 +122,6 @@ class ProfileController {
     }
 
     def cancel() {
-        redirect(action: "show", controller: "user")
+        render(view: "_panelBody", model: [profileInstance: Profile.get(params.id)])
     }
 }

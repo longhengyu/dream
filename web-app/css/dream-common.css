@@ -126,7 +126,7 @@ ul.floatList li {
 }
 
 .pkgsubmit {
-    margin-top: 24px;
+    margin-top: 9px;
 }
 
 .pkgsubmit tr td {
@@ -212,4 +212,14 @@ ul.floatList li {
 a .side-menu-selected {
     color: #9DDCFF !important;
     cursor: default;
+}
+
+.form-no-decorate form {
+    border: none !important;
+    background: none;
+    padding: 0;
+}
+
+.form-no-decorate form ol {
+    background-color: rgba(244, 250, 229, 0.35);
 }

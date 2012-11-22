@@ -209,6 +209,7 @@ fieldset,
 	padding: 8px;
 	position: relative;
     border-radius: 3px 3px 8px 3px;
+    margin-bottom: 10px;
 }
 
 .property-list .fieldcontain {
@@ -231,7 +232,7 @@ fieldset,
 .fieldcontain .property-label {
 	float: left;
     background-color: #8AB4E5;
-    margin: 3px 12px 3px 3px;
+    margin: 3px 6px 3px 3px;
     padding: 3px 12px;
 }
 
@@ -240,6 +241,14 @@ fieldset,
 	margin: 3px 3px 3px 193px;
     background-color: #C8D6E7;
     padding: 3px 12px 3px 12px;
+
+}
+
+.fieldcontain .property-value-edit {
+    display: block;
+    margin: 3px 3px 3px 189px;
+
+    padding: 0px 5px;
 
 }
 
