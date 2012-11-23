@@ -347,6 +347,11 @@ fieldset.embedded legend {
 	padding: 0.25em;
 }
 
+.errors input {
+    height: 27px;
+    font-size: 1.25em;
+}
+
 .message {
 	background: #f3f3ff;
 	border: 1px solid #b2d1ff;
@@ -428,6 +433,7 @@ tr>td:first-child, tr>th:first-child {
 
 tr>td:last-child, tr>th:last-child {
 	padding-right: 0.25em;
+    padding-left: 3px;
 }
 
 td, th {

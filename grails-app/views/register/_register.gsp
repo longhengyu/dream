@@ -6,7 +6,7 @@
             <table class="left">
                 <tr>
                     <td>
-                        <g:message code='spring.security.ui.register.sent'/>
+                        <g:message code='user.register.message.mail.sent'/>
                     </td>
                 </tr>
             </table>
@@ -16,16 +16,16 @@
             <table class="hoverAble">
                 <tbody>
 
-                <s2ui:textFieldRow name='username' labelCode='user.username.label' bean="${command}"
+                <s2ui:textFieldRow name='username' labelCode='login.label.username' bean="${command}"
                                    size='40' labelCodeDefault='Username' value="${command.username}"/>
 
                 <s2ui:textFieldRow name='email' bean="${command}" value="${command.email}"
-                                   size='40' labelCode='user.email.label' labelCodeDefault='E-mail'/>
+                                   size='40' labelCode='user.register.label.email' labelCodeDefault='E-mail'/>
 
-                <s2ui:passwordFieldRow name='password' labelCode='user.password.label' bean="${command}"
+                <s2ui:passwordFieldRow name='password' labelCode='login.label.password' bean="${command}"
                                        size='40' labelCodeDefault='Password' value="${command.password}"/>
 
-                <s2ui:passwordFieldRow name='password2' labelCode='user.password2.label' bean="${command}"
+                <s2ui:passwordFieldRow name='password2' labelCode='user.register.label.password.again' bean="${command}"
                                        size='40' labelCodeDefault='Password (again)' value="${command.password2}"/>
 
                 </tbody>
@@ -34,7 +34,7 @@
                 <tbody>
                 <tr class="hoverNone">
                     <td colspan="2" class="center">
-                        <g:submitButton class="buttonsub ui-corner-all" id="registerButton" name="register" value="Create Your New Account" />
+                        <g:submitButton class="buttonsub ui-corner-all" id="registerButton" name="register" value="${message(code: 'user.register.button.create')}" />
                     </td>
                 </tr>
                 </tbody>

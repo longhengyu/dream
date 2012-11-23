@@ -104,6 +104,7 @@ table.hoverAble tr:hover {
 .name {
     text-align: right;
     padding-right: 23px;
+    width: 242px;
 }
 
 body li {

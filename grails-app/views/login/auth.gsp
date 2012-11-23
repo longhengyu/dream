@@ -6,7 +6,7 @@
 </head>
 
 <body>
-<h4 style="position: absolute;left: 292px; top:13px">Login and all sites are accessable</h4>
+<h4 style="position: absolute;left: 292px; top:13px"><g:message code="login.title"/></h4>
 <g:render template="/common/slide"/>
 <div class="noSideBar">
     <div class="centerBlockFun">
