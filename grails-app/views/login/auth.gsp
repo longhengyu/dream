@@ -10,6 +10,9 @@
 <g:render template="/common/slide"/>
 <div class="noSideBar">
     <div class="centerBlockFun">
+        <g:if test="${flash.message}">
+            <div class="message" role="status">${flash.message}</div>
+        </g:if>
         <g:render template="/login/form"/>
     </div>
 </div>

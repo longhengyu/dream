@@ -54,6 +54,11 @@
     padding: 10px 20px 18px  !important
 }
 
+.nosidebar form p {
+    text-align: center;
+    margin-bottom: 8px;
+}
+
 .nosidebar form tr.prop input {
     width: 237px;
 }

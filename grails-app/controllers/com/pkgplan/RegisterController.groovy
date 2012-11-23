@@ -12,13 +12,15 @@ class RegisterController extends grails.plugins.springsecurity.ui.RegisterContro
     def resetPasswordWithoutToken = { ResetPasswordCommand command ->
 
         if (!request.post) {
-            return [command: new ResetPasswordCommand()]
+            render(view: 'resetPassword', model: [command: new ResetPasswordCommand(), hasToken: false])
+            return
         }
 
         command.username = userService.currentUser().username;
         command.validate();
         if (command.hasErrors()) {
-            return [command: command]
+            render(view: 'resetPassword', model: [command: command, hasToken: false])
+            return
         }
 
         String salt = saltSource instanceof NullSaltSource ? null : command.username
