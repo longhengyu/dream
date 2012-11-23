@@ -9,8 +9,8 @@ class User {
 	String username
 	String password
     String email
-    Date dateCreated
-    Date dateExpired = new Date()
+    Date dateCreated = new Date()
+    Date dateExpired
 	boolean enabled
 	boolean accountExpired
 	boolean accountLocked
