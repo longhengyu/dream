@@ -6,9 +6,8 @@
 </head>
 
 <body>
-
+<g:render template="/common/slide"/>
 <div class="noSideBar">
-<div class="centerBlockFun">
 	<g:form action='forgotPassword' name="forgotPasswordForm" autocomplete='off'>
 
 	<g:if test='${emailSent}'>
@@ -16,7 +15,7 @@
         <table class="left">
         <tr>
             <td>
-	            <g:message code='spring.security.ui.forgotPassword.sent'/>
+	            <g:message code='password.forgot.password.message.mail.sent'/>
             </td>
         </tr>
         </table>
@@ -25,19 +24,19 @@
 	<g:else>
 
 	<br/>
-	<p><g:message code='spring.security.ui.forgotPassword.description'/></p>
+	<p><g:message code='password.forgot.password.description'/></p>
 
 	<table class="hoverAble">
 		<tr>
-			<td><label for="username"><g:message code='spring.security.ui.forgotPassword.username'/></label></td>
-			<td><g:textField name="username" size="30" /></td>
+			<td style="padding-left: 4em;"><label for="username"><g:message code='password.forgot.password.label.name.mail'/></label></td>
+			<td style="text-align: left"><g:textField name="username" size="45" /></td>
 		</tr>
 	</table>
 
 	<table class="center">
         <tr>
             <td>
-                <g:submitButton class="center buttonsub ui-corner-all" id="getPassButton" name="getPass" value="${message(code: 'spring.security.ui.forgotPassword.submit', default: 'Reset Password')}" />
+                <g:submitButton class="center buttonsub ui-corner-all" id="getPassButton" name="getPass" value="${message(code: 'password.forgot.password.button.reset', default: 'Reset Password')}" />
             </td>
         </tr>
     </table>

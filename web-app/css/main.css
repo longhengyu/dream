@@ -205,11 +205,11 @@ img {
 
 fieldset,
 .property-list {
-	margin: 0.6em 1.25em 0 1.25em;
-	padding: 0.3em 1.8em 1.25em;
+    box-shadow: 1px 1px 2px rgba(28, 30, 82, 0.77) !important;
+	padding: 8px;
 	position: relative;
-	zoom: 1;
-	border: none;
+    border-radius: 3px 3px 8px 3px;
+    margin-bottom: 10px;
 }
 
 .property-list .fieldcontain {
@@ -219,23 +219,37 @@ fieldset,
 }
 
 .fieldcontain {
-	margin-top: 1em;
+    padding-left: 0;
 }
 
 .fieldcontain label,
 .fieldcontain .property-label {
-	color: #666666;
+	color: #505179;
 	text-align: right;
-	width: 25%;
+	width: 160px;
 }
 
 .fieldcontain .property-label {
 	float: left;
+    background-color: #8AB4E5;
+    margin: 3px 6px 3px 3px;
+    padding: 3px 12px;
 }
 
 .fieldcontain .property-value {
 	display: block;
-	margin-left: 27%;
+	margin: 3px 3px 3px 193px;
+    background-color: #C8D6E7;
+    padding: 3px 12px 3px 12px;
+
+}
+
+.fieldcontain .property-value-edit {
+    display: block;
+    margin: 3px 3px 3px 189px;
+
+    padding: 0px 5px;
+
 }
 
 label {
@@ -333,6 +347,11 @@ fieldset.embedded legend {
 	padding: 0.25em;
 }
 
+.errors input {
+    height: 27px;
+    font-size: 1.25em;
+}
+
 .message {
 	background: #f3f3ff;
 	border: 1px solid #b2d1ff;
@@ -414,6 +433,7 @@ tr>td:first-child, tr>th:first-child {
 
 tr>td:last-child, tr>th:last-child {
 	padding-right: 0.25em;
+    padding-left: 3px;
 }
 
 td, th {
@@ -561,14 +581,14 @@ th.desc a {
 	text-decoration: underline;
 }
 
-.buttons .delete, .buttons .edit, .buttons .save {
+.buttons .delete, .buttons .edit, .buttons .save, .buttons .reset {
 	background-position: 0.7em center;
 	background-repeat: no-repeat;
 	text-indent: 25px;
 }
 
-.ie6 .buttons input.delete, .ie6 .buttons input.edit, .ie6 .buttons input.save,
-.ie7 .buttons input.delete, .ie7 .buttons input.edit, .ie7 .buttons input.save {
+.ie6 .buttons input.delete, .ie6 .buttons input.edit, .ie6 .buttons input.save, .ie6 .buttons input.reset,
+.ie7 .buttons input.delete, .ie7 .buttons input.edit, .ie7 .buttons input.save, .ie7 .buttons input.reset {
 	padding-left: 36px;
 }
 
@@ -578,6 +598,10 @@ th.desc a {
 
 .buttons .edit {
 	background-image: url(../images/skin/database_edit.png);
+}
+
+.buttons .reset {
+    background-image: url(../images/skin/reset.png);
 }
 
 .buttons .save {

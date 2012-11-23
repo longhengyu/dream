@@ -14,3 +14,5 @@
     <g:render template="/login/form"/>
 
 </sec:ifNotLoggedIn>
+
+<g:render template="/common/rakutenWidget"/>

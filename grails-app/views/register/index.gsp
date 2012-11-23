@@ -6,7 +6,7 @@
 </head>
 
 <body>
-<h4 style="position: absolute;left: 292px; top:13px">Register a new user and get ready for all sites</h4>
+<h4 style="position: absolute;left: 292px; top:13px"><g:message code="user.register.title"/></h4>
 <g:render template="/common/slide"/>
 <g:render template="/register/register"/>
 

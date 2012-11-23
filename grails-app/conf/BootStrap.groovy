@@ -8,6 +8,8 @@ class BootStrap {
 
     def init = { servletContext ->
 
+        TimeZone.setDefault(TimeZone.getTimeZone("Asia/Shanghai"))
+
         HttpServletRequest.metaClass.isXhr = {->
                 'XMLHttpRequest' == delegate.getHeader('X-Requested-With')
         }

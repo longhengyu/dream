@@ -1,4 +1,4 @@
-<html>
+<html xmlns="http://www.w3.org/1999/html">
 
 <head>
 <title><g:message code='spring.security.ui.resetPassword.title'/></title>
@@ -6,41 +6,30 @@
 </head>
 
 <body>
-<h1><g:message code='spring.security.ui.resetPassword.description'/></h1>
-
+<g:render template="/common/slide"/>
 <div class="noSideBar">
-    <div class="centerBlockFun">
+    <g:form action='${hasToken? "resetPassword":"resetPasswordWithoutToken"}' name='resetPasswordForm' autocomplete='off'>
+        <g:hiddenField name='t' value='${token}'/>
+        <p><g:message code="password.reset.password.description"/></p>
+        <table class="hoverAble">
+        <s2ui:passwordFieldRow name='password' labelCode='login.label.password' bean="${command}"
+                               labelCodeDefault='Password' value="${command?.password}"/>
 
-	<g:form action='resetPassword' name='resetPasswordForm' autocomplete='off'>
-	<g:hiddenField name='t' value='${token}'/>
-	<div class="sign-in">
+        <s2ui:passwordFieldRow name='password2' labelCode='user.register.label.password.again' bean="${command}"
+                               labelCodeDefault='Password (again)' value="${command?.password2}"/>
+        </table>
 
-	<table>
-		<s2ui:passwordFieldRow name='password' labelCode='resetPasswordCommand.password.label' bean="${command}"
-                             labelCodeDefault='Password' value="${command?.password}"/>
 
-		<s2ui:passwordFieldRow name='password2' labelCode='resetPasswordCommand.password2.label' bean="${command}"
-                             labelCodeDefault='Password (again)' value="${command?.password2}"/>
-	</table>
-
-	    <table class="center">
+        <table class="center">
             <tr>
                 <td>
-                    <g:submitButton class="center buttonsub ui-corner-all" id="getPassButton" name="getPass" value="${message(code: 'spring.security.ui.resetPassword.submit', default: 'Reset Password')}" />
+                    <g:submitButton class="center buttonsub ui-corner-all" id="getPassButton" name="getPass" value="${message(code: 'password.forgot.password.button.reset', default: 'Reset Password')}" />
                 </td>
             </tr>
         </table>
-	</div>
-	</g:form>
+    </g:form>
 
-    </div>
 </div>
-
-<script>
-$(document).ready(function() {
-	$('#password').focus();
-});
-</script>
 
 </body>
 </html>

@@ -21,37 +21,10 @@
 			<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
-			<g:hasErrors bean="${profileInstance}">
-			<ul class="errors" role="alert">
-				<g:eachError bean="${profileInstance}" var="error">
-				<li <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message error="${error}"/></li>
-				</g:eachError>
-			</ul>
-			</g:hasErrors>
-			<g:form method="post" >
-				<g:hiddenField name="id" value="${profileInstance?.id}" />
-				<g:hiddenField name="version" value="${profileInstance?.version}" />
-				<g:render template="form"/>
 
-                <div class="pkgsubmit">
-                    <table>
-                        <tr>
-                            <td class="right">
-                                <g:actionSubmit action="cancel" class="buttonsub ui-corner-all" value="${message(code: 'default.button.cancel.label', default: 'Cancel')}"/>
-                            </td>
-                            <td class="left">
-                                <g:actionSubmit action="update" class="buttonsub ui-corner-all" value="${message(code: 'default.button.update.label', default: 'Update')}" />
-                            </td>
-                        </tr>
-                    </table>
-                </div>
 
-                <sec:ifAllGranted roles="ROLE_ADMIN">
-                    <fieldset class="buttons">
-                        <g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" formnovalidate="" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
-                    </fieldset>
-                </sec:ifAllGranted>
-			</g:form>
+			<g:render template="form"/>
+
             <span class="forgot-link">
                 <g:link controller='register' action='resetPasswordWithoutToken'><g:message code='spring.security.ui.forgotPassword.submit'/></g:link>
             </span>
