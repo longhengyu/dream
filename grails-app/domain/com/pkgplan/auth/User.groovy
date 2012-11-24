@@ -10,6 +10,10 @@ class User {
 	String password
     String email
     Date dateCreated
+    /**
+     * we believe the expired date equate the created date when a new user come in,
+     * this date will be updated if user buy a product.
+    **/
     Date dateExpired = new Date()
 	boolean enabled
 	boolean accountExpired
@@ -27,7 +31,7 @@ class User {
 
 	static mapping = {
         table('pkguser')
-		password column: '`password`'
+        password column: 'passwd'
         profile(lazy: false)
 	}
 
