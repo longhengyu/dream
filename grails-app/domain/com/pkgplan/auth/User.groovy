@@ -12,7 +12,7 @@ class User {
     Date dateCreated = new Date()
     /**
      * we believe the expired date equate the created date when a new user come in,
-     * users can change this date if only they want to do this.
+     * this date will be updated if user buy a product.
     **/
     Date dateExpired = new Date()
 	boolean enabled
