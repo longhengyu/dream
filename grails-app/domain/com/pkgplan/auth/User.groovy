@@ -10,7 +10,11 @@ class User {
 	String password
     String email
     Date dateCreated = new Date()
-    Date dateExpired
+    /**
+     * we believe the expired date equate the created date when a new user come in,
+     * users can change this date if only they want to do this.
+    **/
+    Date dateExpired = new Date()
 	boolean enabled
 	boolean accountExpired
 	boolean accountLocked
