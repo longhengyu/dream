@@ -82,11 +82,3 @@
 	<g:field name="pMinute" type="number" min="0" value="${productInstance.pMinute}" required=""/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: productInstance, field: 'pSecond', 'error')} required">
-	<label for="pSecond">
-		<g:message code="product.pSecond.label" default="PS econd" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:field name="pSecond" type="number" min="0" value="${productInstance.pSecond}" required=""/>
-</div>
-

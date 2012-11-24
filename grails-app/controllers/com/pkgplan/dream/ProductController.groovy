@@ -69,8 +69,8 @@ class ProductController {
         if (version != null) {
             if (productInstance.version > version) {
                 productInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
-                        [message(code: 'product.label', default: 'Product')] as Object[],
-                        "Another user has updated this Product while you were editing")
+                          [message(code: 'product.label', default: 'Product')] as Object[],
+                          "Another user has updated this Product while you were editing")
                 render(view: "edit", model: [productInstance: productInstance])
                 return
             }

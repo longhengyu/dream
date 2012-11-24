@@ -11,7 +11,6 @@ class Product {
     int pDay = 0
     int pHour = 0
     int pMinute = 0
-    int pSecond = 0
     String status
 
     // this code is the identification of each item which specified by the product owner (admin)
@@ -34,6 +33,5 @@ class Product {
         pDay(min: 0)
         pHour(min: 0)
         pMinute(min: 0)
-        pSecond(min: 0)
     }
 }

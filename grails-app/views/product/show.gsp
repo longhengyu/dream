@@ -112,15 +112,6 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${productInstance?.pSecond}">
-				<li class="fieldcontain">
-					<span id="pSecond-label" class="property-label"><g:message code="product.pSecond.label" default="PS econd" /></span>
-					
-						<span class="property-value" aria-labelledby="pSecond-label"><g:fieldValue bean="${productInstance}" field="pSecond"/></span>
-					
-				</li>
-				</g:if>
-			
 				<g:if test="${productInstance?.dateCreated}">
 				<li class="fieldcontain">
 					<span id="dateCreated-label" class="property-label"><g:message code="product.dateCreated.label" default="Date Created" /></span>
