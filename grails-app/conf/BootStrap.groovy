@@ -9,10 +9,6 @@ class BootStrap {
             //init data
             DbUnitOperator.create()
 
-            assert User.count() == 2
-            assert Role.count() == 2
-            assert UserRole.count() == 2
-
             if (Server.count() == 0) {
                 //init server data
                 DbUnitOperator.operate("INSERT","../data/dev/init-server.xml")
