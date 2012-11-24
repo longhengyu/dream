@@ -12,6 +12,8 @@
 
     <properties>
         <grails.version>2.1.1</grails.version>
+        <!-- This is here to prevent a WARNING about platform encoding -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
     <dependencies>
