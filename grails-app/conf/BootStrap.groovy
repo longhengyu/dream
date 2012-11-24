@@ -1,6 +1,7 @@
 import com.pkgplan.auth.*
 import com.pkgplan.dream.Server
 import javax.servlet.http.HttpServletRequest
+import ch.gstream.grails.plugins.dbunitoperator.DbUnitOperator
 
 class BootStrap {
 
