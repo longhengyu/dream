@@ -9,7 +9,7 @@ class User {
 	String username
 	String password
     String email
-    Date dateCreated = new Date()
+    Date dateCreated
     /**
      * we believe the expired date equate the created date when a new user come in,
      * this date will be updated if user buy a product.
