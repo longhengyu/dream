@@ -17,7 +17,7 @@ environments {
         dataSource {
             dbCreate = "create-drop" // one of 'create', 'create-drop', 'update', 'validate', ''
             url = "jdbc:h2:mem:devDb;MVCC=TRUE;LOCK_TIMEOUT=10000"
-            initialData = "../data/dev/init-data.xml"
+            initialData = "data/init-data.xml"
             initialOperation = "CLEAN_INSERT" // dbunit-operator operation
         }
     }
@@ -31,6 +31,8 @@ environments {
         dataSource {
             dbCreate = "update"
             url = "jdbc:h2:prodDb;MVCC=TRUE;LOCK_TIMEOUT=10000"
+            initialData = "data/init-data.xml"
+            initialOperation = "CLEAN_INSERT" // dbunit-operator operation
             pooled = true
             properties {
                maxActive = -1

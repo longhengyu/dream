@@ -12,6 +12,8 @@
 
     <properties>
         <grails.version>2.1.1</grails.version>
+        <!-- This is here to prevent a WARNING about platform encoding -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
     <dependencies>
@@ -274,6 +276,76 @@
             </plugin>
         </plugins>
     </build>
+
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <artifactId>maven-resources-plugin</artifactId>
+                        <version>2.3</version>
+                        <executions>
+                            <execution>
+                                <id>copy-dev-resources</id>
+                                <phase>process-resources</phase>
+                                <goals>
+                                    <goal>copy-resources</goal>
+                                </goals>
+                                <configuration>
+                                    <!-- this is important -->
+                                    <overwrite>true</overwrite>
+                                    <!-- target -->
+                                    <outputDirectory>${basedir}/web-app/data</outputDirectory>
+                                    <resources>
+                                        <resource>
+                                            <!-- source -->
+                                            <directory>data/dev</directory>
+                                        </resource>
+                                    </resources>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>prod</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <artifactId>maven-resources-plugin</artifactId>
+                        <version>2.3</version>
+                        <executions>
+                            <execution>
+                                <id>copy-prod-resources</id>
+                                <phase>process-resources</phase>
+                                <goals>
+                                    <goal>copy-resources</goal>
+                                </goals>
+                                <configuration>
+                                    <!-- this is important -->
+                                    <overwrite>true</overwrite>
+                                    <!-- target -->
+                                    <outputDirectory>${basedir}/web-app/data</outputDirectory>
+                                    <resources>
+                                        <resource>
+                                            <!-- source -->
+                                            <directory>data/prod</directory>
+                                        </resource>
+                                    </resources>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 
     <repositories>
         <repository>

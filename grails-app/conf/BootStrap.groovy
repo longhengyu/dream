@@ -20,7 +20,7 @@ class BootStrap {
 
             if (Server.count() == 0) {
                 //init server data
-                DbUnitOperator.operate("INSERT","../data/dev/init-server.xml")
+                DbUnitOperator.operate("INSERT","data/init-server.xml")
             }
         }
     }
