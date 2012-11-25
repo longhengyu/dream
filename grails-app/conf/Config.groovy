@@ -164,3 +164,5 @@ grails.config.locations =
 grails.plugin.databasemigration.changelogLocation = "changelogs"
 //grails.plugin.databasemigration.updateOnStart = true
 //grails.plugin.databasemigration.updateOnStartFileNames = ["../changelogs/changelog.groovy"]
+
+grails.app.context = "/"
