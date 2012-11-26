@@ -99,24 +99,25 @@
         <div id="mask"></div>
     </div>
 
-    <g:javascript src="lib/switchable-2.0.min.js"/>
     <script>
-        $(function() {
-            $('#slide').switchable({
-                triggers: $('#triggers').find('li'),
-                effect: 'fade',
-                autoplay: true,
-                onSwitch: function(event, currentIndex) {
-                    var api = this,
-                            cfg = api.config;
+        $(document).ready(function() {
+            $(function() {
+                $('#slide').switchable({
+                    triggers: $('#triggers').find('li'),
+                    effect: 'fade',
+                    autoplay: true,
+                    onSwitch: function(event, currentIndex) {
+                        var api = this,
+                                cfg = api.config;
 
-                    new $.switchable.Anim(
-                            $('#mask'),
-                            {top:1 + 80 * currentIndex},
-                            cfg.duration,
-                            cfg.easing
-                    ).run();
-                }
+                        new $.switchable.Anim(
+                                $('#mask'),
+                                {top:1 + 80 * currentIndex},
+                                cfg.duration,
+                                cfg.easing
+                        ).run();
+                    }
+                });
             });
         });
     </script>

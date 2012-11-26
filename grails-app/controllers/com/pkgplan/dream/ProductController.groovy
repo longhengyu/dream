@@ -14,6 +14,10 @@ class ProductController {
 
     def list(Integer max) {
         params.max = Math.min(max ?: 10, 100)
+        if(request.xhr) {
+            render(view: "_listBody", model: [productInstanceList: Product.list(params), productInstanceTotal: Product.count()])
+            return
+        }
         [productInstanceList: Product.list(params), productInstanceTotal: Product.count()]
     }
 
@@ -39,6 +43,11 @@ class ProductController {
         if (!productInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'product.label', default: 'Product'), id])
             redirect(action: "list")
+            return
+        }
+
+        if(request.xhr) {
+            render(view: "_showBody", model: [productInstance: productInstance])
             return
         }
 

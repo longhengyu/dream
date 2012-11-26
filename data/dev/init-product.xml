@@ -6,9 +6,9 @@
 <dataset>
     <product
             id="1"
-            name="B26"
+            name="Basic 1 Month Plan"
             code="b26"
-            description="basic 1 month plan"
+            description="Located in California, High Speed, No Access Limit. (DO NOT support p2p)"
             price="26"
             p_month="1"
             p_year="0"
@@ -21,9 +21,9 @@
             />
     <product
             id="2"
-            name="F72"
+            name="Flying 3 Month Plan"
             code="f72"
-            description="flying 3 months plan"
+            description="Located in California, High Speed, No Access Limit. Discount Price. (DO NOT support p2p)"
             price="72"
             p_month="3"
             p_year="0"
@@ -36,9 +36,9 @@
             />
     <product
             id="3"
-            name="P280"
+            name="Prime 1 Year Plan"
             code="p280"
-            description="proud 1 year plan"
+            description="Located in California, High Speed, No Access Limit. Discount Price. (DO NOT support p2p)"
             price="280"
             p_year="1"
             p_month="0"
