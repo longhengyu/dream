@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- DBUnit flat XML file -->
+
+<!-- Real INIT data -->
+
+<dataset>
+    <product
+            id="1"
+            name="B26"
+            code="b26"
+            description="basic 1 month plan"
+            price="26"
+            p_month="1"
+            p_year="0"
+            p_day="0"
+            p_hour="0"
+            p_minute="0"
+            status="OnSell"
+            version="1"
+            date_created="2012-11-11"
+            />
+    <product
+            id="2"
+            name="F72"
+            code="f72"
+            description="flying 3 months plan"
+            price="72"
+            p_month="3"
+            p_year="0"
+            p_day="0"
+            p_hour="0"
+            p_minute="0"
+            status="OnSell"
+            version="1"
+            date_created="2012-11-11"
+            />
+    <product
+            id="3"
+            name="P280"
+            code="p280"
+            description="proud 1 year plan"
+            price="280"
+            p_year="1"
+            p_month="0"
+            p_day="0"
+            p_hour="0"
+            p_minute="0"
+            status="OnSell"
+            version="1"
+            date_created="2012-11-11"
+            />
+
+</dataset>
