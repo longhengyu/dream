@@ -76,12 +76,13 @@ log4j = {
 
     appenders {
         console name:'stdout', layout:pattern(conversionPattern: '%-d{yyyy-MM-dd HH:mm:ss}  [%t:%r] - [%p]  %m%n')
-        rollingFile name: "file",maxFileSize: 1024,threshold: org.apache.log4j.Level.INFO,file: "logs/system.log"
-        rollingFile name: "error-file",maxFileSize: 1024,threshold: org.apache.log4j.Level.ERROR,file: "logs/error.log"
+        appender new org.apache.log4j.DailyRollingFileAppender(name: "file",threshold: org.apache.log4j.Level.INFO,layout:pattern(conversionPattern: '%-d{yyyy-MM-dd HH:mm:ss}  [%t:%r] - [%p]  %m%n'),file: "logs/system.log",datePattern:"'.'yyyy-MM-dd")
+        appender new org.apache.log4j.DailyRollingFileAppender(name: "error-file",threshold: org.apache.log4j.Level.ERROR,layout:pattern(conversionPattern: '%-d{yyyy-MM-dd HH:mm:ss}  [%t:%r] - [%p]  %m%n'),file: "logs/error.log",datePattern:"'.'yyyy-MM-dd")
+
     }
 
     root {
-        info 'stdout','file','error-file'
+        info 'stdout','file',"error-file"
         additivity = true
     }
 
@@ -95,7 +96,8 @@ log4j = {
            'org.codehaus.groovy.grails.orm.hibernate',      // hibernate integration
            'org.springframework',
            'org.hibernate',
-           'net.sf.ehcache.hibernate'
+           'net.sf.ehcache.hibernate',
+           'com.pkgplan'
 
     info 'com.pkgplan'
 }
