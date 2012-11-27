@@ -39,8 +39,13 @@
 
 <dl id="accordion">
     <g:each in="${productInstanceList}" status="i" var="productInstance">
+    	<g:if test="${productInstance.status == 'OnSell'}">
         <dt>${fieldValue(bean: productInstance, field: "name")} - Price: ${fieldValue(bean: productInstance, field: "price")} RMB</dt>
-        <dd><img src="http://ww4.sinaimg.cn/mw690/ba2b4929gw1dz8yjllcl3j.jpg" style="width:242;height: 288;margin: 13px"/></dd>
+        <dd>
+        <div style="float:left"><img src="${fieldValue(bean: productInstance, field: "imageUrl")}" style="width:242;height: 288;margin: 13px"/></div>
+        <div style="float:left;padding:10px 8px;width:340px"><p>${fieldValue(bean: productInstance, field: "description")}</p></div>
+        </dd>
+        </g:if>
     </g:each>
 </dl>
 
@@ -53,7 +58,7 @@
             triggerType: 'click',
             panels: 'dd',
             effect: 'accordion',
-            multiple: true,
+            multiple: false,
             initIndex: null // new value only for accordion
         });
 

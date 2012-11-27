@@ -1,9 +1,7 @@
 package com.pkgplan.dream
 
 import org.springframework.dao.DataIntegrityViolationException
-import grails.plugins.springsecurity.Secured
 
-@Secured(['ROLE_ADMIN','ROLE_USER'])
 class ProductController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
@@ -14,19 +12,17 @@ class ProductController {
 
     def list(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        if(request.xhr) {
-            render(view: "_listBody", model: [productInstanceList: Product.list(params), productInstanceTotal: Product.count()])
-            return
-        }
+		if(request.xhr) {
+			render(view: "_listBody", model: [productInstanceList: Product.list(params), productInstanceTotal: Product.count()])
+			return
+		}
         [productInstanceList: Product.list(params), productInstanceTotal: Product.count()]
     }
 
-    @Secured(['ROLE_ADMIN'])
     def create() {
         [productInstance: new Product(params)]
     }
 
-    @Secured(['ROLE_ADMIN'])
     def save() {
         def productInstance = new Product(params)
         if (!productInstance.save(flush: true)) {
@@ -46,15 +42,9 @@ class ProductController {
             return
         }
 
-        if(request.xhr) {
-            render(view: "_showBody", model: [productInstance: productInstance])
-            return
-        }
-
         [productInstance: productInstance]
     }
 
-    @Secured(['ROLE_ADMIN'])
     def edit(Long id) {
         def productInstance = Product.get(id)
         if (!productInstance) {
@@ -66,7 +56,6 @@ class ProductController {
         [productInstance: productInstance]
     }
 
-    @Secured(['ROLE_ADMIN'])
     def update(Long id, Long version) {
         def productInstance = Product.get(id)
         if (!productInstance) {
@@ -96,7 +85,6 @@ class ProductController {
         redirect(action: "show", id: productInstance.id)
     }
 
-    @Secured(['ROLE_ADMIN'])
     def delete(Long id) {
         def productInstance = Product.get(id)
         if (!productInstance) {
