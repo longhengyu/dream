@@ -40,18 +40,17 @@
 <dl id="accordion">
     <g:each in="${productInstanceList}" status="i" var="productInstance">
     	<g:if test="${productInstance.status == 'OnSell'}">
-        <dt>${fieldValue(bean: productInstance, field: "name")} - Price: ${fieldValue(bean: productInstance, field: "price")} RMB</dt>
+        <dt>${fieldValue(bean: productInstance, field: "name")}</dt>
         <dd>
         <div class="product-img ${(i % 2) == 0 ? 'float-right' : 'float-left'}"><img src="${fieldValue(bean: productInstance, field: "imageUrl")}"/></div>
         <div class="product-content float-left"><h5>${fieldValue(bean: productInstance, field: "description")}</h5>
-            <div class="price center"><span>Price: <b>${fieldValue(bean: productInstance, field: "price")}</b> RMB</span></div>
+            <div class="price center"><span><g:message code="product.info.price"/> : <b>${fieldValue(bean: productInstance, field: "price")} RMB</b></span></div>
             <div class="buy-button">
-                <g:submitButton class="" id="buyOnline" name="login" value="Buy Now" />
-                <div class="float-right display-table"><div> You can use it immediately after billing.</div></div>
+                <g:submitButton class="" id="buyOnline" name="login" value="${message(code: 'product.button.buy.now')}" />
+                <div class="float-right display-table"><div><g:message code="product.info.buy.now"/> </div></div>
             </div>
             <div class="buy-button buy-from-taobao">
-                you can also buy from <a target="_blank" href="http://shop67794942.taobao.com/shop/view_shop.htm" id="buyTaobao" >Taobao</a>,
-                it may take a while for our stuff to activate your account.
+                <g:message code="product.info.buy.taobao" args="['http://shop67794942.taobao.com/shop/view_shop.htm']"/>
             </div>
         </div>
         </dd>
