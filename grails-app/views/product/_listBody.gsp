@@ -8,9 +8,7 @@
     </div>
 </sec:ifAllGranted>
 
-<h3><sec:ifAllGranted roles="ROLE_ADMIN"><g:message code="default.show.label" args="[entityName]" /></sec:ifAllGranted>
-<sec:ifAllGranted roles="ROLE_USER"><g:message code="product.list.title" default="Available VPN Plans" /></sec:ifAllGranted>
-</h3>
+<h3><g:message code="product.list.title" default="Available VPN Plans" /></h3>
 
 
 <g:render template="dropDown"/>

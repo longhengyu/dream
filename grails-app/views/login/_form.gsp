@@ -25,7 +25,7 @@
                 </tr>
             </table>
 
-                <ul class="noListType floatList loginFloat">
+                <ul class="noListType floatList loginFloat" style="height:20px">
                     <li colspan='2' class="left">
                         <span><g:link controller="register" action="index"><g:message code="login.link.register.new.user"/> </g:link></span>
 
