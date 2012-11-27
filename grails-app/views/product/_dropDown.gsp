@@ -8,7 +8,7 @@
     height:34px;
     margin-top:6px;
     padding-left:20px;
-    background: rgba(88, 165, 46, 0.50);
+    background: rgba(60, 102, 42, 0.47);
     box-shadow:0 1px 1px rgba(0, 0, 0, .6), 0 1px rgba(255, 255, 255, .15) inset;
     color:#fff !important;
 
@@ -42,8 +42,18 @@
     	<g:if test="${productInstance.status == 'OnSell'}">
         <dt>${fieldValue(bean: productInstance, field: "name")} - Price: ${fieldValue(bean: productInstance, field: "price")} RMB</dt>
         <dd>
-        <div style="float:left"><img src="${fieldValue(bean: productInstance, field: "imageUrl")}" style="width:242;height: 288;margin: 13px"/></div>
-        <div style="float:left;padding:10px 8px;width:340px"><p>${fieldValue(bean: productInstance, field: "description")}</p></div>
+        <div class="product-img ${(i % 2) == 0 ? 'float-right' : 'float-left'}"><img src="${fieldValue(bean: productInstance, field: "imageUrl")}"/></div>
+        <div class="product-content float-left"><h5>${fieldValue(bean: productInstance, field: "description")}</h5>
+            <div class="price center"><span>Price: <b>${fieldValue(bean: productInstance, field: "price")}</b> RMB</span></div>
+            <div class="buy-button">
+                <g:submitButton class="" id="buyOnline" name="login" value="Buy Now" />
+                <div class="float-right display-table"><div> You can use it immediately after billing.</div></div>
+            </div>
+            <div class="buy-button buy-from-taobao">
+                you can also buy from <a target="_blank" href="http://shop67794942.taobao.com/shop/view_shop.htm" id="buyTaobao" >Taobao</a>,
+                it may take a while for our stuff to activate your account.
+            </div>
+        </div>
         </dd>
         </g:if>
     </g:each>
