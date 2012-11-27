@@ -67,8 +67,8 @@ a:hover {
 }
 
 header {
-  padding-top: 17px;
-  padding-bottom: 19px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   font-family: 'Architects Daughter', 'Helvetica Neue', Helvetica, Arial, serif;
   background: #2e7bcf url(../images/header-bg.jpg) 0 0 repeat-x;
   border-bottom: solid 1px #275da1;
@@ -79,7 +79,7 @@ header h1 {
   font-size: 72px;
   color: #fff;
   line-height: 1;
-  margin-bottom: 0.2em;
+  margin-bottom: 0.1em;
   width: 540px;
 }
 
@@ -291,6 +291,7 @@ h4:before {
   font-family:  'Helvetica Neue', Helvetica, Arial, serif;
   font-size: 14px;
   color: #474747;
+  font-style: normal;
 }
 
 #main-content h6 {
