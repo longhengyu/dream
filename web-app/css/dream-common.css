@@ -239,6 +239,7 @@ a .side-menu-selected {
     width: 346px;
     height: 288px;
     position: relative;
+    font-style: normal;
 }
 
 .product-img img{
@@ -280,7 +281,7 @@ a .side-menu-selected {
     padding: 7px 18px;
     color: #ffffff;
     margin: 4px 7px;
-    
+    text-shadow: 1px 2px #3D3D3D;
 }
 
 .buy-button:hover #buyOnline {
