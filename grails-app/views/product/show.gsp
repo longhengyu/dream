@@ -49,6 +49,15 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${productInstance?.imageUrl}">
+				<li class="fieldcontain">
+					<span id="imageUrl-label" class="property-label"><g:message code="product.imageUrl.label" default="Image Url" /></span>
+					
+						<span class="property-value" aria-labelledby="imageUrl-label"><g:fieldValue bean="${productInstance}" field="imageUrl"/></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${productInstance?.price}">
 				<li class="fieldcontain">
 					<span id="price-label" class="property-label"><g:message code="product.price.label" default="Price" /></span>

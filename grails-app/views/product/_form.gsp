@@ -26,6 +26,14 @@
 	<g:textArea name="description" cols="40" rows="5" maxlength="1000" value="${productInstance?.description}"/>
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: productInstance, field: 'imageUrl', 'error')} ">
+	<label for="imageUrl">
+		<g:message code="product.imageUrl.label" default="Image Url" />
+		
+	</label>
+	<g:field type="url" name="imageUrl" value="${productInstance?.imageUrl}"/>
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: productInstance, field: 'price', 'error')} required">
 	<label for="price">
 		<g:message code="product.price.label" default="Price" />

@@ -5,6 +5,7 @@ class Product {
     String name
     String description
     BigDecimal price // all price in CNY
+	String imageUrl
     Date dateCreated
     int pYear = 0
     int pMonth = 0
@@ -26,6 +27,7 @@ class Product {
         name(blank: false)
         code(blank: false)
         description(maxSize: 1000)
+		imageUrl(url: true)
         price(nullable: false, min: new BigDecimal(0))
         status(inList: ['OnSell','Hidden','OffSall'], blank: false)
         pYear(min: 0)

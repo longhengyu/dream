@@ -67,9 +67,9 @@ a:hover {
 }
 
 header {
-  padding-top: 17px;
-  padding-bottom: 19px;
-  font-family: 'Architects Daughter', 'Helvetica Neue', Helvetica, Arial, serif; 
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-family: 'Architects Daughter', 'Helvetica Neue', Helvetica, Arial, serif;
   background: #2e7bcf url(../images/header-bg.jpg) 0 0 repeat-x;
   border-bottom: solid 1px #275da1;
 }
@@ -79,7 +79,7 @@ header h1 {
   font-size: 72px;
   color: #fff;
   line-height: 1;
-  margin-bottom: 0.2em;
+  margin-bottom: 0.1em;
   width: 540px;
 }
 
@@ -142,7 +142,7 @@ a.button {
   color: #fff;
   padding-left: 68px;
   padding-top: 22px;
-  font-family: 'Architects Daughter', 'Helvetica Neue', Helvetica, Arial, serif; 
+  font-family: 'Architects Daughter', 'Helvetica Neue', Helvetica, Arial, serif;
 }
 a.button small {
   display: block;
@@ -216,25 +216,25 @@ th {
 
 td {
   border: 1px solid #ebebeb;
-  text-align: center; 
+  text-align: center;
   font-weight: 300;
 }
 
 form {
   background: #f2f2f2;
   padding: 20px;
-  
+
 }
 
 
 /* GENERAL ELEMENT TYPE STYLES */
 
 #main-content h1 {
-  font-family: 'Architects Daughter', 'Helvetica Neue', Helvetica, Arial, serif; 
+  font-family: 'Architects Daughter', 'Helvetica Neue', Helvetica, Arial, serif;
   font-size: 2.8em;
   letter-spacing: -1px;
   color: #474747;
-} 
+}
 
 #main-content h1:before {
   content: "/";
@@ -244,12 +244,12 @@ form {
 }
 
 #main-content h2 {
-  font-family: 'Architects Daughter', 'Helvetica Neue', Helvetica, Arial, serif; 
+  font-family: 'Architects Daughter', 'Helvetica Neue', Helvetica, Arial, serif;
   font-size: 22px;
   font-weight: bold;
   margin-bottom: 8px;
   color: #474747;
-} 
+}
 #main-content h2:before {
   content: "//";
   color: #9ddcff;
@@ -258,14 +258,14 @@ form {
 }
 
 #main-content h3 {
-  font-family: 'Architects Daughter', 'Helvetica Neue', Helvetica, Arial, serif; 
+  font-family: 'Architects Daughter', 'Helvetica Neue', Helvetica, Arial, serif;
   font-size: 18px;
   font-weight: bold;
   margin-top: 24px;
   margin-bottom: 8px;
   color: #474747;
-} 
- 
+}
+
 #main-content h3:before {
   content: "///";
   color: #9ddcff;
@@ -274,11 +274,11 @@ form {
 }
 
 #main-content h4 {
-  font-family: 'Architects Daughter', 'Helvetica Neue', Helvetica, Arial, serif; 
+  font-family: 'Architects Daughter', 'Helvetica Neue', Helvetica, Arial, serif;
   font-size: 15px;
   font-weight: bold;
   color: #474747;
-} 
+}
 
 h4:before {
   content: "////";
@@ -288,19 +288,14 @@ h4:before {
 }
 
 #main-content h5 {
-  font-family: 'Architects Daughter', 'Helvetica Neue', Helvetica, Arial, serif; 
+  font-family:  'Helvetica Neue', Helvetica, Arial, serif;
   font-size: 14px;
   color: #474747;
-} 
-h5:before {
-  content: "/////";
-  color: #9ddcff;
-  padding-right: 0.3em;
-  margin-left: -3.2em;
+  font-style: normal;
 }
 
 #main-content h6 {
-  font-family: 'Architects Daughter', 'Helvetica Neue', Helvetica, Arial, serif; 
+  font-family:  'Helvetica Neue', Helvetica, Arial, serif;
   font-size: .8em;
   color: #474747;
 } 
