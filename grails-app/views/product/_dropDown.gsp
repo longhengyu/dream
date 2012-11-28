@@ -46,7 +46,7 @@
         <div class="product-content float-left"><h5>${fieldValue(bean: productInstance, field: "description")}</h5>
             <div class="price center"><span><g:message code="product.info.price"/> : <b>${fieldValue(bean: productInstance, field: "price")} RMB</b></span></div>
             <div class="buy-button">
-                <g:submitButton class="" id="buyOnline" name="login" value="${message(code: 'product.button.buy.now')}" />
+                <div class="center float-left" style="width:135px"><g:submitButton class="" id="buyOnline" name="login" value="${message(code: 'product.button.buy.now')}" /></div>
                 <div class="float-right display-table"><div><g:message code="product.info.buy.now"/> </div></div>
             </div>
             <div class="buy-button buy-from-taobao">

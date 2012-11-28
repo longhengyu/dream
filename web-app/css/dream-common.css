@@ -280,7 +280,7 @@ a .side-menu-selected {
     padding: 7px 18px;
     color: #ffffff;
     margin: 4px 7px;
-    float: left;
+    
 }
 
 .buy-button:hover #buyOnline {
@@ -313,6 +313,7 @@ a .side-menu-selected {
     margin-top: 6px;
     vertical-align: middle;
     margin-left: 6px;
+    width: 202px;
 }
 
 .buy-button:hover div.display-table {
