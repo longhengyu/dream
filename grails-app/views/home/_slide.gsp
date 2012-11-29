@@ -29,7 +29,9 @@
         bottom:-2px;
         width:100%;
         height:60px;
-        background:rgba(0, 0, 0, .7);
+        background:#000000;
+        -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=70)";
+        opacity: 0.7;
         color:#fff;
         font-size:30px;
         line-height:60px;
