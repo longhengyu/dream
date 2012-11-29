@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html xmlns:wb=“http://open.weibo.com/wb”>
 <head>
     <title><g:message code="site.page.title"/></title>

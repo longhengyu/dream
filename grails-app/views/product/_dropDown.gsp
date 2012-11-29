@@ -8,7 +8,9 @@
     height:34px;
     margin-top:6px;
     padding-left:20px;
-    background: rgba(60, 102, 42, 0.47);
+    background: #3C662A;
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=47)";
+    opacity: 0.47;
     box-shadow:0 1px 1px rgba(0, 0, 0, .6), 0 1px rgba(255, 255, 255, .15) inset;
     color:#fff !important;
 
@@ -21,9 +23,10 @@
     text-shadow:-1px -1px #000;
     color: #FFF !important;
     font-weight:bold;
+    opacity: 1;
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
 }
-#accordion dd,
-#accordion img {
+#accordion dd{
     display:block;
     width:642px;
     height:310px;

@@ -16,6 +16,7 @@
     }
     #slide li {
         position:absolute;
+        width: 512px;
     }
     #slide img {
         display:block;
@@ -42,6 +43,7 @@
     #triggers li {
         margin-bottom:8px;
         *margin-bottom:5px;
+        width: 118px;
     }
     #triggers img {
         display:block;

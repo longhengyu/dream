@@ -8,6 +8,7 @@
     #scrollable-1 li {
         float:left;
         margin-right:15px;
+        width: 203px;
     }
     .demo {
         width: 650px;
