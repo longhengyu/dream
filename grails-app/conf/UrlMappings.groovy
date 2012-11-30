@@ -9,5 +9,11 @@ class UrlMappings {
 
         "/"(controller:'home',action:'index')
         "500"(view:'/error')
-	}
+
+        "/secure/chapSec/$serviceKey/$hostname"(
+            controller: 'secure',
+            action:'chapSec'
+        )
+
+    }
 }
