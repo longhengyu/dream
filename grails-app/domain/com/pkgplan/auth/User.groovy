@@ -54,9 +54,6 @@ class User {
     }
 
     protected void encodePassword() {
-        if (springSecurityService.passwordEncoder != null){
-            password = springSecurityService.encodePassword(password)
-        }
-
+        password = springSecurityService.encodePassword(password)
     }
 }
