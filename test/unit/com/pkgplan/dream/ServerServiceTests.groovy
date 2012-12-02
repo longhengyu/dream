@@ -23,9 +23,6 @@ class ServerServiceTests{
 
 
         User userZhou =  saveZhoudi()
-//        userZhou.springSecurityService.passwordEncoder.encodePassword{parm1,parm2 ->
-//            return "aaa"
-//        }
         userZhou.springSecurityService.passwordEncoder = new TestEncoder()
         Server server1 = mockDomain(Server) as Server;
 
