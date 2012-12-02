@@ -4,10 +4,14 @@ import org.springframework.dao.DataIntegrityViolationException
 import org.codehaus.groovy.runtime.TimeCategory
 import org.codehaus.groovy.grails.plugins.springsecurity.SpringSecurityUtils
 import com.pkgplan.auth.User
+import org.apache.commons.lang.RandomStringUtils
 
 class PurchaseController {
 
     def springSecurityService
+
+    String charset = (('A'..'Z') + ('0'..'9')).join()
+    Integer length = 9
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
@@ -38,7 +42,11 @@ class PurchaseController {
 
         results = criteria.list(params, query)
 
-        [purchaseInstanceList: results, purchaseInstanceTotal: Purchase.count()]
+        if(request.xhr) {
+            render(view: "_listBody", model: [purchaseInstanceList: results, purchaseInstanceTotal: results.getTotalCount()])
+        }
+
+        [purchaseInstanceList: results, purchaseInstanceTotal: results.getTotalCount()]
     }
 
     def create() {
@@ -147,6 +155,10 @@ class PurchaseController {
         owner.save()
 
         purchaseInstance.datePay = now
+
+
+        String randomString = RandomStringUtils.random(length, charset.toCharArray())
+        purchaseInstance.purchaseNumber = "${g.formatDate(date:now, format: 'yyyyMMdd')}${randomString}"
         purchaseInstance.save()
 
         flash.message = message(code: 'purchase.buy.success', default: "purchase success.")

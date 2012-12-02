@@ -1,6 +1,5 @@
-<body>
 <div id="list-purchase" class="content scaffold-list" role="main">
-    <h3><g:message code="default.list.label" args="[entityName]" /></h3>
+    <h3><g:message code="purchase.history.list.title" default="My Purchase History" /></h3>
     <g:if test="${flash.message}">
         <div class="message" role="status">${flash.message}</div>
     </g:if>
@@ -56,6 +55,10 @@
                                 <span id="payment-label" class="property-label"><g:message code="date.pay" default="Payment Method" /></span>
                                 <span class="property-value" aria-labelledby="payment-label">${purchaseInstance.paymentMethod}</span>
                             </li>
+                            <li class="fieldcontain">
+                                <span id="purchaseNumber-label" class="property-label"><g:message code="purchase.number" default="Purchase Number" /></span>
+                                <span class="property-value" aria-labelledby="datePay-label">${purchaseInstance.purchaseNumber}</span>
+                            </li>
                         </ol>
                     </td>
                 </tr>
@@ -70,7 +73,6 @@
 
 <script>
     function toggleDetail(it) {
-        $(it).parent().parent().next().toggleClass("hide");
+        $(it).parent().parent().next().toggle("slow");
     }
 </script>
-</body>

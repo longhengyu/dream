@@ -21,52 +21,61 @@
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
 			<ol class="property-list purchase">
-
+			
 				<g:if test="${purchaseInstance?.owner}">
 				<li class="fieldcontain">
 					<span id="owner-label" class="property-label"><g:message code="purchase.owner.label" default="Owner" /></span>
-
+					
 						<span class="property-value" aria-labelledby="owner-label"><g:link controller="user" action="show" id="${purchaseInstance?.owner?.id}">${purchaseInstance?.owner?.encodeAsHTML()}</g:link></span>
-
+					
 				</li>
 				</g:if>
-
+			
 				<g:if test="${purchaseInstance?.product}">
 				<li class="fieldcontain">
 					<span id="product-label" class="property-label"><g:message code="purchase.product.label" default="Product" /></span>
-
+					
 						<span class="property-value" aria-labelledby="product-label"><g:link controller="product" action="show" id="${purchaseInstance?.product?.id}">${purchaseInstance?.product?.encodeAsHTML()}</g:link></span>
-
+					
 				</li>
 				</g:if>
-
+			
 				<g:if test="${purchaseInstance?.datePay}">
 				<li class="fieldcontain">
 					<span id="datePay-label" class="property-label"><g:message code="purchase.datePay.label" default="Date Pay" /></span>
-
+					
 						<span class="property-value" aria-labelledby="datePay-label"><g:formatDate date="${purchaseInstance?.datePay}" /></span>
-
+					
 				</li>
 				</g:if>
-
+			
+				<g:if test="${purchaseInstance?.purchaseNumber}">
+				<li class="fieldcontain">
+					<span id="paymentNumber-label" class="property-label"><g:message code="purchase.paymentNumber.label" default="Payment Number" /></span>
+					
+						<span class="property-value" aria-labelledby="paymentNumber-label"><g:fieldValue bean="${purchaseInstance}" field="purchaseNumber"/></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${purchaseInstance?.dateCreated}">
 				<li class="fieldcontain">
 					<span id="dateCreated-label" class="property-label"><g:message code="purchase.dateCreated.label" default="Date Created" /></span>
-
+					
 						<span class="property-value" aria-labelledby="dateCreated-label"><g:formatDate date="${purchaseInstance?.dateCreated}" /></span>
-
+					
 				</li>
 				</g:if>
-
+			
 				<g:if test="${purchaseInstance?.paymentMethod}">
 				<li class="fieldcontain">
 					<span id="paymentMethod-label" class="property-label"><g:message code="purchase.paymentMethod.label" default="Payment Method" /></span>
-
+					
 						<span class="property-value" aria-labelledby="paymentMethod-label"><g:fieldValue bean="${purchaseInstance}" field="paymentMethod"/></span>
-
+					
 				</li>
 				</g:if>
-
+			
 			</ol>
 			<g:form>
 				<fieldset class="buttons">

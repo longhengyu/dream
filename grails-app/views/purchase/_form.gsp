@@ -26,6 +26,14 @@
 	<g:datePicker name="datePay" precision="day"  value="${purchaseInstance?.datePay}" default="none" noSelection="['': '']" />
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: purchaseInstance, field: 'purchaseNumber', 'error')} ">
+	<label for="paymentNumber">
+		<g:message code="purchase.purchaseNumber.label" default="Purchase Number" />
+		
+	</label>
+	<g:textField name="purchaseNumber" value="${purchaseInstance?.purchaseNumber}"/>
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: purchaseInstance, field: 'paymentMethod', 'error')} ">
 	<label for="paymentMethod">
 		<g:message code="purchase.paymentMethod.label" default="Payment Method" />

@@ -7,6 +7,7 @@
 		<g:set var="entityName" value="${message(code: 'purchase.label', default: 'Purchase')}" />
 		<title><g:message code="default.list.label" args="[entityName]" /></title>
 	</head>
-    <g:render template="listBody"/>
-
+    <body>
+	    <g:render template="listBody"/>
+    </body>
 </html>
