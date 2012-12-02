@@ -2,8 +2,12 @@ package com.pkgplan.dream
 
 import org.springframework.dao.DataIntegrityViolationException
 import org.codehaus.groovy.runtime.TimeCategory
+import org.codehaus.groovy.grails.plugins.springsecurity.SpringSecurityUtils
+import com.pkgplan.auth.User
 
 class PurchaseController {
+
+    def springSecurityService
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
@@ -11,9 +15,30 @@ class PurchaseController {
         redirect(action: "list", params: params)
     }
 
-    def list(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
-        [purchaseInstanceList: Purchase.list(params), purchaseInstanceTotal: Purchase.count()]
+    def list() {
+        // if it's user, we show only user's purchase list
+        // if it's admin, we show all if no user id is specified, or show the specified user purchases.
+        User owner = springSecurityService.currentUser
+        if (SpringSecurityUtils.ifAllGranted("ROLE_ADMIN")) {
+            owner = User.get(params?.ownerId)
+        }
+        flash.ownerId = owner?.id
+        params.max = Math.min(params.max ?: 10, 100)
+        def query = {order("dateCreated", "desc")}
+        def criteria = Purchase.createCriteria()
+        def results
+        if (owner) {
+            query = {
+                and {
+                    eq("owner", owner)
+                }
+                order("dateCreated", "desc")
+            }
+        }
+
+        results = criteria.list(params, query)
+
+        [purchaseInstanceList: results, purchaseInstanceTotal: Purchase.count()]
     }
 
     def create() {
