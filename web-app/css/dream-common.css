@@ -354,3 +354,14 @@ a .side-menu-selected {
     color: #000000;
 }
 
+.purchase-detail {
+    border: none !important;
+    box-shadow: none !important;
+    padding: 5px 1px;
+    margin-bottom: 0px;
+}
+
+.hide {
+    display:none;
+}
+

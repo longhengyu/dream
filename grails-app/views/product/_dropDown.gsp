@@ -56,9 +56,7 @@
             panels: 'dd',
             effect: 'accordion',
             multiple: false,
-            initIndex: null // new value only for accordion
+            initIndex: 0 // new value only for accordion
         });
-
-        $("#accordion dt:first-child").click();
     });
 </script>

@@ -36,4 +36,8 @@ class Product {
         pHour(min: 0)
         pMinute(min: 0)
     }
+
+    String toString() {
+        return name
+    }
 }

@@ -1,6 +1,7 @@
 package com.pkgplan.dream
 
 import org.springframework.dao.DataIntegrityViolationException
+import org.codehaus.groovy.grails.plugins.springsecurity.SpringSecurityUtils
 
 class ProductController {
 
@@ -35,6 +36,9 @@ class ProductController {
     }
 
     def show(Long id) {
+        if (!SpringSecurityUtils.ifAllGranted("ROLE_ADMIN")) {
+            redirect(action: "list")
+        }
         def productInstance = Product.get(id)
         if (!productInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'product.label', default: 'Product'), id])

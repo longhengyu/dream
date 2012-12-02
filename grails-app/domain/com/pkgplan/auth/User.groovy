@@ -1,6 +1,7 @@
 package com.pkgplan.auth
 
 import com.pkgplan.dream.Profile
+import com.pkgplan.dream.Purchase
 
 class User {
 
@@ -22,11 +23,14 @@ class User {
 
     Profile profile
 
+    static hasMany = [purchases: Purchase]
+
 	static constraints = {
 		username blank: false, unique: true
 		password blank: false
         email unique: false
         profile(nullable: true)
+        purchases(nullable: true)
 	}
 
 	static mapping = {
