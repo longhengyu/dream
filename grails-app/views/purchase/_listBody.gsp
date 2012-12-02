@@ -36,7 +36,11 @@
                     <g:if test="${purchaseInstance.datePay}">
                         <a href="" onclick="toggleDetail(this);return false;">Detail</a>
                     </g:if><g:else>
-                        <a href="">Pay</a> &nbsp;&nbsp; <a href="">Cancel</a>
+                        <a href="">Pay</a> &nbsp;&nbsp;
+                        <g:form>
+                            <g:hiddenField name="id" value="${purchaseInstance?.id}" />
+                            <g:actionSubmit class="delete" action="delete" value="${message(code: 'purchase.cancel.button', default: 'Cancel')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+                        </g:form>
                 </g:else>
                 </td>
             </tr>
