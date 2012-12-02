@@ -7,6 +7,7 @@ import grails.test.mixin.domain.DomainClassUnitTestMixin
 import com.pkgplan.auth.User
 
 import grails.plugins.springsecurity.SpringSecurityService
+import org.springframework.security.authentication.encoding.PasswordEncoder
 
 /**
  * See the API for {@link grails.test.mixin.services.ServiceUnitTestMixin} for usage instructions
@@ -20,7 +21,9 @@ class ServerServiceTests{
         }
 
 
+
         User userZhou =  saveZhoudi()
+        userZhou.springSecurityService.passwordEncoder = new TestEncoder()
         Server server1 = mockDomain(Server) as Server;
 
         server1.ipAddr = "123.133.23.1";
@@ -65,4 +68,15 @@ class ServerServiceTests{
         return userZhoud
     }
 
+
+    public class TestEncoder implements PasswordEncoder {
+
+        String encodePassword(String s, Object o) {
+            return "111"
+        }
+
+        boolean isPasswordValid(String s, String s1, Object o) {
+            return true;
+        }
+    }
 }
