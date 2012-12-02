@@ -33,7 +33,6 @@
 
                     <li colspan="2" class="left">
                         <span><g:link controller='register' action='forgotPassword'><g:message code='login.link.forgot.password'/></g:link></span>
-
                     </li>
                 </ul>
 
