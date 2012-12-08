@@ -9,11 +9,18 @@ import com.pkgplan.auth.User
 import grails.plugins.springsecurity.SpringSecurityService
 import org.springframework.security.authentication.encoding.PasswordEncoder
 
+import org.springframework.beans.factory.annotation.Autowired
+import com.pkgplan.dream.Impl.ServerServiceImpl
+
 /**
  * See the API for {@link grails.test.mixin.services.ServiceUnitTestMixin} for usage instructions
  */
 @TestMixin(DomainClassUnitTestMixin)
 class ServerServiceTests{
+
+    @Autowired
+    def serverService;
+
 
     void testGetLeastLoadedServer() {
         defineBeans {
@@ -22,6 +29,7 @@ class ServerServiceTests{
 
 
 
+        ServerServiceImpl serverService1 =  applicationContext.getBean('serverService')
         User userZhou =  saveZhoudi()
         userZhou.springSecurityService.passwordEncoder = new TestEncoder()
         Server server1 = mockDomain(Server) as Server;

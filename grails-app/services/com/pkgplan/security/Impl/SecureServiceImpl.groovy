@@ -1,9 +1,12 @@
-package com.pkgplan
+package com.pkgplan.security.Impl
 
 import com.pkgplan.dream.Server
 import org.codehaus.groovy.grails.plugins.springsecurity.SpringSecurityUtils
+import com.pkgplan.security.SecureService
+import org.springframework.stereotype.Service
 
-class SecureService {
+@Service("secureService")
+class SecureServiceImpl implements SecureService{
 
     def generateSecFile(String hostname) {
         def server = Server.findByHostname(hostname)
@@ -27,7 +30,7 @@ class SecureService {
      * we can also use this method to get the vpn connection password, and show it in the user profile page.
      * @param password
      */
-    def encodePasswordForVpn(String password) {
+    String encodePasswordForVpn(String password) {
         if (password) {
             return password.encodeAsSHA1().substring(0,8)
         }

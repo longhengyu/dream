@@ -1,25 +1,24 @@
 package com.pkgplan.dream
 
 import com.pkgplan.auth.User
-import org.codehaus.groovy.grails.plugins.springsecurity.SpringSecurityUtils
 
-class UserService {
+/**
+ * User: zhoudi
+ * Date: 12-12-8
+ * Time: PM2:31
+ */
+public interface UserService {
 
-    def springSecurityService
+    boolean isCurrentUserValid()
 
-    def isCurrentUserValid() {
-       return currentUser().dateExpired < new Date()
-    }
+    /**
+     * get current User
+     * @return user
+     * @since 1.0.0
+     */
+    User currentUser()
 
-    def currentUser() {
-        return User.get(springSecurityService.principal.id)
-    }
+    boolean isAdminLoggedIn()
 
-    def isAdminLoggedIn() {
-        SpringSecurityUtils.ifAnyGranted("ROLE_ADMIN")
-    }
-
-    def isUserLonggedIn() {
-        SpringSecurityUtils.ifAnyGranted("ROLE_USER")
-    }
+    boolean isUserLonggedIn()
 }

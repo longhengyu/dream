@@ -6,7 +6,9 @@ import org.springframework.security.core.authority.GrantedAuthorityImpl
 import org.springframework.security.core.userdetails.UserDetails
 import org.springframework.security.core.userdetails.UsernameNotFoundException
 import com.pkgplan.auth.User
+import org.springframework.stereotype.Service
 
+@Service("pkgUserDetailsService")
 class PkgUserDetailsService implements GrailsUserDetailsService {
 
     static final List NO_ROLES = [new GrantedAuthorityImpl(SpringSecurityUtils.NO_ROLE)]

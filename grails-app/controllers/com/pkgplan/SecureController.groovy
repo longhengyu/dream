@@ -1,11 +1,16 @@
 package com.pkgplan
 
+import com.pkgplan.security.SecureService
+
+import javax.annotation.Resource
 import javax.servlet.http.HttpServletResponse
 
 // this class is public, the caller should provide the service Key
 class SecureController {
 
-    def secureService
+
+    @Resource
+    SecureService secureService
 
     def index = {
         render 'Secure access only'

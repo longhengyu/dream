@@ -3,12 +3,13 @@ package com.pkgplan
 
 
 import grails.test.mixin.*
-import org.junit.*
+
+import com.pkgplan.security.Impl.SecureServiceImpl
 
 /**
  * See the API for {@link grails.test.mixin.services.ServiceUnitTestMixin} for usage instructions
  */
-@TestFor(SecureService)
+@TestFor(SecureServiceImpl)
 class SecureServiceTests {
 
     void testSomething() {

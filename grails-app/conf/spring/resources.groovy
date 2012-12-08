@@ -1,4 +1,5 @@
 // Place your Spring DSL code here
 beans = {
-    userDetailsService(com.pkgplan.security.PkgUserDetailsService)
+//    userDetailsService(com.pkgplan.security.PkgUserDetailsService)
+//    importBeans('file:grails-app/conf/spring/*.xml')
 }

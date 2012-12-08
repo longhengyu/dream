@@ -1,5 +1,6 @@
+<%@ page import="com.pkgplan.security.Impl.SecureServiceImpl; com.pkgplan.security.Impl.SecureServiceImpl" %>
 
-    <form action='${webRequest.contextPath}${com.pkgplan.SecureService.getLoginUrl()}' method='POST' id="loginForm" name="loginForm" autocomplete='off'>
+    <form action='${webRequest.contextPath}${SecureServiceImpl.getLoginUrl()}' method='POST' id="loginForm" name="loginForm" autocomplete='off'>
         <div class="sign-in">
 
             <table class="hoverAble">
@@ -17,7 +18,7 @@
 
                     <td colspan="2" class="center">
 
-                        <input type="checkbox" class="checkbox" name="${com.pkgplan.SecureService.getRememberMeParam()}" id="remember_me" checked="checked" />
+                        <input type="checkbox" class="checkbox" name="${SecureServiceImpl.getRememberMeParam()}" id="remember_me" checked="checked" />
                         <label for='remember_me'><g:message code='login.label.remember.me'/></label>
                         <g:submitButton class="buttonsub ui-corner-all" id="loginButton" name="login" value="${message([code: 'login.button.login'])}" />
 
