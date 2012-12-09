@@ -1,5 +1,3 @@
-<%@ page import="com.pkgplan.dream.UserService" %>
-<% def userService %>
 <g:if test="${productInstance.status == 'OnSell'}">
     <dt><g:message code="product.info.name.${productInstance.code}" default="${productInstance.name}"/></dt>
     <dd>
