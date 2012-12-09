@@ -8,7 +8,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException
 import com.pkgplan.auth.User
 import org.springframework.stereotype.Service
 
-@Service("pkgUserDetailsService")
+@Service("userDetailsService")
 class PkgUserDetailsService implements GrailsUserDetailsService {
 
     static final List NO_ROLES = [new GrantedAuthorityImpl(SpringSecurityUtils.NO_ROLE)]
