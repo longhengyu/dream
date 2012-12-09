@@ -9,6 +9,7 @@ import org.apache.commons.lang.RandomStringUtils
 class PurchaseController {
 
     def springSecurityService
+    def userService
 
     String charset = (('A'..'Z') + ('0'..'9')).join()
     Integer length = 9
@@ -62,6 +63,14 @@ class PurchaseController {
 
         flash.message = message(code: 'default.created.message', args: [message(code: 'purchase.label', default: 'Purchase'), purchaseInstance.id])
         redirect(action: "show", id: purchaseInstance.id)
+    }
+
+    /**
+     * generate: when user click "Buy" button on the product page,
+     * a purchase record is generated and saved to DB.
+      */
+    def generate() {
+        redirect(action: "save", params: params)
     }
 
     def show(Long id) {

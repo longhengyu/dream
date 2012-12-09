@@ -15,6 +15,7 @@ class Purchase {
         owner(nullable: false)
         product(nullable: false)
         datePay(nullable: true)
+        paymentMethod(nullable: true)
         purchaseNumber(nullable: true)
     }
 }

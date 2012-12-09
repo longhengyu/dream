@@ -1,3 +1,5 @@
+<%@ page import="com.pkgplan.dream.UserService" %>
+<% def userService %>
 <g:if test="${productInstance.status == 'OnSell'}">
     <dt><g:message code="product.info.name.${productInstance.code}" default="${productInstance.name}"/></dt>
     <dd>
@@ -5,7 +7,13 @@
         <div class="product-content float-left"><h5><g:message code="product.info.description.${productInstance.code}" default="${productInstance.description}"/></h5>
             <div class="price center"><span><g:message code="product.info.price"/> : <b>${fieldValue(bean: productInstance, field: "price")} RMB</b></span></div>
             <div class="buy-button">
-                <div class="center float-left" style="width:135px"><g:submitButton class="" id="buyOnline" name="login" value="${message(code: 'product.button.buy.now')}" /></div>
+                <div class="center float-left" style="width:135px">
+                    <g:form action="save" controller="purchase">
+                        <g:hiddenField name="product.id" value="${productInstance.id}"/>
+                        <g:hiddenField name="owner.id" value="${sec.loggedInUserInfo(field:"id")}"/>
+                        <g:submitButton class="" id="buyOnline" value="${message(code: 'product.button.buy.now')}"  name="generate"/>
+                    </g:form>
+                    </div>
                 <div class="float-right display-table"><div><g:message code="product.info.buy.now"/> </div></div>
             </div>
             <div class="buy-button buy-from-taobao">

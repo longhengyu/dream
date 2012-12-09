@@ -318,6 +318,11 @@ a .side-menu-selected {
     cursor: pointer;
 }
 
+.buy-button form {
+    background: none;
+    padding: 0;
+}
+
 .buy-button div.display-table {
     color: rgba(0, 0, 0, 0.33);
     font-family: Trebuchet MS;

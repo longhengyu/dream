@@ -8,15 +8,9 @@
 		<title><g:message code="default.show.label" args="[entityName]" /></title>
 	</head>
 	<body>
-		<a href="#show-purchase" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-		<div class="nav" role="navigation">
-			<ul>
-				<li><g:link class="list" action="list"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
-				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
-			</ul>
-		</div>
+
 		<div id="show-purchase" class="content scaffold-show" role="main">
-			<h1><g:message code="default.show.label" args="[entityName]" /></h1>
+			<h3>Purchase</h3>
 			<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
@@ -40,14 +34,17 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${purchaseInstance?.datePay}">
+
 				<li class="fieldcontain">
-					<span id="datePay-label" class="property-label"><g:message code="purchase.datePay.label" default="Date Pay" /></span>
-					
-						<span class="property-value" aria-labelledby="datePay-label"><g:formatDate date="${purchaseInstance?.datePay}" /></span>
-					
+					<span id="datePay-label" class="property-label">Status</span>
+                    <g:if test="${purchaseInstance?.datePay}">
+						<span class="property-value" aria-labelledby="datePay-label">Paid at <g:formatDate date="${purchaseInstance?.datePay}" /></span>
+                    </g:if><g:else>
+                        <span class="property-value" aria-labelledby="datePay-label">
+                           Not Paid Yet. (<g:link action="buy" id="${purchaseInstance.id}">Pay Now</g:link>)
+                        </span>
+                    </g:else>
 				</li>
-				</g:if>
 			
 				<g:if test="${purchaseInstance?.purchaseNumber}">
 				<li class="fieldcontain">
