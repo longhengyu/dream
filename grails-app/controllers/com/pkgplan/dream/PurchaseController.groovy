@@ -9,7 +9,6 @@ import org.apache.commons.lang.RandomStringUtils
 class PurchaseController {
 
     def springSecurityService
-    def userService
 
     String charset = (('A'..'Z') + ('0'..'9')).join()
     Integer length = 9
