@@ -297,21 +297,55 @@ a .side-menu-selected {
     -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
 }
 
-#buyTaobao {
-    background: #F97966;
+.buyButton {
     opacity: 0.72;
     -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=72)";
     border: medium none;
     border-radius: 11px 11px 11px 11px;
-    box-shadow: 1px 1px 3px rgba(249, 97, 6, 0.73);
-    color: #FFFFFF;
+    color: #FFFFFF !important;
     font-size: 16px;
     margin: 3px 8px;
     padding: 0px 6px;
     font-style: normal;
 }
 
-.buy-button:hover #buyTaobao {
+.buttonRed {
+    background: #F97966;
+    box-shadow: 1px 1px 3px rgba(249, 97, 6, 0.73);
+}
+
+.buttonRed:hover {
+    background-color: #EF1313;
+    opacity: 0.65;
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=65)";
+    cursor: pointer;
+}
+
+.buttonYellow {
+    background: #f9b23a;
+    box-shadow: 1px 1px 3px rgba(249, 97, 6, 0.73);
+}
+
+.buttonYellow:hover {
+    background-color: #ef690d;
+    opacity: 0.65;
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=65)";
+    cursor: pointer;
+}
+
+.buttonGreen {
+    background: #68a556;
+    box-shadow: 1px 1px 3px rgba(0, 24, 0, 0.73);
+}
+
+.buttonGreen:hover {
+    background-color: #3ea56b;
+    opacity: 0.65;
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=65)";
+    cursor: pointer;
+}
+
+.buy-button:hover .buttonRed {
     background-color: #EF1313;
     opacity: 0.65;
     -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=65)";
@@ -368,5 +402,24 @@ a .side-menu-selected {
 
 .hide {
     display:none;
+}
+
+.purchase-button {
+    vertical-align: middle;
+    line-height: 38px;
+
+}
+
+.purchase-button input {
+    cursor: pointer;;
+}
+
+.purchase-button form{
+    padding: 0;
+    background: none;
+}
+
+table tr td {
+    vertical-align: middle;
 }
 

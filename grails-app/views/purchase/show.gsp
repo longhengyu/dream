@@ -15,15 +15,26 @@
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
 			<ol class="property-list purchase">
-			
-				<g:if test="${purchaseInstance?.owner}">
-				<li class="fieldcontain">
-					<span id="owner-label" class="property-label"><g:message code="purchase.owner.label" default="Owner" /></span>
-					
-						<span class="property-value" aria-labelledby="owner-label"><g:link controller="user" action="show" id="${purchaseInstance?.owner?.id}">${purchaseInstance?.owner?.encodeAsHTML()}</g:link></span>
-					
-				</li>
-				</g:if>
+
+                <g:if test="${purchaseInstance?.dateCreated}">
+                    <li class="fieldcontain">
+                        <span id="dateCreated-label" class="property-label"><g:message code="purchase.dateCreated.label" default="Date Created" /></span>
+
+                        <span class="property-value" aria-labelledby="dateCreated-label"><g:formatDate date="${purchaseInstance?.dateCreated}" /></span>
+
+                    </li>
+                </g:if>
+
+                <sec:ifAllGranted roles="ROLE_ADMIN">
+                    <g:if test="${purchaseInstance?.owner}">
+                    <li class="fieldcontain">
+                        <span id="owner-label" class="property-label"><g:message code="purchase.owner.label" default="Owner" /></span>
+
+                            <span class="property-value" aria-labelledby="owner-label"><g:link controller="user" action="show" id="${purchaseInstance?.owner?.id}">${purchaseInstance?.owner?.encodeAsHTML()}</g:link></span>
+
+                    </li>
+                    </g:if>
+                </sec:ifAllGranted>
 			
 				<g:if test="${purchaseInstance?.product}">
 				<li class="fieldcontain">
@@ -41,7 +52,8 @@
 						<span class="property-value" aria-labelledby="datePay-label">Paid at <g:formatDate date="${purchaseInstance?.datePay}" /></span>
                     </g:if><g:else>
                         <span class="property-value" aria-labelledby="datePay-label">
-                           Not Paid Yet. (<g:link action="buy" id="${purchaseInstance.id}">Pay Now</g:link>)
+                           Not Paid Yet. <g:link action="buy" id="${purchaseInstance.id}">Pay Now</g:link>
+                            <a id="buyTaobao" href="http://shop67794942.taobao.com/shop/view_shop.htm" target="_blank">Pay Now</a>
                         </span>
                     </g:else>
 				</li>
@@ -55,14 +67,7 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${purchaseInstance?.dateCreated}">
-				<li class="fieldcontain">
-					<span id="dateCreated-label" class="property-label"><g:message code="purchase.dateCreated.label" default="Date Created" /></span>
-					
-						<span class="property-value" aria-labelledby="dateCreated-label"><g:formatDate date="${purchaseInstance?.dateCreated}" /></span>
-					
-				</li>
-				</g:if>
+
 			
 				<g:if test="${purchaseInstance?.paymentMethod}">
 				<li class="fieldcontain">
