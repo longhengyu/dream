@@ -27,7 +27,7 @@ class PurchaseController {
             owner = User.get(params?.ownerId)
         }
         flash.ownerId = owner?.id
-        params.max = Math.min(params.max ?: 10, 100)
+        params.max = Math.min(params.max?.toInteger()?:10, 100)
         def query = {order("dateCreated", "desc")}
         def criteria = Purchase.createCriteria()
         def results

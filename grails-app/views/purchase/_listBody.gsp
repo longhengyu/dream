@@ -7,12 +7,12 @@
         <thead>
         <tr>
             <sec:ifAllGranted roles="ROLE_ADMIN">
-                <th><g:message code="purchase.owner.label" default="Owner" /></th>
+                <th><g:message code="purchase.label.purchase.owner" default="Owner" /></th>
             </sec:ifAllGranted>
-            <th><g:message code="purchase.product.label" default="Product" /></th>
-            <th><g:message code="purchase.dateCreated.label" default="Date Created" /></th>
-            <th><g:message code="purchase.status.label" default="Status" /></th>
-            <th><g:message code="purchase.action.label" default="Action" /></th>
+            <th><g:message code="purchase.label.product.name" default="Product" /></th>
+            <th><g:message code="purchase.label.create.date" default="Date Created" /></th>
+            <th><g:message code="purchase.label.status" default="Status" /></th>
+            <th><g:message code="purchase.label.action" default="Action" /></th>
         </tr>
         </thead>
         <tbody>
@@ -21,22 +21,22 @@
                 <sec:ifAllGranted roles="ROLE_ADMIN">
                     <td><g:link action="show" id="${purchaseInstance.id}">${fieldValue(bean: purchaseInstance, field: "owner")}</g:link></td>
                 </sec:ifAllGranted>
-                <td>${fieldValue(bean: purchaseInstance, field: "product")}</td>
+                <td><g:message code="product.info.name.${purchaseInstance.product.code}" default="${purchaseInstance.product.name}"/></td>
 
                 <td><g:formatDate date="${purchaseInstance.dateCreated}" /></td>
 
                 <td>
                     <g:if test="${purchaseInstance.datePay}">
-                        Paid
+                        <g:message code="purchase.text.paid" default="Already Paid" />
                     </g:if><g:else>
-                        Not Paid
+                        <g:message code="purchase.text.not.paid.yet" default="Not Paid" />
                     </g:else>
                 </td>
                 <td>
                     <g:if test="${purchaseInstance.datePay}">
                         <div class="purchase-button">
                             <g:form>
-                                <g:actionSubmit class="buyButton buyOnline-color-0" action="show" value="${message(code: 'purchase.detail.button', default: 'Detail')}" onclick="toggleDetail(this);return false;" />
+                                <g:actionSubmit class="buyButton buyOnline-color-0" action="show" value="${message(code: 'purchase.button.detail', default: 'Detail')}" onclick="toggleDetail(this);return false;" />
                             </g:form>
                         </div>
                     </g:if><g:else>
@@ -44,13 +44,13 @@
                         <div class="purchase-button float-left">
                             <g:form>
                                 <g:hiddenField name="id" value="${purchaseInstance?.id}" />
-                                <g:actionSubmit class="buyButton buyOnline-color-1" action="show" value="${message(code: 'purchase.pay.button', default: 'Pay')}" onclick="" />
+                                <g:actionSubmit class="buyButton buyOnline-color-1" action="show" value="${message(code: 'purchase.button.pay', default: 'Pay')}" onclick="" />
                             </g:form>
                         </div>
                         <div class="purchase-button float-left">
                             <g:form>
                                 <g:hiddenField name="id" value="${purchaseInstance?.id}" />
-                                <g:actionSubmit class="buyButton buyOnline-color-2" action="delete" value="${message(code: 'purchase.cancel.button', default: 'Cancel')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+                                <g:actionSubmit class="buyButton buyOnline-color-2" action="delete" value="${message(code: 'purchase.button.cacel', default: 'Cancel')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
                             </g:form>
                         </div>
                     </div>
@@ -65,15 +65,15 @@
                     <td colspan="4">
                         <ol class="property-list purchase-detail">
                             <li class="fieldcontain">
-                                <span id="datePay-label" class="property-label"><g:message code="date.pay" default="Date Pay" /></span>
+                                <span id="datePay-label" class="property-label"><g:message code="purchase.label.pay.date" default="Date Pay" /></span>
                                 <span class="property-value" aria-labelledby="datePay-label"><g:formatDate date="${purchaseInstance.datePay}" /></span>
                             </li>
                             <li class="fieldcontain">
-                                <span id="payment-label" class="property-label"><g:message code="date.pay" default="Payment Method" /></span>
+                                <span id="payment-label" class="property-label"><g:message code="purchase.label.payment.method" default="Payment Method" /></span>
                                 <span class="property-value" aria-labelledby="payment-label"><g:message code="payment.method.name.${purchaseInstance.paymentMethod}"/></span>
                             </li>
                             <li class="fieldcontain">
-                                <span id="purchaseNumber-label" class="property-label"><g:message code="purchase.number" default="Purchase Number" /></span>
+                                <span id="purchaseNumber-label" class="property-label"><g:message code="purchase.label.order.number" default="Order Number" /></span>
                                 <span class="property-value" aria-labelledby="datePay-label">${purchaseInstance.purchaseNumber}</span>
                             </li>
                         </ol>
