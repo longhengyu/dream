@@ -1,0 +1,1 @@
+<g:actionSubmit class="buyOnline buyOnline-color-${paymentId}" action="buy" value="${message(code: "payment.method.name.${paymentId}")}" onclick="document.getElementById('hiddenPaymentMethod').value=${paymentId}"/>

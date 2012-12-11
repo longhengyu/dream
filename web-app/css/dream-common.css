@@ -266,7 +266,7 @@ a .side-menu-selected {
     float:right;
 }
 
-.price {
+.banner-text {
     background: none repeat scroll 0 0 #E6E4E6;
     border-radius: 13px 13px 13px 13px;
     color: #4F5078;
@@ -276,13 +276,11 @@ a .side-menu-selected {
     margin: 14px auto;
 }
 
-#buyOnline {
-    background: #F96106;
+.buyOnline {
     opacity: 0.73;
     -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=73)";
     border: medium none;
     border-radius: 11px 11px 11px 11px;
-    box-shadow: 1px 1px 3px rgba(249, 97, 6, 0.73);
     font-size: 21px;
     padding: 7px 18px;
     color: #ffffff;
@@ -290,9 +288,46 @@ a .side-menu-selected {
     text-shadow: 1px 2px #3D3D3D;
 }
 
-.buy-button:hover #buyOnline {
+.buyOnline-color-1 {
+    background: #F78C22;
+    box-shadow: 1px 1px 3px #9A1202;
+}
+
+.buyOnline-color-1:hover {
+    background-color: #F1532C;
     cursor: pointer;
-    background-color: #FF631B;
+}
+
+.buyOnline-color-0 {
+    background: #6E9AB3;
+    box-shadow: 1px 1px 3px #E6E4E6;
+}
+
+.buyOnline-color-0:hover {
+    background-color: #2F6485;
+    cursor: pointer;
+}
+
+.buyOnline-color-2 {
+    background: #A0B23A;
+    box-shadow: 1px 1px 3px #605A40;
+}
+
+.buyOnline-color-2:hover {
+    background-color: #759800;
+    cursor: pointer;
+}
+
+.buy-button:hover .buyOnline-color-1 {
+    background-color: #F1532C;
+}
+
+.buyOnline:hover {
+   opacity: 1;
+   -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+}
+
+.buy-button:hover .buyOnline {
     opacity: 1;
     -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
 }

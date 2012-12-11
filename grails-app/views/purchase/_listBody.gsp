@@ -36,7 +36,7 @@
                     <g:if test="${purchaseInstance.datePay}">
                         <div class="purchase-button">
                             <g:form>
-                                <g:actionSubmit class="buyButton buttonGreen" action="show" value="${message(code: 'purchase.detail.button', default: 'Detail')}" onclick="toggleDetail(this);return false;" />
+                                <g:actionSubmit class="buyButton buyOnline-color-0" action="show" value="${message(code: 'purchase.detail.button', default: 'Detail')}" onclick="toggleDetail(this);return false;" />
                             </g:form>
                         </div>
                     </g:if><g:else>
@@ -44,13 +44,13 @@
                         <div class="purchase-button float-left">
                             <g:form>
                                 <g:hiddenField name="id" value="${purchaseInstance?.id}" />
-                                <g:actionSubmit class="buyButton buttonRed" action="show" value="${message(code: 'purchase.pay.button', default: 'Pay')}" onclick="" />
+                                <g:actionSubmit class="buyButton buyOnline-color-1" action="show" value="${message(code: 'purchase.pay.button', default: 'Pay')}" onclick="" />
                             </g:form>
                         </div>
                         <div class="purchase-button float-left">
                             <g:form>
                                 <g:hiddenField name="id" value="${purchaseInstance?.id}" />
-                                <g:actionSubmit class="buyButton buttonYellow" action="delete" value="${message(code: 'purchase.cancel.button', default: 'Cancel')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+                                <g:actionSubmit class="buyButton buyOnline-color-2" action="delete" value="${message(code: 'purchase.cancel.button', default: 'Cancel')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
                             </g:form>
                         </div>
                     </div>
@@ -70,7 +70,7 @@
                             </li>
                             <li class="fieldcontain">
                                 <span id="payment-label" class="property-label"><g:message code="date.pay" default="Payment Method" /></span>
-                                <span class="property-value" aria-labelledby="payment-label">${purchaseInstance.paymentMethod}</span>
+                                <span class="property-value" aria-labelledby="payment-label"><g:message code="payment.method.name.${purchaseInstance.paymentMethod}"/></span>
                             </li>
                             <li class="fieldcontain">
                                 <span id="purchaseNumber-label" class="property-label"><g:message code="purchase.number" default="Purchase Number" /></span>

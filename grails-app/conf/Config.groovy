@@ -157,6 +157,12 @@ dream {
     resourceRoot = ""
 }
 
+payment {
+    methods {
+        [creditcard,paypal,coupon]
+    }
+}
+
 
 // load config from
 grails.config.locations =

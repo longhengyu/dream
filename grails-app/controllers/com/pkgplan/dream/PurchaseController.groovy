@@ -163,6 +163,7 @@ class PurchaseController {
         owner.save()
 
         purchaseInstance.datePay = now
+        purchaseInstance.paymentMethod = params.paymentMethod
 
 
         String randomString = RandomStringUtils.random(length, charset.toCharArray())
