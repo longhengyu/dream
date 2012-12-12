@@ -5,12 +5,12 @@
 	<head>
 		<meta name="layout" content="pkglayout">
 		<g:set var="entityName" value="${message(code: 'purchase.label', default: 'Purchase')}" />
-		<title><g:message code="default.show.label" args="[entityName]" /></title>
+		<title><g:message code="purchase.title.purchase.history"/></title>
 	</head>
 	<body>
 
 		<div id="show-purchase" class="content scaffold-show" role="main">
-			<h3>Purchase</h3>
+			<h3><g:message code="purchase.title.order.info"/></h3>
 			<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
@@ -86,11 +86,11 @@
                         </div>
 
                         <div class="banner-text center"><g:message code="purchase.menu.other.actions" default="Other Actions" /></div>
-                        <fieldset class="buttons">
-                            <g:actionSubmit class="delete" action="delete"
-                                            value="${message(code: 'default.button.delete.label', default: 'Delete')}"
+                        <div class="center">
+                            <g:actionSubmit class="buyOnline buyOnline-color-gray" action="delete"
+                                            value="${message(code: 'purchase.button.cacel', default: 'Cancel')}"
                                             onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');"/>
-                        </fieldset>
+                        </div>
                     </g:form>
                 </div>
             </g:if>

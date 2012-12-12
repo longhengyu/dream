@@ -318,6 +318,16 @@ a .side-menu-selected {
     cursor: pointer;
 }
 
+.buyOnline-color-gray {
+    background: #AEAEAE;
+    box-shadow: 1px 1px 3px #E6E4E6;
+}
+
+.buyOnline-color-gray:hover {
+    background-color: #85868A;
+    cursor: pointer;
+}
+
 .buy-button:hover .buyOnline-color-1 {
     background-color: #F1532C;
 }
@@ -456,5 +466,9 @@ a .side-menu-selected {
 
 table tr td {
     vertical-align: middle;
+}
+
+tr.table-head {
+    line-height: 35px;
 }
 
