@@ -1,7 +1,7 @@
 <div id="list-purchase" class="content scaffold-list" role="main">
     <h3><g:message code="purchase.title.purchase.history"/></h3>
     <g:if test="${purchaseInstanceList.getTotalCount() == 0}">
-        <p><g:message code="purchase.text.no.purchase.yet"/></p>
+        <p><g:message code="purchase.text.no.purchase.yet" args="['/product/list']"/></p>
     </g:if>
     <g:else>
         <g:if test="${flash.message}">
