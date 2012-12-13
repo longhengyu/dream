@@ -88,8 +88,11 @@
                         <div class="banner-text center"><g:message code="purchase.menu.other.actions" default="Other Actions" /></div>
                         <div class="center">
                             <g:actionSubmit class="buyOnline buyOnline-color-gray" action="delete"
-                                            value="${message(code: 'purchase.button.cacel', default: 'Cancel')}"
+                                            value="${message(code: 'purchase.button.cacel.this', default: 'Cancel')}"
                                             onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');"/>
+                            <g:actionSubmit class="buyOnline buyOnline-color-gray-1" action="list"
+                                            value="${message(code: 'purchase.button.back.to.list', default: 'Back To List')}"/>
+
                         </div>
                     </g:form>
                 </div>

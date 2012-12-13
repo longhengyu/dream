@@ -5,7 +5,9 @@ import org.codehaus.groovy.runtime.TimeCategory
 import org.codehaus.groovy.grails.plugins.springsecurity.SpringSecurityUtils
 import com.pkgplan.auth.User
 import org.apache.commons.lang.RandomStringUtils
+import grails.plugins.springsecurity.Secured
 
+@Secured(['ROLE_ADMIN','ROLE_USER'])
 class PurchaseController {
 
     def springSecurityService
@@ -41,6 +43,7 @@ class PurchaseController {
         }
 
         results = criteria.list(params, query)
+        flash.message = null
 
         if(request.xhr) {
             render(view: "_listBody", model: [purchaseInstanceList: results, purchaseInstanceTotal: results.getTotalCount()])
@@ -49,6 +52,7 @@ class PurchaseController {
         [purchaseInstanceList: results, purchaseInstanceTotal: results.getTotalCount()]
     }
 
+    @Secured(['ROLE_ADMIN'])
     def create() {
         [purchaseInstance: new Purchase(params)]
     }
@@ -60,7 +64,7 @@ class PurchaseController {
             return
         }
 
-        flash.message = message(code: 'default.created.message', args: [message(code: 'purchase.label', default: 'Purchase'), purchaseInstance.id])
+        flash.message = message(code: 'purchase.message.purchase.created')
         redirect(action: "show", id: purchaseInstance.id)
     }
 
@@ -170,7 +174,7 @@ class PurchaseController {
         purchaseInstance.purchaseNumber = "${g.formatDate(date:now, format: 'yyyyMMdd')}${randomString}"
         purchaseInstance.save()
 
-        flash.message = message(code: 'purchase.buy.success', default: "purchase success.")
+        flash.message = message(code: 'purchase.message.purchase.succeed')
         render(view: "show", model: [purchaseInstance: purchaseInstance])
 
     }

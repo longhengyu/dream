@@ -328,6 +328,16 @@ a .side-menu-selected {
     cursor: pointer;
 }
 
+.buyOnline-color-gray-1 {
+    background: #8A8170;
+    box-shadow: 1px 1px 3px #E6E4E6;
+}
+
+.buyOnline-color-gray-1:hover {
+    background-color: #7A5C28;
+    cursor: pointer;
+}
+
 .buy-button:hover .buyOnline-color-1 {
     background-color: #F1532C;
 }
