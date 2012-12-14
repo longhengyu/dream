@@ -43,7 +43,6 @@ class PurchaseController {
         }
 
         results = criteria.list(params, query)
-        flash.message = null
 
         if(request.xhr) {
             render(view: "_listBody", model: [purchaseInstanceList: results, purchaseInstanceTotal: results.getTotalCount()])
@@ -79,7 +78,7 @@ class PurchaseController {
     def show(Long id) {
         def purchaseInstance = Purchase.get(id)
         if (!purchaseInstance) {
-            flash.message = message(code: 'default.not.found.message', args: [message(code: 'purchase.label', default: 'Purchase'), id])
+            flash.message = message(code: 'purchase.message.purchase.not.found')
             redirect(action: "list")
             return
         }
@@ -90,7 +89,7 @@ class PurchaseController {
     def edit(Long id) {
         def purchaseInstance = Purchase.get(id)
         if (!purchaseInstance) {
-            flash.message = message(code: 'default.not.found.message', args: [message(code: 'purchase.label', default: 'Purchase'), id])
+            flash.message = message(code: 'purchase.message.purchase.not.found')
             redirect(action: "list")
             return
         }
@@ -101,7 +100,7 @@ class PurchaseController {
     def update(Long id, Long version) {
         def purchaseInstance = Purchase.get(id)
         if (!purchaseInstance) {
-            flash.message = message(code: 'default.not.found.message', args: [message(code: 'purchase.label', default: 'Purchase'), id])
+            flash.message = message(code: 'purchase.message.purchase.not.found')
             redirect(action: "list")
             return
         }
@@ -123,25 +122,25 @@ class PurchaseController {
             return
         }
 
-        flash.message = message(code: 'default.updated.message', args: [message(code: 'purchase.label', default: 'Purchase'), purchaseInstance.id])
+        flash.message = message(code: 'default.updated.message')
         redirect(action: "show", id: purchaseInstance.id)
     }
 
     def delete(Long id) {
         def purchaseInstance = Purchase.get(id)
         if (!purchaseInstance) {
-            flash.message = message(code: 'default.not.found.message', args: [message(code: 'purchase.label', default: 'Purchase'), id])
+            flash.message = message(code: 'default.not.found.message')
             redirect(action: "list")
             return
         }
 
         try {
             purchaseInstance.delete(flush: true)
-            flash.message = message(code: 'default.deleted.message', args: [message(code: 'purchase.label', default: 'Purchase'), id])
+            flash.message = message(code: 'purchase.message.purchase.canceled')
             redirect(action: "list")
         }
         catch (DataIntegrityViolationException e) {
-            flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'purchase.label', default: 'Purchase'), id])
+            flash.message = message(code: 'purchase.message.purchase.not.found')
             redirect(action: "show", id: id)
         }
     }
@@ -150,7 +149,7 @@ class PurchaseController {
         log.info("Purchase, id=${id}")
         def purchaseInstance = Purchase.get(id)
         if (!purchaseInstance) {
-            flash.message = message(code: 'default.not.found.message', args: [message(code: 'purchase.label', default: 'Purchase'), id])
+            flash.message = message(code: 'purchase.message.purchase.not.found')
             redirect(action: "list")
             return
         }

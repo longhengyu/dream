@@ -39,15 +39,16 @@ class ProfileController {
             return
         }
 
-        flash.message = message(code: 'default.created.message', args: [message(code: 'profile.label', default: 'Profile'), profileInstance.id])
+        flash.message = message(code: 'user.profile.message.created')
         render(view: "_panelBody", model: [profileInstance: profileInstance])
     }
 
     def show(Long id) {
+        flash.message = null
         def profileInstance = Profile.get(id)
         if (!profileInstance) {
             if (userService.isAdminLoggedIn()) {
-                flash.message = message(code: 'default.not.found.message', args: [message(code: 'profile.label', default: 'Profile'), id])
+                flash.message = message(code: 'user.profile.message.not.found')
                 redirect(action: "list")
                 return
             } else {
@@ -62,7 +63,7 @@ class ProfileController {
     def edit(Long id) {
         def profileInstance = Profile.get(id)
         if (!profileInstance) {
-            flash.message = message(code: 'default.not.found.message', args: [message(code: 'profile.label', default: 'Profile'), id])
+            flash.message = message(code: 'user.profile.message.not.found')
             redirect(action: "list")
             return
         }
@@ -75,7 +76,7 @@ class ProfileController {
     def update(Long id, Long version) {
         def profileInstance = Profile.get(id)
         if (!profileInstance) {
-            flash.message = message(code: 'default.not.found.message', args: [message(code: 'profile.label', default: 'Profile'), id])
+            flash.message = message(code: 'user.profile.message.not.found')
             redirect(action: "list")
             return
         }
@@ -97,7 +98,7 @@ class ProfileController {
             return
         }
 
-        flash.message = message(code: 'default.updated.message', args: [message(code: 'profile.label', default: 'Profile'), profileInstance.id])
+        flash.message = message(code: 'user.profile.message.updated')
 
         render(view: "_panelBody", model: [profileInstance: profileInstance])
     }
@@ -105,18 +106,18 @@ class ProfileController {
     def delete(Long id) {
         def profileInstance = Profile.get(id)
         if (!profileInstance) {
-            flash.message = message(code: 'default.not.found.message', args: [message(code: 'profile.label', default: 'Profile'), id])
+            flash.message = message(code: 'user.profile.message.not.found')
             redirect(action: "list")
             return
         }
 
         try {
             profileInstance.delete(flush: true)
-            flash.message = message(code: 'default.deleted.message', args: [message(code: 'profile.label', default: 'Profile'), id])
+            flash.message = message(code: 'user.profile.message.deleted')
             redirect(action: "list")
         }
         catch (DataIntegrityViolationException e) {
-            flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'profile.label', default: 'Profile'), id])
+            flash.message = message(code: 'user.profile.message.not.found')
             redirect(action: "show", id: id)
         }
     }

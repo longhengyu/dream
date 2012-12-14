@@ -54,6 +54,7 @@ class UserController {
     }
 
     def show(Long id) {
+        flash.message = null
         id = correctId(id)
         def userInstance = User.get(id)
         if (!userInstance) {
