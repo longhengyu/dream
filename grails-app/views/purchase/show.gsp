@@ -72,10 +72,10 @@
 			</ol>
             <g:if test="${!purchaseInstance?.datePay}">
                 <paypal:button
-                        itemName="per month vpn"
+                        itemName="${purchaseInstance?.product?.name}"
                         itemNumber="${purchaseInstance?.id}"
                         discountAmount = "0"
-                        amount="5"
+                        amount="${purchaseInstance?.product?.dollarPrice}"
                         buyerId="${user?.id}"
                         returnAction = "buy"
                         returnController = "purchase"
