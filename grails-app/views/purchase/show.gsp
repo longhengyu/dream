@@ -68,9 +68,20 @@
                         <span class="property-value" aria-labelledby="paymentMethod-label"><g:message code="payment.method.name.${purchaseInstance.paymentMethod}"/></span>
                     </li>
 				</g:if>
-			
+
 			</ol>
             <g:if test="${!purchaseInstance?.datePay}">
+                <paypal:button
+                        itemName="per month vpn"
+                        itemNumber="${purchaseInstance?.id}"
+                        discountAmount = "0"
+                        amount="5"
+                        buyerId="${user?.id}"
+                        returnAction = "buy"
+                        returnController = "purchase"
+                        cancelAction = "list"
+                        cancelController = "purchase"
+                />
                 <div class="form-no-decorate">
                     <g:form>
                         <g:hiddenField name="id" value="${purchaseInstance?.id}"/>

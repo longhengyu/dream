@@ -1,11 +1,14 @@
 package com.pkgplan.dream
 
-import org.springframework.dao.DataIntegrityViolationException
-import org.codehaus.groovy.runtime.TimeCategory
-import org.codehaus.groovy.grails.plugins.springsecurity.SpringSecurityUtils
 import com.pkgplan.auth.User
-import org.apache.commons.lang.RandomStringUtils
 import grails.plugins.springsecurity.Secured
+import org.apache.commons.lang.RandomStringUtils
+import org.apache.commons.lang.StringUtils
+import org.codehaus.groovy.grails.plugins.springsecurity.SpringSecurityUtils
+import org.codehaus.groovy.runtime.TimeCategory
+import org.springframework.dao.DataIntegrityViolationException
+
+import javax.annotation.Resource
 
 @Secured(['ROLE_ADMIN','ROLE_USER'])
 class PurchaseController {
@@ -16,6 +19,9 @@ class PurchaseController {
     Integer length = 9
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
+
+    @Resource
+    UserService userService;
 
     def index() {
         redirect(action: "list", params: params)
@@ -83,7 +89,9 @@ class PurchaseController {
             return
         }
 
-        [purchaseInstance: purchaseInstance]
+
+        User user = userService.currentUser();
+        [purchaseInstance: purchaseInstance,user:user]
     }
 
     def edit(Long id) {
@@ -146,6 +154,10 @@ class PurchaseController {
     }
 
     def buy(Long id) {
+        if (id == null && StringUtils.isNotBlank(params.item_number)) {
+            id = Long.valueOf(params.item_number)
+        }
+
         log.info("Purchase, id=${id}")
         def purchaseInstance = Purchase.get(id)
         if (!purchaseInstance) {
@@ -170,11 +182,13 @@ class PurchaseController {
 
 
         String randomString = RandomStringUtils.random(length, charset.toCharArray())
-        purchaseInstance.purchaseNumber = "${g.formatDate(date:now, format: 'yyyyMMdd')}${randomString}"
+        purchaseInstance.purchaseNumber = "${g.formatDate(date: now, format: 'yyyyMMdd')}${randomString}"
         purchaseInstance.save()
 
         flash.message = message(code: 'purchase.message.purchase.succeed')
-        render(view: "show", model: [purchaseInstance: purchaseInstance])
+
+        User user = userService.currentUser();
+        render(view: "show", model: [purchaseInstance: purchaseInstance,user: user])
 
     }
 }

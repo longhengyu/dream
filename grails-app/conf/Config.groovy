@@ -64,10 +64,15 @@ grails.hibernate.cache.queries = false
 environments {
     development {
         grails.logging.jul.usebridge = true
+        grails.paypal.server = "https://www.sandbox.paypal.com/cgi-bin/webscr"
+        grails.paypal.email = "test_1355564857_per@gmail.com"
+        grails.serverURL = "http://localhost:8080"
     }
     production {
         grails.logging.jul.usebridge = false
-        // TODO: grails.serverURL = "http://www.changeme.com"
+        grails.paypal.server = "https://www.paypal.com/cgi-bin/webscr"
+        grails.paypal.email = "xxxx@xxxx.com"
+        grails.serverURL = "http://www.dreamvpn.com"
     }
 }
 
