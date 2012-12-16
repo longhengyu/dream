@@ -179,3 +179,6 @@ grails.plugin.databasemigration.changelogLocation = "changelogs"
 //grails.plugin.databasemigration.updateOnStartFileNames = ["../changelogs/changelog.groovy"]
 
 grails.app.context = "/"
+
+//for cny to usd
+exchangeRate = 6.5

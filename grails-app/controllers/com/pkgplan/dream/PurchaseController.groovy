@@ -9,6 +9,7 @@ import org.codehaus.groovy.runtime.TimeCategory
 import org.springframework.dao.DataIntegrityViolationException
 
 import javax.annotation.Resource
+import org.grails.paypal.Payment
 
 @Secured(['ROLE_ADMIN','ROLE_USER'])
 class PurchaseController {
@@ -22,6 +23,9 @@ class PurchaseController {
 
     @Resource
     UserService userService;
+
+    @Resource(name ="productService")
+    ProductService productService;
 
     def index() {
         redirect(action: "list", params: params)
@@ -89,9 +93,9 @@ class PurchaseController {
             return
         }
 
-
-        User user = userService.currentUser();
-        [purchaseInstance: purchaseInstance,user:user]
+        //it must be usd
+        BigDecimal usd = productService.convertPriceCNYtoUSD(purchaseInstance.getProduct().price)
+        [purchaseInstance: purchaseInstance,userInstance:userService.currentUser(),usdPrice:usd]
     }
 
     def edit(Long id) {
@@ -153,10 +157,18 @@ class PurchaseController {
         }
     }
 
-    def buy(Long id) {
-        if (id == null && StringUtils.isNotBlank(params.item_number)) {
-            id = Long.valueOf(params.item_number)
+    def buy() {
+
+        Payment payment = Payment.findByTransactionId(params.transactionId)
+        if (payment == null || !Payment.COMPLETE.equals(payment.status)) {
+            log.error("error payment!")
+            //if it's wrong payment,redirect list view
+            flash.message = "illegal payment"
+            redirect(action: "list")
+            return
         }
+
+        Long id = Long.valueOf(params.item_number)
 
         log.info("Purchase, id=${id}")
         def purchaseInstance = Purchase.get(id)

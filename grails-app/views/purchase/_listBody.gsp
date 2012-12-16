@@ -1,12 +1,12 @@
 <div id="list-purchase" class="content scaffold-list" role="main">
     <h3><g:message code="purchase.title.purchase.history"/></h3>
+    <g:if test="${flash.message}">
+        <div class="message" role="status">${flash.message}</div>
+    </g:if>
     <g:if test="${purchaseInstanceList.getTotalCount() == 0}">
         <p><g:message code="purchase.text.no.purchase.yet" args="['/product/list']"/></p>
     </g:if>
     <g:else>
-        <g:if test="${flash.message}">
-            <div class="message" role="status">${flash.message}</div>
-        </g:if>
         <table>
             <thead>
             <tr class="table-head">
