@@ -75,6 +75,15 @@
     text-align: center;
 }
 
+.inline {
+    display: inline;
+}
+
+.table-cell {
+    display: table-cell;
+    vertical-align: middle;
+}
+
 #loginButton {
     margin: 10px 0 16px 22px;
 }

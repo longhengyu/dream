@@ -71,41 +71,33 @@
 
 			</ol>
             <g:if test="${!purchaseInstance?.datePay}">
-                <paypal:button
-                        itemName="${purchaseInstance?.product?.name}"
-                        itemNumber="${purchaseInstance?.id}"
-                        discountAmount = "0"
-                        amount="${usdPrice}"
-                        buyerId="${userInstance?.id}"
-                        returnAction = "buy"
-                        returnController = "purchase"
-                        cancelAction = "list"
-                        cancelController = "purchase"
-                />
+
                 <div class="form-no-decorate">
-                    <g:form>
-                        <g:hiddenField name="id" value="${purchaseInstance?.id}"/>
+
                         <div class="banner-text center"><g:message code="purchase.menu.pay.with" default="Pay With" /></div>
 
                         <div class="center">
-                            <g:hiddenField name="paymentMethod" value="0" id="hiddenPaymentMethod"/>
-
+                            <ul class="inline">
                             <g:each in="${grailsApplication.config.payment.methods}" var="paymentMethod" status="i">
-                                <g:render template="paymentSubmitButton" model="[paymentId: i]"/>
+                                <li class="table-cell">
+                                    <g:render template="paymentSubmitButton" model="[paymentId: i]"/>
+                                </li>
                             </g:each>
-
+                            </ul>
                         </div>
 
                         <div class="banner-text center"><g:message code="purchase.menu.other.actions" default="Other Actions" /></div>
                         <div class="center">
-                            <g:actionSubmit class="buyOnline buyOnline-color-gray" action="delete"
-                                            value="${message(code: 'purchase.button.cacel.this', default: 'Cancel')}"
-                                            onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');"/>
-                            <g:actionSubmit class="buyOnline buyOnline-color-gray-1" action="list"
-                                            value="${message(code: 'purchase.button.back.to.list', default: 'Back To List')}"/>
-
+                            <g:form>
+                                <g:hiddenField name="id" value="${purchaseInstance?.id}"/>
+                                <g:actionSubmit class="buyOnline buyOnline-color-gray" action="delete"
+                                                value="${message(code: 'purchase.button.cacel.this', default: 'Cancel')}"
+                                                onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');"/>
+                                <g:actionSubmit class="buyOnline buyOnline-color-gray-1" action="list"
+                                                value="${message(code: 'purchase.button.back.to.list', default: 'Back To List')}"/>
+                            </g:form>
                         </div>
-                    </g:form>
+
                 </div>
             </g:if>
 		</div>

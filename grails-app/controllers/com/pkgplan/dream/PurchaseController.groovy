@@ -159,11 +159,11 @@ class PurchaseController {
 
     def buy() {
 
-        Payment payment = Payment.findByTransactionId(params.transactionId)
+        Payment payment = Payment.findByTransactionId(params.transactionId?:'')
         if (payment == null || !Payment.COMPLETE.equals(payment.status)) {
             log.error("error payment!")
             //if it's wrong payment,redirect list view
-            flash.message = "illegal payment"
+            flash.message = message(code: 'purchase.message.payment.not.supported')
             redirect(action: "list")
             return
         }

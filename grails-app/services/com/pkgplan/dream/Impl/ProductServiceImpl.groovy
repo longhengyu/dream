@@ -16,6 +16,6 @@ class ProductServiceImpl implements ProductService{
 
         BigDecimal exchangeRate =  ApplicationHolder.application.config.exchangeRate;
 
-        return cny/exchangeRate;
+        return (cny/exchangeRate).setScale(2, BigDecimal.ROUND_HALF_UP)
     }
 }
