@@ -199,8 +199,8 @@ class PurchaseController {
 
         flash.message = message(code: 'purchase.message.purchase.succeed')
 
-        User user = userService.currentUser();
-        render(view: "show", model: [purchaseInstance: purchaseInstance,user: user])
+        User userInstance = userService.currentUser();
+        render(view: "show", model: [purchaseInstance: purchaseInstance, userInstance: userInstance])
 
     }
 }
