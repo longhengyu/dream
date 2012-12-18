@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- DBUnit flat XML file -->
+
+<!-- Real INIT data -->
+
+<dataset>
+    <product
+            id="1"
+            name="Basic 1 Month Plan"
+            code="b26"
+            description="Located in California, High Speed, No Access Limit. (DO NOT support p2p)"
+            price="26"
+            p_month="1"
+            p_year="0"
+            p_day="0"
+            p_hour="0"
+            p_minute="0"
+            status="OnSell"
+            version="1"
+            date_created="2012-11-11"
+            />
+    <product
+            id="2"
+            name="Flying 3 Month Plan"
+            code="f72"
+            description="Located in California, High Speed, No Access Limit. Discount Price. (DO NOT support p2p)"
+            price="72"
+            p_month="3"
+            p_year="0"
+            p_day="0"
+            p_hour="0"
+            p_minute="0"
+            status="OnSell"
+            version="1"
+            date_created="2012-11-11"
+            />
+    <product
+            id="3"
+            name="Prime 1 Year Plan"
+            code="p280"
+            description="Located in California, High Speed, No Access Limit. Discount Price. (DO NOT support p2p)"
+            price="280"
+            p_year="1"
+            p_month="0"
+            p_day="0"
+            p_hour="0"
+            p_minute="0"
+            status="OnSell"
+            version="1"
+            date_created="2012-11-11"
+            />
+
+</dataset>

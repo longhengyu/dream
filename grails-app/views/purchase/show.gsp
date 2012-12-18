@@ -76,14 +76,19 @@
 
                         <div class="banner-text center"><g:message code="purchase.menu.pay.with" default="Pay With" /></div>
 
-                        <div class="center">
-                            <ul class="inline">
-                            <g:each in="${grailsApplication.config.payment.methods}" var="paymentMethod" status="i">
-                                <li class="table-cell">
-                                    <g:render template="paymentSubmitButton" model="[paymentId: i]"/>
-                                </li>
-                            </g:each>
-                            </ul>
+                        <div class="product_container">
+                            <div class="outer-center">
+                                <div class="product inner-center">
+                                    <ul class="inline">
+                                        <g:each in="${grailsApplication.config.payment.methods}" var="paymentMethod" status="i">
+                                            <li class="table-cell">
+                                                <g:render template="paymentSubmitButton" model="[paymentId: i]"/>
+                                            </li>
+                                        </g:each>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="clear"></div>
                         </div>
 
                         <div class="banner-text center"><g:message code="purchase.menu.other.actions" default="Other Actions" /></div>

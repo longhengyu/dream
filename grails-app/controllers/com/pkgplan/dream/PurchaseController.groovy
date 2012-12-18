@@ -1,30 +1,29 @@
 package com.pkgplan.dream
 
 import com.pkgplan.auth.User
+import com.pkgplan.dream.exception.InstanceNotFoundException
 import grails.plugins.springsecurity.Secured
-import org.apache.commons.lang.RandomStringUtils
-import org.apache.commons.lang.StringUtils
 import org.codehaus.groovy.grails.plugins.springsecurity.SpringSecurityUtils
-import org.codehaus.groovy.runtime.TimeCategory
+import org.grails.paypal.Payment
 import org.springframework.dao.DataIntegrityViolationException
 
 import javax.annotation.Resource
-import org.grails.paypal.Payment
 
-@Secured(['ROLE_ADMIN','ROLE_USER'])
+@Secured(['ROLE_ADMIN', 'ROLE_USER'])
 class PurchaseController {
+
+    private final String PAYMENT_METHOD_ID_PAYPAL = 1
 
     def springSecurityService
 
-    String charset = (('A'..'Z') + ('0'..'9')).join()
-    Integer length = 9
+    def purchaseService
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
     @Resource
     UserService userService;
 
-    @Resource(name ="productService")
+    @Resource(name = "productService")
     ProductService productService;
 
     def index() {
@@ -39,7 +38,7 @@ class PurchaseController {
             owner = User.get(params?.ownerId)
         }
         flash.ownerId = owner?.id
-        params.max = Math.min(params.max?.toInteger()?:10, 100)
+        params.max = Math.min(params.max?.toInteger() ?: 10, 100)
         def query = {order("dateCreated", "desc")}
         def criteria = Purchase.createCriteria()
         def results
@@ -54,7 +53,7 @@ class PurchaseController {
 
         results = criteria.list(params, query)
 
-        if(request.xhr) {
+        if (request.xhr) {
             render(view: "_listBody", model: [purchaseInstanceList: results, purchaseInstanceTotal: results.getTotalCount()])
         }
 
@@ -80,7 +79,7 @@ class PurchaseController {
     /**
      * generate: when user click "Buy" button on the product page,
      * a purchase record is generated and saved to DB.
-      */
+     */
     def generate() {
         redirect(action: "save", params: params)
     }
@@ -95,7 +94,7 @@ class PurchaseController {
 
         //it must be usd
         BigDecimal usd = productService.convertPriceCNYtoUSD(purchaseInstance.getProduct().price)
-        [purchaseInstance: purchaseInstance,userInstance:userService.currentUser(),usdPrice:usd]
+        [purchaseInstance: purchaseInstance, userInstance: userService.currentUser(), usdPrice: usd]
     }
 
     def edit(Long id) {
@@ -120,8 +119,8 @@ class PurchaseController {
         if (version != null) {
             if (purchaseInstance.version > version) {
                 purchaseInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
-                          [message(code: 'purchase.label', default: 'Purchase')] as Object[],
-                          "Another user has updated this Purchase while you were editing")
+                        [message(code: 'purchase.label', default: 'Purchase')] as Object[],
+                        "Another user has updated this Purchase while you were editing")
                 render(view: "edit", model: [purchaseInstance: purchaseInstance])
                 return
             }
@@ -157,9 +156,10 @@ class PurchaseController {
         }
     }
 
+
     def buy() {
 
-        Payment payment = Payment.findByTransactionId(params.transactionId?:'')
+        Payment payment = Payment.findByTransactionId(params.transactionId ?: '')
         if (payment == null || !Payment.COMPLETE.equals(payment.status)) {
             log.error("error payment!")
             //if it's wrong payment,redirect list view
@@ -167,40 +167,15 @@ class PurchaseController {
             redirect(action: "list")
             return
         }
-
-        Long id = Long.valueOf(params.item_number)
-
-        log.info("Purchase, id=${id}")
-        def purchaseInstance = Purchase.get(id)
-        if (!purchaseInstance) {
+        def purchaseId = Long.valueOf(params.item_number)
+        log.info("execute purchase, purchase id: ${purchaseId}")
+        try {
+            Purchase purchaseInstance = purchaseService.proceedPurchase(purchaseId, PAYMENT_METHOD_ID_PAYPAL)
+            flash.message = message(code: 'purchase.message.purchase.succeed')
+            render(view: "show", model: [purchaseInstance: purchaseInstance, userInstance: purchaseInstance.owner])
+        } catch (InstanceNotFoundException e) {
             flash.message = message(code: 'purchase.message.purchase.not.found')
             redirect(action: "list")
-            return
         }
-        def owner = purchaseInstance.owner
-        def product = purchaseInstance.product
-        Date now = new Date()
-        Date fromDate = now > owner.dateExpired ? now : owner.dateExpired
-        Date endDate
-        use(TimeCategory) {
-            endDate = fromDate + product.pYear.year + product.pMonth.month + product.pDay.day + product.pHour.hour + product.pMinute.minute
-        }
-
-        owner.dateExpired = endDate
-        owner.save()
-
-        purchaseInstance.datePay = now
-        purchaseInstance.paymentMethod = params.paymentMethod
-
-
-        String randomString = RandomStringUtils.random(length, charset.toCharArray())
-        purchaseInstance.purchaseNumber = "${g.formatDate(date: now, format: 'yyyyMMdd')}${randomString}"
-        purchaseInstance.save()
-
-        flash.message = message(code: 'purchase.message.purchase.succeed')
-
-        User userInstance = userService.currentUser();
-        render(view: "show", model: [purchaseInstance: purchaseInstance, userInstance: userInstance])
-
     }
 }

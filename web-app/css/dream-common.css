@@ -491,3 +491,17 @@ tr.table-head {
     line-height: 35px;
 }
 
+.outer-center {
+    float: right;
+    right: 50%;
+    position: relative;
+}
+.inner-center {
+    float: right;
+    right: -50%;
+    position: relative;
+}
+.clear {
+    clear: both;
+}
+
