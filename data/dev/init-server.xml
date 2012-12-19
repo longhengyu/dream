@@ -7,7 +7,7 @@
     <server
             id="1"
             capacity="20"
-            date_created="2013-01-01"
+            date_created="2012-01-01"
             hostname="vps001"
             ip_addr="173.255.217.70"
             version="1"
@@ -15,18 +15,9 @@
     <server
             id="2"
             capacity="20"
-            date_created="2013-01-01"
+            date_created="2012-01-01"
             hostname="vps002"
             ip_addr="173.255.217.71"
             version="1"
-            />
-
-    <server_pkguser
-            server_users_id = "1"
-            user_id="1"
-            />
-    <server_pkguser
-            server_users_id = "2"
-            user_id="2"
             />
 </dataset>

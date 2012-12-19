@@ -31,6 +31,23 @@
                 </li>
             </g:if>
 
+
+                <li class="fieldcontain">
+                    <span id="server-ip-label" class="property-label"><g:message code="user.account.server.ip.address" default="Server IP address" /></span>
+
+                    <span class="property-value" aria-labelledby="server-ip-label">
+                        <g:if test="${serverInstance}">
+                            <g:fieldValue bean="${serverInstance}" field="ipAddr"/>
+                        </g:if>
+                        <g:else>
+                            <g:message code="user.account.server.not.defined" args="['/product/list']"/>
+
+                            <a href="#" style="display:inline-block;" class="sweet-tooltip" data-style-tooltip="tooltip-mini-slick" data-text-tooltip="${message(code:'user.account.server.not.defined.disclaimer')}"><img class="question-mark" src="${resource(dir:'images',file:'question.png')}"></a>
+                            </g:else>
+                    </span>
+                </li>
+
+
             <g:if test="${userInstance?.accountExpired}">
                 <li class="fieldcontain">
                     <span id="accountExpired-label" class="property-label"><g:message code="user.account.label.account.expired" default="Account Expired" /></span>
@@ -95,3 +112,5 @@
         </g:form>
     </div>
 </div>
+
+<script src="${resource(dir:'js/lib',file:'sweet-tooltip.js')}"></script>

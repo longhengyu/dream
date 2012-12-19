@@ -10,6 +10,7 @@ class UserController {
 
     def springSecurityService
     def userService
+    def serverService
 
 
     def index() {
@@ -62,12 +63,13 @@ class UserController {
             redirect(action: "list")
             return
         }
+        def server = serverService.findServerByUser(userInstance)
         if(request.xhr) {
-            render(view: "_showBody", model: [userInstance: userInstance, profileInstance: userInstance.profile])
+            render(view: "_showBody", model: [userInstance: userInstance, profileInstance: userInstance.profile, serverInstance: server])
             return
         }
 
-        [userInstance: userInstance, profileInstance: userInstance.profile]
+        [userInstance: userInstance, profileInstance: userInstance.profile, serverInstance: server]
     }
 
     @Secured(['ROLE_ADMIN'])

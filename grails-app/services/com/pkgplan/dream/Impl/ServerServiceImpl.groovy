@@ -43,4 +43,14 @@ class ServerServiceImpl implements ServerService{
         }
         return null;
     }
+
+    Server findServerByUser(User user) {
+        def c = Server.createCriteria()
+        def result = c.get {
+            users {
+                idEq(user.id)
+            }
+        }
+        return result;
+    }
 }

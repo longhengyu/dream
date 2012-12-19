@@ -1,13 +1,16 @@
 package com.pkgplan.dream.Impl
 
-import com.pkgplan.dream.PurchaseService
-import org.springframework.stereotype.Service
-import com.pkgplan.dream.exception.InstanceNotFoundException
 import com.pkgplan.dream.Purchase
-import org.codehaus.groovy.runtime.TimeCategory
+import com.pkgplan.dream.PurchaseService
+import com.pkgplan.dream.Server
+import com.pkgplan.dream.ServerService
+import com.pkgplan.dream.exception.InstanceNotFoundException
 import org.apache.commons.lang.RandomStringUtils
-import java.text.DateFormat
+import org.codehaus.groovy.runtime.TimeCategory
+import org.springframework.stereotype.Service
+
 import java.text.SimpleDateFormat
+import javax.annotation.Resource
 
 /**
  * User: longhengyu
@@ -19,12 +22,25 @@ class PurchaseServiceImpl implements PurchaseService {
     String charset = (('A'..'Z') + ('0'..'9')).join()
     Integer length = 9
 
+    @Resource
+    ServerService serverService
+
     Purchase proceedPurchase(Long purchaseId, String paymentMethodId) throws InstanceNotFoundException {
+
+        // find purchase
         def purchaseInstance = Purchase.get(purchaseId)
         if (!purchaseInstance) {
             throw new InstanceNotFoundException()
         }
+
+        // if this user has no server, assign owner to server
         def owner = purchaseInstance.owner
+        if (serverService.findServerByUser(owner) == null) {
+            Server server = serverService.getLeastLoadedServer()
+            server.users.add(owner)
+            server.save()
+        }
+
         def product = purchaseInstance.product
         Date now = new Date()
         Date fromDate = now > owner.dateExpired ? now : owner.dateExpired
@@ -35,10 +51,8 @@ class PurchaseServiceImpl implements PurchaseService {
 
         owner.dateExpired = endDate
         owner.save()
-
         purchaseInstance.datePay = now
         purchaseInstance.paymentMethod = paymentMethodId
-
 
         String randomString = RandomStringUtils.random(length, charset.toCharArray())
         purchaseInstance.purchaseNumber = "${new SimpleDateFormat('yyyyMMdd').format(now)}${randomString}"

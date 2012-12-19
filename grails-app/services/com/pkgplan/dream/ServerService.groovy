@@ -1,5 +1,7 @@
 package com.pkgplan.dream
 
+import com.pkgplan.auth.User
+
 /**
  * The Server service which can provide vpn services for the users.
  * User: zhoudi
@@ -17,4 +19,6 @@ public interface ServerService {
      * @since 1.0.0
      */
     Server getLeastLoadedServer()
+
+    Server findServerByUser(User user)
 }
