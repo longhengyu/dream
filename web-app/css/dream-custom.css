@@ -1,0 +1,18 @@
+/* fixed navigation */
+body {
+    padding-top: 64px;
+}
+
+/* dream - hero image */
+.hero-img {
+    width: 516px;
+}
+
+/* sidebar */
+.remember-me {
+    line-height: 28px;
+}
+
+.full-extended {
+    width: 93%;
+}

@@ -13,7 +13,7 @@
         <!-- TODO: make language in topnav , see header.gsp-->
 
         <div class="container">
-            <g:render template="/home/index_body_left"/>
+            <g:render template="/home/index_body_right"/>
             <hr>
 
             <g:render template="/common/footer"/>

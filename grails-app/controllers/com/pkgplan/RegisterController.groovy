@@ -13,6 +13,8 @@ class RegisterController extends grails.plugins.springsecurity.ui.RegisterContro
 
     @Resource
     UserService userService;
+
+
     def resetPasswordWithoutToken = { ResetPasswordCommand command ->
 
         if (!request.post) {
@@ -48,6 +50,11 @@ class RegisterController extends grails.plugins.springsecurity.ui.RegisterContro
 
         if (!request.post) {
             // show the form
+            if(request.xhr) {
+                render template: "/register/forgot", model: [params: params]
+            } else {
+                // TODO: render the whole page
+            }
             return
         }
 
@@ -63,7 +70,7 @@ class RegisterController extends grails.plugins.springsecurity.ui.RegisterContro
         def user = lookupUserClass().findByUsernameOrEmail(username, username)
         if (!user) {
             flash.error = message(code: 'spring.security.ui.forgotPassword.user.notFound')
-            redirect action: 'forgotPassword'
+            redirect action: 'forgotPassword', params: params
             return
         }
 

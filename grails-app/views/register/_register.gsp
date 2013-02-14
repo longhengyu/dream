@@ -1,46 +1,89 @@
-<div class="noSideBar">
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">
+        <g:if test='${emailSent}'>
+            Success
+            </g:if><g:else>
+            Registration
+        </g:else>
+    </h3>
+</div>
+<div class="modal-body" id="register-body">
+    <div class="row-fluid">
+        <g:hasErrors bean="${command}">
+            <div class="alert alert-error">
+                <ul class="">
+                    <g:eachError bean="${command}" var="error">
+                        <li <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message error="${error}"/></li>
+                    </g:eachError>
+                </ul>
+            </div>
+        </g:hasErrors>
 
-    <g:form action='register' name='registerForm'>
 
         <g:if test='${emailSent}'>
-            <table class="left">
-                <tr>
-                    <td>
-                        <g:message code='user.register.message.mail.sent'/>
-                    </td>
-                </tr>
-            </table>
+            <div class="alert alert-success">
+                <p><g:message code='user.register.message.mail.sent'/>
+                </p>
+            </div>
         </g:if>
         <g:else>
+            <div class="span10">
 
-            <table class="hoverAble">
-                <tbody>
+                <g:formRemote class="form-horizontal" url="[controller: 'register', action:'register']" name='registerForm' update="register-Modal" >
 
-                <s2ui:textFieldRow name='username' labelCode='login.label.username' bean="${command}"
-                                   size='40' labelCodeDefault='Username' value="${command.username}"/>
+                    <fieldset>
+                        <div class="control-group ${hasErrors(bean:command,field:'username', 'error')}">
+                            <label class="control-label" for="username">Name</label>
+                            <div class="controls">
+                                <input type="text" class="input-append" id="username" name="username" value="${command?.username}">
+                            </div>
+                        </div>
 
-                <s2ui:textFieldRow name='email' bean="${command}" value="${command.email}"
-                                   size='40' labelCode='user.register.label.email' labelCodeDefault='E-mail'/>
+                        <div class="control-group ${hasErrors(bean:command,field:'email', 'error')}">
+                            <label class="control-label" for="email">Email</label>
+                            <div class="controls">
+                                <input type="text" class="input-append" id="email" name="email" value="${command?.email}">
+                            </div>
+                        </div>
 
-                <s2ui:passwordFieldRow name='password' labelCode='login.label.password' bean="${command}"
-                                       size='40' labelCodeDefault='Password' value="${command.password}"/>
+                        <div class="control-group ${hasErrors(bean:command,field:'password', 'error')}">
+                            <label class="control-label" for="password">Password</label>
+                            <div class="controls">
+                                <input type="password" class="input-append" id="password" name="password" value="${command?.password}">
+                            </div>
+                        </div>
+                        <div class="control-group ${hasErrors(bean:command,field:'password2', 'error')}">
+                            <label class="control-label" for="password2">Confirm Password</label>
+                            <div class="controls">
+                                <input type="password" class="input-append" id="password2" name="password2" value="${command?.password2}">
+                            </div>
+                        </div>
 
-                <s2ui:passwordFieldRow name='password2' labelCode='user.register.label.password.again' bean="${command}"
-                                       size='40' labelCodeDefault='Password (again)' value="${command.password2}"/>
+                        <div class="control-group">
+                            <label class="control-label" for="registerButton"></label>
+                            <div class="controls">
+                                <g:submitButton class="btn btn-primary btn-large" id="registerButton"
+                                                name="register" value="${message(code: 'user.register.button.create')}"
+                                />
+                            </div>
+                        </div>
+                    </fieldset>
+                </g:formRemote>
+            </div>
+            <div class="span2">
 
-                </tbody>
-            </table>
-            <table>
-                <tbody>
-                <tr class="hoverNone">
-                    <td colspan="2" class="center">
-                        <g:submitButton class="buttonsub ui-corner-all" id="registerButton" name="register" value="${message(code: 'user.register.button.create')}" />
-                    </td>
-                </tr>
-                </tbody>
-            </table>
+            </div>
         </g:else>
+    </div>
+</div>
 
-    </g:form>
-
+<div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">
+        <g:if test='${emailSent}'>
+            Close
+            </g:if><g:else>
+            Not Now
+            </g:else>
+    </button>
 </div>

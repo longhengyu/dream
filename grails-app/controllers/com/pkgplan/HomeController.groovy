@@ -8,4 +8,12 @@ class HomeController {
             return
         }
     }
+
+    def manual() {
+
+    }
+
+    def contact() {
+
+    }
 }

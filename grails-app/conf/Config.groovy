@@ -149,6 +149,8 @@ grails.plugins.springsecurity.ui.password.minLength=6
 grails.plugins.springsecurity.ui.password.maxLength=12
 grails.plugins.springsecurity.ui.password.validationRegex='^.*(?=.*\\d)(?=.*[a-zA-Z]).*$'
 
+grails.plugins.springsecurity
+
 // for heroku
 grails.plugin.databasesession.enabled = false
 
@@ -182,3 +184,5 @@ grails.app.context = "/"
 
 //for cny to usd
 exchangeRate = 6.5
+
+supported.languages.list=["en_US","zh_CN","ja_JP"]
