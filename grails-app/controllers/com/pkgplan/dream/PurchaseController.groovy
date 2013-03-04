@@ -18,7 +18,7 @@ class PurchaseController {
 
     def purchaseService
 
-    static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
+    static allowedMethods = [save: "POST", delete: "POST"]
 
     @Resource
     UserService userService;
@@ -68,8 +68,7 @@ class PurchaseController {
     def save() {
         def purchaseInstance = new Purchase(params)
         if (!purchaseInstance.save(flush: true)) {
-            render(view: "create", model: [purchaseInstance: purchaseInstance])
-            return
+            // TODO: give some message, when fails
         }
 
         flash.message = message(code: 'purchase.message.purchase.created')
@@ -106,35 +105,6 @@ class PurchaseController {
         }
 
         [purchaseInstance: purchaseInstance]
-    }
-
-    def update(Long id, Long version) {
-        def purchaseInstance = Purchase.get(id)
-        if (!purchaseInstance) {
-            flash.message = message(code: 'purchase.message.purchase.not.found')
-            redirect(action: "list")
-            return
-        }
-
-        if (version != null) {
-            if (purchaseInstance.version > version) {
-                purchaseInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
-                        [message(code: 'purchase.label', default: 'Purchase')] as Object[],
-                        "Another user has updated this Purchase while you were editing")
-                render(view: "edit", model: [purchaseInstance: purchaseInstance])
-                return
-            }
-        }
-
-        purchaseInstance.properties = params
-
-        if (!purchaseInstance.save(flush: true)) {
-            render(view: "edit", model: [purchaseInstance: purchaseInstance])
-            return
-        }
-
-        flash.message = message(code: 'default.updated.message')
-        redirect(action: "show", id: purchaseInstance.id)
     }
 
     def delete(Long id) {

@@ -10,7 +10,6 @@
 <body>
 
     <g:render template="/layouts/topnav"/>
-    <!-- TODO: make language in topnav , see header.gsp-->
 
     <div class="container">
         <g:render template="/home/index_body_wide"/>

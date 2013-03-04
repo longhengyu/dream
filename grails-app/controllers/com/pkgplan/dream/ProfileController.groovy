@@ -40,7 +40,7 @@ class ProfileController {
         }
 
         flash.message = message(code: 'user.profile.message.created')
-        render(view: "_panelBody", model: [profileInstance: profileInstance])
+        render(view: "_profile", model: [profileInstance: profileInstance])
     }
 
     def show(Long id) {
@@ -100,7 +100,7 @@ class ProfileController {
 
         flash.message = message(code: 'user.profile.message.updated')
 
-        render(view: "_panelBody", model: [profileInstance: profileInstance])
+        render(view: "_profile", model: [profileInstance: profileInstance])
     }
 
     def delete(Long id) {
@@ -123,6 +123,6 @@ class ProfileController {
     }
 
     def cancel() {
-        render(view: "_panelBody", model: [profileInstance: Profile.get(params.id)])
+        render(view: "_profile", model: [profileInstance: Profile.get(params.id)])
     }
 }

@@ -1,54 +1,49 @@
 <%@ page import="com.pkgplan.dream.Profile" %>
 <g:hasErrors bean="${profileInstance}">
-    <ul class="errors" role="alert">
-        <g:eachError bean="${profileInstance}" var="error">
-            <li <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message error="${error}"/></li>
-        </g:eachError>
-    </ul>
+    <div class="alert alert-error">
+            <ul class="">
+                <g:eachError bean="${profileInstance}" var="error">
+                    <li <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message error="${error}"/></li>
+                </g:eachError>
+            </ul>
+    </div>
 </g:hasErrors>
 <g:set var="targetAction" value="${isCreate ? "save" : "update"}"/>
-<g:formRemote method="post" url="[controller: 'profile', action:targetAction]" update="profile-panel" name="profileForm">
+<g:formRemote method="post" class="form-horizontal" url="[controller: 'profile', action:targetAction]" update="profile-panel" name="profileForm">
     <g:hiddenField name="id" value="${profileInstance?.id}" />
     <g:hiddenField name="version" value="${profileInstance?.version}" />
-
-    <ol class="property-list profile">
-        <li class="fieldcontain ${hasErrors(bean: profileInstance, field: 'fullName', 'error')}">
-            <span id="fullName-label" class="property-label"><label for="fullName"><g:message code="user.profile.label.fullname"/></label></span>
-            <span class="property-value-edit" aria-labelledby="fullName-label"><g:textField name="fullName" value="${profileInstance?.fullName}"/></span>
-        </li>
-        <li class="fieldcontain ${hasErrors(bean: profileInstance, field: 'gender', 'error')}">
-            <span id="gender-label" class="property-label"><label for="fullName"><g:message code="user.profile.label.gender"/></label></span>
-            <span class="property-value-edit" aria-labelledby="gender-label"><g:select name="gender" from="${profileInstance.constraints.gender.inList}"
-                                                                                  value="${profileInstance?.gender}" valueMessagePrefix="profile.gender" noSelection="['': '-Please Choose-']"/></span>
-        </li>
-        <li class="fieldcontain ${hasErrors(bean: profileInstance, field: 'country', 'error')}">
-            <span id="country-label" class="property-label"><label for="country"><g:message code="user.profile.label.country"/></label></span>
-            <span class="property-value-edit" aria-labelledby="country-label"><g:countrySelect name="country" value="${profileInstance?.country}"
-                                                                                          noSelection="['':'-Choose your country-']"/></span>
-        </li>
-        <li class="fieldcontain ${hasErrors(bean: profileInstance, field: 'timezone', 'error')}">
-            <span id="timezone-label" class="property-label"><label for="timezone"><g:message code="user.profile.label.timezone"/></label></span>
-            <span class="property-value-edit" aria-labelledby="timezone-label"><pkg:timeZoneSelect class="limit-width-select" name="timezone" value="${profileInstance?.timezone}" /></span>
-        </li>
-
-    </ol>
-    <div class="pkgsubmit">
-        <table>
-            <tr>
-                <td class="right">
-                    <g:submitToRemote action="cancel" update="profile-panel" class="buttonsub ui-corner-all" value="${message(code: 'default.button.cancel.label', default: 'Cancel')}"/>
-                </td>
-                <td class="left">
-                    <g:set var="buttonMessageCode" value="${isCreate ? "default.button.create.label" : "default.button.update.label"}"/>
-                    <g:actionSubmit action="update" class="buttonsub ui-corner-all" value="${message(code: buttonMessageCode)}" />
-                </td>
-            </tr>
-        </table>
+    <div class="control-group ${hasErrors(bean:profileInstance,field:'fullName', 'error')}">
+        <label class="control-label"><g:message code="user.profile.label.fullname"/></label>
+        <div class="controls">
+            <g:textField name="fullName" class="input-xlarge" value="${profileInstance?.fullName}"/>
+        </div>
     </div>
-
-    <sec:ifAllGranted roles="ROLE_ADMIN">
-        <fieldset class="buttons">
-            <g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" formnovalidate="" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
-        </fieldset>
-    </sec:ifAllGranted>
+    <div class="control-group ${hasErrors(bean:profileInstance,field:'gender', 'error')}">
+        <label class="control-label"><g:message code="user.profile.label.gender"/></label>
+        <div class="controls">
+            <g:select name="gender" from="${profileInstance.constraints.gender.inList}"
+                      value="${profileInstance?.gender}" valueMessagePrefix="profile.gender" noSelection="['': '-Please Choose-']"/>
+        </div>
+    </div>
+    <div class="control-group ${hasErrors(bean:profileInstance,field:'country', 'error')}">
+        <label class="control-label"><g:message code="user.profile.label.country"/></label>
+        <div class="controls">
+            <g:countrySelect name="country" value="${profileInstance?.country}"
+                             noSelection="['':'-Choose your country-']"/>
+        </div>
+    </div>
+    <div class="control-group ${hasErrors(bean:profileInstance,field:'timezone', 'error')}">
+        <label class="control-label"><g:message code="user.profile.label.timezone"/></label>
+        <div class="controls">
+            <pkg:timeZoneSelect class="limit-width-select" name="timezone" value="${profileInstance?.timezone}" />
+        </div>
+    </div>
+    <div class="form-actions">
+        <g:remoteLink class="btn" id="${profileInstance?.id}" controller="profile" action="cancel" update="[success:'profile-panel']"><i class="icon-trash"></i> ${message(code: 'default.button.cancel.label', default: 'Cancel')}</g:remoteLink>
+        <g:set var="buttonMessageCode" value="${isCreate ? "default.button.create.label" : "default.button.update.label"}"/>
+        <button name="_action_update" class="btn btn-primary" type="submit">
+            <i class="icon-check icon-white"></i>
+            ${message(code: buttonMessageCode)}
+        </button>
+    </div>
 </g:formRemote>

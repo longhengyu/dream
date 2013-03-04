@@ -1,96 +1,98 @@
-<div id="list-purchase" class="content scaffold-list" role="main">
-    <h3><g:message code="purchase.title.purchase.history"/></h3>
-    <g:if test="${flash.message}">
-        <div class="message" role="status">${flash.message}</div>
-    </g:if>
-    <g:if test="${purchaseInstanceList.getTotalCount() == 0}">
-        <p><g:message code="purchase.text.no.purchase.yet" args="['/product/list']"/></p>
-    </g:if>
-    <g:else>
-        <table>
-            <thead>
-            <tr class="table-head">
-                <sec:ifAllGranted roles="ROLE_ADMIN">
-                    <th><g:message code="purchase.label.purchase.owner" default="Owner" /></th>
-                </sec:ifAllGranted>
-                <th><g:message code="purchase.label.product.name" default="Product" /></th>
-                <th><g:message code="purchase.label.create.date" default="Date Created" /></th>
-                <th><g:message code="purchase.label.status" default="Status" /></th>
-                <th><g:message code="purchase.label.action" default="Action" /></th>
-            </tr>
-            </thead>
-            <tbody>
-            <g:each in="${purchaseInstanceList}" status="i" var="purchaseInstance">
-                <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-                    <sec:ifAllGranted roles="ROLE_ADMIN">
-                        <td><g:link action="show" id="${purchaseInstance.id}">${fieldValue(bean: purchaseInstance, field: "owner")}</g:link></td>
-                    </sec:ifAllGranted>
-                    <td><g:message code="product.info.name.${purchaseInstance.product.code}" default="${purchaseInstance.product.name}"/></td>
+<div class="row-fluid">
+    <div class="span12 box">
+        <div class="box-head">
+            <h3><i class="icon-white icon-list-alt"></i> <g:message code="purchase.title.purchase.history"/></h3>
+        </div>
+        <div class="box-content">
+            <div class="content-inner">
+                <div class="content-settings">
+                    <g:if test="${purchaseInstanceList.size() > 0}">
 
-                    <td><g:formatDate date="${purchaseInstance.dateCreated}" /></td>
+                    <table class="table table-bordered table-striped" id="purchase-history">
+                        <thead>
+                        <tr>
+                            <sec:ifAllGranted roles="ROLE_ADMIN">
+                                <th><g:message code="purchase.label.purchase.owner" default="Owner" /></th>
+                            </sec:ifAllGranted>
+                            <th><g:message code="purchase.label.product.name" default="Product" /></th>
+                            <th><g:message code="purchase.label.create.date" default="Date Created" /></th>
+                            <th><g:message code="purchase.label.status" default="Status" /></th>
+                            <th><g:message code="purchase.label.action" default="Action" /></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <g:each in="${purchaseInstanceList}" status="i" var="purchaseInstance">
+                            <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
+                                <sec:ifAllGranted roles="ROLE_ADMIN">
+                                    <td><g:link action="show" id="${purchaseInstance.id}">${fieldValue(bean: purchaseInstance, field: "owner")}</g:link></td>
+                                </sec:ifAllGranted>
+                                <td><g:message code="product.info.name.${purchaseInstance.product.code}" default="${purchaseInstance.product.name}"/></td>
 
-                    <td>
-                        <g:if test="${purchaseInstance.datePay}">
-                            <g:message code="purchase.text.paid" default="Already Paid" />
-                        </g:if><g:else>
-                            <g:message code="purchase.text.not.paid.yet" default="Not Paid" />
-                        </g:else>
-                    </td>
-                    <td>
-                        <g:if test="${purchaseInstance.datePay}">
-                            <div class="purchase-button">
-                                <g:form>
-                                    <g:actionSubmit class="buyButton buyOnline-color-2" action="show" value="${message(code: 'purchase.button.detail', default: 'Detail')}" onclick="toggleDetail(this);return false;" />
-                                </g:form>
-                            </div>
-                        </g:if><g:else>
-                        <div class="center">
-                            <div class="purchase-button">
-                                <g:form>
-                                    <g:hiddenField name="id" value="${purchaseInstance?.id}" />
-                                    <g:actionSubmit class="buyButton buyOnline-color-1" action="show" value="${message(code: 'purchase.button.pay', default: 'Pay')}" onclick="" />
+                                <td><g:formatDate date="${purchaseInstance.dateCreated}" /></td>
 
-                                    <g:actionSubmit class="buyButton buyOnline-color-gray" action="delete" value="${message(code: 'purchase.button.cacel', default: 'Cancel')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
-                                </g:form>
-                            </div>
+                                <td>
+                                    <g:if test="${purchaseInstance.datePay}">
+                                        <span class="label label-success"><g:message code="purchase.text.paid" default="Already Paid" /></span>
+                                    </g:if><g:else>
+                                        <span class="label label-important"><g:message code="purchase.text.not.paid.yet" default="Not Paid" /></span>
+                                    </g:else>
+                                </td>
+                                <td>
+                                    <g:if test="${purchaseInstance.datePay}">
+                                        <div class="purchase-button">
+                                            <a href="#" class="btn btn-success btn-small"
+                                               data-toggle="modal" data-target="#puchase-${purchaseInstance.purchaseNumber}">
+                                                <i class="icon-file-alt"></i> ${message(code: 'purchase.button.detail', default: 'Detail')}
+                                            </a>
+                                        </div>
+                                        <div id="puchase-${purchaseInstance.purchaseNumber}" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                <h4 id="myModalLabel"><i class="icon-white icon-file-alt"></i> <g:message code="purchase.title.order.info"/></h4>
+                                            </div>
+                                            <div class="purchase-detail-frame">
+                                                <g:render template="purchaseDetail" model="[purchaseInstance: purchaseInstance]"/>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+                                            </div>
+                                        </div>
+                                    </g:if>
+                                    <g:else>
+                                        <div class="center">
+                                            <div class="purchase-button">
+                                                <form method="POST" action="/purchase/delete">
+                                                    <input type="hidden" name="id" value="${purchaseInstance?.id}"/>
+                                                    <button type="submit" class="btn btn-small"
+                                                            onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');">
+                                                        <i class="icon-white icon-trash"></i> ${message(code: 'purchase.button.cacel', default: 'Cancel')}
+                                                    </button>
+                                                    <g:link class="btn btn-primary btn-small" action="show" id="${purchaseInstance?.id}">
+                                                        ${message(code: 'purchase.button.pay', default: 'Pay')} <i class="icon-white icon-double-angle-right"></i>
+                                                    </g:link>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </g:else>
+                                </td>
+                            </tr>
+                        </g:each>
+
+                        </tbody>
+                    </table>
+
+                    <div class="pagination text-center">
+                        <pkg:paginate total="${purchaseInstanceTotal}" params="${flash}" />
+                    </div>
+                    </g:if><g:else>
+                        <div class="inner-margin-left">
+                            <g:message code="purchase.text.no.purchase.yet" args="['/product/list']"/>
                         </div>
                     </g:else>
-                    </td>
-                </tr>
-                <g:if test="${purchaseInstance.datePay}">
-                    <tr class="purchase-detail-box hide">
-                        <sec:ifAllGranted roles="ROLE_ADMIN">
-                            <td><g:link action="show" id="${purchaseInstance.id}">${fieldValue(bean: purchaseInstance, field: "owner")}</g:link></td>
-                        </sec:ifAllGranted>
-                        <td colspan="4">
-                            <ol class="property-list purchase-detail">
-                                <li class="fieldcontain">
-                                    <span id="datePay-label" class="property-label"><g:message code="purchase.label.pay.date" default="Date Pay" /></span>
-                                    <span class="property-value" aria-labelledby="datePay-label"><g:formatDate date="${purchaseInstance.datePay}" /></span>
-                                </li>
-                                <li class="fieldcontain">
-                                    <span id="payment-label" class="property-label"><g:message code="purchase.label.payment.method" default="Payment Method" /></span>
-                                    <span class="property-value" aria-labelledby="payment-label"><g:message code="payment.method.name.${purchaseInstance.paymentMethod}"/></span>
-                                </li>
-                                <li class="fieldcontain">
-                                    <span id="purchaseNumber-label" class="property-label"><g:message code="purchase.label.order.number" default="Order Number" /></span>
-                                    <span class="property-value" aria-labelledby="datePay-label">${purchaseInstance.purchaseNumber}</span>
-                                </li>
-                            </ol>
-                        </td>
-                    </tr>
-                </g:if>
-            </g:each>
-            </tbody>
-        </table>
-        <div class="pagination">
-            <g:paginate total="${purchaseInstanceTotal}" params="${flash}" />
-        </div>
-    </g:else>
-</div>
 
-<script>
-    function toggleDetail(it) {
-        $(it).parent().parent().parent().parent().next().toggle("slow");
-    }
-</script>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

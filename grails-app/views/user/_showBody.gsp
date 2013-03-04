@@ -1,13 +1,23 @@
-<body>
-<a href="#show-user" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-<sec:ifAllGranted roles="ROLE_ADMIN">
-    <div class="nav" role="navigation">
-        <ul>
-            <li><g:link class="list" action="list"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
-            <li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
-        </ul>
+<div class="row-fluid">
+    <div class="span12 box">
+        <div class="box-head">
+            <h3><i class="icon-white icon-user"></i> <g:message code="user.account.title"/></h3>
+        </div>
+        <div class="box-content">
+            <div class="content-inner">
+                <div class="content-settings">
+                    <div class="tabbable">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a data-toggle="tab" href="#accountinfo">Account Information</a></li>
+                            <li ><a data-toggle="tab" href="#profile">Profile</a></li>
+                            </ul>
+                        <div class="tab-content">
+                            <g:render template="tabAccount"/>
+                            <g:render template="tabProfile"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-</sec:ifAllGranted>
-<g:render template="/user/panel"/>
-<g:render template="/profile/panel"/>
-</body>
+</div>

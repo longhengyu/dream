@@ -1,7 +1,5 @@
 <%@ page import="com.pkgplan.dream.Product" %>
 
-
-
 <div class="fieldcontain ${hasErrors(bean: productInstance, field: 'name', 'error')} required">
 	<label for="name">
 		<g:message code="product.name.label" default="Name" />

@@ -112,5 +112,3 @@
         </g:form>
     </div>
 </div>
-
-<script src="${resource(dir:'js/lib',file:'sweet-tooltip.js')}"></script>
