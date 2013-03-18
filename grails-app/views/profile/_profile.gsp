@@ -38,7 +38,7 @@
             </div>
         </g:form>
     </g:if><g:else>
-        <div class="inner-margin-left"><g:message code="user.profile.no.profile"/> <g:message code="user.profile.create.one"/> <g:remoteLink class="btn btn-small" controller="profile" action="create" update="profile-panel">Yes »</g:remoteLink>
+        <div class="inner-margin-left"><g:message code="user.profile.no.profile"/> <g:message code="user.profile.create.one"/> <g:remoteLink class="btn btn-small" controller="profile" action="create" update="profile-panel"><g:message code="general.yes"/> »</g:remoteLink>
         </div>
     </g:else>
 </div>

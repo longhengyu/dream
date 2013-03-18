@@ -59,6 +59,6 @@ class RegisterController extends grails.plugins.springsecurity.ui.RegisterContro
             html body.toString()
         }
 
-        [emailSent: true]
+        render template: "/register/forgot", model: [params: params, emailSent: true]
     }
 }

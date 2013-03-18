@@ -1,11 +1,7 @@
 <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
     <h3 id="myModalLabel">
-        <g:if test='${emailSent}'>
-            Success
-        </g:if><g:else>
-            <g:message code='spring.security.ui.forgotPassword.title'/>
-        </g:else>
+            <g:message code='password.forgot.title'/>
     </h3>
 </div>
 <div class="modal-body" id="forgot-body">
@@ -24,10 +20,10 @@
             </div>
         </g:if>
         <g:else>
-            <div class="span10">
-                <p><g:message code='password.forgot.password.description'/></p>
+            <div class="span12">
 
                 <g:formRemote autocomplete='off' class="form-horizontal" url="[controller: 'register', action:'forgotPassword']" name='forgotForm' update="forgot-password-Modal" >
+                    <p><g:message code='password.forgot.password.description'/></p>
 
                     <fieldset>
                         <div class="control-group">
@@ -58,9 +54,9 @@
 <div class="modal-footer">
     <button class="btn" data-dismiss="modal" aria-hidden="true">
         <g:if test='${emailSent}'>
-            Close
+            <g:message code="general.close"/>
         </g:if><g:else>
-            Not Now
+            <g:message code="user.register.not.now"/>
         </g:else>
     </button>
 </div>

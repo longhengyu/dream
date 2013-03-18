@@ -2,9 +2,9 @@
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
     <h3 id="myModalLabel">
         <g:if test='${emailSent}'>
-            Success
+            <g:message code="user.register.success"/>
             </g:if><g:else>
-            Registration
+            <g:message code="user.register.title"/>
         </g:else>
     </h3>
 </div>
@@ -34,27 +34,27 @@
 
                     <fieldset>
                         <div class="control-group ${hasErrors(bean:command,field:'username', 'error')}">
-                            <label class="control-label" for="username">Name</label>
+                            <label class="control-label" for="username"><g:message code="login.label.username"/></label>
                             <div class="controls">
                                 <input type="text" class="input-append" id="username" name="username" value="${command?.username}">
                             </div>
                         </div>
 
                         <div class="control-group ${hasErrors(bean:command,field:'email', 'error')}">
-                            <label class="control-label" for="email">Email</label>
+                            <label class="control-label" for="email"><g:message code="user.register.label.email"/></label>
                             <div class="controls">
                                 <input type="text" class="input-append" id="email" name="email" value="${command?.email}">
                             </div>
                         </div>
 
                         <div class="control-group ${hasErrors(bean:command,field:'password', 'error')}">
-                            <label class="control-label" for="password">Password</label>
+                            <label class="control-label" for="password"><g:message code="login.label.password"/></label>
                             <div class="controls">
                                 <input type="password" class="input-append" id="password" name="password" value="${command?.password}">
                             </div>
                         </div>
                         <div class="control-group ${hasErrors(bean:command,field:'password2', 'error')}">
-                            <label class="control-label" for="password2">Confirm Password</label>
+                            <label class="control-label" for="password2"><g:message code="user.register.label.password.again"/></label>
                             <div class="controls">
                                 <input type="password" class="input-append" id="password2" name="password2" value="${command?.password2}">
                             </div>
@@ -81,9 +81,9 @@
 <div class="modal-footer">
     <button class="btn" data-dismiss="modal" aria-hidden="true">
         <g:if test='${emailSent}'>
-            Close
+            <g:message code="general.close"/>
             </g:if><g:else>
-            Not Now
+            <g:message code="user.register.not.now"/>
             </g:else>
     </button>
 </div>

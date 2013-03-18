@@ -134,7 +134,7 @@ class PurchaseController {
             log.error("error payment!")
             //if it's wrong payment,redirect list view
             flash.message = message(code: 'purchase.message.payment.not.supported')
-            redirect(action: "list")
+            redirect(action: "show")
             return
         }
         def purchaseId = Long.valueOf(params.item_number)
