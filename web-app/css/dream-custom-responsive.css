@@ -6,3 +6,8 @@
         padding-right: 10px;
     }
 }
+
+/* collapse menu */
+.navbar .btn-navbar {
+    padding: 4px 10px;
+}

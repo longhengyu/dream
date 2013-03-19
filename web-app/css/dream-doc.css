@@ -861,10 +861,7 @@ form.bs-docs-example {
 @media (max-width: 980px) {
     /* Unfloat brand */
     body > .navbar-fixed-top .brand {
-        float: left;
-        margin-left: 0;
-        padding-left: 10px;
-        padding-right: 10px;
+
     }
 
     /* Inline-block quick links for more spacing */
@@ -899,7 +896,7 @@ form.bs-docs-example {
         margin-top: 20px;
     }
     .bs-docs-sidenav.affix {
-        top: 0;
+
     }
 }
 

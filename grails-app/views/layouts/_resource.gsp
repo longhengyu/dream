@@ -7,6 +7,7 @@
 <link rel="stylesheet" href="${resource(dir:'css',file:'dream-custom.css')}" />
 <link rel="stylesheet" href="${resource(dir:'css',file:'bootstrap-responsive.css')}" />
 <link rel="stylesheet" href="${resource(dir:'css',file:'dream-custom-responsive.css')}" />
+<meta name="viewport" content="initial-scale = 1.0,maximum-scale = 1.0" />
 
 <link rel="icon"
       type="image/png"
