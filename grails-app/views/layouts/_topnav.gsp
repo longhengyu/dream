@@ -7,7 +7,9 @@
             <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
                 <span class="icon-th-list"></span>
             </a>
-            <a href="${resource(dir: '') ?: '/'}" class="brand">Dream VPN</a>
+            <a href="${resource(dir: '') ?: '/'}" class="brand">
+                <img class="logo" src="${resource(dir:'img',file:'logo.png')}" title="bizstrap" alt="logo">Dream VPN
+            </a>
             <div class="nav-collapse collapse">
                 <ul class="nav pull-right">
                     <g:render template="/home/nav_item" model="[controller: 'home', action: 'index', home: true]"/>

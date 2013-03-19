@@ -3,6 +3,19 @@ body {
     padding-top: 64px;
 }
 
+/* logo */
+.logo {
+    position:absolute;
+    left: -20px;
+    top: 5px;
+}
+
+.navbar .brand {
+    position:relative;
+    margin-left: 22px;
+}
+
+
 /* dream - hero image */
 .hero-img {
     width: 516px;
