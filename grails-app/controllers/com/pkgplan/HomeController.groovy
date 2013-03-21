@@ -16,4 +16,8 @@ class HomeController {
     def contact() {
 
     }
+
+    def sao() {
+
+    }
 }
