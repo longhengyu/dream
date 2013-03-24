@@ -114,7 +114,7 @@ class LoginController {
 		}
 		else {
 			flash.message = msg
-            def targetUri = params.returnUrl ?: "/"
+            def targetUri = params.returnUrl ?: "/login/auth"
             redirect(uri: targetUri)
 		}
 	}

@@ -2,6 +2,8 @@ package com.pkgplan
 
 class HomeController {
 
+    def userService
+
     def index() {
         if(request.xhr) {
             render(view: "_body")
@@ -17,7 +19,10 @@ class HomeController {
 
     }
 
-    def sao() {
+    def home() {
+        if (!userService.isUserLonggedIn()) {
+            redirect(action: "index")
+        }
 
     }
 }

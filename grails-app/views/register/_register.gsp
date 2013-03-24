@@ -30,7 +30,7 @@
         <g:else>
             <div class="span10">
 
-                <g:formRemote class="form-horizontal" url="[controller: 'register', action:'register']" name='registerForm' update="register-Modal" >
+                <g:form class="form-horizontal" url="[controller: 'register', action:'register']" name='registerForm' update="register-Modal" >
 
                     <fieldset>
                         <div class="control-group ${hasErrors(bean:command,field:'username', 'error')}">
@@ -69,7 +69,7 @@
                             </div>
                         </div>
                     </fieldset>
-                </g:formRemote>
+                </g:form>
             </div>
             <div class="span2">
 

@@ -38,7 +38,7 @@ class RegisterController extends grails.plugins.springsecurity.ui.RegisterContro
         def user = lookupUserClass().findByUsernameOrEmail(username, username)
         if (!user) {
             flash.error = message(code: 'spring.security.ui.forgotPassword.user.notFound')
-            redirect action: 'forgotPassword', params: params
+            redirect action: 'forgotPassword'
             return
         }
 
@@ -59,6 +59,6 @@ class RegisterController extends grails.plugins.springsecurity.ui.RegisterContro
             html body.toString()
         }
 
-        render template: "/register/forgot", model: [params: params, emailSent: true]
+        render view: "/register/forgotPassword", model: [params: params, emailSent: true]
     }
 }

@@ -304,7 +304,7 @@ a:hover {
 }
 
 p {
-    margin: 0 0 1.5em;
+
     line-height: 1.5em;
     color: #555;
 }
@@ -395,7 +395,7 @@ h6 {
 
 ul, ol {
     padding: 0;
-    margin: 0 0 9px 25px;
+    margin: 0 0 0px 25px;
 }
 
 ul ul, ul ol, ol ol, ol ul {
@@ -842,17 +842,46 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
     text-shadow: 0 1px 0 #777777;
 }
 
+.cf .brand {
+    color: #999999;
+    display: block;
+    float: left;
+    font-size: 20px;
+    font-weight: normal;
+    margin-left: 22px;
+    padding: 1px 20px;
+    position: relative;
+}
+
 a.brand:hover, .footer-brand a:hover {
     text-decoration: none;
 }
 
 .brand .logo {
-    top: 1px;
+    top: 2px;
 }
 
-.footer-brand span {
+.cf .logo {
+    top: 15px;
+    left:-6px;
+}
+
+.inline-brand span {
     font-size: 20px;
     font-weight: 200;
     padding-left: 12px;
     vertical-align: middle;
+}
+
+/* language */
+.menu .menu-item .dropdown-menu a {
+    color: #000000;
+}
+
+.menu .menu-item .dropdown-menu {
+    left: -19px;
+}
+
+.menu .menu-item .caret {
+    border-top: 4px solid #FFFFFF;
 }
