@@ -15,6 +15,11 @@ body {
     margin-left: 22px;
 }
 
+.navbar-inner .brand {
+    width: 200px;
+}
+
+
 
 /* dream - hero image */
 .hero-img {

@@ -22,7 +22,7 @@
                     <span class="icon-th-list"></span>
                 </a>
                 <a href="${resource(dir: '') ?: '/'}" class="brand">
-                    <img class="logo" src="${resource(dir:'img',file:'logo_white.png')}" title="bizstrap" alt="logo">Dream VPN
+                    <img class="logo" src="${resource(dir:'img',file:'logoimg_white.png')}" title="bizstrap" alt="logo">
                 </a>
                 <div class="nav-collapse collapse">
                     <ul class="nav pull-right">
@@ -95,9 +95,8 @@
         <div class="row">
             <div class="span12">
                 <div class="inline-brand">
-                    <a href="${resource(dir: '') ?: '/'}">
-                        <img src="${resource(dir:'img',file:'logo_white.png')}" title="bizstrap" alt="logo">
-                        <span>Dream VPN</span>
+                    <a href="${resource(dir: '') ?: '/'}" class="brand">
+                        <img src="${resource(dir:'img',file:'logoimg_white.png')}" title="bizstrap" alt="logo">
                     </a>
                 </div>
                 <p>Our mission is to bring content harmony to everyone.</p>

@@ -849,6 +849,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
     font-weight: 200;
     padding: 10px 20px;
     text-shadow: 0 1px 0 #777777;
+    width: 200px;
 }
 
 .cf .brand {

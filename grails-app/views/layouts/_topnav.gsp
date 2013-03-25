@@ -8,7 +8,7 @@
                 <span class="icon-th-list"></span>
             </a>
             <a href="${resource(dir: '') ?: '/'}" class="brand">
-                <img class="logo" src="${resource(dir:'img',file:'logo.png')}" title="bizstrap" alt="logo">Dream VPN
+                <img class="logo" src="${resource(dir:'img',file:'logoimg.png')}" title="bizstrap" alt="logo">
             </a>
             <div class="nav-collapse collapse">
                 <ul class="nav pull-right">
