@@ -12,63 +12,65 @@
 </head>
 <body>
 <div class="page-content-wrapper">
-    <header class="header">
-        <div class="row">
-            <div class="span3">
+    <%@ page import="org.springframework.web.servlet.support.RequestContextUtils" %>
+    <% def locale=RequestContextUtils.getLocale(request)%>
+
+    <div class="navbar">
+        <div class="navbar-inner">
+            <div class="container">
+                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-th-list"></span>
+                </a>
                 <a href="${resource(dir: '') ?: '/'}" class="brand">
                     <img class="logo" src="${resource(dir:'img',file:'logo_white.png')}" title="bizstrap" alt="logo">Dream VPN
                 </a>
+                <div class="nav-collapse collapse">
+                    <ul class="nav pull-right">
+                        <li>
+                            <g:link controller="home" action="manual">
+                                <g:message code="nav.item.manual"/>
+                            </g:link>
+                        </li>
+                        <li>
+                            <g:link controller="home" action="contact">
+                                <g:message code="nav.item.contact"/>
+                            </g:link>
+                        </li>
+                        <sec:ifLoggedIn>
+                            <li class="menu-item highlight-item">
+                                <g:link action="show" controller="user"><sec:username/></g:link>
+                            </li>
+                            <li class="menu-item login-item">
+                                <g:link controller='logout' action="index"><g:message code="login.msg.logout"/></g:link>
+                            </li>
+                        </sec:ifLoggedIn>
+                        <sec:ifNotLoggedIn>
+                            <li class="menu-item highlight-item">
+                                <g:link action="index" controller="register"><g:message code="login.link.register.new.user"/></g:link>
+                            </li>
+                            <li class="menu-item login-item">
+                                <g:link action="auth" controller="login" class="btn btn-inverse btn-mini"><g:message code="login.button.login"/></g:link>
+                            </li>
+                        </sec:ifNotLoggedIn>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="bfh-languages" data-language="${locale}" data-flags="true"></span><b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <g:each in="${grailsApplication.config.supported.languages.list}">
+                                    <g:if test="${!locale.toString().equals(it)}">
+                                        <li>
+                                            <g:link controller="${controllerName}" action="${actionName}" params="[lang:it]">
+                                                <span class="bfh-languages" data-language="${it}" data-flags="true"></span>
+                                            </g:link>
+                                        </li>
+                                    </g:if>
+                                </g:each>
+                            </ul>
+                        </li>
+
+                    </ul>
+                </div>
             </div>
-
-            <div class="menu span9 pull-right">
-                <ul class="menu-list">
-                    <li class="menu-item">
-                        <g:link controller="home" action="home">VPN</g:link>
-                    </li>
-                    <li class="menu-item">
-                        <g:link controller="home" action="manual"><g:message code="nav.item.manual"/></g:link>
-                    </li>
-
-                    <sec:ifLoggedIn>
-                        <li class="menu-item highlight-item">
-                            <g:link action="show" controller="user"><sec:username/></g:link>
-                        </li>
-                        <li class="menu-item login-item">
-                            <g:link controller='logout' action="index"><g:message code="login.msg.logout"/></g:link>
-                        </li>
-                    </sec:ifLoggedIn>
-                    <sec:ifNotLoggedIn>
-                        <li class="menu-item highlight-item">
-                            <g:link action="index" controller="register"><g:message code="login.link.register.new.user"/></g:link>
-                        </li>
-                        <li class="menu-item login-item">
-                            <g:link action="auth" controller="login" class="btn btn-inverse btn-mini"><g:message code="login.button.login"/></g:link>
-                        </li>
-                    </sec:ifNotLoggedIn>
-
-                    <%@ page import="org.springframework.web.servlet.support.RequestContextUtils" %>
-                    <% def locale=RequestContextUtils.getLocale(request)%>
-                    <li class="menu-item dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="bfh-languages" data-language="${locale}" data-flags="true"></span><b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <g:each in="${grailsApplication.config.supported.languages.list}">
-                                <g:if test="${!locale.toString().equals(it)}">
-                                    <li>
-                                        <g:link controller="${controllerName}" action="${actionName}" params="[lang:it]">
-                                            <span class="bfh-languages" data-language="${it}" data-flags="true"></span>
-                                        </g:link>
-                                    </li>
-                                </g:if>
-                            </g:each>
-                        </ul>
-                    </li>
-                    <li class="menu-item">
-                        <g:link controller="home" action="contact"><g:message code="nav.item.contact"/></g:link>
-                    </li>
-                </ul>
-            </div>
-
         </div>
-    </header>
+    </div>
 
 
     <div class="hero-unit">
