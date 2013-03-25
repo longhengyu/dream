@@ -65,7 +65,7 @@
 
                     <div class="cf">
                         <div class="left">
-                            <span class="free-trial">30 day free trial, no credit card required.</span>
+                            <span class="free-trial"><g:message code="register.description.free.trial"/></span>
                         </div>
                         <div class="right">
                             <g:submitButton class="btn btn-success btn-large" id="loginButton"
@@ -75,27 +75,24 @@
 
                 </g:form>
 
-                <span class="by-clicking">By clicking "Get Started" you agree to <a
-                    href="https://gathercontent.com/terms-of-use">Terms of Use</a> and <a
-                    href="https://gathercontent.com/privacy-policy">Privacy Policy</a>.</span>
             </div>
         </div>
     </div>
 
     <div class="perks right">
-        <p class="up-and-running">You’ll be up and running<br>in less than a minute</p>
+        <p class="up-and-running"><g:message code="register.description.account.ready.soon"/></p>
 
-        <p class="included">Included in your account:</p>
+        <p class="included"><g:message code="register.description.including"/></p>
         <ul class="perks-list">
-            <li>SSL Connection (bank level)</li>
-            <li>Hourly offsite back-ups</li>
-            <li>100GB Storage</li>
-            <li>30-day free trial</li>
-            <li>Friendly customer support</li>
+            <li><g:message code="register.description.li.1"/></li>
+            <li><g:message code="register.description.li.2"/></li>
+            <li><g:message code="register.description.li.3"/></li>
+            <li><g:message code="register.description.li.4"/></li>
+            <li><g:message code="register.description.li.5"/></li>
         </ul>
 
         <p class="joining">
-            You are joining 12.000+ other web<br>professionals who have a distaste<br>for unorganised content.
+            <g:message code="register.description.support"/>
         </p>
     </div>
 

@@ -19,11 +19,12 @@
         <div class="logo">
             <div class="custom-logo">
                 <div class="inline-brand">
-                    <img src="${resource(dir:'img',file:'logoimg.png')}" title="bizstrap" alt="logo">
+                	<a href="${resource(dir: '') ?: '/'}" class="brand">
+                    	<img src="${resource(dir:'img',file:'logoimg.png')}" title="bizstrap" alt="logo">
+                    </a>
                 </div>
             </div>
         </div>
-
         <g:layoutBody/>
     </div>
 </div>

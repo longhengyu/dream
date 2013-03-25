@@ -29,7 +29,7 @@
                     </div>
 
                     <div class="right micro-text">
-                        Your new account, step 1 of 1
+                        
                     </div>
                 </div>
             </div>

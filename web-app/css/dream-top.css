@@ -885,3 +885,8 @@ a.brand:hover, .footer-brand a:hover {
 .menu .menu-item .caret {
     border-top: 4px solid #FFFFFF;
 }
+
+form textarea {
+	margin-bottom: 28px;
+	width: 100%;
+}
