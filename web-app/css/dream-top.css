@@ -474,6 +474,8 @@ em {
     margin-bottom: 30px;
     background-color: #eeeeee;
     background-position: center top;
+    border-radius: 0;
+    -webkit-border-radius: 0;
 }
 
 .hero-unit h1 {
@@ -611,16 +613,13 @@ html, body {
 @-webkit-keyframes float-up{0%{ top:500px; opacity:0; }25%{ opacity:1; }35%{ top:-20px; }100%{ top:60px; }} @-moz-keyframes float-up{0%{ top:500px; opacity:0; }25%{ opacity:1; }35%{ top:-20px; }100%{ top:60px; }} @-o-keyframes float-up{0%{ top:500px; opacity:0; }25%{ opacity:1; }35%{ top:-20px; }100%{ top:60px; }} @-keyframes float-up{0%{ top:500px; opacity:0; }25%{ opacity:1; }35%{ top:-20px; }100%{ top:60px; }}
 .white-panel {
      background-color: #fff;
-     border: 1px solid #dadada;
      padding: 0px;
      margin-bottom: 40px;
      color: #333;
      -webkit-border-radius: 6px;
      -moz-border-radius: 6px;
      border-radius: 6px;
-     -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, .075);
-     -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, .075);
-     box-shadow: 0 1px 2px rgba(0, 0, 0, .075);
+
  }
 
 
@@ -821,6 +820,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 .get-started-now {
     position: relative;
     margin-top: -70px;
+    z-index: 200;
 }
 
 
@@ -970,22 +970,13 @@ form textarea {
 
 
 
-body {
+.main-container {
 	/* Change the background image here  */
-	background: url('http://wbpreview.com/previews/WB0L500N4/assets/img/bg2.jpg') #000 top center fixed no-repeat;
+	background: url('http://wbpreview.com/previews/WB0L500N4/assets/img/bg2.jpg') #000 top center no-repeat;
 	background-size:150%;
 	font-family:'Open Sans',sans-serif;
 }
 
-a, a:visited{color:#d54872;
-	
-	-webkit-transition:all .1s linear;
-	-moz-transition:all .1s linear;
-	-ms-transition:all .1s linear;
-	-o-transition:all .1s linear;
-	transition:all .1s linear;
-	
-}
 a:hover,a:active{color:#a43053;
 	text-decoration: none;
 }
@@ -1017,6 +1008,8 @@ h1 {
 
 .main-container {
 	position:relative;
+    margin-top: -80px;
+    z-index: 100;
 }
 
 .main-container .container {
@@ -1065,5 +1058,34 @@ h1 {
 	-ms-transform:rotate(-15deg);
 	transform:rotate(-15deg);
 }
+
+.dark h1 {
+    margin-bottom: 37px;
+    margin-top: 84px;
+}
+
+.dark h1 {
+    margin-bottom: 37px;
+    margin-top: 84px;
+}
+
+.dark ul {
+    margin-left: 0px;
+}
+
+.thumbnail h3 {
+    margin: 20px 0;
+    line-height: 40px;
+}
+
+.thumbnail p {
+    margin: 0 0 10px;
+    color: #FFFFFF;
+}
+
+.big-size {
+    font-size: 200%;
+}
+
 
 

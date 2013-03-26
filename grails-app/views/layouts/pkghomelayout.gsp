@@ -83,7 +83,7 @@
         <div class="row get-started-now">
             <div class="span10 offset1 white-panel button-text-panel">
                 <h2>Ready to get a Dream VPN?</h2>
-                <a href="/product" class="btn btn-large btn-warning">Get Started Now</a>
+                <a href="/register" class="btn btn-large btn-warning">Get Started Now</a>
             </div>
         </div>
     </div>
@@ -92,49 +92,34 @@
   
 <div class="container-fluid" id="team">
 	<div class="container dark">
-		<h1>Meet the team</h1>
-			<ul class="thumbnails">
+		<h1>Available VPN Plans</h1>
+			<ul class="thumbnails row-fluid span12">
 			  
 			
+			  <li class="span4">
+			    <div class="thumbnail">
+			      <img alt="" src="${resource(dir:'img',file:'1.png')}">
+			      <h3><span class="big-size">26 RMB</span> / 1 month</h3>
+			      <p>Good to try if you don't know how much you'll be using it.</p>
+
+			    </div>
+			  </li>
+			  
 			  <li class="span4">
 			    <div class="thumbnail">
 			      <img alt="" src="${resource(dir:'img',file:'2.png')}">
-			      <h3>Lucy</h3>
-			      <p>Nulla facilisi. Duis aliquet egestas purus in blandit. Curabitur vulputate</p>
-			      <div class="social">
-				     <img alt="" src="http://wbpreview.com/previews/WB0L500N4/assets/img/linkedin.png">
-				      <img alt="" src="http://wbpreview.com/previews/WB0L500N4/assets/img/twitter.png">
-				      <img alt="" src="http://wbpreview.com/previews/WB0L500N4/assets/img/facebook.png">
-				      <img alt="" src="http://wbpreview.com/previews/WB0L500N4/assets/img/email.png">
-			      </div>
-			    </div>
-			  </li>
-			  
-			  <li class="span4">
-			    <div class="thumbnail">
-			      <img alt="" src="${resource(dir:'img',file:'3.png')}">
-			      <h3>Steve</h3>
-			      <p>Nulla facilisi. Duis aliquet egestas purus in blandit. Curabitur vulputate</p>
-			      <div class="social">
-				      <img alt="" src="http://wbpreview.com/previews/WB0L500N4/assets/img/linkedin.png">
-				      <img alt="" src="http://wbpreview.com/previews/WB0L500N4/assets/img/twitter.png">
-				      <img alt="" src="http://wbpreview.com/previews/WB0L500N4/assets/img/facebook.png">
-				      <img alt="" src="http://wbpreview.com/previews/WB0L500N4/assets/img/email.png">
-			      </div>
+			      <h3><span class="big-size">72 RMB</span> / 3 months</h3>
+			      <p>Save a little and get a longer valid account.</p>
+
 			    </div>
 			  </li>
 			
 			  <li class="span4">
 			    <div class="thumbnail">
-			      <img alt="" src="${resource(dir:'img',file:'4.png')}">
-			      <h3>Michelle</h3>
-			      <p>Nulla facilisi. Duis aliquet egestas purus in blandit. Curabitur vulputate</p>
-			      <div class="social">
-				      <img alt="" src="http://wbpreview.com/previews/WB0L500N4/assets/img/linkedin.png">
-				      <img alt="" src="http://wbpreview.com/previews/WB0L500N4/assets/img/twitter.png">
-				      <img alt="" src="http://wbpreview.com/previews/WB0L500N4/assets/img/facebook.png">
-				      <img alt="" src="http://wbpreview.com/previews/WB0L500N4/assets/img/email.png">
-			      </div>
+			      <img alt="" src="${resource(dir:'img',file:'3.png')}">
+			      <h3><span class="big-size">280 RMB</span> / 1 year</h3>
+			      <p>Save more if you trust you'll always need it.</p>
+
 			    </div>
 			  </li>
 			 </ul>
