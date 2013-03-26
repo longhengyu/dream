@@ -902,7 +902,7 @@ form textarea {
 }
 
 .navbar-inner {
-    background-color: #252525;
+    background-color: #252525 !important;
     background-image: none;
     border: none;
     border-radius: 0 0 0;
@@ -977,16 +977,16 @@ form textarea {
 	font-family:'Open Sans',sans-serif;
 }
 
-a:hover,a:active{color:#a43053;
+.main-container a:hover,a:active{color:#a43053;
 	text-decoration: none;
 }
 
 
-h1,h2,h3,h4,h5,h6 {
+.main-container h1,.main-container h2,.main-container h3,.main-container h4,.main-container h5,.main-container h6 {
 	font-weight:300;
 }
 
-h1 {
+.main-container h1 {
 	font-weight:300;
 	font-size:50px;
 	text-align:center;

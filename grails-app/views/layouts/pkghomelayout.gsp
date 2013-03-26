@@ -2,7 +2,6 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta name="viewpoint" content="width=device-width, initial-scale=1.0"/>
     <title><g:layoutTitle default="Dream VPN" /></title>
     <g:render template="/layouts/resource"/>
     <link rel="stylesheet" href="${resource(dir:'css',file:'dream-top.css')}" />
@@ -144,7 +143,7 @@
         </div>
         <div class="row links-horizontal">
             <div class="span12">
-                <a href="http://twitter.com/gathercontent" class="twitter-link">Follow us on Twitter</a>
+                <a href="https://twitter.com/pkgplan" class="twitter-link">Follow us on Twitter</a>
             </div>
         </div>
 

@@ -19,6 +19,10 @@ body {
     width: 200px;
 }
 
+.navbar-inner {
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#252525', endColorstr='#252525', GradientType=0);
+}
+
 
 
 /* dream - hero image */
