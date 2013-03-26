@@ -3,28 +3,28 @@
     <title><g:message code="site.page.title"/></title>
     <meta name="layout" content="pkghomelayout" />
 </head>
-<h1>Wall Breaking is Simple.</h1>
-<h2>We provide REAL Internet solutions for users in China.</h2>
+<h1><g:message code="main.title.free.to.surf"/></h1>
+<h2><g:message code="main.title.free.to.surf.sub"/></h2>
 
 <ul class="row ">
     <li class="span3 plan float-up">
-        <p>Simple</p>
-        <p>Get your VPN connected in 5 minutes.</p>
+        <p><g:message code="main.merit.simple"/></p>
+        <p><g:message code="main.merit.simple.description"/></p>
     </li>
 
     <li class="span3 structure float-up">
-        <p>Fast</p>
-        <p>High speed access.</p>
+        <p><g:message code="main.merit.fast"/></p>
+        <p><g:message code="main.merit.fast.description"/></p>
     </li>
 
     <li class="span3 collaborate float-up">
-        <p>Transparent</p>
-        <p>Easy to access any website in the world.</p>
+        <p><g:message code="main.merit.transparent"/></p>
+        <p><g:message code="main.merit.transparent.description"/></p>
     </li>
 
     <li class="span3 deliver float-up">
-        <p>Cheep</p>
-        <p>Every month, you pay the money of only a cup of coffee.</p>
+        <p><g:message code="main.merit.cheap"/></p>
+        <p><g:message code="main.merit.cheap.description"/></p>
     </li>
 </ul>
 </html>

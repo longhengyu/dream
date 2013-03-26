@@ -82,8 +82,8 @@
     <div class="container">
         <div class="row get-started-now">
             <div class="span10 offset1 white-panel button-text-panel">
-                <h2>Ready to get a Dream VPN?</h2>
-                <a href="/register" class="btn btn-large btn-warning">Get Started Now</a>
+                <h2><g:message code="main.ready.to.go"/></h2>
+                <a href="/register" class="btn btn-large btn-warning"><g:message code="main.ready.to.go.button"/></a>
             </div>
         </div>
     </div>
@@ -92,15 +92,15 @@
   
 <div class="container-fluid" id="team">
 	<div class="container dark">
-		<h1>Available VPN Plans</h1>
+		<h1><g:message code="product.list.title" /></h1>
 			<ul class="thumbnails row-fluid span12">
 			  
 			
 			  <li class="span4">
 			    <div class="thumbnail">
 			      <img alt="" src="${resource(dir:'img',file:'1.png')}">
-			      <h3><span class="big-size">26 RMB</span> / 1 month</h3>
-			      <p>Good to try if you don't know how much you'll be using it.</p>
+			      <h3><span class="big-size"><g:message code="main.plan.price.1" /></span> / <g:message code="main.plan.period.1" /></h3>
+			      <p><g:message code="main.plan.description.1" /></p>
 
 			    </div>
 			  </li>
@@ -108,19 +108,19 @@
 			  <li class="span4">
 			    <div class="thumbnail">
 			      <img alt="" src="${resource(dir:'img',file:'2.png')}">
-			      <h3><span class="big-size">72 RMB</span> / 3 months</h3>
-			      <p>Save a little and get a longer valid account.</p>
+			      <h3><span class="big-size"><g:message code="main.plan.price.2" /></span> / <g:message code="main.plan.period.2" /></h3>
+			      <p><g:message code="main.plan.description.2" /></p>
 
 			    </div>
 			  </li>
 			
 			  <li class="span4">
 			    <div class="thumbnail">
-			      <img alt="" src="${resource(dir:'img',file:'3.png')}">
-			      <h3><span class="big-size">280 RMB</span> / 1 year</h3>
-			      <p>Save more if you trust you'll always need it.</p>
+                    <img alt="" src="${resource(dir:'img',file:'3.png')}">
+                    <h3><span class="big-size"><g:message code="main.plan.price.3" /></span> / <g:message code="main.plan.period.3" /></h3>
+                    <p><g:message code="main.plan.description.3" /></p>
 
-			    </div>
+                </div>
 			  </li>
 			 </ul>
 		</div>
