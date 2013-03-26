@@ -87,6 +87,61 @@
             </div>
         </div>
     </div>
+    
+    <div class="main-container">
+  
+<div class="container-fluid" id="team">
+	<div class="container dark">
+		<h1>Meet the team</h1>
+			<ul class="thumbnails">
+			  
+			
+			  <li class="span4">
+			    <div class="thumbnail">
+			      <img alt="" src="${resource(dir:'img',file:'2.png')}">
+			      <h3>Lucy</h3>
+			      <p>Nulla facilisi. Duis aliquet egestas purus in blandit. Curabitur vulputate</p>
+			      <div class="social">
+				     <img alt="" src="http://wbpreview.com/previews/WB0L500N4/assets/img/linkedin.png">
+				      <img alt="" src="http://wbpreview.com/previews/WB0L500N4/assets/img/twitter.png">
+				      <img alt="" src="http://wbpreview.com/previews/WB0L500N4/assets/img/facebook.png">
+				      <img alt="" src="http://wbpreview.com/previews/WB0L500N4/assets/img/email.png">
+			      </div>
+			    </div>
+			  </li>
+			  
+			  <li class="span4">
+			    <div class="thumbnail">
+			      <img alt="" src="${resource(dir:'img',file:'3.png')}">
+			      <h3>Steve</h3>
+			      <p>Nulla facilisi. Duis aliquet egestas purus in blandit. Curabitur vulputate</p>
+			      <div class="social">
+				      <img alt="" src="http://wbpreview.com/previews/WB0L500N4/assets/img/linkedin.png">
+				      <img alt="" src="http://wbpreview.com/previews/WB0L500N4/assets/img/twitter.png">
+				      <img alt="" src="http://wbpreview.com/previews/WB0L500N4/assets/img/facebook.png">
+				      <img alt="" src="http://wbpreview.com/previews/WB0L500N4/assets/img/email.png">
+			      </div>
+			    </div>
+			  </li>
+			
+			  <li class="span4">
+			    <div class="thumbnail">
+			      <img alt="" src="${resource(dir:'img',file:'4.png')}">
+			      <h3>Michelle</h3>
+			      <p>Nulla facilisi. Duis aliquet egestas purus in blandit. Curabitur vulputate</p>
+			      <div class="social">
+				      <img alt="" src="http://wbpreview.com/previews/WB0L500N4/assets/img/linkedin.png">
+				      <img alt="" src="http://wbpreview.com/previews/WB0L500N4/assets/img/twitter.png">
+				      <img alt="" src="http://wbpreview.com/previews/WB0L500N4/assets/img/facebook.png">
+				      <img alt="" src="http://wbpreview.com/previews/WB0L500N4/assets/img/email.png">
+			      </div>
+			    </div>
+			  </li>
+			 </ul>
+		</div>
+	</div>
+	</div>
+    
 
     <div class="push"><!--//--></div>
 </div> <!-- page-content-wrapper -->
