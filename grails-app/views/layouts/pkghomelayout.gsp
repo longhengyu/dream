@@ -145,7 +145,7 @@
                         <img src="${resource(dir:'img',file:'logoimg_white.png')}" title="bizstrap" alt="logo">
                     </a>
                 </div>
-                <p>Our mission is to bring content harmony to everyone.</p>
+                <p>started in 2012, for the future.</p>
             </div>
         </div>
         <div class="row links-horizontal">
