@@ -779,7 +779,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 }
 
 .hero-unit ul li.plan {
-    background-image: url('https://gathercontent.com/assets/img/homepage/hero/hero-plan.png');
+    background-image: url('../img/board1.png');
     background-position: center bottom;
     -webkit-animation-delay: 1s;
     -moz-animation-delay: 1s;
@@ -788,7 +788,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 }
 
 .hero-unit ul li.structure {
-    background-image: url('https://gathercontent.com/assets/img/homepage/hero/hero-structure.png');
+    background-image: url('../img/board2.png');
     background-position: center bottom;
     -webkit-animation-delay: 1.5s;
     -moz-animation-delay: 1.5s;
@@ -798,7 +798,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 }
 
 .hero-unit ul li.collaborate {
-    background-image: url('https://gathercontent.com/assets/img/homepage/hero/hero-collaborate-new.jpg');
+    background-image: url('../img/board3.png');
     background-position: center bottom;
     -webkit-animation-delay: 2s;
     -moz-animation-delay: 2s;
@@ -808,7 +808,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 }
 
 .hero-unit ul li.deliver {
-    background-image: url('https://gathercontent.com/assets/img/homepage/hero/hero-deliver.png');
+    background-image: url('../img/board4.png');
     background-position: right bottom;
     -webkit-animation-delay: 2.5s;
     -moz-animation-delay: 2.5s;
