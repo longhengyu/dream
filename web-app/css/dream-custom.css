@@ -61,6 +61,10 @@ body {
     background-color: #C09853;
 }
 
+.text-0 {
+    color: #999999;
+}
+
 .text-2 {
     color: #3A87AD;
 }
@@ -255,9 +259,9 @@ body {
 }
 
 .pricing-column:hover {
-	-webkit-box-shadow:0 0 20px 0 rgba(0,0,0,0.4);
-	-moz-box-shadow:0 0 20px 0 rgba(0,0,0,0.4);
-	box-shadow:0 0 20px 0 rgba(0,0,0,0.4);
+	-webkit-box-shadow:0 0 10px 0 rgba(0,0,0,0.4);
+	-moz-box-shadow:0 0 10px 0 rgba(0,0,0,0.4);
+	box-shadow:0 0 10px 0 rgba(0,0,0,0.4);
 	z-index:1;
 }
 
@@ -306,5 +310,9 @@ body {
 .pricing-column .pricing-button .button {
 	margin:0 !important;
     font-size: 18px;
+}
+
+.pricing-button form {
+    margin: 10px;
 }
 
