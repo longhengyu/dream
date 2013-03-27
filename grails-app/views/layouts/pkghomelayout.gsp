@@ -25,6 +25,13 @@
                 </a>
                 <div class="nav-collapse collapse">
                     <ul class="nav pull-right">
+                        <sec:ifLoggedIn>
+                            <li>
+                            <g:link controller="product" action="list">
+                                <g:message code="nav.item.index"/>
+                            </g:link>
+                            </li>
+                        </sec:ifLoggedIn>
                         <li>
                             <g:link controller="home" action="manual">
                                 <g:message code="nav.item.manual"/>

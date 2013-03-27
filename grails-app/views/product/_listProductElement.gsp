@@ -1,7 +1,7 @@
 
 <g:if test="${productInstance.status == 'OnSell'}">
 <ul class="pricing-column span4">
-    <li class="pricing-title text-${i}"><g:message code="product.info.name.${productInstance.code}" default="${productInstance.name}"/></li>
+    <li class="pricing-title pricing-title-${i} text-${i}"><g:message code="product.info.name.${productInstance.code}" default="${productInstance.name}"/></li>
     <li class="pricing-price">${fieldValue(bean: productInstance, field: "price")} RMB <span class="small">/ <g:message code="main.plan.period.${i+1}" /></span>
     </li>
 	<li><img alt="" src="${resource(dir:'img',file:(i+1)+'.png')}"></li>

@@ -292,8 +292,18 @@ body {
 
 .pricing-column li.pricing-title {
     font-weight:600;
-    border-top: 3px solid rgba(0,0,0,0.6);
     font-size:20px;
+}
+
+.pricing-title-0 {
+    border-top: 3px solid #999999;
+}
+
+.pricing-title-2 {
+    border-top: 3px solid #3A87AD;
+}
+.pricing-title-1 {
+    border-top: 3px solid #C09853;
 }
 
 .pricing-column li.pricing-price {
@@ -314,5 +324,9 @@ body {
 
 .pricing-button form {
     margin: 10px;
+}
+
+.font-normal {
+    font-weight: normal;
 }
 
