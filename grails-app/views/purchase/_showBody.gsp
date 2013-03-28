@@ -22,22 +22,23 @@
                         <g:if test="${!purchaseInstance?.datePay}">
 
                             <div class="inner-margin-left">
-                                <h4><g:message code="purchase.menu.pay.with" default="Pay With" />
-                                    </h4>
+                                <h4 class="pay-with-title"><g:message code="purchase.menu.pay.with" default="Pay With" />
+                                </h4>
                             </div>
                             <div class="row-fluid">
-                            <div class="span4 text-right">
-                                <g:render template="paymentSubmitButton" model="[paymentId: 0, icon: 'icon-credit-card']"/>
-
+                                <div class="span1"></div>
+                                <div class="span3"></div>
+                                <div class="span3"></div>
+                                <div class="span3 text-center">${message(code:'payment.method.description.giftcard')} <a data-placement="top" data-content="${message(code:'payment.method.description.giftcard.get')}" rel="popover" id="no-ip-assigned" href="#"><i class="icon-info-sign"></i></a>
+                                </div>
                             </div>
-                            <div class="span4 text-center">
-                                <g:render template="paymentSubmitButton" model="[paymentId: 1, icon: 'icon-paypal']"/>
+                            <div class="row-fluid features-two">
+                                    <div class="span1"></div>
+                                    <g:render template="paymentSubmitButton" model="[paymentId: 0, icon: 'icon-credit-card']"/>
+                                    <g:render template="paymentSubmitButton" model="[paymentId: 1, icon: 'icon-paypal']"/>
+                                    <g:render template="paymentSubmitButton" model="[paymentId: 2, icon: 'icon-gift']"/>
+                                    <div class="span2"></div>
                             </div>
-                            <div class="span4 text-left">
-                                <g:render template="paymentSubmitButton" model="[paymentId: 2, icon: 'icon-gift']"/>
-                            </div>
-                            </div>
-
                             <div class="form-horizontal">
                                 <div class="form-actions text-right">
 

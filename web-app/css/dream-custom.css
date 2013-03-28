@@ -153,16 +153,9 @@ body {
     max-width: 100%;
     min-height: 30px;
     min-width: 90%;
-    padding-top: 10px !important;
 }
-.box {
-    margin-bottom: 20px;
-}
+
 .box-head {
-    background-color: #F5F5F5;
-    background-repeat: repeat-x;
-    border: 1px solid #CACACA;
-    border-radius: 4px 4px 0 0;
     color: #777777;
     font-weight: bold;
     height: 40px;
@@ -174,11 +167,7 @@ body {
     line-height: 27px;
 }
 .box-content {
-    background: none repeat scroll 0 0 #FFFFFF;
-    border-color: #CACACA;
-    border-radius: 0 0 3px 3px;
-    border-style: solid;
-    border-width: 0 1px 1px;
+
     min-height: 50px;
 }
 
@@ -199,6 +188,10 @@ body {
     margin-left: 52px;
 }
 
+.pay-with-title {
+    margin-top: 45px;
+}
+
 .title h1, .title h2, .title h3, .title h4, .title h5, .title h6, .title p {
     border-bottom-style: solid !important;
     border-bottom-width: 2px !important;
@@ -217,7 +210,7 @@ body {
 
 /* Purchase Show */
 #show-purchase {
-    margin-top: 18px;
+    margin-top: 5px;
 }
 
 #purchase-history form {
@@ -241,7 +234,6 @@ body {
 
 /********** PRICING TABLES **********/
 .pricing-table-wrapper {
-	margin: 10px 0;
 	text-align: center;
 }
 
@@ -249,7 +241,7 @@ body {
 	display:inline-block;
 }
 
-.pricing-column {
+.pricing-column, .feat-inner{
 	list-style:none;
 	position:relative;
 	
@@ -258,7 +250,7 @@ body {
 	transition:0.3s;
 }
 
-.pricing-column:hover {
+.pricing-column:hover, .feat-inner:hover {
 	-webkit-box-shadow:0 0 10px 0 rgba(0,0,0,0.4);
 	-moz-box-shadow:0 0 10px 0 rgba(0,0,0,0.4);
 	box-shadow:0 0 10px 0 rgba(0,0,0,0.4);
@@ -329,4 +321,73 @@ body {
 .font-normal {
     font-weight: normal;
 }
+
+
+
+
+
+
+.button a, .button a:visited{
+    color: #fff;
+    padding: 5px 10px;
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 3px;
+    -webkit-transition:background 1s ease;
+    -moz-transition:background 1s ease;
+    -o-transition:background 1s ease;
+    transition:background 1s ease;
+    font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+}
+
+.button a:hover{
+    color: #fff;
+    text-decoration: none;
+    -webkit-transition:background 1s ease;
+    -moz-transition:background 1s ease;
+    -o-transition:background 1s ease;
+    transition:background 1s ease;
+}
+
+
+
+
+/* Features #2 */
+
+.features-two{
+    text-align: center;
+    margin: 0px 0px 20px 0px;
+}
+
+.features-two .feat-inner{
+    padding: 20px 10px 10px 10px;
+    margin-bottom: 20px;
+}
+
+.features-two i{
+    font-size: 35px;
+    margin-bottom: 10px;
+}
+
+.features-two .button{
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.features-two .button a{
+    font-size: 11px;
+}
+
+.features-two p {
+    margin-bottom: 18px;
+}
+
+.features-two .brown {
+    color: #B94A48;
+}
+
+
+
+
+
 
