@@ -1,18 +1,46 @@
 package com.pkgplan.dream
 
 import org.springframework.dao.DataIntegrityViolationException
+import com.pkgplan.auth.User
+import org.codehaus.groovy.grails.plugins.springsecurity.SpringSecurityUtils
 
 class GiftcardController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
+
+    def springSecurityService
 
     def index() {
         redirect(action: "list", params: params)
     }
 
     def list(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
-        [giftcardInstanceList: Giftcard.list(params), giftcardInstanceTotal: Giftcard.count()]
+        // TODO: use interceptor here. (or before_filter)
+        User owner = springSecurityService.currentUser
+        if (SpringSecurityUtils.ifAllGranted("ROLE_ADMIN")) {
+            owner = User.get(params?.ownerId)
+        }
+        flash.ownerId = owner?.id
+        params.max = Math.min(params.max?.toInteger() ?: 10, 100)
+        def query = {order("dateCreated", "desc")}
+        def criteria = Giftcard.createCriteria()
+        def results
+        if (owner) {
+            query = {
+                and {
+                    eq("owner", owner)
+                }
+                order("status")
+            }
+        }
+
+        results = criteria.list(params, query)
+
+        if (request.xhr) {
+            render(view: "_listBody", model: [giftcardInstanceList: results, giftcardInstanceTotal: results.getTotalCount()])
+        }
+
+        [giftcardInstanceList: results, giftcardInstanceTotal: results.getTotalCount()]
     }
 
     def create() {

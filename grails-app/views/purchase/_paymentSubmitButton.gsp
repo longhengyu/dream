@@ -29,7 +29,7 @@
 
         </g:if>
         <g:elseif test="${paymentId == 2}">
-            <a href="#use-giftcard-Modal" data-toggle="modal" data-target="#use-giftcard-Modal" type="submit" class="btn btn-${paymentId}">${message(code: "purchase.button.pay")}</a>
+            <a href="#use-giftcard-Modal" data-toggle="modal" data-target="#use-giftcard-Modal" type="submit" class="form-like btn btn-${paymentId}">${message(code: "purchase.button.pay")}</a>
         </g:elseif>
         <g:else>
             <g:form action="buy">

@@ -35,6 +35,7 @@ class PurchaseController {
     def list() {
         // if it's user, we show only user's purchase list
         // if it's admin, we show all if no user id is specified, or show the specified user purchases.
+        // TODO: use interceptor here. (or before_filter)
         User owner = springSecurityService.currentUser
         if (SpringSecurityUtils.ifAllGranted("ROLE_ADMIN")) {
             owner = User.get(params?.ownerId)
