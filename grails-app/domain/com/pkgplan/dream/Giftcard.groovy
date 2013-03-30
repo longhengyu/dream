@@ -6,15 +6,18 @@ import com.pkgplan.auth.User
 
 class Giftcard {
 
-	static belongsTo = User
+    static belongsTo = [owner: User]
 	String code
 	Product product
+    Purchase purchase
 	Date dateUsed
-	String status
+	String status = 'Available'
 	
     static constraints = {
         code(blank: false)
-        product(blank: false)
+        product(nullable: false)
+        purchase(nullable: true)
         status(inList: ['Available','Used'], blank: false)
+        dateUsed(nullable:  true)
     } 
 }

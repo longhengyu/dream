@@ -386,6 +386,19 @@ body {
     color: #B94A48;
 }
 
+.modal-body .page-header {
+    margin: -15px 0 15px;
+    padding-bottom: 0px;
+}
+
+#use-giftcard-body form {
+    padding-top: 20px;
+}
+
+#use-giftcard-body h3, #use-giftcard-body .alert {
+    text-align: left;
+}
+
 
 
 

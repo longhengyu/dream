@@ -28,6 +28,9 @@
             </form>
 
         </g:if>
+        <g:elseif test="${paymentId == 2}">
+            <a href="#use-giftcard-Modal" data-toggle="modal" data-target="#use-giftcard-Modal" type="submit" class="btn btn-${paymentId}">${message(code: "purchase.button.pay")}</a>
+        </g:elseif>
         <g:else>
             <g:form action="buy">
                 <g:hiddenField name="id" value="${purchaseInstance?.id}"/>
@@ -37,3 +40,9 @@
         </g:else>
     </div>
 </div>
+
+<g:if test="${paymentId == 2}">
+<div id="use-giftcard-Modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <g:render template="/giftcard/use"/>
+</div>
+</g:if>

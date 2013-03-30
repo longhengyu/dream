@@ -13,10 +13,12 @@ import javax.annotation.Resource
 class PurchaseController {
 
     private final String PAYMENT_METHOD_ID_PAYPAL = 1
+    private final String PAYMENT_METHOD_ID_GIFTCARD = 2
+    private final String PAYMENT_METHOD_ID_CREDITCARD = 0
 
     def springSecurityService
-
     def purchaseService
+    def giftcardService
 
     static allowedMethods = [save: "POST", delete: "POST"]
 
@@ -128,21 +130,41 @@ class PurchaseController {
 
 
     def buy() {
-
-        Payment payment = Payment.findByTransactionId(params.transactionId ?: '')
-        if (payment == null || !Payment.COMPLETE.equals(payment.status)) {
-            log.error("error payment!")
-            //if it's wrong payment,redirect list view
-            flash.message = message(code: 'purchase.message.payment.not.supported')
-            redirect(action: "show")
+        def paymentId = params.paymentMethod
+        def purchaseId = params.id
+        def pageRedirect = false
+        if (paymentId == PAYMENT_METHOD_ID_GIFTCARD) {
+            def purchaseInstance = Purchase.findById(purchaseId)
+            if (giftcardService.processGiftcardIfValid(purchaseInstance, purchaseInstance.product, params.code)) {
+                log.info("giftcard proceeded, code: " + params.code);
+                pageRedirect = true
+            } else {
+                flash.error_ajax = message(code: 'giftcard.not.correct')
+                render(view: "/giftcard/_use", model: [purchaseInstance: purchaseInstance])
+                return
+            }
+        } else if (paymentId == PAYMENT_METHOD_ID_CREDITCARD) {
+            def purchaseInstance = Purchase.findById(purchaseId)
+            flash.error = 'not supported yet'
+            render(view: "show", model: [purchaseInstance: purchaseInstance, userInstance: purchaseInstance.owner])
             return
+        } else {
+            // pay with paypal
+            Payment payment = Payment.findByTransactionId(params.transactionId ?: '')
+            if (payment == null || !Payment.COMPLETE.equals(payment.status)) {
+                log.error("error payment!")
+                //if it's wrong payment,redirect list view
+                flash.message = message(code: 'purchase.message.payment.not.supported')
+                redirect(action: "show")
+                return
+            }
+            purchaseId = Long.valueOf(params.item_number)
         }
-        def purchaseId = Long.valueOf(params.item_number)
         log.info("execute purchase, purchase id: ${purchaseId}")
         try {
-            Purchase purchaseInstance = purchaseService.proceedPurchase(purchaseId, PAYMENT_METHOD_ID_PAYPAL)
+            Purchase purchaseInstance = purchaseService.proceedPurchase(purchaseId.toLong(), paymentId)
             flash.message = message(code: 'purchase.message.purchase.succeed')
-            render(view: "show", model: [purchaseInstance: purchaseInstance, userInstance: purchaseInstance.owner])
+            render(view: "show", model: [purchaseInstance: purchaseInstance, userInstance: purchaseInstance.owner, pageRedirect: pageRedirect])
         } catch (InstanceNotFoundException e) {
             flash.message = message(code: 'purchase.message.purchase.not.found')
             redirect(action: "list")
