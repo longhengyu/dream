@@ -69,7 +69,7 @@ class UserController {
             return
         }
 
-        [userInstance: userInstance, profileInstance: userInstance.profile, serverInstance: server]
+        [userInstance: userInstance, profileInstance: userInstance.profile, serverInstance: userInstance.server]
     }
 
     @Secured(['ROLE_ADMIN'])
@@ -81,7 +81,7 @@ class UserController {
             return
         }
 
-        [userInstance: userInstance]
+        [userInstance: userInstance, serverInstance: serverService.findServerByUser(userInstance)]
     }
 
     @Secured(['ROLE_ADMIN'])

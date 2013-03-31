@@ -35,10 +35,11 @@ class PurchaseServiceImpl implements PurchaseService {
 
         // if this user has no server, assign owner to server
         def owner = purchaseInstance.owner
-        if (serverService.findServerByUser(owner) == null) {
+        def servers = serverService.findServerByUser(owner)
+        if (owner.server == null) {
             Server server = serverService.getLeastLoadedServer()
-            server.users.add(owner)
-            server.save()
+            owner.server = server
+            owner.save()
         }
 
         def product = purchaseInstance.product

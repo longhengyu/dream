@@ -9,6 +9,5 @@
 	</head>
 	<body>
         <g:render template="listBody"/>
-
 	</body>
 </html>

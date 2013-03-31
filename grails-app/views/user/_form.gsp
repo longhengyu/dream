@@ -28,6 +28,14 @@
 	<g:textField name="email" value="${userInstance?.email}"/>
 </div>
 
+<div class="fieldcontain">
+    <label for="profile">
+        <g:message code="user.server.label" default="Server" />
+
+    </label>
+    <g:select id="server" name="server.id" from="${com.pkgplan.dream.Server.list()}" optionKey="id" value="${serverInstance?.id}" class="many-to-one" noSelection="['null': '']"/>
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: userInstance, field: 'profile', 'error')} ">
 	<label for="profile">
 		<g:message code="user.profile.label" default="Profile" />
@@ -37,19 +45,21 @@
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: userInstance, field: 'accountExpired', 'error')} ">
+    <g:checkBox name="accountExpired" value="${userInstance?.accountExpired}" />
 	<label for="accountExpired">
 		<g:message code="user.accountExpired.label" default="Account Expired" />
 		
 	</label>
-	<g:checkBox name="accountExpired" value="${userInstance?.accountExpired}" />
+
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: userInstance, field: 'accountLocked', 'error')} ">
+    <g:checkBox name="accountLocked" value="${userInstance?.accountLocked}" />
 	<label for="accountLocked">
 		<g:message code="user.accountLocked.label" default="Account Locked" />
 		
 	</label>
-	<g:checkBox name="accountLocked" value="${userInstance?.accountLocked}" />
+
 </div>
 
 <g:if test="${params.action != 'create'}">
@@ -63,18 +73,20 @@
 </g:if>
 
 <div class="fieldcontain ${hasErrors(bean: userInstance, field: 'enabled', 'error')} ">
+    <g:checkBox name="enabled" value="${userInstance?.enabled}" />
 	<label for="enabled">
 		<g:message code="user.enabled.label" default="Enabled" />
 		
 	</label>
-	<g:checkBox name="enabled" value="${userInstance?.enabled}" />
+
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: userInstance, field: 'passwordExpired', 'error')} ">
+    <g:checkBox name="passwordExpired" value="${userInstance?.passwordExpired}" />
 	<label for="passwordExpired">
 		<g:message code="user.passwordExpired.label" default="Password Expired" />
 		
 	</label>
-	<g:checkBox name="passwordExpired" value="${userInstance?.passwordExpired}" />
+
 </div>
 

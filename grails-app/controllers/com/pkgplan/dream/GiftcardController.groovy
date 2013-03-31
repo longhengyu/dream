@@ -3,12 +3,15 @@ package com.pkgplan.dream
 import org.springframework.dao.DataIntegrityViolationException
 import com.pkgplan.auth.User
 import org.codehaus.groovy.grails.plugins.springsecurity.SpringSecurityUtils
+import org.apache.commons.lang.RandomStringUtils
 
 class GiftcardController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
     def springSecurityService
+    String charset = (('A'..'Z') + ('0'..'9')).join()
+    Integer length = 9
 
     def index() {
         redirect(action: "list", params: params)
@@ -22,7 +25,7 @@ class GiftcardController {
         }
         flash.ownerId = owner?.id
         params.max = Math.min(params.max?.toInteger() ?: 10, 100)
-        def query = {order("dateCreated", "desc")}
+        def query = {order("status")}
         def criteria = Giftcard.createCriteria()
         def results
         if (owner) {
@@ -44,7 +47,10 @@ class GiftcardController {
     }
 
     def create() {
-        [giftcardInstance: new Giftcard(params)]
+        // random generate a code
+        def giftcardInstance = new Giftcard(params)
+        giftcardInstance.code = RandomStringUtils.random(length, charset.toCharArray())
+        [giftcardInstance: giftcardInstance]
     }
 
     def save() {

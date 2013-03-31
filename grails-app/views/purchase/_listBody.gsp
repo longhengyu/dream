@@ -38,43 +38,58 @@
                                     </g:else>
                                 </td>
                                 <td>
-                                    <g:if test="${purchaseInstance.datePay}">
-                                        <div class="purchase-button">
-                                            <a href="#" class="btn btn-success btn-small"
-                                               data-toggle="modal" data-target="#puchase-${purchaseInstance.purchaseNumber}">
-                                                <i class="icon-file-alt"></i> ${message(code: 'purchase.button.detail', default: 'Detail')}
-                                            </a>
-                                        </div>
-                                        <div id="puchase-${purchaseInstance.purchaseNumber}" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                    <sec:ifAllGranted roles="ROLE_USER">
+                                        <g:if test="${purchaseInstance.datePay}">
+                                            <div class="purchase-button">
+                                                <a href="#" class="btn btn-success btn-small"
+                                                   data-toggle="modal" data-target="#puchase-${purchaseInstance.purchaseNumber}">
+                                                    <i class="icon-file-alt"></i> ${message(code: 'purchase.button.detail', default: 'Detail')}
+                                                </a>
+                                            </div>
+                                            <div id="puchase-${purchaseInstance.purchaseNumber}" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 
-                                            <div class="modal-header">
-                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                                <h4 id="myModalLabel"><i class="icon-white icon-file-alt"></i> <g:message code="purchase.title.order.info"/></h4>
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                    <h4 id="myModalLabel"><i class="icon-white icon-file-alt"></i> <g:message code="purchase.title.order.info"/></h4>
+                                                </div>
+                                                <div class="purchase-detail-frame">
+                                                    <g:render template="purchaseDetail" model="[purchaseInstance: purchaseInstance]"/>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+                                                </div>
                                             </div>
-                                            <div class="purchase-detail-frame">
-                                                <g:render template="purchaseDetail" model="[purchaseInstance: purchaseInstance]"/>
+                                        </g:if>
+                                        <g:else>
+                                            <div class="center">
+                                                <div class="purchase-button">
+                                                    <form method="POST" action="/purchase/delete">
+                                                        <input type="hidden" name="id" value="${purchaseInstance?.id}"/>
+                                                        <button type="submit" class="btn btn-small"
+                                                                onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');">
+                                                            <i class="icon-white icon-trash"></i> ${message(code: 'purchase.button.cacel', default: 'Cancel')}
+                                                        </button>
+                                                        <g:link class="btn btn-primary btn-small" action="show" id="${purchaseInstance?.id}">
+                                                            ${message(code: 'purchase.button.pay', default: 'Pay')} <i class="icon-white icon-double-angle-right"></i>
+                                                        </g:link>
+                                                    </form>
+                                                </div>
                                             </div>
-                                            <div class="modal-footer">
-                                                <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-                                            </div>
-                                        </div>
-                                    </g:if>
-                                    <g:else>
+                                        </g:else>
+                                    </sec:ifAllGranted>
+                                    <sec:ifAllGranted roles="ROLE_ADMIN">
                                         <div class="center">
                                             <div class="purchase-button">
                                                 <form method="POST" action="/purchase/delete">
                                                     <input type="hidden" name="id" value="${purchaseInstance?.id}"/>
-                                                    <button type="submit" class="btn btn-small"
+                                                    <button type="submit" class="btn btn-danger btn-small"
                                                             onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');">
-                                                        <i class="icon-white icon-trash"></i> ${message(code: 'purchase.button.cacel', default: 'Cancel')}
+                                                        <i class="icon-white icon-trash"></i> ${message(code: 'default.button.delete.label', default: 'Delete')}
                                                     </button>
-                                                    <g:link class="btn btn-primary btn-small" action="show" id="${purchaseInstance?.id}">
-                                                        ${message(code: 'purchase.button.pay', default: 'Pay')} <i class="icon-white icon-double-angle-right"></i>
-                                                    </g:link>
                                                 </form>
                                             </div>
                                         </div>
-                                    </g:else>
+                                    </sec:ifAllGranted>
                                 </td>
                             </tr>
                         </g:each>
@@ -86,9 +101,11 @@
                         <pkg:paginate total="${purchaseInstanceTotal}" params="${flash}" />
                     </div>
                     </g:if><g:else>
+                        <sec:ifAllGranted roles="ROLE_USER">
                         <div class="inner-margin-left">
                             <g:message code="purchase.text.no.purchase.yet" args="['/product/list']"/>
                         </div>
+                        </sec:ifAllGranted>
                     </g:else>
 
                 </div>

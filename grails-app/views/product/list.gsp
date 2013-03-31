@@ -6,6 +6,11 @@
 		<title><g:message code="default.list.label" args="[entityName]" /></title>
 	</head>
 	<body>
-        <g:render template="listBody"/>
+        <sec:ifAllGranted roles="ROLE_USER">
+            <g:render template="listBody"/>
+        </sec:ifAllGranted>
+        <sec:ifAllGranted roles="ROLE_ADMIN">
+            <g:render template="listBodyAdmin"/>
+        </sec:ifAllGranted>
 	</body>
 </html>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- DBUnit flat XML file -->
+
+<!-- Real INIT data -->
+
+<dataset>
+    <giftcard
+            id="1"
+            owner_id="1"
+            code="GIFT1"
+            product_id="1"
+            status="Available"
+            version="1"
+            />
+    <giftcard
+            id="2"
+            owner_id="1"
+            code="GIFT2"
+            product_id="2"
+            status="Available"
+            version="1"
+            />
+</dataset>

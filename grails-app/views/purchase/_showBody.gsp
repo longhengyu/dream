@@ -56,9 +56,6 @@
                                             <i class="icon-white icon-list-alt"></i> ${message(code: 'purchase.button.back.to.list', default: 'Back To List')}
                                         </g:link>
                                     </form>
-
-
-
                                 </div>
                             </div>
                         </g:if>

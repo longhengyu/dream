@@ -2,6 +2,7 @@ package com.pkgplan.auth
 
 import com.pkgplan.dream.Profile
 import com.pkgplan.dream.Purchase
+import com.pkgplan.dream.Server
 
 class User {
 
@@ -22,6 +23,7 @@ class User {
 	boolean passwordExpired
 
     Profile profile
+    static hasOne = [server: Server]
 
     static hasMany = [purchases: Purchase]
 
@@ -31,6 +33,7 @@ class User {
         email unique: false
         profile(nullable: true)
         purchases(nullable: true)
+        server(nullable: true)
 	}
 
 	static mapping = {
