@@ -1,58 +1,63 @@
-
-<%@ page import="com.pkgplan.dream.Server" %>
+<%@ page import="com.pkgplan.dream.Giftcard" %>
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta name="layout" content="pkglayout">
-		<g:set var="entityName" value="${message(code: 'server.label', default: 'Server')}" />
-		<title><g:message code="default.list.label" args="[entityName]" /></title>
-	</head>
-	<body>
-		<a href="#list-server" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-		<div class="nav" role="navigation">
-			<ul>
-				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
-			</ul>
-		</div>
-		<div id="list-server" class="content scaffold-list" role="main">
-			<h1><g:message code="default.list.label" args="[entityName]" /></h1>
-			<g:if test="${flash.message}">
-			<div class="message" role="status">${flash.message}</div>
-			</g:if>
-			<table>
-				<thead>
-					<tr>
-					
-						<g:sortableColumn property="hostname" title="${message(code: 'server.hostname.label', default: 'Hostname')}" />
-					
-						<g:sortableColumn property="ipAddr" title="${message(code: 'server.ipAddr.label', default: 'Ip Addr')}" />
-					
-						<g:sortableColumn property="capacity" title="${message(code: 'server.capacity.label', default: 'Capacity')}" />
-					
-						<g:sortableColumn property="dateCreated" title="${message(code: 'server.dateCreated.label', default: 'Date Created')}" />
-					
-					</tr>
-				</thead>
-				<tbody>
-				<g:each in="${serverInstanceList}" status="i" var="serverInstance">
-					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-					
-						<td><g:link action="show" id="${serverInstance.id}">${fieldValue(bean: serverInstance, field: "hostname")}</g:link></td>
-					
-						<td>${fieldValue(bean: serverInstance, field: "ipAddr")}</td>
-					
-						<td>${fieldValue(bean: serverInstance, field: "capacity")}</td>
-					
-						<td><g:formatDate date="${serverInstance.dateCreated}" /></td>
-					
-					</tr>
-				</g:each>
-				</tbody>
-			</table>
-			<div class="pagination">
-				<g:paginate total="${serverInstanceTotal}" />
-			</div>
-		</div>
-	</body>
+<head>
+    <meta name="layout" content="pkglayout">
+    <g:set var="entityName" value="${message(code: 'server.label', default: 'Server')}" />
+    <title><g:message code="default.list.label" args="[entityName]" /></title>
+</head>
+<body>
+<div class="row-fluid">
+    <div class="span12 box">
+        <div class="box-head">
+            <h3><i class="icon-white icon-sitemap"></i> <g:message code="default.list.label" args="[entityName]" /></h3>
+        </div>
+        <div class="box-content">
+            <div class="content-inner">
+                <div class="content-settings">
+                    <g:if test="${serverInstanceList.size() > 0}">
+
+                        <table class="table table-bordered table-striped" id="server-list">
+                            <thead>
+                            <tr>
+                                <th>${message(code: 'server.hostname.label', default: 'Hostname')}</th>
+                                <th>${message(code: 'server.ipAddr.label', default: 'Ip Addr')}</th>
+                                <th>${message(code: 'server.capacity.label', default: 'Capacity')}</th>
+                                <th>${message(code: 'server.dateCreated.label', default: 'Date Created')}</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <g:each in="${serverInstanceList}" status="i" var="serverInstance">
+                                <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
+                                    <td><g:link action="show" id="${serverInstance.id}">${fieldValue(bean: serverInstance, field: "hostname")}</g:link></td>
+                                    <td>${fieldValue(bean: serverInstance, field: "ipAddr")}</td>
+
+                                    <td>${fieldValue(bean: serverInstance, field: "capacity")}</td>
+
+                                    <td><g:formatDate date="${serverInstance.dateCreated}" /></td>
+                                </tr>
+                            </g:each>
+
+                            </tbody>
+                        </table>
+
+                        <div class="pagination text-center">
+                            <pkg:paginate total="${serverInstanceTotal}" params="${flash}" />
+                        </div>
+                    </g:if>
+
+                    <div class="form-horizontal">
+                        <div class="form-actions text-right">
+                            <form method="POST" action="/server/create">
+                                <g:link class="btn btn-primary" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
 </html>
