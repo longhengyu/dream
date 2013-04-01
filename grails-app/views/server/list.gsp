@@ -32,7 +32,7 @@
                                     <td><g:link action="show" id="${serverInstance.id}">${fieldValue(bean: serverInstance, field: "hostname")}</g:link></td>
                                     <td>${fieldValue(bean: serverInstance, field: "ipAddr")}</td>
 
-                                    <td>${fieldValue(bean: serverInstance, field: "capacity")}</td>
+                                    <td><g:link controller="user" action="list" params="[sid: serverInstance.id]">${serverInstance.users.size()}</g:link> / ${fieldValue(bean: serverInstance, field: "capacity")}</td>
 
                                     <td><g:formatDate date="${serverInstance.dateCreated}" /></td>
                                 </tr>

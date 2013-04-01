@@ -2,6 +2,8 @@ package com.pkgplan.auth
 
 import org.springframework.dao.DataIntegrityViolationException
 import grails.plugins.springsecurity.Secured
+import com.pkgplan.dream.Giftcard
+import com.pkgplan.dream.Server
 
 @Secured(['ROLE_ADMIN','ROLE_USER'])
 class UserController {
@@ -20,7 +22,22 @@ class UserController {
     @Secured(['ROLE_ADMIN'])
     def list(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        [userInstanceList: User.list(params), userInstanceTotal: User.count()]
+
+        def query = {}
+        def criteria = User.createCriteria()
+        def results
+        if (params.sid) {
+            def serverInstance = Server.findById(params.sid)
+            query = {
+                and {
+                    eq("server", serverInstance)
+                }
+            }
+        }
+        results = criteria.list(params, query)
+
+        //TODO user count might be problem. check the detail of pagination.
+        [userInstanceList: results, userInstanceTotal: User.count()]
     }
 
     @Secured(['ROLE_ADMIN'])
