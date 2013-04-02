@@ -9,9 +9,8 @@ class HomeController {
     EmailValidator emailValidator = EmailValidator.getInstance()
 
     def index() {
-        if(request.xhr) {
-            render(view: "_body")
-            return
+        if (userService.isAdminLoggedIn()) {
+            redirect(action: 'list', controller: 'user')
         }
     }
 

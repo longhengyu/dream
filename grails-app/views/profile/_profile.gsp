@@ -18,18 +18,43 @@
                     <span class="pull-right"><g:fieldValue bean="${profileInstance}" field="gender"/></span>
                 </div>
             </g:if>
+            <g:if test="${profileInstance?.age}">
+                <div class="title display-table">
+                    <p><g:message code="user.profile.label.age" default="Age" /></p>
+                    <span class="pull-right"><g:fieldValue bean="${profileInstance}" field="age"/></span>
+                </div>
+            </g:if>
             <g:if test="${profileInstance?.country}">
                 <div class="title display-table">
                     <p><g:message code="user.profile.label.country" default="Country" /></p>
                     <span class="pull-right">${country(code: fieldValue(bean: profileInstance, field: "country"))}</span>
                 </div>
             </g:if>
-            <g:if test="${profileInstance?.timezone}">
+            <g:if test="${profileInstance?.education}">
                 <div class="title display-table">
-                    <p><g:message code="user.profile.label.timezone" default="Timezone" /></p>
-                    <span class="pull-right">${profileInstance.timezone.displayName}</span>
+                    <p><g:message code="user.profile.label.education" default="Education" /></p>
+                    <span class="pull-right"><g:fieldValue bean="${profileInstance}" field="education"/></span>
                 </div>
             </g:if>
+            <g:if test="${profileInstance?.occupation}">
+                <div class="title display-table">
+                    <p><g:message code="user.profile.label.occupation" default="Occupation" /></p>
+                    <span class="pull-right"><g:fieldValue bean="${profileInstance}" field="occupation"/></span>
+                </div>
+            </g:if>
+            <g:if test="${profileInstance?.os}">
+                <div class="title display-table">
+                    <p><g:message code="user.profile.label.os" default="Operation System" /></p>
+                    <span class="pull-right"><g:fieldValue bean="${profileInstance}" field="os"/></span>
+                </div>
+            </g:if>
+            <g:if test="${profileInstance?.os}">
+                <div class="title display-table">
+                    <p><g:message code="user.profile.label.purpose" default="Purpose of Using VPN" /></p>
+                    <span class="pull-right"><g:fieldValue bean="${profileInstance}" field="purpose"/></span>
+                </div>
+            </g:if>
+
         </div>
         <g:form class="form-horizontal">
             <div class="form-actions">

@@ -49,13 +49,13 @@
             <g:if test="${userInstance?.dateCreated}">
                 <div class="title display-table">
                     <p><g:message code="user.account.label.register.time" default="Date Created" /></p>
-                    <span class="pull-right"><g:formatDate date="${userInstance?.dateCreated}" /></span>
+                    <span class="pull-right"><g:formatDate date="${userInstance?.dateCreated}" locale="${locale}"/></span>
                 </div>
             </g:if>
             <g:if test="${userInstance?.dateExpired}">
                 <div class="title display-table">
                     <p><g:message code="user.account.label.expire.time" default="Date Expired" /></p>
-                    <span class="pull-right"><g:formatDate date="${userInstance?.dateExpired}" /></span>
+                    <span class="pull-right"><g:formatDate date="${userInstance?.dateExpired}" locale="${locale}"/></span>
                 </div>
             </g:if>
             <g:if test="${userInstance?.passwordExpired}">

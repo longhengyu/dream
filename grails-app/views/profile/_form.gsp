@@ -25,6 +25,12 @@
                       value="${profileInstance?.gender}" valueMessagePrefix="profile.gender" noSelection="['': '-Please Choose-']"/>
         </div>
     </div>
+    <div class="control-group ${hasErrors(bean:profileInstance,field:'age', 'error')}">
+        <label class="control-label"><g:message code="user.profile.label.age"/></label>
+        <div class="controls">
+            <g:field name="age" type="number" min="1" class="input-xlarge" value="${profileInstance?.age}"/>
+        </div>
+    </div>
     <div class="control-group ${hasErrors(bean:profileInstance,field:'country', 'error')}">
         <label class="control-label"><g:message code="user.profile.label.country"/></label>
         <div class="controls">
@@ -32,10 +38,32 @@
                              noSelection="['':'-Choose your country-']"/>
         </div>
     </div>
-    <div class="control-group ${hasErrors(bean:profileInstance,field:'timezone', 'error')}">
-        <label class="control-label"><g:message code="user.profile.label.timezone"/></label>
+    <div class="control-group ${hasErrors(bean:profileInstance,field:'education', 'error')}">
+        <label class="control-label"><g:message code="user.profile.label.education"/></label>
         <div class="controls">
-            <pkg:timeZoneSelect class="limit-width-select" name="timezone" value="${profileInstance?.timezone}" />
+            <g:select name="education" from="${profileInstance.constraints.education.inList}"
+                      value="${profileInstance?.education}" valueMessagePrefix="profile.education" noSelection="['': '-Please Choose-']"/>
+        </div>
+    </div>
+    <div class="control-group ${hasErrors(bean:profileInstance,field:'occupation', 'error')}">
+        <label class="control-label"><g:message code="user.profile.label.occupation"/></label>
+        <div class="controls">
+            <g:select name="occupation" from="${profileInstance.constraints.occupation.inList}"
+                      value="${profileInstance?.occupation}" valueMessagePrefix="profile.occupation" noSelection="['': '-Please Choose-']"/>
+        </div>
+    </div>
+    <div class="control-group ${hasErrors(bean:profileInstance,field:'os', 'error')}">
+        <label class="control-label"><g:message code="user.profile.label.os"/></label>
+        <div class="controls">
+            <g:select name="os" from="${profileInstance.constraints.os.inList}"
+                      value="${profileInstance?.os}" valueMessagePrefix="profile.os" noSelection="['': '-Please Choose-']"/>
+        </div>
+    </div>
+    <div class="control-group ${hasErrors(bean:profileInstance,field:'purpose', 'error')}">
+        <label class="control-label"><g:message code="user.profile.label.purpose"/></label>
+        <div class="controls">
+            <g:select name="purpose" from="${profileInstance.constraints.purpose.inList}"
+                      value="${profileInstance?.purpose}" valueMessagePrefix="profile.purpose" noSelection="['': '-Please Choose-']"/>
         </div>
     </div>
     <div class="form-actions">
