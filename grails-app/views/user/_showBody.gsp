@@ -14,6 +14,7 @@
                         <div class="tab-content">
                             <g:render template="tabAccount"/>
                             <g:render template="tabProfile"/>
+
                         </div>
                     </div>
                 </div>
