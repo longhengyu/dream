@@ -64,7 +64,9 @@ class DateTimeTagLib extends FormatTagLib {
         else {
             //timeZone = TimeZone.getDefault()
             def tz = g.cookie(name: 'timezone')
-            timeZone = TimeZone.getTimeZone('GMT' + (Integer.parseInt(tz) > 0 ? "+" + tz : tz))
+            if (tz) {
+                timeZone = TimeZone.getTimeZone('GMT' + (Integer.parseInt(tz) > 0 ? "+" + tz : tz))
+            }
         }
 
         def dateFormat
