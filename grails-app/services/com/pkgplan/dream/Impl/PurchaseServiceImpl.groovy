@@ -11,6 +11,8 @@ import org.springframework.stereotype.Service
 
 import java.text.SimpleDateFormat
 import javax.annotation.Resource
+import com.stripe.model.Charge
+import com.stripe.exception.CardException
 
 /**
  * User: longhengyu
@@ -24,6 +26,8 @@ class PurchaseServiceImpl implements PurchaseService {
 
     @Resource
     ServerService serverService
+
+    def log
 
     Purchase proceedPurchase(Long purchaseId, String paymentMethodId) throws InstanceNotFoundException {
 
@@ -60,4 +64,25 @@ class PurchaseServiceImpl implements PurchaseService {
         purchaseInstance.save()
         return purchaseInstance
     }
+
+    boolean proceedCreditCard(String stripeToken, Double amount) {
+            def amountInCents = (amount * 100) as Integer
+
+            def chargeParams = [
+                    'amount': amountInCents,
+                    'currency': 'usd',
+                    'card': stripeToken,
+                    'description': 'customer@sample.org'
+            ]
+
+            def status
+            try {
+                Charge.create(chargeParams)
+                return true;
+            } catch(CardException) {
+                // TODO log the exception
+            }
+            return false
+    }
+
 }

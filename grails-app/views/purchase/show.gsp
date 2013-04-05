@@ -8,6 +8,7 @@
     <head>
         <meta name="layout" content="pkglayout">
         <g:set var="entityName" value="${message(code: 'purchase.label', default: 'Purchase')}" />
+        <r:require module="application"/>
         <title><g:message code="purchase.title.purchase.history"/></title>
     </head>
     <body>

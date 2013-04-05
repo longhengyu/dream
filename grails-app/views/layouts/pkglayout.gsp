@@ -6,6 +6,7 @@
         <title><g:layoutTitle default="Dream VPN" /></title>
         <g:render template="/layouts/resource"/>
         <g:layoutHead />
+        <r:layoutResources />
     </head>
     <body>
 
@@ -16,6 +17,7 @@
             <hr>
 
             <g:render template="/common/footer"/>
+
 
         </div><!--/.fluid-container-->
     </body>

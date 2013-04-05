@@ -8,6 +8,7 @@ import org.grails.paypal.Payment
 import org.springframework.dao.DataIntegrityViolationException
 
 import javax.annotation.Resource
+import com.stripe.model.Charge
 
 @Secured(['ROLE_ADMIN', 'ROLE_USER'])
 class PurchaseController {
@@ -95,8 +96,7 @@ class PurchaseController {
         }
 
         //it must be usd
-        BigDecimal usd = productService.convertPriceCNYtoUSD(purchaseInstance.getProduct().price)
-        [purchaseInstance: purchaseInstance, userInstance: userService.currentUser(), usdPrice: usd]
+        [purchaseInstance: purchaseInstance, userInstance: userService.currentUser(), usdPrice: productService.convertPriceCNYtoUSD(purchaseInstance.getProduct().price)]
     }
 
     def edit(Long id) {
@@ -134,8 +134,8 @@ class PurchaseController {
         def paymentId = params.paymentMethod
         def purchaseId = params.id
         def pageRedirect = false
+        def purchaseInstance = Purchase.findById(purchaseId)
         if (paymentId == PAYMENT_METHOD_ID_GIFTCARD) {
-            def purchaseInstance = Purchase.findById(purchaseId)
             if (giftcardService.processGiftcardIfValid(purchaseInstance, purchaseInstance.product, params.code)) {
                 log.info("giftcard proceeded, code: " + params.code);
                 pageRedirect = true
@@ -145,10 +145,11 @@ class PurchaseController {
                 return
             }
         } else if (paymentId == PAYMENT_METHOD_ID_CREDITCARD) {
-            def purchaseInstance = Purchase.findById(purchaseId)
-            flash.error = 'not supported yet'
-            render(view: "show", model: [purchaseInstance: purchaseInstance, userInstance: purchaseInstance.owner])
-            return
+            if (!purchaseService.proceedCreditCard(params.stripeToken, Double.valueOf(params.amount))) {
+                flash.error_ajax = message(code: 'creditcard.not.correct')
+                render(view: "_creditcardForm", model: [purchaseInstance: purchaseInstance, usdPrice: productService.convertPriceCNYtoUSD(purchaseInstance.getProduct().price)])
+                return
+            }
         } else {
             // pay with paypal
             Payment payment = Payment.findByTransactionId(params.transactionId ?: '')
@@ -162,10 +163,11 @@ class PurchaseController {
             purchaseId = Long.valueOf(params.item_number)
         }
         log.info("execute purchase, purchase id: ${purchaseId}")
+        pageRedirect = true
         try {
-            Purchase purchaseInstance = purchaseService.proceedPurchase(purchaseId.toLong(), paymentId)
+            Purchase updatedPurchaseInstance = purchaseService.proceedPurchase(purchaseId.toLong(), paymentId)
             flash.message = message(code: 'purchase.message.purchase.succeed')
-            render(view: "show", model: [purchaseInstance: purchaseInstance, userInstance: purchaseInstance.owner, pageRedirect: pageRedirect])
+            render(view: "show", model: [purchaseInstance: updatedPurchaseInstance, userInstance: updatedPurchaseInstance.owner, pageRedirect: pageRedirect])
         } catch (InstanceNotFoundException e) {
             flash.message = message(code: 'purchase.message.purchase.not.found')
             redirect(action: "list")

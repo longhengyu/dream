@@ -394,16 +394,28 @@ body {
     padding-bottom: 0px;
 }
 
-#use-giftcard-body form {
+.popup-title form {
     padding-top: 20px;
 }
 
-#use-giftcard-body h3, #use-giftcard-body .alert {
+.popup-title h3, .popup-title .alert {
     text-align: left;
 }
 
 .form-like {
     margin-bottom: 20px;
+}
+
+#payment-form .controls {
+    text-align: left;
+}
+
+.card-expiry-month {
+    width:55px;
+}
+
+.card-expiry-year {
+    width: 78px;
 }
 
 

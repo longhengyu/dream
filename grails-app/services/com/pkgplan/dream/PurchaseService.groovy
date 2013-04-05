@@ -8,4 +8,7 @@ import com.pkgplan.dream.exception.InstanceNotFoundException
  */
 public interface PurchaseService {
     Purchase proceedPurchase(Long purchaseId, String paymentMethodId) throws InstanceNotFoundException
+    boolean proceedCreditCard(String stripeToken, Double amount)
 }
+
+

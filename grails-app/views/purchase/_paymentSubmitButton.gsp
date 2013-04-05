@@ -31,13 +31,9 @@
         <g:elseif test="${paymentId == 2}">
             <a href="#use-giftcard-Modal" data-toggle="modal" data-target="#use-giftcard-Modal" type="submit" class="form-like btn btn-${paymentId}">${message(code: "purchase.button.pay")}</a>
         </g:elseif>
-        <g:else>
-            <g:form action="buy">
-                <g:hiddenField name="id" value="${purchaseInstance?.id}"/>
-                <g:hiddenField name="paymentMethod" value="${paymentId}"/>
-                <button type="submit" class="btn btn-${paymentId}">${message(code: "purchase.button.pay")}</button>
-            </g:form>
-        </g:else>
+        <g:elseif test="${paymentId == 0}">
+            <a href="#use-stripe-Modal" data-toggle="modal" data-target="#use-stripe-Modal" type="submit" class="form-like btn btn-${paymentId}">${message(code: "purchase.button.pay")}</a>
+        </g:elseif>
     </div>
 </div>
 
@@ -45,4 +41,26 @@
 <div id="use-giftcard-Modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <g:render template="/giftcard/use"/>
 </div>
+</g:if>
+
+
+<g:if test="${paymentId == 0}">
+<div id="use-stripe-Modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <g:render template="creditcardForm"/>
+</div>
+<script type="text/javascript">
+    function getCardErrorMessageFromCode(errorCode) {
+        if (errorCode == 'invalid_number') {
+            return "${message(code: 'creditcard.error.invalid_number')}"
+        } else if (errorCode == 'invalid_cvc') {
+            return "${message(code: 'creditcard.error.invalid_cvc')}"
+        } else if (errorCode == 'invalid_expiry_month') {
+            return "${message(code: 'creditcard.error.invalid_expiry_month')}"
+        } else if (errorCode == 'invalid_expiry_year') {
+            return "${message(code: 'creditcard.error.invalid_expiry_year')}"
+        } else {
+            return "${message(code: 'creditcard.not.correct')}"
+        }
+    }
+</script>
 </g:if>

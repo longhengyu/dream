@@ -1,4 +1,4 @@
-<div class="modal-body" id="use-giftcard-body">
+<div class="modal-body popup-title" id="use-giftcard-body">
     <div class="row-fluid">
         <div class="well-white bottom20px">
             <div class="page-header">
