@@ -19,7 +19,6 @@
 <div class="fieldcontain ${hasErrors(bean: productInstance, field: 'description', 'error')} ">
 	<label for="description">
 		<g:message code="product.description.label" default="Description" />
-		
 	</label>
 	<g:textArea name="description" cols="40" rows="5" maxlength="1000" value="${productInstance?.description}"/>
 </div>
@@ -37,7 +36,7 @@
 		<g:message code="product.price.label" default="Price" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:field name="price" value="${fieldValue(bean: productInstance, field: 'price')}" required=""/>
+	<g:field name="price" value="${fieldValue(bean: productInstance, field: 'price')}" required="" type=""/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: productInstance, field: 'status', 'error')} required">
