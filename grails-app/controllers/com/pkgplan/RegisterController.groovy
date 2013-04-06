@@ -7,12 +7,46 @@ import grails.plugins.springsecurity.ui.ResetPasswordCommand
 
 import com.pkgplan.dream.UserService
 import javax.annotation.Resource
+import grails.plugins.springsecurity.ui.RegisterCommand
 
 class RegisterController extends grails.plugins.springsecurity.ui.RegisterController {
 
     @Resource
     UserService userService;
 
+    def register = { RegisterCommand command ->
+
+        if (command.hasErrors()) {
+            render view: 'index', model: [command: command]
+            return
+        }
+
+        String salt = saltSource instanceof NullSaltSource ? null : command.username
+        def user = lookupUserClass().newInstance(email: command.email, username: command.username,
+                accountLocked: true, enabled: true)
+
+        RegistrationCode registrationCode = springSecurityUiService.register(user, command.password, salt)
+        if (registrationCode == null || registrationCode.hasErrors()) {
+            // null means problem creating the user
+            flash.error = message(code: 'spring.security.ui.register.miscError')
+            flash.chainedParams = params
+            redirect action: 'index'
+            return
+        }
+
+        String url = generateLink('verifyRegistration', [t: registrationCode.token])
+
+        def conf = SpringSecurityUtils.securityConfig
+        def body = message(code: conf.ui.register.emailBody, args: [user.username, url])
+        mailService.sendMail {
+            to command.email
+            from conf.ui.register.emailFrom
+            subject message(code: conf.ui.register.emailSubject)
+            html body.toString()
+        }
+
+        render view: 'index', model: [emailSent: true]
+    }
 
     def forgotPassword = {
 
@@ -48,14 +82,11 @@ class RegisterController extends grails.plugins.springsecurity.ui.RegisterContro
         String url = generateLink('resetPassword', [t: registrationCode.token])
 
         def conf = SpringSecurityUtils.securityConfig
-        def body = conf.ui.forgotPassword.emailBody
-        if (body.contains('$')) {
-            body = evaluate(body, [user: user, url: url])
-        }
+        def body = message(code: conf.ui.forgotPassword.emailBody, args: [user.username, url])
         mailService.sendMail {
             to user.email
             from conf.ui.forgotPassword.emailFrom
-            subject conf.ui.forgotPassword.emailSubject
+            subject message(code: conf.ui.forgotPassword.emailSubject)
             html body.toString()
         }
 

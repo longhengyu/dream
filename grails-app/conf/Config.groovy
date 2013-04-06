@@ -153,6 +153,11 @@ grails.plugins.springsecurity.successHandler.defaultTargetUrl = '/user/show'
 
 grails.plugins.springsecurity
 
+grails.plugins.springsecurity.ui.register.emailSubject = 'ui.register.email.subject'
+grails.plugins.springsecurity.ui.register.emailBody = 'ui.register.email.body'
+grails.plugins.springsecurity.ui.forgotPassword.emailBody = 'ui.forgot.password.email.body'
+grails.plugins.springsecurity.ui.forgotPassword.emailSubject = 'ui.forgot.password.email.subject'
+
 // for heroku
 grails.plugin.databasesession.enabled = false
 

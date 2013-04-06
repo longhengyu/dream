@@ -8,7 +8,7 @@
         <h3><g:message code="password.reset.password.description"/>
         </h3>
 
-        <g:form action='${hasToken? "resetPassword":"resetPasswordWithoutToken"}' name='resetPasswordForm' autocomplete='off'>
+        <g:form action='resetPassword' name='resetPasswordForm' autocomplete='off'>
             <g:hiddenField name='t' value='${token}'/>
             <table class="hoverAble">
                 <s2ui:passwordFieldRow name='password' labelCode='login.label.password' bean="${command}"
