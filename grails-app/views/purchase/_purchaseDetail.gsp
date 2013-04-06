@@ -1,3 +1,5 @@
+<%@ page import="org.springframework.web.servlet.support.RequestContextUtils" %>
+<% def locale=RequestContextUtils.getLocale(request)%>
 <g:if test="${purchaseInstance?.dateCreated}">
     <div class="title display-table">
         <p><g:message code="purchase.label.create.date" default="Date Created" /></p>
@@ -22,7 +24,8 @@
     <p><g:message code="purchase.label.status" default="Status" /></p>
     <span class="pull-right">
         <g:if test="${purchaseInstance?.datePay}">
-            <g:message code="purchase.text.paid.at" args="[purchaseInstance?.datePay]"/>
+            <g:message code="purchase.text.paid.at" args="[formatDate(date:purchaseInstance?.datePay)]"/>
+
         </g:if><g:else>
         <span class="label label-important">
             <g:message code="purchase.text.not.paid.yet" default="Not Paid Yet" />

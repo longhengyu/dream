@@ -183,8 +183,12 @@ body {
 }
 
 .title.display-table p {
-    width: 175px;
+    width: 145px;
     text-align: right;
+}
+
+.inner-margin-left .title.display-table p {
+    width: 175px !important;
 }
 
 .inner-margin-left {
@@ -416,6 +420,10 @@ body {
 
 .card-expiry-year {
     width: 78px;
+}
+
+.price-creditcard {
+    margin-bottom: 10px !important;
 }
 
 

@@ -20,19 +20,28 @@
                 </div>
 
                 <stripe:script formName="payment-form"/>
+
                 <g:form class="form-horizontal" name="payment-form" url="[controller: 'purchase', action: 'buy']">
                     <g:hiddenField name="id" value="${purchaseInstance?.id}"/>
                     <g:hiddenField name="paymentMethod" value="0"/>
                     <g:hiddenField name="cardErrorCode" id="cardErrorCode" value=""/>
                     <g:hiddenField name="amount" id="amount" value="${usdPrice}"/>
-                    <div class="control-group">
+
+                    <div class="control-group price-creditcard">
                         <label class="control-label"><g:message code="creditcard.label.amount"/></label>
                         <div class="controls">
                             <div class="input-prepend">
                                 <span class="add-on">$</span>
-                                <input class="span4 disabled" disabled="" type="text" size="20" autocomplete="off" value="${usdPrice}"/>
+                                <input class="span4 disabled" disabled="" type="text" autocomplete="off" value="${usdPrice}"/>
                             </div>
-
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label"></label>
+                        <div class="controls">
+                            <span class="label label-warning">
+                                <g:message code="creditcard.description.use.usd"/>
+                            </span>
                         </div>
                     </div>
                     <div class="control-group">

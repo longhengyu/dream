@@ -1,5 +1,19 @@
 <g:if test="${pageRedirect == true}">
-    <script>window.location = '/purchase/show/${purchaseInstance.id}'</script>
+    <div class="modal-body popup-title" id="use-stripe-body">
+        <div class="row-fluid">
+            <div class="well-white bottom20px">
+                <div class="page-header">
+                    <h3><g:message code="creditcard.use.title"/></h3>
+                </div>
+                <div class="padding20px form">
+                    <div class="alert alert-success" >
+                        <g:message code="purchase.success.redirect.discription"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>setTimeout(function(){window.location = '/purchase/show/${purchaseInstance.id}'}, 3000)</script>
 </g:if>
 <g:else>
     <%@ page import="com.pkgplan.dream.Purchase" %>
