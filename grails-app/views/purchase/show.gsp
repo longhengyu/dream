@@ -3,7 +3,7 @@
         <div class="row-fluid">
             <div class="well-white bottom20px">
                 <div class="page-header">
-                    <h3><g:message code="creditcard.use.title"/></h3>
+                    <h3><g:message code="purchase.success.title"/></h3>
                 </div>
                 <div class="padding20px form">
                     <div class="alert alert-success" >
