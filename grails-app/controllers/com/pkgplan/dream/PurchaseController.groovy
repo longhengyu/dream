@@ -172,22 +172,28 @@ class PurchaseController {
         try {
             Purchase updatedPurchaseInstance = purchaseService.proceedPurchase(purchaseId.toLong(), paymentId)
             // send mail
-            String url = createLink(controller: 'home', action: 'contact', absolute: 'true')
-            def conf = SpringSecurityUtils.securityConfig
-            def body = message(code: 'ui.purchase.mail.body', args: [purchaseInstance.owner.username,
-                    purchaseInstance.purchaseNumber,
-                    message(code: "product.info.name.${purchaseInstance.product.code}"),
-                    message(code: "payment.method.name.${purchaseInstance.paymentMethod}"),
-                    formatDate(date: purchaseInstance.datePay),
-                    purchaseInstance.owner.server.ipAddr,
-                    formatDate(date: purchaseInstance.owner.dateExpired),
-                    url])
-            mailService.sendMail {
-                to purchaseInstance.owner.email
-                from conf.ui.forgotPassword.emailFrom
-                subject message(code: 'ui.purchase.mail.subject')
-                html body.toString()
+            try {
+                String url = createLink(controller: 'home', action: 'contact', absolute: 'true')
+
+                def conf = SpringSecurityUtils.securityConfig
+                def body = message(code: 'ui.purchase.mail.body', args: [updatedPurchaseInstance.owner.username,
+                        updatedPurchaseInstance.purchaseNumber,
+                        message(code: "product.info.name.${updatedPurchaseInstance.product.code}"),
+                        message(code: "payment.method.name.${updatedPurchaseInstance.paymentMethod}"),
+                        formatDate(date: updatedPurchaseInstance.datePay),
+                        updatedPurchaseInstance.owner.server.ipAddr,
+                        formatDate(date: updatedPurchaseInstance.owner.dateExpired),
+                        url])
+                mailService.sendMail {
+                    to updatedPurchaseInstance.owner.email
+                    from conf.ui.forgotPassword.emailFrom
+                    subject message(code: 'ui.purchase.mail.subject')
+                    html body.toString()
+                }
+            }catch (Exception e) {
+                log.error("Send mail error.")
             }
+
             flash.message = message(code: 'purchase.message.purchase.succeed')
             render(view: "show", model: [purchaseInstance: updatedPurchaseInstance, userInstance: updatedPurchaseInstance.owner, pageRedirect: pageRedirect])
         } catch (InstanceNotFoundException e) {
