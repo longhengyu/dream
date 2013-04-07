@@ -22,8 +22,8 @@ class ServerServiceImpl implements ServerService{
         List<Server> serverList = Server.getAll();
         Collections.sort(serverList, new Comparator<Server>(){
             int compare(Server server1, Server server2) {
-                Set<User> usersS1 = server1.getUsers() == null ? new HashSet<>(): server1.getUsers();
-                Set<User> usersS2 = server2.getUsers() == null ? new HashSet<>():server2.getUsers();
+                Set<User> usersS1 = server1.users?: new HashSet<>();
+                Set<User> usersS2 = server2.users?: new HashSet<>();
 
                 //the same ip address means the same server
                 if (server1.ipAddr.equals(server2.ipAddr)) {
