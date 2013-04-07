@@ -74,7 +74,7 @@
                         </div>
                     </div>
                 </g:form>
-                <script src="${resource(dir:'js',file:'stripe.js')}"></script>
+
             </div>
         </div>
     </div>

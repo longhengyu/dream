@@ -20,5 +20,6 @@
 
 
         </div><!--/.fluid-container-->
+    <r:layoutResources />
     </body>
 </html>
