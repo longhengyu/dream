@@ -9,6 +9,8 @@ import org.springframework.dao.DataIntegrityViolationException
 
 import javax.annotation.Resource
 import com.stripe.model.Charge
+import org.codehaus.groovy.grails.web.util.WebUtils
+import org.springframework.web.servlet.support.RequestContextUtils
 
 @Secured(['ROLE_ADMIN', 'ROLE_USER'])
 class PurchaseController {
@@ -20,6 +22,7 @@ class PurchaseController {
     def springSecurityService
     def purchaseService
     def giftcardService
+    def mailService
 
     static allowedMethods = [save: "POST", delete: "POST"]
 
@@ -168,6 +171,23 @@ class PurchaseController {
         }
         try {
             Purchase updatedPurchaseInstance = purchaseService.proceedPurchase(purchaseId.toLong(), paymentId)
+            // send mail
+            String url = createLink(controller: 'home', action: 'contact', absolute: 'true')
+            def conf = SpringSecurityUtils.securityConfig
+            def body = message(code: 'ui.purchase.mail.body', args: [purchaseInstance.owner.username,
+                    purchaseInstance.purchaseNumber,
+                    message(code: "product.info.name.${purchaseInstance.product.code}"),
+                    message(code: "payment.method.name.${purchaseInstance.paymentMethod}"),
+                    formatDate(date: purchaseInstance.datePay),
+                    purchaseInstance.owner.server.ipAddr,
+                    formatDate(date: purchaseInstance.owner.dateExpired),
+                    url])
+            mailService.sendMail {
+                to purchaseInstance.owner.email
+                from conf.ui.forgotPassword.emailFrom
+                subject message(code: 'ui.purchase.mail.subject')
+                html body.toString()
+            }
             flash.message = message(code: 'purchase.message.purchase.succeed')
             render(view: "show", model: [purchaseInstance: updatedPurchaseInstance, userInstance: updatedPurchaseInstance.owner, pageRedirect: pageRedirect])
         } catch (InstanceNotFoundException e) {
