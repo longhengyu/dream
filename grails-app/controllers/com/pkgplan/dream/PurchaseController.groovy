@@ -138,67 +138,74 @@ class PurchaseController {
         def pageRedirect = false
         def purchaseId = params.id?:Long.valueOf(params.item_number)
         def purchaseInstance = Purchase.findById(purchaseId)
-        if (paymentId == PAYMENT_METHOD_ID_GIFTCARD) {
-            if (giftcardService.processGiftcardIfValid(purchaseInstance, purchaseInstance.product, params.code)) {
-                log.info("giftcard proceeded, code: " + params.code + ", purchase number: " + purchaseInstance.id)
-                pageRedirect = true
+        if (purchaseInstance) {
+            log.info("Process purchase, payment method: ${paymentId}, purchase ID: ${purchaseInstance.id}, user: ${purchaseInstance.owner}")
+            if (paymentId == PAYMENT_METHOD_ID_GIFTCARD) {
+                if (giftcardService.processGiftcardIfValid(purchaseInstance, purchaseInstance.product, params.code)) {
+                    log.info("giftcard proceeded, code: " + params.code + ", purchase number: " + purchaseInstance.id)
+                    pageRedirect = true
+                } else {
+                    flash.error_ajax = message(code: 'giftcard.not.correct')
+                    render(view: "/giftcard/_use", model: [purchaseInstance: purchaseInstance])
+                    return
+                }
+            } else if (paymentId == PAYMENT_METHOD_ID_CREDITCARD) {
+                if (purchaseService.proceedCreditCard(params.stripeToken, Double.valueOf(params.amount))) {
+                    log.info("creditcard processed, purchase number: " + purchaseInstance.id)
+                    pageRedirect = true
+                } else {
+                    flash.error_ajax = message(code: 'creditcard.not.correct')
+                    render(view: "_creditcardForm", model: [purchaseInstance: purchaseInstance, usdPrice: productService.convertPriceCNYtoUSD(purchaseInstance.getProduct().price)])
+                    return
+                }
             } else {
-                flash.error_ajax = message(code: 'giftcard.not.correct')
-                render(view: "/giftcard/_use", model: [purchaseInstance: purchaseInstance])
-                return
+                // pay with paypal
+                Payment payment = Payment.findByTransactionId(params.transactionId ?: '')
+                if (payment == null || !Payment.COMPLETE.equals(payment.status)) {
+                    log.error("error payment!")
+                    //if it's wrong payment,redirect list view
+                    flash.message = message(code: 'purchase.message.payment.not.supported')
+                    redirect(action: "show")
+                    return
+                } else {
+                    log.info("paypal proceeded, purchase number: " + purchaseInstance.id);
+                }
             }
-        } else if (paymentId == PAYMENT_METHOD_ID_CREDITCARD) {
-            if (purchaseService.proceedCreditCard(params.stripeToken, Double.valueOf(params.amount))) {
-                log.info("creditcard processed, purchase number: " + purchaseInstance.id)
-                pageRedirect = true
-            } else {
-                flash.error_ajax = message(code: 'creditcard.not.correct')
-                render(view: "_creditcardForm", model: [purchaseInstance: purchaseInstance, usdPrice: productService.convertPriceCNYtoUSD(purchaseInstance.getProduct().price)])
-                return
+            try {
+                Purchase updatedPurchaseInstance = purchaseService.proceedPurchase(purchaseId.toLong(), paymentId)
+                // send mail
+                try {
+                    String url = createLink(controller: 'home', action: 'contact', absolute: 'true')
+
+                    def conf = SpringSecurityUtils.securityConfig
+                    def body = message(code: 'ui.purchase.mail.body', args: [updatedPurchaseInstance.owner.username,
+                            updatedPurchaseInstance.purchaseNumber,
+                            message(code: "product.info.name.${updatedPurchaseInstance.product.code}"),
+                            message(code: "payment.method.name.${updatedPurchaseInstance.paymentMethod}"),
+                            formatDate(date: updatedPurchaseInstance.datePay),
+                            updatedPurchaseInstance.owner.server.ipAddr,
+                            formatDate(date: updatedPurchaseInstance.owner.dateExpired),
+                            url])
+                    mailService.sendMail {
+                        to updatedPurchaseInstance.owner.email
+                        from conf.ui.forgotPassword.emailFrom
+                        subject message(code: 'ui.purchase.mail.subject')
+                        html body.toString()
+                    }
+                }catch (Exception e) {
+                    log.error("Send mail error.")
+                }
+
+                flash.message = message(code: 'purchase.message.purchase.succeed')
+                render(view: "show", model: [purchaseInstance: updatedPurchaseInstance, userInstance: updatedPurchaseInstance.owner, pageRedirect: pageRedirect])
+            } catch (InstanceNotFoundException e) {
+                flash.message = message(code: 'purchase.message.purchase.not.found')
+                redirect(action: "list")
             }
         } else {
-            // pay with paypal
-            Payment payment = Payment.findByTransactionId(params.transactionId ?: '')
-            if (payment == null || !Payment.COMPLETE.equals(payment.status)) {
-                log.error("error payment!")
-                //if it's wrong payment,redirect list view
-                flash.message = message(code: 'purchase.message.payment.not.supported')
-                redirect(action: "show")
-                return
-            } else {
-                log.info("paypal proceeded, purchase number: " + purchaseInstance.id);
-            }
-        }
-        try {
-            Purchase updatedPurchaseInstance = purchaseService.proceedPurchase(purchaseId.toLong(), paymentId)
-            // send mail
-            try {
-                String url = createLink(controller: 'home', action: 'contact', absolute: 'true')
-
-                def conf = SpringSecurityUtils.securityConfig
-                def body = message(code: 'ui.purchase.mail.body', args: [updatedPurchaseInstance.owner.username,
-                        updatedPurchaseInstance.purchaseNumber,
-                        message(code: "product.info.name.${updatedPurchaseInstance.product.code}"),
-                        message(code: "payment.method.name.${updatedPurchaseInstance.paymentMethod}"),
-                        formatDate(date: updatedPurchaseInstance.datePay),
-                        updatedPurchaseInstance.owner.server.ipAddr,
-                        formatDate(date: updatedPurchaseInstance.owner.dateExpired),
-                        url])
-                mailService.sendMail {
-                    to updatedPurchaseInstance.owner.email
-                    from conf.ui.forgotPassword.emailFrom
-                    subject message(code: 'ui.purchase.mail.subject')
-                    html body.toString()
-                }
-            }catch (Exception e) {
-                log.error("Send mail error.")
-            }
-
-            flash.message = message(code: 'purchase.message.purchase.succeed')
-            render(view: "show", model: [purchaseInstance: updatedPurchaseInstance, userInstance: updatedPurchaseInstance.owner, pageRedirect: pageRedirect])
-        } catch (InstanceNotFoundException e) {
             flash.message = message(code: 'purchase.message.purchase.not.found')
             redirect(action: "list")
         }
+
     }
 }
