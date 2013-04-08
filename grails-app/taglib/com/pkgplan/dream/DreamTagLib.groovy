@@ -4,7 +4,7 @@ import org.codehaus.groovy.grails.plugins.web.taglib.ApplicationTagLib
 
 
 class DreamTagLib extends ApplicationTagLib{
-    static returnObjectForTags = ['createLink', 'resource', 'createLinkTo', 'cookie', 'header', 'img', 'join', 'meta', 'set', 'gravatar']
+    static returnObjectForTags = ['createLink', 'resource', 'createLinkTo', 'cookie', 'header', 'img', 'join', 'meta', 'set', 'gravatar', 'loading']
     Closure resource = { attrs ->
         if (grailsApplication.config.dream.resourceRoot && attrs.dir) {
             // load the resource file from a static server.
@@ -23,5 +23,10 @@ class DreamTagLib extends ApplicationTagLib{
         def defimg = ""
         def gravatar_id = email?.toLowerCase().encodeAsMD5()
         return "<img src=\"https://secure.gravatar.com/avatar/${gravatar_id}\"/>"
+    }
+
+    Closure loading = { attrs ->
+        def loader = resource(dir: 'img', file: 'ajax-loader.gif')
+        return "<img src=\"${loader}\" class=\"ajax-loader hide\"/>"
     }
 }

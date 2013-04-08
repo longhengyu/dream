@@ -4,6 +4,12 @@ $(function (){
         interval: 3000
     })
 
+    $('.btn-loading').click(function() {
+        $(this).addClass('disabled');
+        if ($(this).next().is("img")) {
+            $(this).next().show();
+        }
+    });
 
     //By default, getTimezoneOffset returns the time zone offset in minutes
     timediff = (-1)*new Date().getTimezoneOffset()/60;

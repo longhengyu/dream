@@ -70,11 +70,10 @@
 
                     <div class="control-group">
                         <div class="controls">
-                            <button type="submit" class="btn btn-success"><g:message code="creditcard.button.submit.payment"/></button>
+                            <button type="submit" class="btn btn-success btn-loading"><g:message code="creditcard.button.submit.payment"/></button><g:loading/>
                         </div>
                     </div>
                 </g:form>
-
             </div>
         </div>
     </div>

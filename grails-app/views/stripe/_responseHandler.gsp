@@ -6,7 +6,11 @@
             // show the errors on the form
             jQuery(".payment-errors").html(getCardErrorMessageFromCode(response.error.code));
             jQuery("#payment-errors-precheck").show();
-            setTimeout(function(){$("#payment-errors-precheck").fadeOut(1000 );},2000)
+            setTimeout(function(){$("#payment-errors-precheck").fadeOut(1000 );},2000);
+            jQuery('.btn-loading').removeClass('disabled');
+            if (jQuery('.btn-loading').next().is("img")) {
+                jQuery('.btn-loading').next().hide();
+            }
         } else {
             var form$ = jQuery("#payment-form");
             // token contains id, last4, and card type
