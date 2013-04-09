@@ -430,6 +430,39 @@ body {
     margin-left: 4px;
 }
 
+#whatscvv i {
+    font-size: 14px;
+    margin-bottom: 0;
+}
+
+#whatscvv {
+    position: relative;
+}
+
+#whatscvv i:hover {
+    cursor: pointer;
+}
+
+#whatscvv img {
+    position: absolute;
+    max-width: 310px;
+    top: -174px;
+    right: -183px;
+}
+
+#whatscvv .popover {
+    box-shadow: none;
+    border: 0px;
+}
+
+#whatscvv .arrow {
+    display: none;
+}
+
+.card-cvc {
+    margin-right:8px;
+}
+
 
 
 

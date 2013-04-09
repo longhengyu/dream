@@ -54,6 +54,13 @@
                         <label class="control-label"><g:message code="creditcard.label.cvc"/></label>
                         <div class="controls">
                             <input type="text" class="card-cvc span2" autocomplete="off" size="4">
+                            <span id="whatscvv">${message(code:'purchase.creditcard.cvc.whats.this')} <i rel="popover" class="icon-info-sign"></i>
+                            </span>
+                            <script type="text/javascript">
+                                var imgurl = '${resource(dir: "img", file: "cvc.png")}';
+                                var img = '<img src="' + imgurl + '" />';
+                                $('#whatscvv i').popover({ content: img, html:true, trigger: 'hover'});
+                            </script>
                         </div>
                     </div>
                     <g:set var="months" value="${new java.text.DateFormatSymbols().shortMonths}"/>
