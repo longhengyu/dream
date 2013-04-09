@@ -45,7 +45,16 @@ class RegisterController extends grails.plugins.springsecurity.ui.RegisterContro
             html body.toString()
         }
 
-        render view: 'index', model: [emailSent: true]
+        // get the email link
+        def checkMailLink
+        String mailDomain = command.email.split("@")[1]
+        for ( e in grailsApplication.config.dream.mail.checkYourMailLink) {
+            if (e.key.equals(mailDomain)) {
+                checkMailLink = e.value
+            }
+        }
+
+        render view: 'index', model: [emailSent: true, checkMailLink: checkMailLink]
     }
 
     def forgotPassword = {

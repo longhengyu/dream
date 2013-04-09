@@ -13,7 +13,13 @@
 
         <div class="padding20px form">
             <div class="alert alert-success">
-                <p><g:message code='user.register.message.mail.sent'/>
+                <p><g:message code='user.register.message.mail.sent'/><!--
+                    --><g:if test="${checkMailLink}"><!--
+                        -->&nbsp;<a href="${checkMailLink}" target="_blank"><g:message code='user.register.message.go.to.mail'/></a>&nbsp;<!--
+                    --></g:if><g:else><!--
+                        --><g:message code='user.register.message.go.to.mail'/><!--
+                    --></g:else><!--
+                    --><g:message code='user.register.message.mail.sent.end'/>
                 </p>
             </div>
         </div>

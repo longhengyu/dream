@@ -197,3 +197,10 @@ grails.plugins.stripe.secretKey = 'sk_test_8SOXKUm9DtD6lH2coUOk2y2a'
 grails.plugins.stripe.publishableKey = 'pk_test_1jQNJlvip4pch5xF7CzMYT46'
 
 supported.languages.list=["en_US","zh_CN","ja_JP"]
+
+// check mail link
+dream {
+    mail {
+        checkYourMailLink = ["gmail.com" : "https://mail.google.com/mail/u/", "hotmail.com" : "https://mail.live.com/"]
+    }
+}
