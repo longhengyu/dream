@@ -203,4 +203,8 @@ dream {
     mail {
         checkYourMailLink = ["gmail.com" : "https://mail.google.com/mail/u/", "hotmail.com" : "https://mail.live.com/"]
     }
+    currency {
+        api =
+            ["google" : "http://www.google.com/ig/calculator?hl=en&q=1{0}=?{1}"]
+    }
 }

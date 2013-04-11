@@ -2,15 +2,25 @@ package com.pkgplan
 
 import grails.converters.JSON
 import org.codehaus.groovy.grails.commons.ApplicationHolder
+import javax.servlet.http.HttpServletResponse
+import java.text.MessageFormat
 
 class DynamicVariableController {
 
     def log
 
+    def beforeInterceptor = {
+        def serviceKey = params.get("serviceKey")
+        if (grailsApplication.config.dream.api["serviceKey"] != serviceKey) {
+            response.status = HttpServletResponse.SC_NOT_ACCEPTABLE
+            return false
+        }
+    }
+
     // call google api to get the currency rate and refresh it in the settingØ
     def refreshCurrencyRate() {
         try {
-            String url = "http://www.google.com/ig/calculator?hl=en&q=1" + params.fromCur +  "=?" + params.toCur
+            String url = MessageFormat.format(grailsApplication.config.dream.currency.api[params.api].toString(), params.fromCur.toString(), params.toCur.toString())
             def callUrl = new URL(url)
             def jsonResponse = callUrl.getText()
             def jsonParsedObject = JSON.parse(jsonResponse)
