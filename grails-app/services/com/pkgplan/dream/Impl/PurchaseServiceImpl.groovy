@@ -5,14 +5,13 @@ import com.pkgplan.dream.PurchaseService
 import com.pkgplan.dream.Server
 import com.pkgplan.dream.ServerService
 import com.pkgplan.dream.exception.InstanceNotFoundException
+import groovy.time.TimeCategory
 import org.apache.commons.lang.RandomStringUtils
-import org.codehaus.groovy.runtime.TimeCategory
 import org.springframework.stereotype.Service
 
 import java.text.SimpleDateFormat
 import javax.annotation.Resource
 import com.stripe.model.Charge
-import com.stripe.exception.CardException
 
 /**
  * User: longhengyu
