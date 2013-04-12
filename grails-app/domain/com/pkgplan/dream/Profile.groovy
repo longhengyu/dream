@@ -20,7 +20,7 @@ class Profile {
         gender(inList: ['male','female','nosay'], blank: false)
         country(blank: false)
         occupation(inList:['student','internet','communication','design','music','government','others'], blank: false)
-        age(min: 1, blank: false)
+        age(min: 1)
         education(blank: false, inList: ['high', 'bachelor', 'master', 'doctor', 'others'])
         os(blank: false, inList: ['winxp', 'win7', 'MAC OSX', 'linux', 'iOS'])
         purpose(blank: false, inList: ['web', 'music', 'youtube', 'sns', 'download', 'others'])
