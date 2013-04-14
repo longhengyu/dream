@@ -34,7 +34,7 @@ class RegisterController extends grails.plugins.springsecurity.ui.RegisterContro
             return
         }
 
-        String url = grailsApplication.config.grails.serverURL + g.createLink(action: 'verifyRegistration', params: [t: registrationCode.token])
+        String url = g.createLink(action: 'verifyRegistration', params: [t: registrationCode.token], absolute: 'true')
 
         def conf = SpringSecurityUtils.securityConfig
         def body = message(code: conf.ui.register.emailBody, args: [user.username, url])
@@ -88,7 +88,7 @@ class RegisterController extends grails.plugins.springsecurity.ui.RegisterContro
         def registrationCode = new RegistrationCode(username: user."$usernameFieldName")
         registrationCode.save(flush: true)
 
-        String url = grailsApplication.config.grails.serverURL + g.createLink(action: 'resetPassword', params: [t: registrationCode.token])
+        String url = g.createLink(action: 'resetPassword', params: [t: registrationCode.token], absolute: 'true')
 
         def conf = SpringSecurityUtils.securityConfig
         def body = message(code: conf.ui.forgotPassword.emailBody, args: [user.username, url])
