@@ -5,9 +5,7 @@
     <title><g:layoutTitle default="Dream VPN" /></title>
     <g:render template="/layouts/resource"/>
     <link rel="stylesheet" href="${resource(dir:'css',file:'dream-top.css')}" />
-    <script src="https://gathercontent.com/assets/js/global/modernizr-2.5.3.min.js"></script>
-    <script src="https://gathercontent.com/assets/js/global/selectivizr.js"></script>
-    <script type="text/javascript" src="https://gathercontent.com/assets/js/global/_dynamic.php?v=1363777876"></script>
+    <script src="${resource(dir:'js',file:'modernizr.js')}"></script>
 </head>
 <body>
 <div class="page-content-wrapper">

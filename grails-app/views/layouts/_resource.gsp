@@ -10,7 +10,7 @@
 <meta name="viewport" content="initial-scale = 1.0,maximum-scale = 1.0" />
 
 <link rel="icon" type="image/png" href="${resource(dir:'',file:'favicon.ico')}">
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script src="${resource(dir: 'js/lib', file: 'jquery-1.8.3.min.js')}"></script>
 <script src="${resource(dir:'js',file:'bootstrap.js')}"></script>
 <script src="${resource(dir:'js',file:'bootstrap-formhelpers-languages.codes.js')}"></script>
 <script src="${resource(dir:'js',file:'bootstrap-formhelpers-languages.js')}"></script>

@@ -299,6 +299,7 @@ body {
 
 .form .checkbox {
     margin-bottom: 18px;
+    line-height: 29px;
 }
 
 .form .link-option {
@@ -348,7 +349,7 @@ body {
 }
 
 .form input[type="text"], .form input[type="password"] {
-    margin-bottom: 28px;
+    margin-bottom: 16px;
 }
 
 .signup-wrapper {
@@ -383,7 +384,7 @@ body {
 }
 
 .signup-wrapper .perks .perks-list {
-    list-style-image: url('https://app.gathercontent.com/assets/img/green-tick-small.png');
+    list-style-image: url('../img/green-tick-small.png');
     list-style-position: inside;
     margin-bottom: 30px;
     margin-left: 0px;;
