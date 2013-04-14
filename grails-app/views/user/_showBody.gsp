@@ -6,6 +6,9 @@
         <div class="box-content">
             <div class="content-inner">
                 <div class="content-settings">
+                    <g:if test="${flash.message}">
+                        <div class="message" role="status">${flash.message}</div>
+                    </g:if>
                     <div class="tabbable">
                         <ul class="nav nav-tabs">
                             <li class="active"><a data-toggle="tab" href="#accountinfo"><g:message code="user.account.tab.user"/></a></li>

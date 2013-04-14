@@ -3,7 +3,7 @@
 	<head>
 		<meta name="layout" content="pkglayout">
 		<g:set var="entityName" value="${message(code: 'product.label', default: 'Product')}" />
-		<title><g:message code="default.list.label" args="[entityName]" /></title>
+		<title><g:message code="product.list.title" /></title>
 	</head>
 	<body>
         <sec:ifAllGranted roles="ROLE_USER">

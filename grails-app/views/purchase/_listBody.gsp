@@ -38,7 +38,7 @@
                                     </g:else>
                                 </td>
                                 <td>
-                                    <sec:ifAllGranted roles="ROLE_USER">
+
                                         <g:if test="${purchaseInstance.datePay}">
                                             <div class="purchase-button">
                                                 <a href="#" class="btn btn-success btn-small"
@@ -65,31 +65,29 @@
                                                 <div class="purchase-button">
                                                     <form method="POST" action="/purchase/delete">
                                                         <input type="hidden" name="id" value="${purchaseInstance?.id}"/>
-                                                        <button type="submit" class="btn btn-small"
-                                                                onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');">
-                                                            <i class="icon-white icon-trash"></i> ${message(code: 'purchase.button.cacel', default: 'Cancel')}
-                                                        </button>
-                                                        <g:link class="btn btn-primary btn-small" action="show" id="${purchaseInstance?.id}">
-                                                            ${message(code: 'purchase.button.pay', default: 'Pay')} <i class="icon-white icon-double-angle-right"></i>
-                                                        </g:link>
+                                                        <sec:ifAllGranted roles="ROLE_ADMIN">
+                                                            <button type="submit" class="btn btn-danger btn-small"
+                                                                    onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');">
+                                                                <i class="icon-white icon-trash"></i> ${message(code: 'default.button.delete.label', default: 'Delete')}
+                                                            </button>
+                                                        </sec:ifAllGranted>
+                                                        <sec:ifAllGranted roles="ROLE_USER">
+                                                            <button type="submit" class="btn btn-small"
+                                                                    onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');">
+                                                                <i class="icon-white icon-trash"></i> ${message(code: 'purchase.button.cacel', default: 'Cancel')}
+                                                            </button>
+
+                                                            <g:link class="btn btn-primary btn-small" action="show" id="${purchaseInstance?.id}">
+                                                                ${message(code: 'purchase.button.pay', default: 'Pay')} <i class="icon-white icon-double-angle-right"></i>
+                                                            </g:link>
+                                                        </sec:ifAllGranted>
                                                     </form>
                                                 </div>
                                             </div>
                                         </g:else>
-                                    </sec:ifAllGranted>
-                                    <sec:ifAllGranted roles="ROLE_ADMIN">
-                                        <div class="center">
-                                            <div class="purchase-button">
-                                                <form method="POST" action="/purchase/delete">
-                                                    <input type="hidden" name="id" value="${purchaseInstance?.id}"/>
-                                                    <button type="submit" class="btn btn-danger btn-small"
-                                                            onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');">
-                                                        <i class="icon-white icon-trash"></i> ${message(code: 'default.button.delete.label', default: 'Delete')}
-                                                    </button>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </sec:ifAllGranted>
+
+
+
                                 </td>
                             </tr>
                         </g:each>

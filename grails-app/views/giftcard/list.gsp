@@ -5,7 +5,7 @@
 	<head>
 		<meta name="layout" content="pkglayout">
 		<g:set var="entityName" value="${message(code: 'giftcard.label', default: 'Giftcard')}" />
-		<title><g:message code="default.list.label" args="[entityName]" /></title>
+		<title><g:message code="giftcard.list.title" /></title>
 	</head>
 	<body>
         <g:render template="listBody"/>
