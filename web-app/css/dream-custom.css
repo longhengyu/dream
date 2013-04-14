@@ -10,6 +10,11 @@ body {
     top: 5px;
 }
 
+ul, ol {
+    margin: 0 0 0 25px;
+    padding: 0;
+}
+
 .navbar .brand {
     position:relative;
     margin-left: 22px;
