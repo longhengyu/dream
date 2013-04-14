@@ -7,14 +7,14 @@ class Server {
 
     String ipAddr
     String hostname
-    int capacity
+    Integer capacity
     Date dateCreated
     static hasMany = [users: User]
 
     static constraints = {
         hostname(blank:false)
         ipAddr(blank:false, matches:/^(?:(?:25[0-5]|2[0-4]\d|[01]?\d?\d)\.){3}(?:25[0-5]|2[0-4]\d|[01]?\d?\d)$/)
-        capacity(blank:false, min: 1)
+        capacity(min: 1)
         dateCreated()
     }
 
