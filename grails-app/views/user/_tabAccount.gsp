@@ -27,10 +27,11 @@
                     <p><g:message code="user.account.server.ip.address" default="Server IP address" /></p>
                     <span class="pull-right">
                         <g:if test="${serverInstance}">
-                            <g:fieldValue bean="${serverInstance}" field="ipAddr"/>
+                            <div class="label label-info"><g:fieldValue bean="${serverInstance}" field="ipAddr"/></div>
                         </g:if>
                         <g:else>
-                            <g:message code="user.account.server.not.defined" args="['/product/list']"/>
+                            <div class="label label-important"><g:message code="user.account.server.not.defined.yet"/></div>
+                            <g:message code="user.account.server.not.defined.please" args="['/product/list']"/>
                             <a data-placement="top" data-content="${message(code:'user.account.server.not.defined.disclaimer')}" rel="popover" id="no-ip-assigned" href="#"><i class="icon-info-sign"></i></a>
                         </g:else>
                     </span>
@@ -53,10 +54,18 @@
                         <span class="pull-right"><g:formatDate date="${userInstance?.dateCreated}" locale="${locale}"/></span>
                     </div>
                 </g:if>
-                <g:if test="${userInstance?.dateExpired}">
+                <g:if test="${userInstance?.dateExpired.compareTo(userInstance?.dateCreated) != 0}">
                     <div class="title display-table">
                         <p><g:message code="user.account.label.expire.time" default="Date Expired" /></p>
-                        <span class="pull-right"><g:formatDate date="${userInstance?.dateExpired}" locale="${locale}"/></span>
+                        <g:if test="${userInstance?.dateExpired > new java.util.Date()}">
+                            <span class="pull-right label label-success"><g:formatDate date="${userInstance?.dateExpired}" locale="${locale}"/>
+                            </span>
+                        </g:if><g:else>
+                            <span class="pull-right label label-important"><g:formatDate date="${userInstance?.dateExpired}" locale="${locale}"/>
+                                &nbsp;<g:message code="user.account.label.expire.time.already"/>
+                            </span>
+                        </g:else>
+
                     </div>
                 </g:if>
                 <g:if test="${userInstance?.passwordExpired}">

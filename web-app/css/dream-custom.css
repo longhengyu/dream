@@ -468,6 +468,33 @@ ul, ol {
     margin-right:8px;
 }
 
+#accountinfo .label, #show-purchase .label {
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+    padding: 2px 8px;
+    text-shadow: none;
+}
+
+#accountinfo .label-success, #show-purchase .label-success {
+    background-color: #DFF0D8;
+    border-color: #D6E9C6;
+    color: #468847;
+}
+
+#accountinfo .label-info, #show-purchase .label-info {
+    background-color: #D9EDF7;
+    border-color: #BCE8F1;
+    color: #3A87AD;
+}
+
+#accountinfo .label-important, #show-purchase .label-important {
+    background-color: #F2DEDE;
+    border-color: #EED3D7;
+    color: #B94A48;
+}
+
+
 
 
 

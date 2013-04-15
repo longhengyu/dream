@@ -12,11 +12,7 @@ class User {
 	String password
     String email
     Date dateCreated
-    /**
-     * we believe the expired date equate the created date when a new user come in,
-     * this date will be updated if user buy a product.
-    **/
-    Date dateExpired = new Date()
+    Date dateExpired
 	boolean enabled
 	boolean accountExpired
 	boolean accountLocked
@@ -34,6 +30,7 @@ class User {
         profile(nullable: true)
         purchases(nullable: true)
         server(nullable: true)
+        dateExpired(nullable: true)
 	}
 
 	static mapping = {
@@ -63,4 +60,13 @@ class User {
     protected void encodePassword() {
         password = springSecurityService.encodePassword(password)
     }
+
+    /**
+     * we believe the expired date equate the created date when a new user come in,
+     * this date will be updated if user buy a product.
+     **/
+    Date getDateExpired() {
+        return dateExpired?:dateCreated
+    }
+
 }

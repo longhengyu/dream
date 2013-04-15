@@ -45,3 +45,9 @@
         <span class="pull-right"><g:message code="payment.method.name.${purchaseInstance.paymentMethod}"/></span>
     </div>
 </g:if>
+<g:if test="${purchaseInstance?.datePay && flash.message}">
+    <div class="title display-table">
+        <p><g:message code="user.account.server.ip.address" default="Server IP address" /></p>
+        <span class="pull-right"><div class="label label-info"><g:fieldValue bean="${purchaseInstance?.owner?.server}" field="ipAddr"/></div></span>
+    </div>
+</g:if>
