@@ -11,7 +11,7 @@
     <description>we have a dream</description>
 
     <properties>
-        <grails.version>2.1.1</grails.version>
+        <grails.version>2.2.1</grails.version>
         <!-- This is here to prevent a WARNING about platform encoding -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
@@ -88,7 +88,7 @@
         <dependency>
             <groupId>org.grails.plugins</groupId>
             <artifactId>hibernate</artifactId>
-            <version>2.1.1</version>
+            <version>2.2.1</version>
             <scope>runtime</scope>
             <type>zip</type>
         </dependency>

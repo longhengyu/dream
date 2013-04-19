@@ -6,7 +6,7 @@ import com.pkgplan.dream.Server
 import com.pkgplan.dream.ServerService
 import com.pkgplan.dream.exception.InstanceNotFoundException
 import org.apache.commons.lang.RandomStringUtils
-import org.codehaus.groovy.runtime.TimeCategory
+import groovy.time.TimeCategory
 import org.springframework.stereotype.Service
 
 import java.text.SimpleDateFormat
