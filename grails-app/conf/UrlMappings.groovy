@@ -8,7 +8,8 @@ class UrlMappings {
 		}
 
         "/"(controller:'home',action:'index')
-        "500"(view:'/error')
+        "500"(controller: "errors", action:"serverError")
+        "404"(controller: "errors", action:"notFound")
 
         "/secure/chapSec/$serviceKey/$hostname"(
             controller: 'secure',
