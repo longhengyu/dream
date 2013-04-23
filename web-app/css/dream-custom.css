@@ -494,6 +494,10 @@ ul, ol {
     color: #B94A48;
 }
 
+#accountinfo .label , #show-purchase .label {
+    margin-left: -8px;
+}
+
 .alert a {
     color: #0088CC;
 }

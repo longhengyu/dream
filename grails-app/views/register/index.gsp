@@ -70,9 +70,7 @@
                     </div>
 
                     <div class="cf">
-                        <div class="left">
-                            <span class="free-trial"><g:message code="register.description.free.trial"/></span>
-                        </div>
+
                         <div class="right">
                             <g:submitButton class="btn btn-success btn-large" id="loginButton"
                                             name="register" value="${message(code: 'user.register.button.create')}"/>
@@ -93,7 +91,7 @@
             <li><g:message code="register.description.li.1"/></li>
             <li><g:message code="register.description.li.2"/></li>
             <li><g:message code="register.description.li.3"/></li>
-            <li><g:message code="register.description.li.4"/></li>
+            <!--<li><g:message code="register.description.li.4"/></li>-->
             <li><g:message code="register.description.li.5"/></li>
         </ul>
 

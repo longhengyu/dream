@@ -2,9 +2,12 @@ package com.pkgplan.dream
 
 import org.codehaus.groovy.grails.plugins.web.taglib.ApplicationTagLib
 
-
 class DreamTagLib extends ApplicationTagLib{
-    static returnObjectForTags = ['createLink', 'resource', 'createLinkTo', 'cookie', 'header', 'img', 'join', 'meta', 'set', 'gravatar', 'loading']
+    static returnObjectForTags = ['createLink', 'resource', 'createLinkTo', 'cookie', 'header', 'img', 'join', 'meta',
+            'set', 'gravatar', 'loading', 'vpnPassword']
+
+    def userService
+
     Closure resource = { attrs ->
         if (grailsApplication.config.dream.resourceRoot && attrs.dir) {
             // load the resource file from a static server.
@@ -28,5 +31,9 @@ class DreamTagLib extends ApplicationTagLib{
     Closure loading = { attrs ->
         def loader = resource(dir: 'img', file: 'ajax-loader.gif')
         return "<img src=\"${loader}\" class=\"ajax-loader hide\"/>"
+    }
+
+    Closure vpnPassword = { attrs ->
+        return userService.getCurrentUserVpnPassword()
     }
 }

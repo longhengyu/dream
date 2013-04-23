@@ -36,6 +36,14 @@
                         </g:else>
                     </span>
                 </div>
+                <g:if test="${serverInstance}">
+                    <div class="title display-table">
+                        <p><g:message code="user.account.vpn.password" default="VPN Password"/></p>
+                        <span class="pull-right">
+                            <div class="label label-info"><g:vpnPassword/></div>
+                        </span>
+                    </div>
+                </g:if>
                 <g:if test="${userInstance?.accountExpired}">
                     <div class="title display-table">
                         <p><g:message code="user.account.label.account.expired" default="Account Expired" /></p>
@@ -58,11 +66,14 @@
                     <div class="title display-table">
                         <p><g:message code="user.account.label.expire.time" default="Date Expired" /></p>
                         <g:if test="${userInstance?.dateExpired > new java.util.Date()}">
-                            <span class="pull-right label label-success"><g:formatDate date="${userInstance?.dateExpired}" locale="${locale}"/>
+                            <span class="pull-right">
+                                <div class="label label-success"><g:formatDate date="${userInstance?.dateExpired}" locale="${locale}"/></div>
                             </span>
                         </g:if><g:else>
-                            <span class="pull-right label label-important"><g:formatDate date="${userInstance?.dateExpired}" locale="${locale}"/>
+                            <span class="pull-right">
+                                <div class="label label-important"><g:formatDate date="${userInstance?.dateExpired}" locale="${locale}"/>
                                 &nbsp;<g:message code="user.account.label.expire.time.already"/>
+                                </div>
                             </span>
                         </g:else>
 

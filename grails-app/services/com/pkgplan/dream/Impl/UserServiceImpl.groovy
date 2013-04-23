@@ -6,12 +6,16 @@ import org.springframework.stereotype.Service
 import grails.plugins.springsecurity.SpringSecurityService
 import javax.annotation.Resource
 import com.pkgplan.dream.UserService
+import com.pkgplan.security.SecureService
 
 @Service("userService")
 class UserServiceImpl implements UserService{
 
     @Resource
     SpringSecurityService springSecurityService
+
+    @Resource
+    SecureService secureService
 
     boolean isCurrentUserValid() {
        return currentUser().dateExpired < new Date()
@@ -27,5 +31,9 @@ class UserServiceImpl implements UserService{
 
     boolean isUserLonggedIn() {
         SpringSecurityUtils.ifAnyGranted("ROLE_USER")
+    }
+
+    String getCurrentUserVpnPassword() {
+        return secureService.encodePasswordForVpn(currentUser().password)
     }
 }
