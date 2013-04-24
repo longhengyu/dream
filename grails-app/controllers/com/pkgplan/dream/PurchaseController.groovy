@@ -184,6 +184,7 @@ class PurchaseController {
                             message(code: "payment.method.name.${updatedPurchaseInstance.paymentMethod}"),
                             formatDate(date: updatedPurchaseInstance.datePay),
                             updatedPurchaseInstance.owner.server.ipAddr,
+                            userService.getCurrentUserVpnPassword(),
                             formatDate(date: updatedPurchaseInstance.owner.dateExpired),
                             url])
                     mailService.sendMail {
