@@ -4,7 +4,9 @@ import org.springframework.dao.DataIntegrityViolationException
 import com.pkgplan.auth.User
 import org.codehaus.groovy.grails.plugins.springsecurity.SpringSecurityUtils
 import org.apache.commons.lang.RandomStringUtils
+import grails.plugins.springsecurity.Secured
 
+@Secured(['ROLE_ADMIN','ROLE_USER'])
 class GiftcardController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
@@ -12,6 +14,7 @@ class GiftcardController {
     def springSecurityService
     String charset = (('A'..'Z') + ('0'..'9')).join()
     Integer length = 9
+
 
     def index() {
         redirect(action: "list", params: params)
@@ -46,6 +49,7 @@ class GiftcardController {
         [giftcardInstanceList: results, giftcardInstanceTotal: results.getTotalCount()]
     }
 
+    @Secured(['ROLE_ADMIN'])
     def create() {
         // random generate a code
         def giftcardInstance = new Giftcard(params)
@@ -53,6 +57,7 @@ class GiftcardController {
         [giftcardInstance: giftcardInstance]
     }
 
+    @Secured(['ROLE_ADMIN'])
     def save() {
         def giftcardInstance = new Giftcard(params)
         if (!giftcardInstance.save(flush: true)) {
@@ -75,6 +80,7 @@ class GiftcardController {
         [giftcardInstance: giftcardInstance]
     }
 
+    @Secured(['ROLE_ADMIN'])
     def edit(Long id) {
         def giftcardInstance = Giftcard.get(id)
         if (!giftcardInstance) {
@@ -86,6 +92,7 @@ class GiftcardController {
         [giftcardInstance: giftcardInstance]
     }
 
+    @Secured(['ROLE_ADMIN'])
     def update(Long id, Long version) {
         def giftcardInstance = Giftcard.get(id)
         if (!giftcardInstance) {
@@ -115,6 +122,7 @@ class GiftcardController {
         redirect(action: "show", id: giftcardInstance.id)
     }
 
+    @Secured(['ROLE_ADMIN'])
     def delete(Long id) {
         def giftcardInstance = Giftcard.get(id)
         if (!giftcardInstance) {

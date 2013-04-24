@@ -25,8 +25,11 @@
                                 <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
                                     <sec:ifAllGranted roles="ROLE_ADMIN">
                                         <td><g:link controller="user" action="show" id="${giftcardInstance.owner.id}">${fieldValue(bean: giftcardInstance, field: "owner")}</g:link></td>
+                                        <td><g:link action="show" id="${giftcardInstance.id}">${giftcardInstance.code}</g:link></td>
                                     </sec:ifAllGranted>
-                                    <td><g:link action="show" id="${giftcardInstance.id}">${giftcardInstance.code}</g:link></td>
+                                    <sec:ifAllGranted roles="ROLE_USER">
+                                        <td>${giftcardInstance.code}</td>
+                                    </sec:ifAllGranted>
                                     <td><g:message code="product.info.name.${giftcardInstance.product.code}" default="${giftcardInstance.product.name}"/></td>
 
                                     <td>
