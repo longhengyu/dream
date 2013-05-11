@@ -24,7 +24,7 @@
             <img src="http://dreampkg.sinaapp.com/resource/dream/web-app/images/manual/win7/63087425201108042044333396994040514_004.jpg" alt="" title=""><br>
             <img src="http://dreampkg.sinaapp.com/resource/dream/web-app/images/manual/win7/63087425201108042044333396994040514_003.jpg" alt="" title=""><br>
         </li>
-        <li>点其右键属性，会弹出这个对话框，在“安全”选项里将“VPN类型”设置成“L2TP/IPSec”，然后在“高级设置”里的“密钥”处输入“pkgplan”，确定，返回；<br>
+        <li>点其右键属性，会弹出这个对话框，在“安全”选项里将“VPN类型”设置成“L2TP/IPSec”，然后在“高级设置”里的“密钥”处输入“dream”，确定，返回；<br>
             <img src="http://dreampkg.sinaapp.com/resource/dream/web-app/images/manual/win7/63087425201108042044333396994040514_002.jpg" alt="" title=""><br></li>
             <img src="http://dreampkg.sinaapp.com/resource/dream/web-app/images/manual/win7/63087425201108042044333396994040514_001.jpg" alt="" title=""><br>
         <li>
