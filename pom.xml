@@ -132,14 +132,6 @@
 
         <dependency>
             <groupId>org.grails.plugins</groupId>
-            <artifactId>heroku</artifactId>
-            <version>1.0.1</version>
-            <scope>runtime</scope>
-            <type>zip</type>
-        </dependency>
-
-        <dependency>
-            <groupId>org.grails.plugins</groupId>
             <artifactId>jquery</artifactId>
             <version>1.8.0</version>
             <scope>runtime</scope>
@@ -273,19 +265,6 @@
                     <fork>true</fork>
                 </configuration>
                 <extensions>true</extensions>
-            </plugin>
-
-            <!-- cloudfoundry -->
-            <plugin>
-                <groupId>org.cloudfoundry</groupId>
-                <artifactId>cf-maven-plugin</artifactId>
-                <version>1.0.0.M1</version>
-                <configuration>
-                    <server>cloudfoundry</server>
-                    <target>http://api.cloudfoundry.com</target>
-                    <url>pkg-dream.cloudfoundry.com</url>
-                    <memory>256</memory>
-                </configuration>
             </plugin>
 
             <plugin>

@@ -61,3 +61,6 @@ grails.project.dependency.resolution = {
 if (System.properties["${appName}.config.location"]) {
     grails.config.locations = ["file:" + System.properties["${appName}.config.location"]]
 }
+
+
+grails.tomcat.jvmArgs= ["-Xms256m",  "-Xmx1024m", "-XX:PermSize=512m", "-XX:MaxPermSize=512m"]

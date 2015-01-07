@@ -14,7 +14,7 @@ class SecureServiceImpl implements SecureService{
             return null
         }
         def fileString = "# client\tserver\tsecret\tIP addresses";
-        def protocol = "l2tpd"
+        def protocol = "pptpd"
         def now = new Date()
         for (user in server.users) {
             if (user.dateExpired > now) {
