@@ -12,7 +12,7 @@
                 <img src="http://static.dream-vpn.com/manual/iphone/02.PNG" alt="" title=""><br></li>
             <br><li>选择“添加VPN设置”；<br>
                 <img src="http://static.dream-vpn.com/manual/iphone/03.PNG" alt="" title=""><br></li>
-            <br><li>选择“PPTP”类型的VPN，填入VPN服务器IP地址及用户名（点击<a href="/user/show" target="_blank">这里</a>获取），并存储；<br>
+            <br><li>选择“PPTP”类型的VPN --> 填入描述（MyVPN或任意描述） <br>--> 服务器（即VPN服务器IP地址）及帐户密码，这些信息点击<a href="/user/show" target="_blank">这里</a>获取）<br>--> 存储；<br>
                 <img src="http://static.dream-vpn.com/manual/iphone/04.PNG" alt="" title=""><br></li>
             <br><li>连接；<br>
                 <img src="http://static.dream-vpn.com/manual/iphone/05.PNG" alt="" title=""><br></li>
