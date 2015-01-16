@@ -11,10 +11,13 @@
             </sec:ifAllGranted>
             <g:render template="/common/usermenu-element" model="[controller: 'product', action: 'list', messageCode: 'side.menu.product.list']"/>
             <g:render template="/common/usermenu-element" model="[controller: 'purchase', action: 'list', messageCode: 'side.menu.my.purchase']"/>
-            <g:render template="/common/usermenu-element" model="[controller: 'giftcard', action: 'list', messageCode: 'side.menu.my.giftcard']"/>
+
+            <sec:ifAllGranted roles="ROLE_ADMIN">
+				<g:render template="/common/usermenu-element" model="[controller: 'giftcard', action: 'list', messageCode: 'side.menu.my.giftcard']"/>
+            </sec:ifAllGranted>
         </sec:ifLoggedIn>
         <li class="nav-header"><g:message code="side.menu.title.link"/></li>
-        <li><a href="#"><g:message code="nav.item.manual"/></a></li>
+        <li><a href="/home/manual/"><g:message code="nav.item.manual"/></a></li>
     </ul>
 </div>
 

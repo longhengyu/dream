@@ -23,7 +23,7 @@ class GiftcardServiceImpl implements GiftcardService{
         def c = Giftcard.createCriteria()
         def cards = c.list {
             and {
-                eq('owner', purchase.owner)
+                //eq('owner', purchase.owner) /* it doesn't have to be the owner who use it . 2015.1.14 */
                 eq('status', "Available")
                 eq('product', product)
                 eq('code', code)
