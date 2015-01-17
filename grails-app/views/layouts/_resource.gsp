@@ -15,3 +15,4 @@
 <script src="${resource(dir:'js',file:'bootstrap-formhelpers-languages.codes.js')}"></script>
 <script src="${resource(dir:'js',file:'bootstrap-formhelpers-languages.js')}"></script>
 <script src="${resource(dir:'js',file:'dream.js')}"></script>
+<script src="${resource(dir:'js',file:'statistic.js')}"></script>
