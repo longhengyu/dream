@@ -146,7 +146,7 @@ grails.plugins.springsecurity.controllerAnnotations.staticRules = [
 grails.plugins.springsecurity.ui.encodePassword = false
 // password strength
 grails.plugins.springsecurity.ui.password.minLength=6
-grails.plugins.springsecurity.ui.password.maxLength=12
+grails.plugins.springsecurity.ui.password.maxLength=20
 grails.plugins.springsecurity.ui.password.validationRegex='^.*(?=.*\\d)(?=.*[a-zA-Z]).*$'
 
 grails.plugins.springsecurity.successHandler.defaultTargetUrl = '/user/show'
