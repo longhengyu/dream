@@ -16,7 +16,8 @@ class SecureServiceImpl implements SecureService{
         def fileString = "# client\tserver\tsecret\tIP addresses";
         def protocol = "pptpd"
         def now = new Date()
-        for (user in server.users) {
+		def serverUsers = server.users.sort { it.id }
+        for (user in serverUsers) {
             if (user.dateExpired > now) {
                 fileString += "\n${user.username}\t${protocol}\t${encodePasswordForVpn(user.password)}\t*"
             }
