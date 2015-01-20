@@ -33,7 +33,33 @@
                                 <div class="span1"></div>
  <%--                               <div class="span3"></div> --%>
                                 <div class="span3"></div>
-                                <div class="span3 text-center">${message(code:'payment.method.description.giftcard')} <a data-placement="top" data-content="${message(code:'payment.method.description.giftcard.get')}" rel="popover" id="no-ip-assigned" href="#"><i class="icon-info-sign"></i></a>
+                                <div class="span3 text-center">${message(code:'payment.method.description.giftcard')} 
+								
+									<a href="#giftcard-how-to-get" data-toggle="modal" data-target="#giftcard-how-to-get">
+										<i class="icon-info-sign"></i>
+									</a>
+									
+									<div id="giftcard-how-to-get" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+										<div class="modal-body popup-title" id="giftcard-how-to-get-body">
+											<div class="row-fluid">
+												<div class="well-white bottom20px">
+													<div class="page-header">
+														<h3>${message(code:'payment.method.description.giftcard')}</h3>
+													</div>
+													<div class="padding20px form">
+														${message(code:'payment.method.description.giftcard.get')}                                        
+													</div>
+												</div>                                                                   
+											</div>                                                                       
+										</div>                                                                           
+                                                                                 
+										<div class="modal-footer">
+											<button class="btn" data-dismiss="modal" aria-hidden="true">
+												<g:message code="general.close"/>                                        
+											</button>
+										</div>                                                                           
+									</div>
+									
                                 </div>
                             </div>
                             <div class="row-fluid features-two">
