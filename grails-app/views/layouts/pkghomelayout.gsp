@@ -143,7 +143,7 @@
                         <img src="${resource(dir:'img',file:'logoimg_white.png')}" title="bizstrap" alt="logo">
                     </a>
                 </div>
-                <p>started in 2012, for the future.</p>
+                <p>started in 2012, for the future. <a href="http://www.miitbeian.gov.cn/" target="_blank">沪ICP备15003002号</a></p>
             </div>
         </div>
         <div class="row links-horizontal">

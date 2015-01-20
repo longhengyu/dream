@@ -89,6 +89,6 @@
         </div>
     </div>
     <div class="span2">
-        <g:render template="gravatar"/>
+<!--        <g:render template="gravatar"/> -->
     </div>
 </div>
