@@ -33,10 +33,11 @@
                                 <div class="span1"></div>
  <%--                               <div class="span3"></div> --%>
                                 <div class="span3"></div>
-                                <div class="span3 text-center">${message(code:'payment.method.description.giftcard')} 
+                                <div class="span3 text-center">
 								
 									<a href="#giftcard-how-to-get" data-toggle="modal" data-target="#giftcard-how-to-get">
-										<i class="icon-info-sign"></i>
+								<i class="icon-info-sign"></i>
+								${message(code:'payment.method.description.giftcard')} 
 									</a>
 									
 									<div id="giftcard-how-to-get" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
