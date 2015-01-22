@@ -193,7 +193,7 @@ ul, ol {
 }
 
 .inner-margin-left .title.display-table p {
-    width: 175px !important;
+    width: 249px !important;
 }
 
 .inner-margin-left {
@@ -500,6 +500,11 @@ ul, ol {
 
 .alert a {
     color: #0088CC;
+}
+
+.vpn-info {
+    margin-top: 47px;
+    padding-bottom: 0px !important;
 }
 
 

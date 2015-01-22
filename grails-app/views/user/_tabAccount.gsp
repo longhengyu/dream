@@ -9,6 +9,7 @@
                     <div class="title display-table">
                         <p><g:message code="login.label.username" default="Username" /></p>
                         <span class="pull-right"><g:fieldValue bean="${userInstance}" field="username"/></span>
+
                     </div>
                 </g:if>
                 <g:if test="${userInstance?.email}">
@@ -21,27 +22,6 @@
                     <div class="title display-table">
                         <p><g:message code="user.account.label.enable" default="Enabled" /></p>
                         <span class="pull-right"><g:formatBoolean boolean="${userInstance?.enabled}" /></span>
-                    </div>
-                </g:if>
-                <div class="title display-table">
-                    <p><g:message code="user.account.server.ip.address" default="Server IP address" /></p>
-                    <span class="pull-right">
-                        <g:if test="${serverInstance}">
-                            <div class="label label-info"><g:fieldValue bean="${serverInstance}" field="ipAddr"/></div>
-                        </g:if>
-                        <g:else>
-                            <div class="label label-important"><g:message code="user.account.server.not.defined.yet"/></div>
-                            <g:message code="user.account.server.not.defined.please" args="['/product/list']"/>
-                            <a data-placement="top" data-content="${message(code:'user.account.server.not.defined.disclaimer')}" rel="popover" id="no-ip-assigned" href="#"><i class="icon-info-sign"></i></a>
-                        </g:else>
-                    </span>
-                </div>
-                <g:if test="${serverInstance}">
-                    <div class="title display-table">
-                        <p><g:message code="user.account.vpn.password" default="VPN Password"/></p>
-                        <span class="pull-right">
-                            <div class="label label-info"><g:vpnPassword/></div>
-                        </span>
                     </div>
                 </g:if>
                 <g:if test="${userInstance?.accountExpired}">
@@ -86,6 +66,44 @@
                     </div>
                 </g:if>
             </div>
+
+            <div class="page-header inner-margin-left vpn-info">
+                <p><g:message code="user.account.vpn.info.title" default="VPN connection information" /></p>
+            </div>
+
+            <div class="inner-margin-left">
+
+                <div class="title display-table">
+                    <p><g:message code="user.account.server.ip.address" default="Server IP address" /></p>
+                    <span class="pull-right">
+                        <g:if test="${serverInstance}">
+                            <div class="label label-info"><g:fieldValue bean="${serverInstance}" field="ipAddr"/></div>
+                        </g:if>
+                        <g:else>
+                            <div class="label label-important"><g:message code="user.account.server.not.defined.yet"/></div>
+                            <g:message code="user.account.server.not.defined.please" args="['/product/list']"/>
+                            <a data-placement="top" data-content="${message(code:'user.account.server.not.defined.disclaimer')}" rel="popover" id="no-ip-assigned" href="#"><i class="icon-info-sign"></i></a>
+                        </g:else>
+                    </span>
+                </div>
+                <g:if test="${userInstance?.username}">
+                    <div class="title display-table">
+                        <p><g:message code="user.account.vpn.username" default="VPN Username" /></p>
+                        <span class="pull-right"><g:fieldValue bean="${userInstance}" field="username"/></span>
+
+                    </div>
+                </g:if>
+                <g:if test="${serverInstance}">
+                    <div class="title display-table">
+                        <p><g:message code="user.account.vpn.password" default="VPN Password"/></p>
+                        <span class="pull-right">
+                            <div class="label label-info"><g:vpnPassword/></div>
+                        </span>
+                    </div>
+                </g:if>
+
+            </div>
+
         </div>
     </div>
     <div class="span2">
