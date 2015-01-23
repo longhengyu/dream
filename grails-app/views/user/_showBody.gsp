@@ -12,7 +12,7 @@
                     <div class="tabbable">
                         <ul class="nav nav-tabs">
                             <li class="active"><a data-toggle="tab" href="#accountinfo"><g:message code="user.account.tab.user"/></a></li>
-                            <li ><a data-toggle="tab" href="#profile"><g:message code="user.account.tab.profile"/></a></li>
+                            <!--<li ><a data-toggle="tab" href="#profile"><g:message code="user.account.tab.profile"/></a></li>-->
                             </ul>
                         <div class="tab-content">
                             <g:render template="tabAccount"/>
