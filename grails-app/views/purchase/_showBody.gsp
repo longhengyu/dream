@@ -46,6 +46,7 @@
 												<div class="well-white bottom20px">
 													<div class="page-header">
 														<h3>${message(code:'payment.method.description.giftcard')}</h3>
+														<a href="http://static.dream-vpn.com/link/taobao/" target="_blank"><img src="${resource(dir:'img',file:'gotaobao.png')}"> </a>
 													</div>
 													<div class="padding20px form">
 														${message(code:'payment.method.description.giftcard.get')}                                        
