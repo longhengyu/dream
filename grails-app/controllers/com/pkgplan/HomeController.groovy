@@ -11,6 +11,8 @@ class HomeController {
     def index() {
         if (userService.isAdminLoggedIn()) {
             redirect(action: 'list', controller: 'user')
+        } else {
+            redirect(action: 'list', controller: 'product')
         }
     }
 
