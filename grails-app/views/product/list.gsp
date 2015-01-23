@@ -6,6 +6,9 @@
 		<title><g:message code="product.list.title" /></title>
 	</head>
 	<body>
+        <sec:ifNotLoggedIn>
+            <g:render template="listBody"/>
+        </sec:ifNotLoggedIn>
         <sec:ifAllGranted roles="ROLE_USER">
             <g:render template="listBody"/>
         </sec:ifAllGranted>
