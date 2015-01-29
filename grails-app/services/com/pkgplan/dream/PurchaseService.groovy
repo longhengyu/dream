@@ -12,7 +12,7 @@ public interface PurchaseService {
     Map<String, String> buildAlipayRequestParams(String purchaseId)
     String generatePurchaseNumber()
     boolean alipayVerify(Map<String, String> params)
-    boolean proceedAlipayTransaction(String trade_no)
+    boolean proceedAlipayTransaction(Purchase purchaseInstance)
     boolean alipaySendGoods(String trade_no, String logistics_name, String invoice_no, String transport_type)
 }
 

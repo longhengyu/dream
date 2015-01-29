@@ -20,7 +20,8 @@ import org.springframework.stereotype.Service
 import java.text.SimpleDateFormat
 import javax.annotation.Resource
 
-import org.apache.commons.httpclient.NameValuePair;
+import org.apache.commons.httpclient.NameValuePair
+import org.codehaus.groovy.grails.plugins.springsecurity.SpringSecurityUtils;
 
 /**
  * User: longhengyu
@@ -34,6 +35,8 @@ class PurchaseServiceImpl implements PurchaseService {
 
     @Resource
     ServerService serverService
+
+    def g = ApplicationHolder.application.mainContext.getBean('com.pkgplan.dream.DateTimeTagLib')
 
     def log
 
@@ -75,6 +78,7 @@ class PurchaseServiceImpl implements PurchaseService {
 
         String randomString = RandomStringUtils.random(length, charset.toCharArray())
         purchaseInstance.save()
+
         return purchaseInstance
     }
 
@@ -274,9 +278,9 @@ class PurchaseServiceImpl implements PurchaseService {
         }
     }
 
-    boolean proceedAlipayTransaction(String trade_no) {
+    boolean proceedAlipayTransaction(Purchase purchaseInstance) {
 
-        def alipayTransaction = AlipayTransaction.findByAlipay_trade_no(trade_no)
+        def alipayTransaction = AlipayTransaction.findByPurchase(purchaseInstance)
         if (alipayTransaction?.status.equals("Pending")) {
             alipayTransaction.status = "Finished"
             alipayTransaction.save()
@@ -300,7 +304,7 @@ class PurchaseServiceImpl implements PurchaseService {
 
         //建立请求
         String sHtmlText = buildRequest("", "", sParaTemp);
-        println(sHtmlText);
+        //println(sHtmlText);
 
         return true
     }

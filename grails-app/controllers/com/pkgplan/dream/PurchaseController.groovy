@@ -149,10 +149,15 @@ class PurchaseController {
         def pageRedirect = false
         def purchaseId = params.id?:Long.valueOf(params.item_number)
         def purchaseInstance = Purchase.findById(purchaseId)
+        def alreadyFinished = false
         if (purchaseInstance) {
             log.info("Process purchase, payment method: ${paymentId}, purchase ID: ${purchaseInstance.id}, user: ${purchaseInstance.owner}")
             if (paymentId == PAYMENT_METHOD_ID_ALIPAY) {
-                if (purchaseService.proceedAlipayTransaction(params.alipay_trade_no)) {
+                def alipayTransaction = AlipayTransaction.findByPurchase(purchaseInstance)
+                if (alipayTransaction?.status.equals("Finished")) {
+                    alreadyFinished = true
+                    log.info("alipay processed by return, but already finished, trade number: " + params.alipay_trade_no)
+                } else if (purchaseService.proceedAlipayTransaction(purchaseInstance)) {
                     log.info("alipay processed by return, trade number: " + params.alipay_trade_no)
                 } else {
                     flash.message = message(code: 'purchase.message.payment.not.success')
@@ -192,33 +197,14 @@ class PurchaseController {
                 }
             }
             try {
-                Purchase updatedPurchaseInstance = purchaseService.proceedPurchase(purchaseId.toLong(), paymentId)
-                // send mail
-                try {
-                    String url = createLink(controller: 'home', action: 'contact', absolute: 'true')
 
-                    def conf = SpringSecurityUtils.securityConfig
-                    def body = message(code: 'ui.purchase.mail.body', args: [updatedPurchaseInstance.owner.username,
-                            updatedPurchaseInstance.purchaseNumber,
-                            message(code: "product.info.name.${updatedPurchaseInstance.product.code}"),
-                            message(code: "payment.method.name.${updatedPurchaseInstance.paymentMethod}"),
-                            formatDate(date: updatedPurchaseInstance.datePay),
-                            updatedPurchaseInstance.owner.server.ipAddr,
-                            userService.getCurrentUserVpnPassword(),
-                            formatDate(date: updatedPurchaseInstance.owner.dateExpired),
-                            url])
-                    mailService.sendMail {
-                        to updatedPurchaseInstance.owner.email
-                        from conf.ui.forgotPassword.emailFrom
-                        subject message(code: 'ui.purchase.mail.subject')
-                        html body.toString()
-                    }
-                }catch (Exception e) {
-                    log.error("Send mail error.")
+                if (alreadyFinished == false) {
+                    purchaseInstance = purchaseService.proceedPurchase(purchaseId.toLong(), paymentId)
+                    sendConfirmationMail(purchaseInstance)
                 }
 
                 flash.message = message(code: 'purchase.message.purchase.succeed')
-                render(view: "show", model: [purchaseInstance: updatedPurchaseInstance, userInstance: updatedPurchaseInstance.owner, pageRedirect: pageRedirect])
+                render(view: "show", model: [purchaseInstance: purchaseInstance, userInstance: purchaseInstance.owner, pageRedirect: pageRedirect])
             } catch (InstanceNotFoundException e) {
                 flash.message = message(code: 'purchase.message.purchase.not.found')
                 redirect(action: "list")
@@ -230,8 +216,47 @@ class PurchaseController {
 
     }
 
+    private def sendConfirmationMail (Purchase updatedPurchaseInstance) {
+        try {
+            String url = createLink(controller: 'home', action: 'contact', absolute: 'true')
+
+            def conf = SpringSecurityUtils.securityConfig
+            def body = message(code: 'ui.purchase.mail.body', args: [updatedPurchaseInstance.owner.username,
+                    updatedPurchaseInstance.purchaseNumber,
+                    message(code: "product.info.name.${updatedPurchaseInstance.product.code}"),
+                    message(code: "payment.method.name.${updatedPurchaseInstance.paymentMethod}"),
+                    formatDate(date: updatedPurchaseInstance.datePay),
+                    updatedPurchaseInstance.owner.server.ipAddr,
+                    userService.getCurrentUserVpnPassword(),
+                    formatDate(date: updatedPurchaseInstance.owner.dateExpired),
+                    url])
+            mailService.sendMail {
+                to updatedPurchaseInstance.owner.email
+                from conf.ui.forgotPassword.emailFrom
+                subject message(code: 'ui.purchase.mail.subject')
+                html body.toString()
+            }
+        }catch (Exception e) {
+            log.error("Send mail error.")
+        }
+    }
+
     @Secured(['ROLE_ADMIN', 'ROLE_USER'])
     def buildAlipayRequest () {
+
+        // put the alipay transaction in DB
+        def purchaseInstance = Purchase.findById(params.purchaseId)
+
+        if (null == AlipayTransaction.findByPurchase(purchaseInstance)) {
+            def alipayTransaction = new AlipayTransaction([alipay_trade_no: "NEW", status: "Pending", purchase: purchaseInstance])
+
+            if (!alipayTransaction.save(flush: true)) {
+                // 500 error
+                return
+            }
+        }
+
+
         Map<String, String> alipayParams = purchaseService.buildAlipayRequestParams(params.purchaseId)
 
         List<String> keys = new ArrayList<String>(alipayParams.keySet());
@@ -297,13 +322,6 @@ class PurchaseController {
 
             def purchaseInstance = Purchase.findByPurchaseNumber(out_trade_no)
 
-            def alipayTransaction = new AlipayTransaction([alipay_trade_no: trade_no, status: "Pending", purchase: purchaseInstance])
-
-            if (!alipayTransaction.save(flush: true)) {
-                // 500 error
-                return
-            }
-
             redirect(action: "buy", params: [id: purchaseInstance.id, paymentMethod: PAYMENT_METHOD_ID_ALIPAY,
                                                 alipay_trade_no: trade_no] )
 
@@ -356,7 +374,10 @@ class PurchaseController {
 
         //获取支付宝的通知返回参数，可参考技术文档中页面跳转同步通知参数列表(以上仅供参考)//
 
-        if(/*purchaseService.verify(params)*/true){//验证成功
+
+        def purchaseInstance = Purchase.findByPurchaseNumber(out_trade_no)
+
+        if(purchaseService.verify(params)){//验证成功
             //////////////////////////////////////////////////////////////////////////////////////////
             //请在这里加上商户的业务逻辑程序代码
 
@@ -381,8 +402,11 @@ class PurchaseController {
                 println("alipay: WAIT_SELLER_SEND_GOODS");	//请不要修改或删除
 
                 // 发货的逻辑
-                if (purchaseService.proceedAlipayTransaction(params.trade_no)) {
+                if (purchaseService.proceedAlipayTransaction(purchaseInstance)) {
                     log.info("alipay processed by notify, trade number: " + params.alipay_trade_no)
+                    purchaseInstance = purchaseService.proceedPurchase(Purchase.findByPurchaseNumber(out_trade_no).id.toLong(), PAYMENT_METHOD_ID_ALIPAY)
+                    sendConfirmationMail(purchaseInstance)
+
                 }
 
                 purchaseService.alipaySendGoods(trade_no, grailsApplication.config.alipay.logistics_company, trade_no, grailsApplication.config.alipay.logistics_type)
