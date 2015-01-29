@@ -11,7 +11,7 @@ import org.springframework.dao.DataIntegrityViolationException
 import java.text.SimpleDateFormat
 import javax.annotation.Resource
 
-@Secured(['ROLE_ADMIN', 'ROLE_USER'])
+
 class PurchaseController {
 
     private final String PAYMENT_METHOD_ID_PAYPAL = 1
@@ -32,10 +32,12 @@ class PurchaseController {
     @Resource(name = "productService")
     ProductService productService;
 
+    @Secured(['ROLE_ADMIN', 'ROLE_USER'])
     def index() {
         redirect(action: "list", params: params)
     }
 
+    @Secured(['ROLE_ADMIN', 'ROLE_USER'])
     def list() {
         // if it's user, we show only user's purchase list
         // if it's admin, we show all if no user id is specified, or show the specified user purchases.
@@ -74,6 +76,7 @@ class PurchaseController {
         [purchaseInstance: new Purchase(params)]
     }
 
+    @Secured(['ROLE_ADMIN', 'ROLE_USER'])
     def save() {
         def purchaseInstance = new Purchase(params)
 
@@ -90,10 +93,12 @@ class PurchaseController {
      * generate: when user click "Buy" button on the product page,
      * a purchase record is generated and saved to DB.
      */
+    @Secured(['ROLE_ADMIN', 'ROLE_USER'])
     def generate() {
         redirect(action: "save", params: params)
     }
 
+    @Secured(['ROLE_ADMIN', 'ROLE_USER'])
     def show(Long id) {
         def purchaseInstance = Purchase.get(id)
         if (!purchaseInstance) {
@@ -106,6 +111,7 @@ class PurchaseController {
         [purchaseInstance: purchaseInstance, userInstance: userService.currentUser(), usdPrice: productService.convertPriceCNYtoUSD(purchaseInstance.getProduct().price)]
     }
 
+    @Secured(['ROLE_ADMIN', 'ROLE_USER'])
     def edit(Long id) {
         def purchaseInstance = Purchase.get(id)
         if (!purchaseInstance) {
@@ -117,6 +123,7 @@ class PurchaseController {
         [purchaseInstance: purchaseInstance]
     }
 
+    @Secured(['ROLE_ADMIN', 'ROLE_USER'])
     def delete(Long id) {
         def purchaseInstance = Purchase.get(id)
         if (!purchaseInstance) {
@@ -136,7 +143,7 @@ class PurchaseController {
         }
     }
 
-
+    @Secured(['ROLE_ADMIN', 'ROLE_USER'])
     def buy() {
         def paymentId = params.paymentMethod?:PAYMENT_METHOD_ID_PAYPAL
         def pageRedirect = false
@@ -223,6 +230,7 @@ class PurchaseController {
 
     }
 
+    @Secured(['ROLE_ADMIN', 'ROLE_USER'])
     def buildAlipayRequest () {
         Map<String, String> alipayParams = purchaseService.buildAlipayRequestParams(params.purchaseId)
 
@@ -249,6 +257,7 @@ class PurchaseController {
         render(view: "alipayRequest", model: [alipayParams: sbHtml.toString()])
     }
 
+    @Secured(['ROLE_ADMIN', 'ROLE_USER'])
     def alipayReturn () {
         Map<String,String> params = new HashMap<String,String>();
         Map requestParams = request.getParameterMap();
@@ -318,7 +327,7 @@ class PurchaseController {
         }
     }
 
-    def alipayNofity () {
+    def alipayNotify () {
         Map<String,String> params = new HashMap<String,String>();
         Map requestParams = request.getParameterMap();
         for (Iterator iter = requestParams.keySet().iterator(); iter.hasNext();) {

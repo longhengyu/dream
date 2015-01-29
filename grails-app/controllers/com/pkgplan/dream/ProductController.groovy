@@ -2,6 +2,7 @@ package com.pkgplan.dream
 
 import org.codehaus.groovy.grails.plugins.springsecurity.SpringSecurityUtils
 import org.springframework.dao.DataIntegrityViolationException
+import grails.plugins.springsecurity.Secured
 
 class ProductController {
 
@@ -20,10 +21,12 @@ class ProductController {
         [productInstanceList: Product.list(params), productInstanceTotal: Product.count()]
     }
 
+    @Secured(['ROLE_ADMIN'])
     def create() {
         [productInstance: new Product(params)]
     }
 
+    @Secured(['ROLE_ADMIN'])
     def save() {
         def productInstance = new Product(params)
         if (!productInstance.save(flush: true)) {
@@ -34,6 +37,7 @@ class ProductController {
         flash.message = message(code: 'default.created.message', args: [message(code: 'product.label', default: 'Product'), productInstance.id])
         redirect(action: "show", id: productInstance.id)
     }
+
 
     def show(Long id) {
         if (!SpringSecurityUtils.ifAllGranted("ROLE_ADMIN")) {
@@ -49,6 +53,7 @@ class ProductController {
         [productInstance: productInstance]
     }
 
+    @Secured(['ROLE_ADMIN'])
     def edit(Long id) {
         def productInstance = Product.get(id)
         if (!productInstance) {
@@ -60,6 +65,7 @@ class ProductController {
         [productInstance: productInstance]
     }
 
+    @Secured(['ROLE_ADMIN'])
     def update(Long id, Long version) {
         def productInstance = Product.get(id)
         if (!productInstance) {
@@ -89,6 +95,7 @@ class ProductController {
         redirect(action: "show", id: productInstance.id)
     }
 
+    @Secured(['ROLE_ADMIN'])
     def delete(Long id) {
         def productInstance = Product.get(id)
         if (!productInstance) {
