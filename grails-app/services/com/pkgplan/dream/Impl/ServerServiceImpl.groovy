@@ -1,12 +1,10 @@
 package com.pkgplan.dream.Impl
 
 import com.pkgplan.auth.User
+import com.pkgplan.dream.Server
+import com.pkgplan.dream.ServerService
 import org.apache.commons.collections.CollectionUtils
 import org.springframework.stereotype.Service
-import org.springframework.stereotype.Component
-import javax.annotation.Resource
-import com.pkgplan.dream.ServerService
-import com.pkgplan.dream.Server
 
 @Service("serverService")
 class ServerServiceImpl implements ServerService{

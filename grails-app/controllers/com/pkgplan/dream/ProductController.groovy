@@ -1,7 +1,7 @@
 package com.pkgplan.dream
 
-import org.springframework.dao.DataIntegrityViolationException
 import org.codehaus.groovy.grails.plugins.springsecurity.SpringSecurityUtils
+import org.springframework.dao.DataIntegrityViolationException
 
 class ProductController {
 

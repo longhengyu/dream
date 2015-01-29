@@ -1,6 +1,7 @@
 package com.pkgplan.dream
-import grails.plugins.springsecurity.Secured
+
 import com.pkgplan.auth.User
+import grails.plugins.springsecurity.Secured
 
 @Secured(['ROLE_ADMIN'])
 class Server {

@@ -1,8 +1,8 @@
 package com.pkgplan.security.Impl
 
 import com.pkgplan.dream.Server
-import org.codehaus.groovy.grails.plugins.springsecurity.SpringSecurityUtils
 import com.pkgplan.security.SecureService
+import org.codehaus.groovy.grails.plugins.springsecurity.SpringSecurityUtils
 import org.springframework.stereotype.Service
 
 @Service("secureService")

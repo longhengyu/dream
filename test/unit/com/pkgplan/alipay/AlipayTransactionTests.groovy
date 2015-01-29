@@ -1,14 +1,14 @@
-package com.pkgplan.dream
+package com.pkgplan.alipay
 
 import grails.test.mixin.TestFor
 
 /**
  * See the API for {@link grails.test.mixin.domain.DomainClassUnitTestMixin} for usage instructions
  */
-@TestFor(Profile)
-class ProfileTests {
+@TestFor(AlipayTransaction)
+class AlipayTransactionTests {
 
     void testSomething() {
-        fail "Implement me"
+       fail "Implement me"
     }
 }

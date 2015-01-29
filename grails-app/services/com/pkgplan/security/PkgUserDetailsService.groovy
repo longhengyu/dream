@@ -1,11 +1,12 @@
 package com.pkgplan.security
+
+import com.pkgplan.auth.User
 import org.codehaus.groovy.grails.plugins.springsecurity.GrailsUser
 import org.codehaus.groovy.grails.plugins.springsecurity.GrailsUserDetailsService
 import org.codehaus.groovy.grails.plugins.springsecurity.SpringSecurityUtils
 import org.springframework.security.core.authority.GrantedAuthorityImpl
 import org.springframework.security.core.userdetails.UserDetails
 import org.springframework.security.core.userdetails.UsernameNotFoundException
-import com.pkgplan.auth.User
 import org.springframework.stereotype.Service
 
 @Service("userDetailsService")

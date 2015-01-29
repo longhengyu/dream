@@ -66,11 +66,9 @@
                             </div>
                             <div class="row-fluid features-two">
                                     <div class="span1"></div>
-<%--                                    <g:render template="paymentSubmitButton" model="[paymentId: 0, icon: 'icon-credit-card']"/>
---%> 
-									
-                                    <g:render template="paymentSubmitButton" model="[paymentId: 1, icon: 'icon-paypal']"/>
+                                    <g:render template="paymentSubmitButton" model="[paymentId: 3, icon: 'icon-credit-card']"/>
                                     <g:render template="paymentSubmitButton" model="[paymentId: 2, icon: 'icon-gift']"/>
+                                    <g:render template="paymentSubmitButton" model="[paymentId: 1, icon: 'icon-paypal']"/>
                                     <div class="span2"></div>
                             </div>
                             <div class="form-horizontal">

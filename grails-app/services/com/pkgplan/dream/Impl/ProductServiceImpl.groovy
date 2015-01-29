@@ -1,8 +1,8 @@
 package com.pkgplan.dream.Impl
 
 import com.pkgplan.dream.ProductService
-import org.springframework.stereotype.Service
 import org.codehaus.groovy.grails.commons.ApplicationHolder
+import org.springframework.stereotype.Service
 
 /**
  * User: zhoudi

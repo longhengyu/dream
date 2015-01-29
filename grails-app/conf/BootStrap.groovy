@@ -1,8 +1,11 @@
-import com.pkgplan.auth.*
-import com.pkgplan.dream.Server
-import javax.servlet.http.HttpServletRequest
-import com.pkgplan.dream.Product
+import com.pkgplan.auth.Role
+import com.pkgplan.auth.User
+import com.pkgplan.auth.UserRole
 import com.pkgplan.dream.Giftcard
+import com.pkgplan.dream.Product
+import com.pkgplan.dream.Server
+
+import javax.servlet.http.HttpServletRequest
 
 class BootStrap {
 

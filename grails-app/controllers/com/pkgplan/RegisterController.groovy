@@ -1,13 +1,12 @@
 package com.pkgplan
 
-import org.codehaus.groovy.grails.plugins.springsecurity.ui.RegistrationCode
-import org.codehaus.groovy.grails.plugins.springsecurity.SpringSecurityUtils
-import org.codehaus.groovy.grails.plugins.springsecurity.NullSaltSource
-import grails.plugins.springsecurity.ui.ResetPasswordCommand
-
 import com.pkgplan.dream.UserService
-import javax.annotation.Resource
 import grails.plugins.springsecurity.ui.RegisterCommand
+import org.codehaus.groovy.grails.plugins.springsecurity.NullSaltSource
+import org.codehaus.groovy.grails.plugins.springsecurity.SpringSecurityUtils
+import org.codehaus.groovy.grails.plugins.springsecurity.ui.RegistrationCode
+
+import javax.annotation.Resource
 
 class RegisterController extends grails.plugins.springsecurity.ui.RegisterController {
 

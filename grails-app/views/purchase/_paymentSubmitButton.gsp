@@ -34,6 +34,14 @@
         <g:elseif test="${paymentId == 0}">
             <a href="#use-stripe-Modal" data-toggle="modal" data-target="#use-stripe-Modal" type="submit" class="form-like btn btn-${paymentId}">${message(code: "purchase.button.pay")}</a>
         </g:elseif>
+        <g:elseif test="${paymentId == 3}">
+            <form method="post" action="/purchase/buildAlipayRequest">
+                <input type="hidden" id="purchaseId" value="${purchaseInstance?.id}" name="purchaseId">
+                <button type="submit" class="btn btn-${paymentId}">
+                    ${message(code: "purchase.button.pay")}
+                </button>
+            </form>
+        </g:elseif>
     </div>
 </div>
 

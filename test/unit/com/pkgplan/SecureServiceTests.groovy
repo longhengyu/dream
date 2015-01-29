@@ -1,10 +1,7 @@
 package com.pkgplan
 
-
-
-import grails.test.mixin.*
-
 import com.pkgplan.security.Impl.SecureServiceImpl
+import grails.test.mixin.TestFor
 
 /**
  * See the API for {@link grails.test.mixin.services.ServiceUnitTestMixin} for usage instructions

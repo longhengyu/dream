@@ -1,16 +1,12 @@
 package com.pkgplan.dream
 
-
-
-import grails.test.mixin.*
-import grails.test.mixin.domain.DomainClassUnitTestMixin
 import com.pkgplan.auth.User
-
-import grails.plugins.springsecurity.SpringSecurityService
-import org.springframework.security.authentication.encoding.PasswordEncoder
-
-import org.springframework.beans.factory.annotation.Autowired
 import com.pkgplan.dream.Impl.ServerServiceImpl
+import grails.plugins.springsecurity.SpringSecurityService
+import grails.test.mixin.TestMixin
+import grails.test.mixin.domain.DomainClassUnitTestMixin
+import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.security.authentication.encoding.PasswordEncoder
 
 /**
  * See the API for {@link grails.test.mixin.services.ServiceUnitTestMixin} for usage instructions

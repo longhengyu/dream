@@ -1,12 +1,13 @@
 package com.pkgplan.dream.Impl
 
 import com.pkgplan.auth.User
-import org.codehaus.groovy.grails.plugins.springsecurity.SpringSecurityUtils
-import org.springframework.stereotype.Service
-import grails.plugins.springsecurity.SpringSecurityService
-import javax.annotation.Resource
 import com.pkgplan.dream.UserService
 import com.pkgplan.security.SecureService
+import grails.plugins.springsecurity.SpringSecurityService
+import org.codehaus.groovy.grails.plugins.springsecurity.SpringSecurityUtils
+import org.springframework.stereotype.Service
+
+import javax.annotation.Resource
 
 @Service("userService")
 class UserServiceImpl implements UserService{

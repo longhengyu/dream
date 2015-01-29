@@ -1,7 +1,5 @@
 package com.pkgplan.dream
 
-import java.util.Date;
-
 import com.pkgplan.auth.User
 
 class Giftcard {

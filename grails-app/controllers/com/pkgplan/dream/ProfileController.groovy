@@ -1,8 +1,8 @@
 package com.pkgplan.dream
 
-import org.springframework.dao.DataIntegrityViolationException
 import com.pkgplan.auth.User
 import grails.plugins.springsecurity.Secured
+import org.springframework.dao.DataIntegrityViolationException
 
 @Secured(['ROLE_ADMIN','ROLE_USER'])
 class ProfileController {

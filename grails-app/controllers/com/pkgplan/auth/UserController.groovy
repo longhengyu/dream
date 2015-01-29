@@ -1,9 +1,8 @@
 package com.pkgplan.auth
 
-import org.springframework.dao.DataIntegrityViolationException
-import grails.plugins.springsecurity.Secured
-import com.pkgplan.dream.Giftcard
 import com.pkgplan.dream.Server
+import grails.plugins.springsecurity.Secured
+import org.springframework.dao.DataIntegrityViolationException
 
 @Secured(['ROLE_ADMIN','ROLE_USER'])
 class UserController {

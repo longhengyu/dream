@@ -1,7 +1,7 @@
 package com.pkgplan.dream
 
-import grails.plugins.stripe.StripeTagLib
 import com.stripe.Stripe
+import grails.plugins.stripe.StripeTagLib
 
 class DreamStripeTagLib extends StripeTagLib {
     def script = { attrs, body ->

@@ -1,13 +1,10 @@
 package com.pkgplan.dream.Impl
 
-import com.pkgplan.dream.ProductService
-import org.springframework.stereotype.Service
-import org.codehaus.groovy.grails.commons.ApplicationHolder
+import com.pkgplan.dream.Giftcard
 import com.pkgplan.dream.GiftcardService
-import com.pkgplan.auth.User
 import com.pkgplan.dream.Product
 import com.pkgplan.dream.Purchase
-import com.pkgplan.dream.Giftcard
+import org.springframework.stereotype.Service
 
 /**
  * User: zhoudi
