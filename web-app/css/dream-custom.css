@@ -80,6 +80,10 @@ ul, ol {
     color: #C09853;
 }
 
+.text-3 {
+    color: #C09853;
+}
+
 
 .btn-2.active, .btn-1.active, .btn-0.active {
     color: rgba(255, 255, 255, 0.75);
@@ -129,6 +133,9 @@ ul, ol {
     background-color: #0044CC;
     color: #FFFFFF;
 }
+
+
+
 .btn-2:active, .btn-2.active {
 }
 
@@ -153,6 +160,29 @@ ul, ol {
     color: #FFFFFF;
 }
 .btn-0:active, .btn-0.active {
+}
+
+.btn-3 {
+    color: #ffffff;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+    background-color: #faa732;
+    *background-color: #f89406;
+    background-image: -moz-linear-gradient(top, #fbb450, #f89406);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#fbb450), to(#f89406));
+    background-image: -webkit-linear-gradient(top, #fbb450, #f89406);
+    background-image: -o-linear-gradient(top, #fbb450, #f89406);
+    background-image: linear-gradient(to bottom, #fbb450, #f89406);
+    background-repeat: repeat-x;
+    border-color: #f89406 #f89406 #ad6704;
+    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fffbb450', endColorstr='#fff89406', GradientType=0);
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+}
+.btn-3:hover, .btn-3:active, .btn-3.active, .btn-3.disabled, .btn-3[disabled] {
+    background-color: #F89406;
+    color: #FFFFFF;
+}
+.btn-3:active, .btn-3.active {
 }
 
 /* user profile */

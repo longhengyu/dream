@@ -2,7 +2,12 @@
 <div class="span3">
     <div class="feat-inner ">
         <!-- Font awesome icon -->
-        <i class="${icon} text-${paymentId}"></i>
+        <g:if test="${paymentId == 3}">
+            <img src="${resource(dir:'img',file:'alipaylogo.png')}">
+        </g:if>
+        <g:else>
+            <i class="${icon} text-${paymentId}"></i>
+        </g:else>
         <!-- Title -->
         <h4>${message(code: "payment.method.name.${paymentId}")}</h4>
         <!-- Para -->
