@@ -21,4 +21,6 @@ public interface UserService {
     boolean isAdminLoggedIn()
 
     boolean isUserLonggedIn()
+
+	String getUserVpnPassword(User user)
 }

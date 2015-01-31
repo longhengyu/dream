@@ -22,6 +22,8 @@ import javax.annotation.Resource
 
 import org.apache.commons.httpclient.NameValuePair
 import org.codehaus.groovy.grails.plugins.springsecurity.SpringSecurityUtils;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.annotation.Transactional
 
 /**
  * User: longhengyu
@@ -46,6 +48,7 @@ class PurchaseServiceImpl implements PurchaseService {
         return "${new SimpleDateFormat('yyyyMMdd').format(now)}${randomString}"
     }
 
+	@Transactional(readOnly = false)
     Purchase proceedPurchase(Long purchaseId, String paymentMethodId) throws InstanceNotFoundException {
 
         // find purchase
@@ -120,7 +123,7 @@ class PurchaseServiceImpl implements PurchaseService {
         sParaTemp.put("logistics_type", ApplicationHolder.application.config.alipay.logistics_type);
         sParaTemp.put("logistics_fee", ApplicationHolder.application.config.alipay.logistics_fee);
         sParaTemp.put("logistics_payment", ApplicationHolder.application.config.alipay.logistics_payment);
-        sParaTemp.put("price", /*purchaseInstance.product.price*/ "0.01");
+        sParaTemp.put("price", purchaseInstance.product.price);
         sParaTemp.put("quantity", 1);
         sParaTemp.put("show_url", ApplicationHolder.application.config.alipay.show_url);
 
@@ -278,10 +281,13 @@ class PurchaseServiceImpl implements PurchaseService {
         }
     }
 
+
+	@Transactional(readOnly = false)
     boolean proceedAlipayTransaction(Purchase purchaseInstance) {
 
         def alipayTransaction = AlipayTransaction.findByPurchase(purchaseInstance)
         if (alipayTransaction?.status.equals("Pending")) {
+			alipayTransaction.lock()
             alipayTransaction.status = "Finished"
             alipayTransaction.save()
             return true

@@ -37,4 +37,8 @@ class UserServiceImpl implements UserService{
     String getCurrentUserVpnPassword() {
         return secureService.encodePasswordForVpn(currentUser().password)
     }
+
+    String getUserVpnPassword(User user) {
+        return secureService.encodePasswordForVpn(user.password)
+    }
 }

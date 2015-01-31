@@ -12,6 +12,7 @@ import java.text.SimpleDateFormat
 import javax.annotation.Resource
 
 
+
 class PurchaseController {
 
     private final String PAYMENT_METHOD_ID_PAYPAL = 1
@@ -201,7 +202,8 @@ class PurchaseController {
                 if (alreadyFinished == false) {
                     purchaseInstance = purchaseService.proceedPurchase(purchaseId.toLong(), paymentId)
                     sendConfirmationMail(purchaseInstance)
-                }
+                } 
+
 
                 flash.message = message(code: 'purchase.message.purchase.succeed')
                 render(view: "show", model: [purchaseInstance: purchaseInstance, userInstance: purchaseInstance.owner, pageRedirect: pageRedirect])
@@ -219,15 +221,14 @@ class PurchaseController {
     private def sendConfirmationMail (Purchase updatedPurchaseInstance) {
         try {
             String url = createLink(controller: 'home', action: 'contact', absolute: 'true')
-
-            def conf = SpringSecurityUtils.securityConfig
+			def conf = SpringSecurityUtils.securityConfig
             def body = message(code: 'ui.purchase.mail.body', args: [updatedPurchaseInstance.owner.username,
                     updatedPurchaseInstance.purchaseNumber,
                     message(code: "product.info.name.${updatedPurchaseInstance.product.code}"),
                     message(code: "payment.method.name.${updatedPurchaseInstance.paymentMethod}"),
                     formatDate(date: updatedPurchaseInstance.datePay),
                     updatedPurchaseInstance.owner.server.ipAddr,
-                    userService.getCurrentUserVpnPassword(),
+                    userService.getUserVpnPassword(updatedPurchaseInstance.owner),
                     formatDate(date: updatedPurchaseInstance.owner.dateExpired),
                     url])
             mailService.sendMail {
@@ -238,6 +239,7 @@ class PurchaseController {
             }
         }catch (Exception e) {
             log.error("Send mail error.")
+			e.printStackTrace()
         }
     }
 
@@ -252,6 +254,7 @@ class PurchaseController {
 
             if (!alipayTransaction.save(flush: true)) {
                 // 500 error
+
                 return
             }
         }
@@ -278,7 +281,6 @@ class PurchaseController {
         sbHtml.append("<input type=\"submit\" value=\"" + "支付" + "\" style=\"display:none;\"></form>");
         sbHtml.append("<script>document.forms['alipaysubmit'].submit();</script>");
 
-        println(sbHtml.toString())
         render(view: "alipayRequest", model: [alipayParams: sbHtml.toString()])
     }
 
@@ -294,7 +296,7 @@ class PurchaseController {
                 valueStr = (i == values.length - 1) ? valueStr + values[i] : valueStr + values[i] + ",";
             }
             //乱码解决，这段代码在出现乱码时使用。如果mysign和sign不相等也可以使用这段代码转化
-            //valueStr = new String(valueStr.getBytes("ISO-8859-1"), "utf-8");
+            valueStr = new String(valueStr.getBytes("ISO-8859-1"), "utf-8");
             params.put(name, valueStr);
         }
 
@@ -318,7 +320,6 @@ class PurchaseController {
         if(verify_result){//验证成功
             //////////////////////////////////////////////////////////////////////////////////////////
             //请在这里加上商户的业务逻辑程序代码
-            println("验证成功")
 
             def purchaseInstance = Purchase.findByPurchaseNumber(out_trade_no)
 
@@ -341,11 +342,12 @@ class PurchaseController {
             //////////////////////////////////////////////////////////////////////////////////////////
         }else{
             //该页面可做页面美工编辑
-            println("验证失败");
+            log.info("alipay verify fails");
         }
     }
 
     def alipayNotify () {
+		log.info("alipay notify is coming!")
         Map<String,String> params = new HashMap<String,String>();
         Map requestParams = request.getParameterMap();
         for (Iterator iter = requestParams.keySet().iterator(); iter.hasNext();) {
@@ -366,7 +368,6 @@ class PurchaseController {
         String out_trade_no = new String(request.getParameter("out_trade_no").getBytes("ISO-8859-1"),"UTF-8");
 
         //支付宝交易号
-
         String trade_no = new String(request.getParameter("trade_no").getBytes("ISO-8859-1"),"UTF-8");
 
         //交易状态
@@ -377,7 +378,7 @@ class PurchaseController {
 
         def purchaseInstance = Purchase.findByPurchaseNumber(out_trade_no)
 
-        if(purchaseService.verify(params)){//验证成功
+        if(purchaseService.alipayVerify(params)){//验证成功
             //////////////////////////////////////////////////////////////////////////////////////////
             //请在这里加上商户的业务逻辑程序代码
 
@@ -390,7 +391,7 @@ class PurchaseController {
                 //如果没有做过处理，根据订单号（out_trade_no）在商户网站的订单系统中查到该笔订单的详细，并执行商户的业务程序
                 //如果有做过处理，不执行商户的业务程序
 
-                println("WAIT_BUYER_PAY");	//请不要修改或删除
+                log.info("alipay: WAIT_BUYER_PAY");	//请不要修改或删除
                 render(view: "alipaySuccess")
             } else if(trade_status.equals("WAIT_SELLER_SEND_GOODS")){
                 //该判断表示买家已在支付宝交易管理中产生了交易记录且付款成功，但卖家没有发货
@@ -399,11 +400,11 @@ class PurchaseController {
                 //如果没有做过处理，根据订单号（out_trade_no）在商户网站的订单系统中查到该笔订单的详细，并执行商户的业务程序
                 //如果有做过处理，不执行商户的业务程序
 
-                println("alipay: WAIT_SELLER_SEND_GOODS");	//请不要修改或删除
+                log.info("alipay: WAIT_SELLER_SEND_GOODS");	//请不要修改或删除
 
                 // 发货的逻辑
                 if (purchaseService.proceedAlipayTransaction(purchaseInstance)) {
-                    log.info("alipay processed by notify, trade number: " + params.alipay_trade_no)
+                    log.info("alipay processed by notify, trade number: " + trade_no)
                     purchaseInstance = purchaseService.proceedPurchase(Purchase.findByPurchaseNumber(out_trade_no).id.toLong(), PAYMENT_METHOD_ID_ALIPAY)
                     sendConfirmationMail(purchaseInstance)
 
@@ -411,7 +412,7 @@ class PurchaseController {
 
                 purchaseService.alipaySendGoods(trade_no, grailsApplication.config.alipay.logistics_company, trade_no, grailsApplication.config.alipay.logistics_type)
 
-                println("alipay: sent goods");
+                log.info("alipay: sent goods");
                 render(view: "alipaySuccess")
             } else if(trade_status.equals("WAIT_BUYER_CONFIRM_GOODS")){
                 //该判断表示卖家已经发了货，但买家还没有做确认收货的操作
@@ -420,7 +421,7 @@ class PurchaseController {
                 //如果没有做过处理，根据订单号（out_trade_no）在商户网站的订单系统中查到该笔订单的详细，并执行商户的业务程序
                 //如果有做过处理，不执行商户的业务程序
 
-                println("WAIT_BUYER_CONFIRM_GOODS");	//请不要修改或删除
+                log.info("WAIT_BUYER_CONFIRM_GOODS");	//请不要修改或删除
                 render(view: "alipaySuccess")
             } else if(trade_status.equals("TRADE_FINISHED")){
                 //该判断表示买家已经确认收货，这笔交易完成
@@ -429,11 +430,11 @@ class PurchaseController {
                 //如果没有做过处理，根据订单号（out_trade_no）在商户网站的订单系统中查到该笔订单的详细，并执行商户的业务程序
                 //如果有做过处理，不执行商户的业务程序
 
-                println("TRADE_FINISHED");	//请不要修改或删除
+                log.info("TRADE_FINISHED");	//请不要修改或删除
                 render(view: "alipaySuccess")
             }
             else {
-                println("success");	//请不要修改或删除
+                log.info("success");	//请不要修改或删除
                 render(view: "alipaySuccess")
             }
 
@@ -441,7 +442,7 @@ class PurchaseController {
 
             //////////////////////////////////////////////////////////////////////////////////////////
         }else{//验证失败
-            println("fail")
+            log.info("alipay verify fail")
             render(view: "alipaySuccess")
         }
     }
