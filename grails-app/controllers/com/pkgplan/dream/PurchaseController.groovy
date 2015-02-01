@@ -134,6 +134,10 @@ class PurchaseController {
         }
 
         try {
+            def alipayTransaction = AlipayTransaction.findByPurchase(purchaseInstance)
+            if (null != alipayTransaction) {
+                alipayTransaction.delete(flush: true)
+            }
             purchaseInstance.delete(flush: true)
             flash.message = message(code: 'purchase.message.purchase.canceled')
             redirect(action: "list")
