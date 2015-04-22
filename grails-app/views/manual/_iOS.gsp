@@ -1,23 +1,23 @@
 <section id="section-ios">
     <div class="page-header">
-        <h1>iphone / ipad <small>HOW TO</small></h1>
+        <h1>iPhone / iPad <small><g:message code="manual.title.how.to"/></small></h1>
     </div>
 
 
     <div>
         <ol>
-            <li>打开“设置”，然后选择“通用”；<br>
-                <img src="http://static.dream-vpn.com/manual/iphone/01.PNG" alt="" title=""><br></li>
-            <br><li>选择“VPN”；<br>
-                <img src="http://static.dream-vpn.com/manual/iphone/02.PNG" alt="" title=""><br></li>
-            <br><li>选择“添加VPN设置”；<br>
-                <img src="http://static.dream-vpn.com/manual/iphone/03.PNG" alt="" title=""><br></li>
-            <br><li>选择“PPTP”类型的VPN --> 填入描述（MyVPN或任意描述） <br>--> 服务器（即VPN服务器IP地址）及帐户密码，这些信息点击<a href="/user/show" target="_blank">这里</a>获取）<br>--> 存储；<br>
-                <img src="http://static.dream-vpn.com/manual/iphone/04.PNG" alt="" title=""><br></li>
-            <br><li>连接；<br>
-                <img src="http://static.dream-vpn.com/manual/iphone/05.PNG" alt="" title=""><br></li>
-            <br><li>连接后，在右上角会有“VPN”的小图标出现；<br>
-                <img src="http://static.dream-vpn.com/manual/iphone/06.PNG" alt="" title=""><br>
+            <li><g:message code="manual.ios.step.01"/><br>
+                <img src="<g:message code="manual.ios.step.01.img"/>" alt="" title=""><br></li>
+            <br><li><g:message code="manual.ios.step.02"/><br>
+                <img src="<g:message code="manual.ios.step.02.img"/>" alt="" title=""><br></li>
+            <br><li><g:message code="manual.ios.step.03"/><br>
+                <img src="<g:message code="manual.ios.step.03.img"/>" alt="" title=""><br></li>
+            <br><li><g:message code="manual.ios.step.04"/><br>
+                <img src="<g:message code="manual.ios.step.04.img"/>" alt="" title=""><br></li>
+            <br><li><g:message code="manual.ios.step.05"/><br>
+                <img src="<g:message code="manual.ios.step.05.img"/>" alt="" title=""><br></li>
+            <br><li><g:message code="manual.ios.step.06"/><br>
+                <img src="<g:message code="manual.ios.step.06.img"/>" alt="" title=""><br>
             </li>
 
         </ol>
