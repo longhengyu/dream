@@ -194,7 +194,7 @@ exchangeRate = 6.5
 grails.plugins.stripe.secretKey = 'sk_test_8SOXKUm9DtD6lH2coUOk2y2a'
 grails.plugins.stripe.publishableKey = 'pk_test_1jQNJlvip4pch5xF7CzMYT46'
 
-supported.languages.list=["en_US","zh_CN","ja_JP"]
+supported.languages.list=["en_US","zh_CN","ja_JP","ko_KR"]
 
 // check mail link
 dream {
