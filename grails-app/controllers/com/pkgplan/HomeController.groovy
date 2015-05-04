@@ -12,6 +12,8 @@ class HomeController {
         if (userService.isAdminLoggedIn()) {
             redirect(action: 'list', controller: 'user')
         }
+
+        render view: "/home/newhome"
     }
 
     def manual() {
@@ -55,5 +57,7 @@ class HomeController {
         if (!userService.isUserLonggedIn()) {
             redirect(action: "index")
         }
+
+        render view: "/home/newhome"
     }
 }
