@@ -24,3 +24,12 @@
 	<g:select id="owner" name="owner.id" from="${com.pkgplan.auth.User.list()}" optionKey="id" required="" value="${giftcardInstance?.owner?.id}" class="many-to-one"/>
 </div>
 
+<div class="fieldcontain">
+    <g:checkBox name="sendMail" value="${true}" />
+    <label for="sendMail">
+        <g:message code="giftcard.create.send.mail" default="Send Mail" />
+
+    </label>
+
+</div>
+

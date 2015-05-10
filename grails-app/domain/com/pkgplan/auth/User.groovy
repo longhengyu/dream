@@ -19,9 +19,9 @@ class User {
 	boolean passwordExpired
 
     Profile profile
-    static hasOne = [server: Server]
+    static hasOne = [server: Server, introducer: User]
 
-    static hasMany = [purchases: Purchase]
+    static hasMany = [purchases: Purchase, referrals: User]
 
 	static constraints = {
 		username blank: false, unique: true
@@ -30,6 +30,7 @@ class User {
         profile(nullable: true)
         purchases(nullable: true)
         server(nullable: true)
+        introducer(nullable: true)
         dateExpired(nullable: true)
 	}
 

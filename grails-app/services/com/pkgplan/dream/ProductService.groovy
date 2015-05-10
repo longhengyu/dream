@@ -14,4 +14,6 @@ public interface ProductService {
      * @since 1.0.0
      */
     public BigDecimal convertPriceCNYtoUSD(BigDecimal cny)
+    public Product getTestProduct()
+    public Product getBasicProduct()
 }

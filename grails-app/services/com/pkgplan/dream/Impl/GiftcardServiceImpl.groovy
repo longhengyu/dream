@@ -5,6 +5,7 @@ import com.pkgplan.dream.GiftcardService
 import com.pkgplan.dream.Product
 import com.pkgplan.dream.Purchase
 import org.springframework.stereotype.Service
+import org.apache.commons.lang.RandomStringUtils
 
 /**
  * User: zhoudi
@@ -13,6 +14,9 @@ import org.springframework.stereotype.Service
  */
 @Service("giftcardService")
 class GiftcardServiceImpl implements GiftcardService{
+
+    String charset = (('A'..'Z') + ('0'..'9')).join()
+    Integer length = 9
 
 
     @Override
@@ -41,5 +45,9 @@ class GiftcardServiceImpl implements GiftcardService{
             }
         }
         return false
+    }
+
+    String generateGiftcardCode() {
+        return RandomStringUtils.random(length, charset.toCharArray())
     }
 }

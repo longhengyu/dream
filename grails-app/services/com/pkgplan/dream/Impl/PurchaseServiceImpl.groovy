@@ -24,6 +24,11 @@ import org.apache.commons.httpclient.NameValuePair
 import org.codehaus.groovy.grails.plugins.springsecurity.SpringSecurityUtils;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.annotation.Transactional
+import com.pkgplan.dream.Giftcard
+import com.pkgplan.dream.ProductService
+import com.pkgplan.dream.GiftcardService
+import org.apache.commons.logging.LogFactory
+import grails.plugin.mail.MailService
 
 /**
  * User: longhengyu
@@ -38,9 +43,20 @@ class PurchaseServiceImpl implements PurchaseService {
     @Resource
     ServerService serverService
 
+    @Resource
+    ProductService productService
+
+    @Resource
+    GiftcardService giftcardService
+
+    @Resource
+    MailService mailService
+
+    def gr = new org.codehaus.groovy.grails.plugins.web.taglib.ApplicationTagLib()
+
     def g = ApplicationHolder.application.mainContext.getBean('com.pkgplan.dream.DateTimeTagLib')
 
-    def log
+    def log = LogFactory.getLog(getClass())
 
     String generatePurchaseNumber() {
         Date now = new Date()
@@ -66,6 +82,9 @@ class PurchaseServiceImpl implements PurchaseService {
             owner.save()
         }
 
+
+
+
         def product = purchaseInstance.product
         Date now = new Date()
         Date fromDate = now > owner.dateExpired ? now : owner.dateExpired
@@ -82,7 +101,54 @@ class PurchaseServiceImpl implements PurchaseService {
         String randomString = RandomStringUtils.random(length, charset.toCharArray())
         purchaseInstance.save()
 
+        // if this purchase is the first purchase of the owner, then create a giftcard to the introducer
+        if (owner.introducer != null && purchaseInstance.product != productService.getTestProduct()) {
+            def results = Purchase.withCriteria { // to find already paid non-test purchase
+                and {
+                    eq("owner", owner)
+                    ne("datePay",purchaseInstance.datePay) // has dataPay means already paid
+                    ne("product", productService.getTestProduct())
+                }
+            }
+
+            if (results.size == 0) {
+                // send giftcard
+
+                def giftcardInstance = new Giftcard([owner: owner.introducer, product: productService.getBasicProduct(), code: giftcardService.generateGiftcardCode()])
+                if (!giftcardInstance.save(flush: true)) {
+                    //TODO when fails do something
+                }
+
+                log.info(owner.username + " introduced by " + owner.introducer.username + ", issued giftcard " + giftcardInstance.code)
+
+                sendGotGiftCardMail(giftcardInstance, owner.username)
+
+            }
+        }
+
         return purchaseInstance
+    }
+
+    private def sendGotGiftCardMail (Giftcard giftcardInstance, String introducedUsername) {
+        try {
+            String url = gr.createLink(controller: 'home', action: 'contact', absolute: 'true')
+            def conf = SpringSecurityUtils.securityConfig
+            def body = gr.message(code: 'introducer.got.giftcard.mail.body', args: [giftcardInstance.owner.username,
+                    introducedUsername,
+                    giftcardInstance.code,
+                    url])
+            mailService.sendMail {
+                to giftcardInstance.owner.email
+                from conf.ui.forgotPassword.emailFrom
+                subject gr.message(code: 'introducer.got.giftcard.mail.subject')
+                html body.toString()
+            }
+            log.info("sent mail to " + giftcardInstance.owner.username)
+
+        }catch (Exception e) {
+            log.error("Send mail error.")
+            e.printStackTrace()
+        }
     }
 
     boolean proceedCreditCard(String stripeToken, Double amount) {

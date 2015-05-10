@@ -6,8 +6,18 @@ $(function (){
 
     $('.btn-loading').click(function() {
         $(this).addClass('disabled');
+        $('.submit-by-enter').prop('readonly', true);
         if ($(this).next().is("img")) {
             $(this).next().show();
+        }
+    });
+    $('.submit-by-enter').keydown(function(event) {
+        if (event.keyCode == 13) {
+            $('.btn-loading').addClass('disabled');
+            $('.submit-by-enter').prop('readonly', true);
+            if ($('.btn-loading').next().is("img")) {
+                $('.btn-loading').next().show();
+            }
         }
     });
 

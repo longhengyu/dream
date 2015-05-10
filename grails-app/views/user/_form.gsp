@@ -30,6 +30,14 @@
 
 <div class="fieldcontain">
     <label for="profile">
+        <g:message code="user.introducer.label" default="Introducer" />
+
+    </label>
+    <g:select id="introducer" name="introducer.id" from="${com.pkgplan.auth.User.list()}" optionKey="id" value="${userInstance?.introducer?.id}" class="many-to-one" noSelection="['null': '']"/>
+</div>
+
+<div class="fieldcontain">
+    <label for="profile">
         <g:message code="user.server.label" default="Server" />
 
     </label>

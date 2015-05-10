@@ -56,6 +56,7 @@ class PurchaseController {
             query = {
                 and {
                     eq("owner", owner)
+                    ne("product", productService.getTestProduct())
                 }
                 order("dateCreated", "desc")
             }
