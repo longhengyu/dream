@@ -41,7 +41,7 @@
 
                 <g:if test="${referrals.size() != 0}">
                     <div class="page-header test-margin-left vpn-info">
-                        <h5>我推荐过的朋友</h5>
+                        <h5><g:message code="introducer.referral.title" default="Name"/></h5>
                     </div>
                     <div class="content-settings test-margin-left">
                         <table class="table table-bordered table-striped" id="giftcard-list">
@@ -60,7 +60,12 @@
 
                                     <td>${formatDate(date:referral?.dateCreated)}</td>
 
-                                    <td></td>
+                                    <td><g:if test="${referral.hasPurchased() == true}">
+                                        <g:message code="introducer.referral.status.bought" default="Started Using" />
+                                        </g:if>
+                                        <g:else><g:message code="introducer.referral.status.not.yet" default="Ready to Use" />
+                                        </g:else>
+                                    </td>
 
 
                                 </tr>

@@ -70,4 +70,13 @@ class User {
         return dateExpired?:dateCreated
     }
 
+    boolean hasPurchased(){
+        for(Purchase purchase in purchases) {
+            if (purchase.datePay != null) {
+                return true
+            }
+        }
+        return false
+    }
+
 }
