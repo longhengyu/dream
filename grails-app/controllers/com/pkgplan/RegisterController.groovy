@@ -5,6 +5,7 @@ import grails.plugins.springsecurity.ui.RegisterCommand
 import org.codehaus.groovy.grails.plugins.springsecurity.NullSaltSource
 import org.codehaus.groovy.grails.plugins.springsecurity.SpringSecurityUtils
 import org.codehaus.groovy.grails.plugins.springsecurity.ui.RegistrationCode
+import org.springframework.web.servlet.support.RequestContextUtils as RCU
 
 import javax.annotation.Resource
 
@@ -22,7 +23,7 @@ class RegisterController extends grails.plugins.springsecurity.ui.RegisterContro
 
         String salt = saltSource instanceof NullSaltSource ? null : command.username
         def user = lookupUserClass().newInstance(email: command.email, username: command.username,
-                accountLocked: true, enabled: true)
+                accountLocked: true, enabled: true, lang: RCU.getLocale(request).toString())
 
         RegistrationCode registrationCode = springSecurityUiService.register(user, command.password, salt)
         if (registrationCode == null || registrationCode.hasErrors()) {

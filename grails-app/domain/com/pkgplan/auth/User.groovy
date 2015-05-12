@@ -11,6 +11,7 @@ class User {
 	String username
 	String password
     String email
+    String lang
     Date dateCreated
     Date dateExpired
 	boolean enabled
