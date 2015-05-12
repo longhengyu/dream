@@ -51,6 +51,11 @@
         <span class="pull-right"><div class="label label-info"><g:fieldValue bean="${purchaseInstance?.owner?.server}" field="ipAddr"/></div></span>
     </div>
     <div class="title display-table">
+        <p><g:message code="login.label.username" default="Username" /></p>
+        <span class="pull-right"><g:fieldValue bean="${purchaseInstance?.owner}" field="username"/></span>
+
+    </div>
+    <div class="title display-table">
         <p><g:message code="user.account.vpn.password" default="VPN Password"/></p>
         <span class="pull-right"><div class="label label-info"><g:vpnPassword/></div></span>
     </div>
