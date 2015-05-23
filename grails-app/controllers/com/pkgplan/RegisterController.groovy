@@ -8,6 +8,7 @@ import org.codehaus.groovy.grails.plugins.springsecurity.ui.RegistrationCode
 import org.springframework.web.servlet.support.RequestContextUtils as RCU
 
 import javax.annotation.Resource
+import java.nio.charset.Charset
 
 class RegisterController extends grails.plugins.springsecurity.ui.RegisterController {
 
@@ -100,5 +101,33 @@ class RegisterController extends grails.plugins.springsecurity.ui.RegisterContro
         }
 
         render view: "/register/forgotPassword", model: [params: params, emailSent: true]
+    }
+}
+
+class RegisterCommand {
+
+    String username
+    String email
+    String password
+    String password2
+
+    def grailsApplication
+
+    static constraints = {
+        username blank: false, nullable: false, validator: { value, command ->
+            if (value) {
+                def User = command.grailsApplication.getDomainClass(
+                        SpringSecurityUtils.securityConfig.userLookup.userDomainClassName).clazz
+                if (!Charset.forName("US-ASCII").newEncoder().canEncode( value )) {
+                    return 'registerCommand.username.ascii'
+                }
+                if (User.findByUsername(value)) {
+                    return 'registerCommand.username.unique'
+                }
+            }
+        }
+        email blank: false, nullable: false, email: true
+        password blank: false, nullable: false, validator: RegisterController.passwordValidator
+        password2 validator: RegisterController.password2Validator
     }
 }
