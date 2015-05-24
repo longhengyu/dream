@@ -159,6 +159,7 @@ grails.plugins.springsecurity.ui.forgotPassword.emailSubject = 'ui.forgot.passwo
 // for heroku
 grails.plugin.databasesession.enabled = false
 
+username.validationRegex = '^([a-zA-Z\\d])*$'
 
 // dream vpn settings
 dream {

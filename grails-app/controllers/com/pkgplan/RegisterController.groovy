@@ -118,7 +118,9 @@ class RegisterCommand {
             if (value) {
                 def User = command.grailsApplication.getDomainClass(
                         SpringSecurityUtils.securityConfig.userLookup.userDomainClassName).clazz
-                if (!Charset.forName("US-ASCII").newEncoder().canEncode( value )) {
+
+                String usernameValidationRegex = command.grailsApplication.config.username.validationRegex
+                if (!value.matches(usernameValidationRegex)) {
                     return 'registerCommand.username.ascii'
                 }
                 if (User.findByUsername(value)) {
@@ -126,7 +128,15 @@ class RegisterCommand {
                 }
             }
         }
-        email blank: false, nullable: false, email: true
+        email blank: false, nullable: false, email: true, validator: { value, command ->
+            if (value) {
+                def User = command.grailsApplication.getDomainClass(
+                        SpringSecurityUtils.securityConfig.userLookup.userDomainClassName).clazz
+                if (User.findByEmail(value)) {
+                    return 'registerCommand.email.unique'
+                }
+            }
+        }
         password blank: false, nullable: false, validator: RegisterController.passwordValidator
         password2 validator: RegisterController.password2Validator
     }
