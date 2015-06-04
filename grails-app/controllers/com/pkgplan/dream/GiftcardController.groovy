@@ -196,46 +196,54 @@ class GiftcardController {
         User introducer = User.findByUsername(username)
         User currentUser = springSecurityService.currentUser
         if (introducer != null && introducer != currentUser && !introducer.username.equals("admin")) {
-            // username valid
-            // 0. save introducer
-            currentUser.introducer = introducer
-            if (!currentUser.save(flush: true)) {
-                // TODO: give some message, when fails
-                log.error("update introducer " + introducer.id + " for user " + currentUser.id + " failed.")
-                flash.error_ajax = message(code: 'introducer.not.correct')
-                render(view: "/giftcard/_verifyFriend", model: [applied: applied, purchaseId: purchaseId, username: params.username])
-                return
+
+            User.withTransaction{ status ->
+                try {
+                    // 1. create a test purchase
+                    Product testPlan = productService.getTestProduct()
+
+                    def purchaseInstance = createTestProductPurchase(currentUser)
+                    if (purchaseInstance == null) {
+                        log.error("update introducer " + introducer.id + " for user " + currentUser.id + " failed. new test purchase error")
+
+                    }
+
+                    flash.message = message(code: 'introducer.apply.success')
+                    flash.error_ajax = null
+                    applied = true
+                    purchaseId = purchaseInstance.id
+
+                    // 2. create a giftcard code
+                    def giftcardInstance = new Giftcard(product: testPlan, owner: currentUser)
+                    giftcardInstance.code = giftcardService.generateGiftcardCode()
+                    if (!giftcardInstance.save(flush: true, failOnError:true)) {
+                        log.error("update introducer " + introducer.id + " for user " + currentUser.id + " failed. new test giftcard error.")
+                        flash.error_ajax = message(code: 'introducer.not.correct')
+                        render(view: "/giftcard/_verifyFriend", model: [applied: applied, purchaseId: purchaseId, username: params.username])
+                        return
+                    }
+
+                    // 3. save introducer
+                    currentUser.introducer = introducer
+                    if (!currentUser.save(flush: true, failOnError:true)) {
+                        // TODO: give some message, when fails
+                        log.error("update introducer " + introducer.id + " for user " + currentUser.id + " failed.")
+                        flash.error_ajax = message(code: 'introducer.not.correct')
+                        render(view: "/giftcard/_verifyFriend", model: [applied: applied, purchaseId: purchaseId, username: params.username])
+                        return
+                    }
+
+                    // 3. send mail
+                    sendAppliedMail(giftcardInstance)
+                    log.info("update introducer " + introducer.id + " for user " + currentUser.id + " success. new test user.")
+
+                }catch(Exception exp){
+                    flash.error_ajax = message(code: 'introducer.not.correct')
+                    log.error("apply test transaction error")
+                    status.setRollbackOnly()
+                }
+
             }
-
-            // 1. create a test purchase
-            Product testPlan = productService.getTestProduct()
-
-            def purchaseInstance = createTestProductPurchase(currentUser)
-            if (purchaseInstance == null) {
-                log.error("update introducer " + introducer.id + " for user " + currentUser.id + " failed. new test purchase error")
-                flash.error_ajax = message(code: 'introducer.not.correct')
-                render(view: "/giftcard/_verifyFriend", model: [applied: applied, purchaseId: purchaseId, username: params.username])
-                return
-            }
-
-            flash.message = message(code: 'introducer.apply.success')
-            flash.error_ajax = null
-            applied = true
-            purchaseId = purchaseInstance.id
-
-            // 2. create a giftcard code
-            def giftcardInstance = new Giftcard(product: testPlan, owner: currentUser)
-            giftcardInstance.code = giftcardService.generateGiftcardCode()
-            if (!giftcardInstance.save(flush: true)) {
-                log.error("update introducer " + introducer.id + " for user " + currentUser.id + " failed. new test giftcard error.")
-                flash.error_ajax = message(code: 'introducer.not.correct')
-                render(view: "/giftcard/_verifyFriend", model: [applied: applied, purchaseId: purchaseId, username: params.username])
-                return
-            }
-
-            // 3. send mail
-            sendAppliedMail(giftcardInstance)
-            log.info("update introducer " + introducer.id + " for user " + currentUser.id + " success. new test user.")
 
         } else {
             flash.error_ajax = message(code: 'introducer.not.correct')
@@ -271,7 +279,7 @@ class GiftcardController {
 
         def purchaseInstance = new Purchase(product: testPlan, owner: user)
         purchaseInstance.purchaseNumber = purchaseService.generatePurchaseNumber()
-        if (!purchaseInstance.save(flush: false)) {
+        if (!purchaseInstance.save(flush: true, failOnError:true)) {
             // TODO: give some message, when fails
             log.error("creating test product purchase error.")
             return null
