@@ -197,7 +197,7 @@ class GiftcardController {
         User currentUser = springSecurityService.currentUser
         if (introducer != null && introducer != currentUser && !introducer.username.equals("admin")) {
 
-            User.withTransaction{ status ->
+            Purchase.withTransaction{ status ->
                 try {
                     // 1. create a test purchase
                     Product testPlan = productService.getTestProduct()
@@ -233,13 +233,14 @@ class GiftcardController {
                         return
                     }
 
-                    // 3. send mail
+                    // 4. send mail
                     sendAppliedMail(giftcardInstance)
                     log.info("update introducer " + introducer.id + " for user " + currentUser.id + " success. new test user.")
 
                 }catch(Exception exp){
                     flash.error_ajax = message(code: 'introducer.not.correct')
-                    log.error("apply test transaction error")
+                    log.error("apply test transaction error " + exp.getMessage())
+                    exp.printStackTrace()
                     status.setRollbackOnly()
                 }
 
