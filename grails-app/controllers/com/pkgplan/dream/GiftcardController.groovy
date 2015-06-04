@@ -235,7 +235,7 @@ class GiftcardController {
 
             // 3. send mail
             sendAppliedMail(giftcardInstance)
-
+            log.info("update introducer " + introducer.id + " for user " + currentUser.id + " success. new test user.")
 
         } else {
             flash.error_ajax = message(code: 'introducer.not.correct')
@@ -271,7 +271,7 @@ class GiftcardController {
 
         def purchaseInstance = new Purchase(product: testPlan, owner: user)
         purchaseInstance.purchaseNumber = purchaseService.generatePurchaseNumber()
-        if (!purchaseInstance.save(flush: true)) {
+        if (!purchaseInstance.save(flush: false)) {
             // TODO: give some message, when fails
             log.error("creating test product purchase error.")
             return null
