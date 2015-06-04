@@ -201,12 +201,22 @@ class GiftcardController {
             currentUser.introducer = introducer
             if (!currentUser.save(flush: true)) {
                 // TODO: give some message, when fails
+                log.error("update introducer " + introducer.id + " for user " + currentUser.id + " failed.")
+                flash.error_ajax = message(code: 'introducer.not.correct')
+                render(view: "/giftcard/_verifyFriend", model: [applied: applied, purchaseId: purchaseId, username: params.username])
+                return
             }
 
             // 1. create a test purchase
             Product testPlan = productService.getTestProduct()
 
             def purchaseInstance = createTestProductPurchase(currentUser)
+            if (purchaseInstance == null) {
+                log.error("update introducer " + introducer.id + " for user " + currentUser.id + " failed. new test purchase error")
+                flash.error_ajax = message(code: 'introducer.not.correct')
+                render(view: "/giftcard/_verifyFriend", model: [applied: applied, purchaseId: purchaseId, username: params.username])
+                return
+            }
 
             flash.message = message(code: 'introducer.apply.success')
             flash.error_ajax = null
@@ -217,7 +227,10 @@ class GiftcardController {
             def giftcardInstance = new Giftcard(product: testPlan, owner: currentUser)
             giftcardInstance.code = giftcardService.generateGiftcardCode()
             if (!giftcardInstance.save(flush: true)) {
-                // TODO: give some message, when fails
+                log.error("update introducer " + introducer.id + " for user " + currentUser.id + " failed. new test giftcard error.")
+                flash.error_ajax = message(code: 'introducer.not.correct')
+                render(view: "/giftcard/_verifyFriend", model: [applied: applied, purchaseId: purchaseId, username: params.username])
+                return
             }
 
             // 3. send mail
@@ -260,6 +273,8 @@ class GiftcardController {
         purchaseInstance.purchaseNumber = purchaseService.generatePurchaseNumber()
         if (!purchaseInstance.save(flush: true)) {
             // TODO: give some message, when fails
+            log.error("creating test product purchase error.")
+            return null
         }
 
         return purchaseInstance
