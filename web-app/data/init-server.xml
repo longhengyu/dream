@@ -7,9 +7,17 @@
     <server
             id="1"
             capacity="20"
-            date_created="2013-01-01"
-            hostname="sakura"
-            ip_addr="160.60.113.41"
+            date_created="2012-01-01"
+            hostname="vps001"
+            ip_addr="173.255.217.70"
+            version="1"
+            />
+    <server
+            id="2"
+            capacity="20"
+            date_created="2012-01-01"
+            hostname="vps002"
+            ip_addr="173.255.217.71"
             version="1"
             />
 </dataset>
