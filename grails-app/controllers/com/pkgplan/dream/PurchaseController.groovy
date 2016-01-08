@@ -68,7 +68,7 @@ class PurchaseController {
             render(view: "_listBody", model: [purchaseInstanceList: results, purchaseInstanceTotal: results.getTotalCount()])
         }
 
-        [purchaseInstanceList: results, purchaseInstanceTotal: results.getTotalCount()]
+        render(view: "reen_list", model: [purchaseInstanceList: results, purchaseInstanceTotal: results.getTotalCount()])
     }
 
     @Secured(['ROLE_ADMIN'])
@@ -110,7 +110,7 @@ class PurchaseController {
         }
 
         //it must be usd
-        [purchaseInstance: purchaseInstance, userInstance: userService.currentUser(), usdPrice: productService.convertPriceCNYtoUSD(purchaseInstance.getProduct().price)]
+        render(view: "reen_show", model: [purchaseInstance: purchaseInstance, userInstance: userService.currentUser(), usdPrice: productService.convertPriceCNYtoUSD(purchaseInstance.getProduct().price)])
     }
 
     @Secured(['ROLE_ADMIN', 'ROLE_USER'])
@@ -177,7 +177,7 @@ class PurchaseController {
                     pageRedirect = true
                 } else {
                     flash.error_ajax = message(code: 'giftcard.not.correct')
-                    render(view: "/giftcard/_use", model: [purchaseInstance: purchaseInstance])
+                    render(view: "/giftcard/_reen_use", model: [purchaseInstance: purchaseInstance])
                     return
                 }
             } else if (paymentId == PAYMENT_METHOD_ID_CREDITCARD) {
@@ -211,7 +211,7 @@ class PurchaseController {
 
 
                 flash.message = message(code: 'purchase.message.purchase.succeed')
-                render(view: "show", model: [purchaseInstance: purchaseInstance, userInstance: purchaseInstance.owner, pageRedirect: pageRedirect])
+                render(view: "reen_show", model: [purchaseInstance: purchaseInstance, userInstance: purchaseInstance.owner, pageRedirect: pageRedirect])
             } catch (InstanceNotFoundException e) {
                 flash.message = message(code: 'purchase.message.purchase.not.found')
                 redirect(action: "list")

@@ -18,7 +18,7 @@ class ProductController {
 			render(view: "_listBody", model: [productInstanceList: Product.list(params), productInstanceTotal: Product.count()])
 			return
 		}
-        [productInstanceList: Product.list(params), productInstanceTotal: Product.count()]
+        render(view: "reen_list", model: [productInstanceList: Product.list(params), productInstanceTotal: Product.count()])
     }
 
     @Secured(['ROLE_ADMIN'])

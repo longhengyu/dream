@@ -85,7 +85,7 @@ class UserController {
             return
         }
 
-        [userInstance: userInstance, profileInstance: userInstance.profile, serverInstance: userInstance.server]
+        render view: 'reen_show', model: [userInstance: userInstance, profileInstance: userInstance.profile, serverInstance: userInstance.server]
     }
 
     @Secured(['ROLE_ADMIN'])

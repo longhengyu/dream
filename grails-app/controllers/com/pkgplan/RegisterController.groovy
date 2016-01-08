@@ -18,7 +18,7 @@ class RegisterController extends grails.plugins.springsecurity.ui.RegisterContro
     def register = { RegisterCommand command ->
 
         if (command.hasErrors()) {
-            render view: 'index', model: [command: command]
+            render view: 'reen_index', model: [command: command]
             return
         }
 
@@ -31,7 +31,7 @@ class RegisterController extends grails.plugins.springsecurity.ui.RegisterContro
             // null means problem creating the user
             flash.error = message(code: 'spring.security.ui.register.miscError')
             flash.chainedParams = params
-            redirect action: 'index'
+            redirect action: 'reen_index'
             return
         }
 
@@ -55,7 +55,7 @@ class RegisterController extends grails.plugins.springsecurity.ui.RegisterContro
             }
         }
 
-        render view: 'index', model: [emailSent: true, checkMailLink: checkMailLink]
+        render view: 'reen_index', model: [emailSent: true, checkMailLink: checkMailLink]
     }
 
     def forgotPassword = {
@@ -101,6 +101,19 @@ class RegisterController extends grails.plugins.springsecurity.ui.RegisterContro
         }
 
         render view: "/register/forgotPassword", model: [params: params, emailSent: true]
+    }
+
+    def index = {
+        if (springSecurityService.isLoggedIn()) {
+            redirect uri: SpringSecurityUtils.securityConfig.successHandler.defaultTargetUrl
+        }
+        else {
+            redirect action: 'reen_index', params: params
+        }
+    }
+
+    def reen_index = {
+
     }
 }
 

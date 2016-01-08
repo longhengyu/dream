@@ -12,6 +12,8 @@ class HomeController {
         if (userService.isAdminLoggedIn()) {
             redirect(action: 'list', controller: 'user')
         }
+
+        render view: "/home/reen_home"
     }
 
     def manual() {
@@ -21,23 +23,28 @@ class HomeController {
 	// receive a message and send mail
     def contact() {
 		if (!request.post) {
-			return
+            render view: "/home/reen_contact"
+            return
 		}
 		if (!params.email) {
 			flash.error = message(code: 'contact.error.message.null.email')
-			return
+            render view: "/home/reen_contact"
+            return
 		}
         if (!emailValidator.isValid(params.email)) {
             flash.error = message(code: 'contact.error.message.wrong.email')
+            render view: "/home/reen_contact"
             return
         }
 		if (!params.subject) {
 			flash.error = message(code: 'contact.error.message.null.subject')
-			return
+            render view: "/home/reen_contact"
+            return
 		}
 		if (!params.content) {
 			flash.error = message(code: 'contact.error.message.null.content')
-			return
+            render view: "/home/reen_contact"
+            return
 		}
 
         mailService.sendMail {
@@ -48,7 +55,7 @@ class HomeController {
             html params.content + "\n\n" + params.email
         }
 
-		render view: "/home/contact", model: [emailSent: true]
+		render view: "/home/reen_contact", model: [emailSent: true]
     }
 
     def home() {
