@@ -11,7 +11,6 @@
 <script src="${resource(dir:'js',file:'owl.carousel.min.js')}"></script>
 <script src="${resource(dir:'js',file:'jquery.isotope.min.js')}"></script>
 <script src="${resource(dir:'js',file:'jquery.easytabs.min.js')}"></script>
-<script src="${resource(dir:'js',file:'google.maps.api.v3.js')}"></script>
 <script src="${resource(dir:'js',file:'viewport-units-buggyfill.js')}"></script>
 <script src="${resource(dir:'js',file:'scripts.js')}"></script>
 <script src="${resource(dir:'js',file:'dream.js')}"></script>
