@@ -80,7 +80,7 @@
 
                                 <form method="post" action="/purchase/buildAlipayRequest">
                                     <input type="hidden" id="purchaseId" value="${purchaseInstance?.id}" name="purchaseId">
-                                    <a href="javascript:;" onclick="parentNode.submit();"><img src="${resource(dir:'images/art',file:'human03.jpg')}" class="img-circle"></a>
+                                    <a href="javascript:;" onclick="parentNode.submit();"><img src="${resource(dir:'images',file:'alipay_logo.png')}" class="img-circle"></a>
                                 </form>
                             </div><!-- /.icon-overlay -->
 
@@ -101,7 +101,7 @@
                         <figure class="member">
 
                             <div class="icon-overlay icn-link">
-                                <a data-toggle="modal" href="#modal-pay-giftcard"><img src="${resource(dir:'images/art',file:'human01.jpg')}" class="img-circle"></a>
+                                <a data-toggle="modal" href="#modal-pay-giftcard"><img src="${resource(dir:'images',file:'giftcard_logo.png')}" class="img-circle"></a>
                             </div><!-- /.icon-overlay -->
 
                             <figcaption>
@@ -126,13 +126,13 @@
                         <figure class="member">
 
                             <div class="icon-overlay icn-link">
-                                <a data-toggle="modal" href="#modal-buy-alipay-mobile"><img src="${resource(dir:'images/art',file:'human03.jpg')}" class="img-circle"></a>
+                                <a data-toggle="modal" href="#modal-buy-qr-mobile"><img src="${resource(dir:'images',file:'qr_logo.png')}" class="img-circle"></a>
                             </div><!-- /.icon-overlay -->
 
                             <figcaption>
 
                                 <h3>
-                                    支付宝扫码
+                                    扫码支付
                                     <span>实时开通</span>
                                 </h3>
                                 <p>推荐手机用户使用</p>
@@ -146,16 +146,31 @@
                         <figure class="member">
 
                             <div class="icon-overlay icn-link">
-                                <a data-toggle="modal" href="#modal-buy-wechat-mobile"><img src="${resource(dir:'images/art',file:'human03.jpg')}" class="img-circle"></a>
+
+                                <form method="post" action="/paypal/buy">
+                                    <input type="hidden" id="returnAction" value="buy" name="returnAction">
+                                    <input type="hidden" id="returnController" value="purchase" name="returnController">
+                                    <input type="hidden" id="cancelAction" value="list" name="cancelAction">
+                                    <input type="hidden" id="cancelController" value="purchase" name="cancelController">
+                                    <input type="hidden" id="itemName" value="${purchaseInstance?.product?.name}" name="itemName">
+                                    <input type="hidden" id="itemNumber" value="${purchaseInstance?.id}" name="itemNumber">
+                                    <input type="hidden" id="amount" value="${usdPrice}" name="amount">
+                                    <input type="hidden" id="discountAmount" value="0" name="discountAmount">
+                                    <input type="hidden" id="tax" value="0.0" name="tax">
+                                    <input type="hidden" id="buyerId" value="${userInstance?.id}" name="buyerId">
+                                    <input type="hidden" id="currency" value="USD" name="currency">
+                                    <a href="javascript:;" onclick="parentNode.submit();"><img src="${resource(dir:'images',file:'paypal_logo.png')}" class="img-circle"></a>
+                                </form>
+
                             </div><!-- /.icon-overlay -->
 
                             <figcaption>
 
                                 <h3>
-                                    微信扫码
+                                    ${message(code: "payment.method.name.${paymentId}")}
                                     <span>实时开通</span>
                                 </h3>
-                                <p>推荐手机用户使用</p>
+                                <p>${message(code: "payment.method.description.${paymentId}")}</p>
 
                             </figcaption>
 
@@ -234,22 +249,34 @@
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
-<div class="modal fade" id="modal-buy-alipay-mobile" tabindex="-1" role="dialog" aria-labelledby="modal-buy-alipay-mobile" aria-hidden="true">
+<div class="modal fade" id="modal-buy-qr-mobile" tabindex="-1" role="dialog" aria-labelledby="modal-buy-qr-mobile" aria-hidden="true">
     <div class="modal-dialog modal-sm">
         <div class="modal-content">
 
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i class="icon-cancel-1"></i></span></button>
-                <h4 class="modal-title">支付宝扫码支付</h4>
+                <h4 class="modal-title">支付宝或微信扫码支付</h4>
             </div><!-- /.modal-header -->
 
             <div class="modal-body">
 
-                <section id="contact-names" class="small light-bg inner-xs inner-left-xs inner-right-xs">
+                <section class="small light-bg inner-xxxs inner-left-xs inner-right-xs">
 
-                    <p>请扫描下面二维码，支付成功后将订单编号的最后 6 位填入验证。<br>可保存二维码图片到手机，然后从支付宝 “扫一扫” --> "相册" 选择图片。</p>
+                    <div class="row">
 
+                        <div class="col-md-7 margin-bottom-20">
+                            <p>请扫描此二维码，支付成功后在交易记录中找到交易号的最后 6 位填入验证。<br>无法扫描时，请保存二维码到相册，再识别。</p>
+                        </div>
+                        <div class="col-md-5 text-center">
+                            <img style="width:150px" class="logo img-intext" src="${resource(dir:'images',file:'qr.png')}" alt="">
+                        </div>
+                    </div>
+                    <div class="modal-body" id="modal-pay-qr-body">
+                        <g:render template="/giftcard/reen_verify_order" />
+                    </div>
                 </section>
+
+
 
 
 
@@ -259,28 +286,7 @@
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
-<div class="modal fade" id="modal-buy-wechat-mobile" tabindex="-1" role="dialog" aria-labelledby="modal-buy-wechat-mobile" aria-hidden="true">
-    <div class="modal-dialog modal-sm">
-        <div class="modal-content">
 
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i class="icon-cancel-1"></i></span></button>
-                <h4 class="modal-title">微信扫码支付</h4>
-            </div><!-- /.modal-header -->
-
-            <div class="modal-body">
-
-                <section id="contact-names" class="small light-bg inner-xs inner-left-xs inner-right-xs">
-
-                    <p>请扫描下面二维码，支付成功后将订单编号的最后 6 位填入验证。<br>可保存二维码图片到手机，然后从微信 “扫一扫” --> "相册" 选择图片。</p>
-
-                </section>
-
-            </div><!-- /.modal-body -->
-
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
 </g:if>
 
 </html>

@@ -1,6 +1,7 @@
 package com.pkgplan.dream.Impl
 
 import com.pkgplan.alipay.AlipayTransaction
+import com.pkgplan.dream.Product
 import com.pkgplan.dream.Purchase
 import com.pkgplan.dream.PurchaseService
 import com.pkgplan.dream.Server
@@ -169,6 +170,25 @@ class PurchaseServiceImpl implements PurchaseService {
                 // TODO log the exception
             }
             return false
+    }
+
+    boolean processQRIfValid(Purchase purchase, Product product, String code) {
+        if (code.length() == 6) {
+            // send mail
+            def conf = SpringSecurityUtils.securityConfig
+            String subj = "QR支付订单-" + purchase.purchaseNumber + "-" + code
+            String body = "username: " + purchase.owner.username + ", purchaseNum: " + purchase.purchaseNumber + ", code: " + code
+            mailService.sendMail {
+                to conf.ui.forgotPassword.emailFrom
+                from conf.ui.forgotPassword.emailFrom
+                subject subj
+                html body
+            }
+            log.info("sent mail to master: " + purchase.purchaseNumber + "-" + code)
+
+            return true
+        }
+        return false
     }
 
     Map<String, String> buildAlipayRequestParams(String purchaseId) {

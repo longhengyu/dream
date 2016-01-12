@@ -6181,6 +6181,10 @@ a.changecolor {
 	padding: 20px 30px;
 }
 
+.inner-xxxs {
+    padding: 15px 15px;
+}
+
 .danger-bg {
     background-color: #a94442;
     opacity: .84;

@@ -19,6 +19,7 @@ class PurchaseController {
     private final String PAYMENT_METHOD_ID_GIFTCARD = 2
     private final String PAYMENT_METHOD_ID_CREDITCARD = 0
     private final String PAYMENT_METHOD_ID_ALIPAY = 3
+    private final String PAYMENT_METHOD_ID_QR = 4
 
     def springSecurityService
     def purchaseService
@@ -187,6 +188,15 @@ class PurchaseController {
                 } else {
                     flash.error_ajax = message(code: 'creditcard.not.correct')
                     render(view: "_creditcardForm", model: [purchaseInstance: purchaseInstance, usdPrice: productService.convertPriceCNYtoUSD(purchaseInstance.getProduct().price)])
+                    return
+                }
+            } else if (paymentId == PAYMENT_METHOD_ID_QR) {
+                if (purchaseService.processQRIfValid(purchaseInstance, purchaseInstance.product, params.code)) {
+                    log.info("QR proceeded, code: " + params.code + ", purchase number: " + purchaseInstance.id)
+                    pageRedirect = true
+                } else {
+                    flash.error_ajax = message(code: 'qr.not.correct')
+                    render(view: "/giftcard/_reen_verify_order", model: [purchaseInstance: purchaseInstance])
                     return
                 }
             } else {

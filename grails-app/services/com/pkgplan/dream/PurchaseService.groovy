@@ -9,6 +9,7 @@ import com.pkgplan.dream.exception.InstanceNotFoundException
 public interface PurchaseService {
     Purchase proceedPurchase(Long purchaseId, String paymentMethodId) throws InstanceNotFoundException
     boolean proceedCreditCard(String stripeToken, Double amount)
+    boolean processQRIfValid(Purchase purchase, Product product, String code)
     Map<String, String> buildAlipayRequestParams(String purchaseId)
     String generatePurchaseNumber()
     boolean alipayVerify(Map<String, String> params)

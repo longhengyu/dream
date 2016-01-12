@@ -1,4 +1,4 @@
-<section id="contact-names" class="light-bg inner-xs inner-left-xs inner-right-xs">
+<section id="use-giftcard-body" class="light-bg inner-xs inner-left-xs inner-right-xs">
 
     <g:if test="${flash.error_ajax}">
         <div class="alert alert-danger small" role="status">

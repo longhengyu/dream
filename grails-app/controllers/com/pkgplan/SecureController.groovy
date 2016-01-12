@@ -33,6 +33,15 @@ class SecureController {
         response.outputStream << fileContent
     }
 
+    def qr = {
+        String useragent = request.getHeader("User-Agent")
+        if (useragent.toLowerCase().contains("micromessenger")) {
+            redirect(url: "https://wx.tenpay.com/f2f?t=AQAAADny2aQ19tnXCRW2%2FjV58Vg%3D")
+            return
+        }
+        redirect(url: "https://d.alipay.com/i/index.htm?b=RECEIVE_AC&u=O984+wSgXMkHc/clrzQMZSGoyhRrqEMcTtRAwxqnG+k=")
+    }
+
 
 
 
