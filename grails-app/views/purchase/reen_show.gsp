@@ -55,7 +55,7 @@
                 <% def locale=RequestContextUtils.getLocale(request)%>
 
 
-                <h3 class="team-headline sidelines text-center"><span>订单信息</span></h3>
+                <h3 class="team-headline sidelines text-center"><span><g:message code="purchase.title.order.info"/></span></h3>
 
                 <form class="form-horizontal">
                     <g:render template="reen_show_detail" model="[purchaseInstance: purchaseInstance]"/>
@@ -87,10 +87,10 @@
                             <figcaption>
 
                                 <h3>
-                                    支付宝
-                                    <span>实时开通</span>
+                                    <g:message code="payment.method.name.3"/>
+                                    <span><g:message code="payment.feature.realtime"/></span>
                                 </h3>
-                                <p>桌面版支付宝，推荐PC用户使用</p>
+                                <p><g:message code="payment.recommend.pc"/></p>
 
                             </figcaption>
 
@@ -107,14 +107,14 @@
                             <figcaption>
 
                                 <h3>
-                                    礼品券码
-                                    <span>实时开通</span>
+                                    <g:message code="payment.method.name.2"/>
+                                    <span><g:message code="payment.feature.realtime"/></span>
                                 </h3>
 
                             </figcaption>
 
                             <div class="small">
-                                <a type="button" class="btn btn-success btn-small  btn-custom-padding" data-toggle="modal" href="#modal-pay-giftcard-howtobuy">如何购买礼品券</a>
+                                <a type="button" class="btn btn-success btn-small  btn-custom-padding" data-toggle="modal" href="#modal-pay-giftcard-howtobuy"><g:message code="giftcard.how.to.get"/></a>
                             </div><!-- /.col -->
 
                         </figure>
@@ -132,10 +132,10 @@
                             <figcaption>
 
                                 <h3>
-                                    扫码支付
-                                    <span>实时开通</span>
+                                    <g:message code="payment.method.name.4"/>
+                                    <span><g:message code="payment.feature.realtime"/></span>
                                 </h3>
-                                <p>推荐手机用户使用</p>
+                                <p><g:message code="payment.recommend.mobile"/></p>
 
                             </figcaption>
 
@@ -167,10 +167,10 @@
                             <figcaption>
 
                                 <h3>
-                                    ${message(code: "payment.method.name.${paymentId}")}
-                                    <span>实时开通</span>
+                                    ${message(code: "payment.method.name.1")}
+                                    <span><g:message code="payment.feature.realtime"/></span>
                                 </h3>
-                                <p>${message(code: "payment.method.description.${paymentId}")}</p>
+                                <p>${message(code: "payment.method.description.1")}</p>
 
                             </figcaption>
 
@@ -230,14 +230,19 @@
 
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i class="icon-cancel-1"></i></span></button>
-                <h4 class="modal-title">购买礼品券方法</h4>
+                <h4 class="modal-title"><g:message code="giftcard.how.to.get"/></h4>
             </div><!-- /.modal-header -->
 
             <div class="modal-body">
 
                 <section id="contact-names" class="light-bg inner-xs inner-left-xs inner-right-xs">
 
-                    怎么说，说吧。
+                    <div class="margin-bottom-20">
+                        <a href="http://static.dream-vpn.com/link/taobao/" target="_blank"><img src="${resource(dir:'img',file:'gotaobao.png')}"> </a>
+                    </div>
+                    <div class="padding20px form small">
+                        <p>${message(code:'payment.method.description.giftcard.get')}</p>
+                    </div>
 
                 </section>
 
@@ -255,7 +260,7 @@
 
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i class="icon-cancel-1"></i></span></button>
-                <h4 class="modal-title">支付宝或微信扫码支付</h4>
+                <h4 class="modal-title"><g:message code="payment.method.name.4"/></h4>
             </div><!-- /.modal-header -->
 
             <div class="modal-body">
@@ -265,7 +270,7 @@
                     <div class="row">
 
                         <div class="col-md-7 margin-bottom-20">
-                            <p>请扫描此二维码，支付成功后在交易记录中找到交易号的最后 6 位填入验证。<br>无法扫描时，请保存二维码到相册，再识别。</p>
+                            <p><g:message code="payment.qr.desc"/></p>
                         </div>
                         <div class="col-md-5 text-center">
                             <img style="width:150px" class="logo img-intext" src="${resource(dir:'images',file:'qr.png')}" alt="">
