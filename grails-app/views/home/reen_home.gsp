@@ -205,7 +205,7 @@
                 <div class="plan">
 
                     <header>
-                        <h2><g:message code="product.info.name.f72"/></h2>
+                        <h2><g:message code="product.info.name.p280"/></h2>
 
                         <div class="price">
                             <span class="currency">RMB</span>
