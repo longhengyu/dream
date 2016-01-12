@@ -55,7 +55,7 @@
                             <div class="row inner-xs">
 
                                 <div class="col-sm-12 checkbox text-right">
-                                    <p class="text-right"><a href="/register/index" >注册新用户</a> &nbsp;&nbsp;&nbsp;<a href="/register/forgotPassword"><g:message code='login.link.forgot.password'/></a></p>
+                                    <p class="text-right"><a href="/register/index" ><g:message code="login.link.register.new.user"/></a> &nbsp;&nbsp;&nbsp;<a href="/register/forgotPassword"><g:message code='login.link.forgot.password'/></a></p>
                                 </div><!-- /.col -->
                             </div><!-- /.row -->
 

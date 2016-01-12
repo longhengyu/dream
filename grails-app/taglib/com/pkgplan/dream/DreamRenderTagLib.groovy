@@ -31,7 +31,7 @@ class DreamRenderTagLib extends RenderTagLib{
      */
     Closure paginate = { attrs ->
         def writer = out
-        writer << "<ul>"
+        writer << "<ul class=\"pagination\">"
         if (attrs.total == null) {
             throwTagError("Tag [paginate] is missing required attribute [total]")
         }
@@ -152,6 +152,6 @@ class DreamRenderTagLib extends RenderTagLib{
             } + "</li>"
         }
 
-        writer << "<ul>"
+        writer << "<ul class=\"pagination\">"
     }
 }

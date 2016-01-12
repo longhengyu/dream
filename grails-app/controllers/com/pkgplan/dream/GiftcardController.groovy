@@ -186,7 +186,7 @@ class GiftcardController {
             }
         }
 
-        [verified: verified, applied: applied, purchaseId: purchaseId, hasServer: currentUser.server != null, referrals: currentUser.referrals]
+        render(view: "reen_apply", model: [verified: verified, applied: applied, purchaseId: purchaseId, hasServer: currentUser.server != null, referrals: currentUser.referrals])
     }
 
     def issue() {

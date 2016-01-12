@@ -18,7 +18,7 @@
 
                     <div class="col-sm-6 center-block text-center inner-right-sm">
 
-                        <h2>新用户注册</h2>
+                        <h2><g:if test='${emailSent}'><g:message code="user.register.success"/></g:if><g:else><g:message code="login.link.register.new.user"/></g:else></h2>
 
                         <g:hasErrors bean="${command}">
                             <ul class="circled text-left error-msg">
@@ -28,6 +28,20 @@
                             </ul>
                         </g:hasErrors>
 
+                        <g:if test='${emailSent}'>
+                            <section class="tint-bg inner-xxs inner-left-xs inner-right-xs outer-bottom-xs">
+                                <p><g:message code='user.register.message.mail.sent'/><!--
+                                --><g:if test="${checkMailLink}"><!--
+                                    -->&nbsp;<a href="${checkMailLink}" target="_blank"><g:message code='user.register.message.go.to.mail'/></a>&nbsp;<!--
+                                --></g:if><g:else><!--
+                                    --><g:message code='user.register.message.go.to.mail'/><!--
+                                --></g:else><!--
+                                            --><g:message code='user.register.message.mail.sent.end'/>
+                                </p>
+                            </section>
+
+                        </g:if>
+                        <g:else>
                         <g:form class="forms" url="[controller: 'register', action:'register']" autocomplete='off'>
 
                             <div class="row">
@@ -62,13 +76,14 @@
                             <div class="row inner-xs">
 
                                 <div class="col-sm-12 checkbox text-right">
-                                    <p class="text-right"><a href="/login/auth" >已注册用户登录</a></p>
+                                    <p class="text-right"><a href="/login/auth" >${message(code: 'login.user.login')}</a></p>
                                 </div><!-- /.col -->
                             </div><!-- /.row -->
 
 
 
                         </g:form>
+                        </g:else>
 
                         <div id="response"></div>
 

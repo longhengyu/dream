@@ -11,10 +11,10 @@
             <div class="container">
                 <div class="caption vertical-center text-center">
 
-                    <h1 class="fadeInDown-1 light-color">是时候为你的网络加速了</h1>
-                    <p class="fadeInDown-2 light-color">我们为在中国的用户提供真正的互联网服务，让您专注于工作，而无需忧心难缠的基础设施。<br>随时随地，无阻碍的浏览，才是高效率的工作方式。</p>
+                    <h1 class="fadeInDown-1 light-color"><g:message code="main.title.free.to.surf"/></h1>
+                    <p class="fadeInDown-2 light-color"><g:message code="main.title.free.to.surf.sub"/></p>
                     <div class="fadeInDown-3">
-                        <a href="#" class="btn btn-large">立即开启</a>
+                        <a href="/register/index" class="btn btn-large"><g:message code="main.ready.to.go.button"/></a>
                     </div><!-- /.fadeIn -->
 
                 </div><!-- /.caption -->
@@ -25,10 +25,10 @@
             <div class="container">
                 <div class="caption vertical-center text-right">
 
-                    <h1 class="fadeInLeft-1 light-color">捉迷藏游戏<br> 玩够了</h1>
-                    <p class="fadeInLeft-2 light-color">今天找不到F，明天找不到T，大G躲起来就算了，连小G都不见了身影？ <br>这样的游戏真是玩够了。</p>
+                    <h1 class="fadeInLeft-1 light-color"><g:message code="main.title.free.to.surf.2"/></h1>
+                    <p class="fadeInLeft-2 light-color"><g:message code="main.title.free.to.surf.sub.2"/></p>
                     <div class="fadeInLeft-3">
-                        <a href="#" class="btn btn-large">立即开启</a>
+                        <a href="/register/index" class="btn btn-large"><g:message code="main.ready.to.go.button"/></a>
                     </div><!-- /.fadeIn -->
 
                 </div><!-- /.caption -->
@@ -39,10 +39,10 @@
             <div class="container">
                 <div class="caption vertical-center text-left">
 
-                    <h1 class="fadeInRight-1 dark-bg light-color"><span>不论网页、视频 还是工程和设计</span></h1>
-                    <p class="fadeInRight-2 dark-color">设置简单，不需要安装任何客户端，也没有任何流量限制。<br></p>
+                    <h1 class="fadeInRight-1 dark-bg light-color"><span><g:message code="main.title.free.to.surf.3"/></span></h1>
+                    <p class="fadeInRight-2 dark-color"><g:message code="main.title.free.to.surf.sub.3"/></p>
                     <div class="fadeInRight-3">
-                        <a href="#" class="btn btn-large">立即开启</a>
+                        <a href="/register/index" class="btn btn-large"><g:message code="main.ready.to.go.button"/></a>
                     </div><!-- /.fadeIn -->
 
                 </div><!-- /.caption -->
@@ -53,10 +53,10 @@
             <div class="container">
                 <div class="caption vertical-top text-right">
 
-                    <h1 class="fadeIn-1 dark-bg light-color"><span>物有所值</span></h1>
-                    <p class="fadeIn-2 light-color">一杯咖啡的价格，<br>带给你一个月的来去无忧。</p>
+                    <h1 class="fadeIn-1 dark-bg light-color"><span><g:message code="main.title.free.to.surf.4"/></span></h1>
+                    <p class="fadeIn-2 light-color"><g:message code="main.title.free.to.surf.sub.4"/></p>
                     <div class="fadeIn-3">
-                        <a href="#" class="btn btn-large">立即开启</a>
+                        <a href="/register/index" class="btn btn-large"><g:message code="main.ready.to.go.button"/></a>
                     </div><!-- /.fadeIn -->
 
                 </div><!-- /.caption -->
@@ -67,10 +67,10 @@
             <div class="container">
                 <div class="caption vertical-top text-center">
 
-                    <h1 class="fadeInDown-1 light-color">他昨天被隐藏 <br>今天该把他找回来了</h1>
-                    <p class="fadeInDown-2 medium-color">还记得那些你的小伙伴们，他们都还在这里，一直在。</p>
+                    <h1 class="fadeInDown-1 light-color"><g:message code="main.title.free.to.surf.5"/></h1>
+                    <p class="fadeInDown-2 medium-color"><g:message code="main.title.free.to.surf.sub.5"/></p>
                     <div class="fadeInDown-3">
-                        <a href="#" class="btn btn-large">立即开启</a>
+                        <a href="/register/index" class="btn btn-large"><g:message code="main.ready.to.go.button"/></a>
                     </div><!-- /.fadeIn -->
 
                 </div><!-- /.caption -->
@@ -97,7 +97,7 @@
             <div class="col-sm-6 inner-top-xs inner-left-xs">
                 <h2>联系朋友如此简单</h2>
                 <p>久不联系的朋友怎么知道你的消息，如果你不在完全开放的互联网中。当然你可以发发朋友圈，逛逛微博。但偶尔出来透透气也是需要的。</p>
-                <a href="#" class="txt-btn">立即开启科学上网之旅吧</a>
+                <a href="/register/index" class="txt-btn">立即开启科学上网之旅吧</a>
             </div><!-- /.col -->
 
         </div><!-- /.row -->
@@ -111,7 +111,7 @@
             <div class="col-sm-6 col-sm-pull-6 inner-top-xs inner-right-xs">
                 <h2>那些熟悉的和遥远的</h2>
                 <p>曾经那些有用的、没用的网站和应用，都是我生活的一部分。现在开始重新找回它们，重视在原点的自己。动动手就可以搞定，畅通无阻的网络。</p>
-                <a href="#" class="txt-btn">立即开启科学上网之旅吧</a>
+                <a href="/register/index" class="txt-btn">立即开启科学上网之旅吧</a>
             </div><!-- /.col -->
 
         </div><!-- /.row -->
@@ -125,7 +125,7 @@
             <div class="col-sm-6 inner-top-xs inner-left-xs">
                 <h2>多渠道用心支持</h2>
                 <p>虽然我们的上网设置和操作足够简单，但不管遇到什么问题，你都可以通过留言、邮件、微信获得帮助。帮助我们反馈产品问题，还可以得到奖励的免费上网机会。</p>
-                <a href="#" class="txt-btn">立即开启科学上网之旅吧</a>
+                <a href="/register/index" class="txt-btn">立即开启科学上网之旅吧</a>
             </div><!-- /.col -->
 
         </div><!-- /.row -->
@@ -153,21 +153,24 @@
                 <div class="plan">
 
                     <header>
-                        <h2>单月套餐</h2>
+                        <h2><g:message code="product.info.name.b26"/></h2>
 
                         <div class="price">
-                            <span class="currency">¥</span>
-                            <span class="amount">26</span>
-                            <span class="period">/ 月</span>
+                            <span class="currency">RMB</span>
+                            <span class="amount amount-small">26</span>
+                            <%@ page import="org.springframework.web.servlet.support.RequestContextUtils" %>
+                            <% def locale=RequestContextUtils.getLocale(request)%>
+                            <g:if test="${locale.toString().equals('en_US')}"><span style="margin-left: 28px">&nbsp;</span><br><span style="margin-right: 70px">&nbsp;</span></g:if>
+                            <span class="period">/ <g:message code="main.plan.period.1" /></span>
                         </div><!-- /.price -->
 
-                        <a href="#" class="btn">去购买</a>
+                        <a href="/product/list" class="btn">${message(code: 'product.button.buy.now')}</a>
                     </header>
 
                     <ul class="features">
-                        <li><i class="icon-window"></i> 2 台设备同时接入</li>
-                        <li><i class="icon-switch"></i> 无限流量</li>
-                        <li><i class="icon-users"></i> 24/7 邮件支持</li>
+                        <li><i class="icon-window"></i> <g:message code="product.info.description.b26.1"/></li>
+                        <li><i class="icon-switch"></i> <g:message code="product.info.description.b26.2"/></li>
+                        <li><i class="icon-users"></i> <g:message code="product.info.description.b26.3"/></li>
                     </ul><!-- /.features -->
 
                 </div><!-- /.plan -->
@@ -177,21 +180,22 @@
                 <div class="plan">
 
                     <header>
-                        <h2>三个月套餐</h2>
+                        <h2><g:message code="product.info.name.f72"/></h2>
 
                         <div class="price">
-                            <span class="currency">¥</span>
-                            <span class="amount">72</span>
-                            <span class="period">/ 3个月</span>
+                            <span class="currency">RMB</span>
+                            <span class="amount amount-small">72</span>
+                            <g:if test="${locale.toString().equals('en_US')}"><span style="margin-left: 28px">&nbsp;</span><br><span style="margin-right: 70px">&nbsp;</span></g:if>
+                            <span class="period">/ <g:message code="main.plan.period.2" /></span>
                         </div><!-- /.price -->
 
-                        <a href="#" class="btn">去购买</a>
+                        <a href="/product/list" class="btn">${message(code: 'product.button.buy.now')}</a>
                     </header>
 
                     <ul class="features">
-                        <li><i class="icon-window"></i> 3 台设备同时接入</li>
-                        <li><i class="icon-switch"></i> 无限流量</li>
-                        <li><i class="icon-users"></i> 24/7 邮件、微信支持</li>
+                        <li><i class="icon-window"></i> <g:message code="product.info.description.f72.1"/></li>
+                        <li><i class="icon-switch"></i> <g:message code="product.info.description.f72.2"/></li>
+                        <li><i class="icon-users"></i> <g:message code="product.info.description.f72.3"/></li>
                     </ul><!-- /.features -->
 
                 </div><!-- /.plan -->
@@ -201,21 +205,22 @@
                 <div class="plan">
 
                     <header>
-                        <h2>一年套餐</h2>
+                        <h2><g:message code="product.info.name.f72"/></h2>
 
                         <div class="price">
-                            <span class="currency">¥</span>
-                            <span class="amount">280</span>
-                            <span class="period">/ 年</span>
+                            <span class="currency">RMB</span>
+                            <span class="amount amount-small">280</span>
+                            <g:if test="${locale.toString().equals('en_US')}"><span style="margin-left: 28px">&nbsp;</span><br><span style="margin-right: 70px">&nbsp;</span></g:if>
+                            <span class="period">/ <g:message code="main.plan.period.3" /></span>
                         </div><!-- /.price -->
 
-                        <a href="#" class="btn">去购买</a>
+                        <a href="/product/list" class="btn">${message(code: 'product.button.buy.now')}</a>
                     </header>
 
                     <ul class="features">
-                        <li><i class="icon-window"></i> 5 台设备同时接入</li>
-                        <li><i class="icon-switch"></i> 无限流量</li>
-                        <li><i class="icon-users"></i> 24/7 邮件、微信支持</li>
+                        <li><i class="icon-window"></i> <g:message code="product.info.description.p280.1"/></li>
+                        <li><i class="icon-switch"></i> <g:message code="product.info.description.p280.2"/></li>
+                        <li><i class="icon-users"></i> <g:message code="product.info.description.p280.3"/></li>
                     </ul><!-- /.features -->
 
                 </div><!-- /.plan -->
@@ -238,7 +243,7 @@
                     <h1>开启你的科学上网之旅吧</h1>
                     <p>如果你尝试过很多不靠谱的上网方式，饱受挫折心情烦躁，那么请试试我们的服务吧。</p>
                 </header>
-                <a href="#" class="btn btn-large">立即注册</a>
+                <a href="/register/index" class="btn btn-large">立即注册</a>
             </div><!-- /.col -->
         </div><!-- /.row -->
 

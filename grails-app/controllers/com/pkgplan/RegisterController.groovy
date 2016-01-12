@@ -67,6 +67,7 @@ class RegisterController extends grails.plugins.springsecurity.ui.RegisterContro
             } else {
                 // TODO: render the whole page
             }
+            render view: "/register/reen_forgot_password", model: [params: params]
             return
         }
 
@@ -100,7 +101,7 @@ class RegisterController extends grails.plugins.springsecurity.ui.RegisterContro
             html body.toString()
         }
 
-        render view: "/register/forgotPassword", model: [params: params, emailSent: true]
+        render view: "/register/reen_forgot_password", model: [params: params, emailSent: true]
     }
 
     def index = {

@@ -4,7 +4,7 @@
 
     <section id="hero" class="inner-bottom-xs">
         <header>
-            <h2>VPN套餐</h2>
+            <h2><g:message code="product.list.title" default="Available VPN Plans" /></h2>
         </header>
     </section>
 
@@ -26,8 +26,11 @@
                         <h2><g:message code="product.info.name.${productInstance.code}" default="${productInstance.name}"/></h2>
 
                         <div class="price">
-                            <span class="currency">¥</span>
+                            <span class="currency">RMB</span>
                             <span class="amount amount-small">${fieldValue(bean: productInstance, field: "price")}</span>
+                            <%@ page import="org.springframework.web.servlet.support.RequestContextUtils" %>
+                            <% def locale=RequestContextUtils.getLocale(request)%>
+                            <g:if test="${locale.toString().equals('en_US')}"><span style="margin-left: 28px">&nbsp;</span><br><span style="margin-right: 70px">&nbsp;</span></g:if>
                             <span class="period">/ <g:message code="main.plan.period.${i+1}" /></span>
                         </div><!-- /.price -->
 
@@ -43,9 +46,9 @@
                     </header>
 
                     <ul class="features small">
-                        <li><i class="icon-window"></i> 2 台设备同时接入</li>
-                        <li><i class="icon-switch"></i> 无限流量</li>
-                        <li><i class="icon-users"></i> 24/7 邮件支持</li>
+                        <li><i class="icon-window"></i> <g:message code="product.info.description.${productInstance.code}.1"/></li>
+                        <li><i class="icon-switch"></i> <g:message code="product.info.description.${productInstance.code}.2"/></li>
+                        <li><i class="icon-users"></i> <g:message code="product.info.description.${productInstance.code}.3"/></li>
                     </ul><!-- /.features -->
 
                 </div><!-- /.plan -->

@@ -16,6 +16,9 @@
 <script src="${resource(dir:'js',file:'scripts.js')}"></script>
 <script src="${resource(dir:'js',file:'dream.js')}"></script>
 
+<script src="${resource(dir:'js',file:'bootstrap-formhelpers-languages.codes.js')}"></script>
+<script src="${resource(dir:'js',file:'bootstrap-formhelpers-languages.js')}"></script>
+
 <!-- For demo purposes – can be removed on production -->
 <link href="${resource(dir:'css',file:'green.css')}" rel="alternate stylesheet" title="Green color">
 <link href="${resource(dir:'css',file:'blue.css')}" rel="alternate stylesheet" title="Blue color">

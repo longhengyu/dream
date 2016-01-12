@@ -13,11 +13,31 @@ class HomeController {
             redirect(action: 'list', controller: 'user')
         }
 
+        if (userService.isUserLonggedIn()) {
+            redirect(action: 'show', controller: 'user')
+        }
+
         render view: "/home/reen_home"
     }
 
     def manual() {
-		
+        redirect(action: 'manual_mac', controller: 'home')
+    }
+
+    def manual_mac() {
+        render view: "/home/reen_manual_mac"
+    }
+
+    def manual_ios() {
+        render view: "/home/reen_manual_ios"
+    }
+
+    def manual_win7() {
+        render view: "/home/reen_manual_win7"
+    }
+
+    def manual_android() {
+        render view: "/home/reen_manual_android"
     }
 
 	// receive a message and send mail

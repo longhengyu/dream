@@ -10,7 +10,9 @@
 <div class="container inner">
     <div class="row">
 
-        <g:render template="/layouts/reen_sidemenu"/>
+        <g:if test="${com.pkgplan.dream.Impl.HelperService.isMobile() == false}">
+            <g:render template="/layouts/reen_sidemenu"/>
+        </g:if>
 
         <div class="col-md-9 inner-left-md border-left">
 
@@ -24,7 +26,8 @@
 
 
 
-            <section id="contact-names" class="small light-bg">
+            <section id="contact-names" class="small">
+                <g:if test="${purchaseInstanceList.size() > 0}">
                 <table class="table table-bordered table-striped tabel-custom" id="purchase-history">
                     <thead>
                     <tr>
@@ -59,31 +62,7 @@
                                 <div class="purchase-button">
                                     <button type="button" class="btn btn-info btn-small  btn-custom-padding" data-toggle="modal" href="#puchase-${purchaseInstance.purchaseNumber}"><i class="icon-file-alt"></i> ${message(code: 'purchase.button.detail', default: 'Detail')}</button>
                                 </div>
-                                <div class="modal fade" id="puchase-${purchaseInstance.purchaseNumber}" tabindex="-1" role="dialog" aria-labelledby="modal-contact01" aria-hidden="true">
-                                    <div class="modal-dialog modal-sm">
-                                        <div class="modal-content">
 
-                                            <div class="modal-header">
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i class="icon-cancel-1"></i></span></button>
-                                                <h4 class="modal-title">订单详情</h4>
-                                            </div><!-- /.modal-header -->
-
-                                            <div class="modal-body">
-
-                                                <section class="light-bg inner-xs inner-left-xs inner-right-xs">
-
-                                                    <form class="form-horizontal tabel-custom">
-                                                        <g:render template="reen_show_detail" model="[purchaseInstance: purchaseInstance]"/>
-                                                    </form>
-
-                                                </section>
-                                            </div><!-- /.modal-body -->
-
-
-
-                                        </div><!-- /.modal-content -->
-                                    </div><!-- /.modal-dialog -->
-                                </div><!-- /.modal -->
                             </g:if>
                             <g:else>
                                 <div class="center">
@@ -92,16 +71,16 @@
                                             <input type="hidden" name="id" value="${purchaseInstance?.id}"/>
 
                                             <sec:ifAllGranted roles="ROLE_ADMIN">
-                                                <button type="submit" class="btn btn-danger btn-small btn-custom-padding"
+                                                <button type="submit" class="btn btn-warning btn-small btn-custom-padding"
                                                         onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');">
-                                                    <i class="icon-white icon-trash"></i> ${message(code: 'default.button.delete.label', default: 'Delete')}
+                                                    ${message(code: 'default.button.delete.label', default: 'Delete')}
                                                 </button>
                                             </sec:ifAllGranted>
 
                                             <sec:ifAllGranted roles="ROLE_USER">
-                                                <button type="submit" class="btn btn-danger btn-small btn-custom-padding"
+                                                <button type="submit" class="btn btn-warning btn-small btn-custom-padding"
                                                         onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');">
-                                                    <i class="icon-white icon-trash"></i> ${message(code: 'purchase.button.cacel', default: 'Cancel')}
+                                                    ${message(code: 'purchase.button.cacel', default: 'Cancel')}
                                                 </button>
 
                                                 <g:link class="btn btn-primary btn-small btn-custom-padding" action="show" id="${purchaseInstance?.id}">
@@ -121,10 +100,50 @@
 
                     </tbody>
                 </table>
+
+                <pkg:paginate total="${purchaseInstanceTotal}" params="${flash}" />
+
+                </g:if><g:else>
+                <sec:ifAllGranted roles="ROLE_USER">
+                    <div class="inner-margin-left link_line">
+                        <g:message code="purchase.text.no.purchase.yet" args="['/product/list']"/>
+                    </div>
+                </sec:ifAllGranted>
+            </g:else>
             </section>
             <!-- ============================================================= SECTION – CONTENT : END ============================================================= -->
 
         </div><!-- ./col -->
+
+        <g:each in="${purchaseInstanceList}" status="i" var="purchaseInstance">
+        <g:if test="${purchaseInstance.datePay}">
+        <div class="modal fade" id="puchase-${purchaseInstance.purchaseNumber}" tabindex="-1" role="dialog" aria-labelledby="modal-contact01" aria-hidden="true">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i class="icon-cancel-1"></i></span></button>
+                        <h4 class="modal-title"><g:message code="purchase.title.order.info"/></h4>
+                    </div><!-- /.modal-header -->
+
+                    <div class="modal-body">
+
+                        <section class="light-bg inner-xs inner-left-xs inner-right-xs">
+
+                            <form class="form-horizontal tabel-custom">
+                                <g:render template="reen_show_detail" model="[purchaseInstance: purchaseInstance]"/>
+                            </form>
+
+                        </section>
+                    </div><!-- /.modal-body -->
+
+
+
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+        </g:if>
+        </g:each>
 
     </div><!-- /.row -->
 </div><!-- /.container -->

@@ -20,7 +20,7 @@
 
                         <div class="col-sm-6 center-block text-center inner-right-sm">
 
-                            <h2>给我们留言</h2>
+                            <h2><g:message code='contact.title'/></h2>
 
                             <g:if test="${flash.error}">
                                 <ul class="circled text-left error-msg">

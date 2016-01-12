@@ -8,6 +8,8 @@
 <link href="${resource(dir:'css',file:'owl.transitions.css')}" rel="stylesheet">
 <link href="${resource(dir:'css',file:'animate.min.css')}" rel="stylesheet">
 
+<link rel="stylesheet" href="${resource(dir:'css',file:'bootstrap-formhelpers-countries.flags.css')}" />
+
 <!-- Fonts -->
 <link href="http://fonts.googleapis.com/css?family=Lato:400,900,300,700" rel="stylesheet">
 <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,400italic,700italic" rel="stylesheet">
@@ -20,6 +22,7 @@
 
 <!-- HTML5 elements and media queries Support for IE8 : HTML5 shim and Respond.js -->
 <!--[if lt IE 9]>
-        <script src="${resource(dir:'js',file:'html5shiv.js')}"></script>
-        <script src="${resource(dir:'js',file:'respond.min.js')}"></script>
+<script src="${resource(dir:'js',file:'html5shiv.js')}"></script>
+<script src="${resource(dir:'js',file:'respond.min.js')}"></script>
+
     <![endif]-->

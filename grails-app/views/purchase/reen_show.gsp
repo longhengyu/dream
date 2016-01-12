@@ -20,7 +20,9 @@
 <div class="container inner">
     <div class="row">
 
-        <g:render template="/layouts/reen_sidemenu"/>
+        <g:if test="${com.pkgplan.dream.Impl.HelperService.isMobile() == false}">
+            <g:render template="/layouts/reen_sidemenu"/>
+        </g:if>
 
         <div class="col-md-9 inner-left-md border-left">
 

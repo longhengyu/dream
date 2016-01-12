@@ -4967,7 +4967,7 @@ input:focus:-ms-input-placeholder {
 	}
 	
 	br {
-		display: none;
+		/*display: none;*/
 	}
 	
 	#team .inner-left {
@@ -6131,6 +6131,14 @@ a.changecolor {
 	font-size: 75px !important;
 }
 
+.pricing .plan .price .currency {
+    font-size: 13px !important;
+}
+
+.pricing .plan .price .period {
+    font-size: 12px !important;
+}
+
 .btn-custom-padding {
 	padding: 5px 8px !important;
 	margin: 4px 8px !important;
@@ -6176,6 +6184,35 @@ a.changecolor {
 .danger-bg {
     background-color: #a94442;
     opacity: .84;
+}
+
+.margin-bottom-20 {
+    margin-bottom: 20px !important;
+}
+
+.padding-bottom-15 {
+    padding-bottom: 15px !important;
+
+}
+
+.bfh-languages i {
+    position: absolute;
+    margin-left: -22px;
+    margin-top: 2px;
+}
+
+.bfh-languages {
+    display: inline-block;
+    text-indent: 24px;
+}
+
+.pagination .currentStep {
+    background-color: #f5f5f5;
+    color: #1ABB9C;
+}
+
+.link_line a {
+    border-bottom: 1px solid #73879C;
 }
 
 

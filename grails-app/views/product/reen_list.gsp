@@ -8,7 +8,10 @@
 <div class="container inner">
     <div class="row">
 
-        <g:render template="/layouts/reen_sidemenu"/>
+        <g:if test="${com.pkgplan.dream.Impl.HelperService.isMobile() == false}">
+            <g:render template="/layouts/reen_sidemenu"/>
+        </g:if>
+
 
         <sec:ifNotLoggedIn>
             <g:render template="reen_listBody"/>
