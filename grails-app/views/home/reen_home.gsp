@@ -95,9 +95,9 @@
             </div><!-- /.col -->
 
             <div class="col-sm-6 inner-top-xs inner-left-xs">
-                <h2>联系朋友如此简单</h2>
-                <p>久不联系的朋友怎么知道你的消息，如果你不在完全开放的互联网中。当然你可以发发朋友圈，逛逛微博。但偶尔出来透透气也是需要的。</p>
-                <a href="/register/index" class="txt-btn">立即开启科学上网之旅吧</a>
+                <h2><g:message code="main.title.benefits.1"/></h2>
+                <p><g:message code="main.title.benefits.sub.1"/></p>
+                <a href="/register/index" class="txt-btn"><g:message code="main.button.join.now"/></a>
             </div><!-- /.col -->
 
         </div><!-- /.row -->
@@ -109,9 +109,9 @@
             </div><!-- /.col -->
 
             <div class="col-sm-6 col-sm-pull-6 inner-top-xs inner-right-xs">
-                <h2>那些熟悉的和遥远的</h2>
-                <p>曾经那些有用的、没用的网站和应用，都是我生活的一部分。现在开始重新找回它们，重视在原点的自己。动动手就可以搞定，畅通无阻的网络。</p>
-                <a href="/register/index" class="txt-btn">立即开启科学上网之旅吧</a>
+                <h2><g:message code="main.title.benefits.2"/></h2>
+                <p><g:message code="main.title.benefits.sub.2"/></p>
+                <a href="/register/index" class="txt-btn"><g:message code="main.button.join.now"/></a>
             </div><!-- /.col -->
 
         </div><!-- /.row -->
@@ -123,9 +123,9 @@
             </div><!-- /.col -->
 
             <div class="col-sm-6 inner-top-xs inner-left-xs">
-                <h2>多渠道用心支持</h2>
-                <p>虽然我们的上网设置和操作足够简单，但不管遇到什么问题，你都可以通过留言、邮件、微信获得帮助。帮助我们反馈产品问题，还可以得到奖励的免费上网机会。</p>
-                <a href="/register/index" class="txt-btn">立即开启科学上网之旅吧</a>
+                <h2><g:message code="main.title.benefits.3"/></h2>
+                <p><g:message code="main.title.benefits.sub.3"/></p>
+                <a href="/register/index" class="txt-btn"><g:message code="main.button.join.now"/></a>
             </div><!-- /.col -->
 
         </div><!-- /.row -->
@@ -141,8 +141,8 @@
         <div class="row">
             <div class="col-md-8 col-sm-9 center-block text-center">
                 <header>
-                    <h1>简单合理的价格</h1>
-                    <p>套餐价格以人民币（RMB）计价。<br>建议初次购买的用户选择单月套餐，重度用户建议选择多月套餐以获得一定程度的优惠。</p>
+                    <h1><g:message code="main.title.good.price"/></h1>
+                    <p><g:message code="main.title.good.price.sub"/></p>
                 </header>
             </div><!-- /.col -->
         </div><!-- /.row -->
@@ -167,7 +167,7 @@
                         <a href="/product/list" class="btn">${message(code: 'product.button.buy.now')}</a>
                     </header>
 
-                    <ul class="features">
+                    <ul class="features small">
                         <li><i class="icon-window"></i> <g:message code="product.info.description.b26.1"/></li>
                         <li><i class="icon-switch"></i> <g:message code="product.info.description.b26.2"/></li>
                         <li><i class="icon-users"></i> <g:message code="product.info.description.b26.3"/></li>
@@ -192,7 +192,7 @@
                         <a href="/product/list" class="btn">${message(code: 'product.button.buy.now')}</a>
                     </header>
 
-                    <ul class="features">
+                    <ul class="features small">
                         <li><i class="icon-window"></i> <g:message code="product.info.description.f72.1"/></li>
                         <li><i class="icon-switch"></i> <g:message code="product.info.description.f72.2"/></li>
                         <li><i class="icon-users"></i> <g:message code="product.info.description.f72.3"/></li>
@@ -217,7 +217,7 @@
                         <a href="/product/list" class="btn">${message(code: 'product.button.buy.now')}</a>
                     </header>
 
-                    <ul class="features">
+                    <ul class="features small">
                         <li><i class="icon-window"></i> <g:message code="product.info.description.p280.1"/></li>
                         <li><i class="icon-switch"></i> <g:message code="product.info.description.p280.2"/></li>
                         <li><i class="icon-users"></i> <g:message code="product.info.description.p280.3"/></li>
@@ -240,10 +240,10 @@
         <div class="row">
             <div class="col-md-8 col-sm-9">
                 <header>
-                    <h1>开启你的科学上网之旅吧</h1>
-                    <p>如果你尝试过很多不靠谱的上网方式，饱受挫折心情烦躁，那么请试试我们的服务吧。</p>
+                    <h1><g:message code="main.button.join.now"/></h1>
+                    <p><g:message code="main.title.join.now.sub"/></p>
                 </header>
-                <a href="/register/index" class="btn btn-large">立即注册</a>
+                <a href="/register/index" class="btn btn-large"><g:message code="main.ready.to.go.button"/></a>
             </div><!-- /.col -->
         </div><!-- /.row -->
 
