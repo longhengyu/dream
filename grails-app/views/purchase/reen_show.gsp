@@ -269,11 +269,15 @@
 
                     <div class="row">
 
-                        <div class="col-md-7 margin-bottom-20">
+                        <div class="col-md-7 margin-bottom-15">
                             <p><g:message code="payment.qr.desc"/></p>
+
                         </div>
                         <div class="col-md-5 text-center">
+
+                            <span style="font-weight:700"><g:message code="payment.method.price.4"/> <span style="font-size:150%">${purchaseInstance.product.price}</span> RMB</span><br>
                             <img style="width:150px" class="logo img-intext" src="${resource(dir:'images',file:'qr.png')}" alt="">
+
                         </div>
                     </div>
                     <div class="modal-body" id="modal-pay-qr-body">
