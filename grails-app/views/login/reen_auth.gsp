@@ -32,7 +32,7 @@
 
                             <div class="row">
                                 <div class="col-sm-12">
-                                    <input type="text" class="form-control" autofocus="" placeholder="<g:message code='login.label.username'/>" name="j_username" id="username" >
+                                    <input type="text" class="form-control" autofocus="false" placeholder="<g:message code='login.label.username'/>" name="j_username" id="username" >
                                 </div><!-- /.col -->
                             </div><!-- /.row -->
 

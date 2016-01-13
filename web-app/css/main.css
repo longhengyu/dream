@@ -3704,18 +3704,7 @@ footer .newsletter .btn-submit {
 .search .form-control:-ms-input-placeholder {
     color: #C2C7CC;
 }
-input:focus::-webkit-input-placeholder {
-    color: transparent !important;
-}
-input:focus:-moz-placeholder {
-    color: transparent !important;
-}
-input:focus::-moz-placeholder {
-    color: transparent !important;
-}
-input:focus:-ms-input-placeholder {
-    color: transparent !important;
-}
+
 
 
 /*===================================================================================*/
@@ -6222,5 +6211,4 @@ a.changecolor {
 .link_line a {
     border-bottom: 1px solid #73879C;
 }
-
 
