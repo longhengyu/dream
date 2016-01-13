@@ -276,7 +276,7 @@
                         <div class="col-md-5 text-center">
 
                             <span style="font-weight:700"><g:message code="payment.method.price.4"/> <span style="font-size:150%">${purchaseInstance.product.price}</span> RMB</span><br>
-                            <img style="width:150px" class="logo img-intext" src="${resource(dir:'images',file:'qr.png')}" alt="">
+                            <img style="width:150px" class="logo img-intext" src="${resource(dir:'images',file:'qr.jpg')}" alt="">
 
                         </div>
                     </div>
