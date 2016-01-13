@@ -12,7 +12,7 @@
 
         <div class="col-md-9 inner-left-md border-left">
 
-            <g:render template="/manual/ios"/>
+            <g:render template="/manual/iOS"/>
 
         </div>
 
