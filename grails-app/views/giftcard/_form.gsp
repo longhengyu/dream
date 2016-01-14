@@ -21,7 +21,7 @@
 		<g:message code="giftcard.owner.label" default="Owner" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="owner" name="owner.id" from="${com.pkgplan.auth.User.list()}" optionKey="id" required="" value="${giftcardInstance?.owner?.id}" class="many-to-one"/>
+	<g:select id="owner" name="owner.id" from="${com.pkgplan.auth.User.list(sort:'username')}" optionKey="id" required="" value="${giftcardInstance?.owner?.id}" class="many-to-one"/>
 </div>
 
 <div class="fieldcontain">

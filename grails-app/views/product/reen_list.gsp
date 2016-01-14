@@ -20,7 +20,7 @@
             <g:render template="reen_listBody"/>
         </sec:ifAllGranted>
         <sec:ifAllGranted roles="ROLE_ADMIN">
-            <g:render template="listBodyAdmin"/>
+            <g:render template="reen_listBodyAdmin"/>
         </sec:ifAllGranted>
 
     </div><!-- /.row -->

@@ -6217,3 +6217,7 @@ a.changecolor {
     border-bottom: 1px solid #73879C;
 }
 
+.text-color-white {
+    color: white;
+}
+

@@ -33,7 +33,7 @@
                     <tr>
 
                         <sec:ifAllGranted roles="ROLE_ADMIN">
-                            <th class="vcenter"><g:message code="purchase.label.purchase.owner" default="Owner" /></th>
+                            <th class="vcenter" style="width:15%"><g:message code="purchase.label.purchase.owner" default="Owner" /></th>
                         </sec:ifAllGranted>
                         <th class="vcenter" style="width:15%"><g:message code="purchase.label.product.name" default="Product" /></th>
                         <th class="vcenter" style="width:40%"><g:message code="purchase.label.create.date" default="Date Created" /></th>
@@ -128,7 +128,7 @@
 
                     <div class="modal-body">
 
-                        <section class="light-bg inner-xs inner-left-xs inner-right-xs">
+                        <section class="light-bg inner-xxs inner-left-xs inner-right-xs">
 
                             <form class="form-horizontal tabel-custom">
                                 <g:render template="reen_show_detail" model="[purchaseInstance: purchaseInstance]"/>
