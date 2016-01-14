@@ -36,7 +36,7 @@ class UserController {
         results = criteria.list(params, query)
 
         //TODO user count might be problem. check the detail of pagination.
-        [userInstanceList: results, userInstanceTotal: User.count()]
+        render view: 'reen_list', model:  [userInstanceList: results, userInstanceTotal: User.count()]
     }
 
     @Secured(['ROLE_ADMIN'])
@@ -97,7 +97,7 @@ class UserController {
             return
         }
 
-        [userInstance: userInstance, serverInstance: serverService.findServerByUser(userInstance)]
+        render view: 'reen_edit', model:  [userInstance: userInstance, serverInstance: serverService.findServerByUser(userInstance)]
     }
 
     @Secured(['ROLE_ADMIN'])
@@ -114,7 +114,7 @@ class UserController {
                 userInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
                           [message(code: 'user.label', default: 'User')] as Object[],
                           "Another user has updated this User while you were editing")
-                render(view: "edit", model: [userInstance: userInstance])
+                render(view: "reen_edit", model: [userInstance: userInstance])
                 return
             }
         }
@@ -122,7 +122,7 @@ class UserController {
         userInstance.properties = params
 
         if (!userInstance.save(flush: true)) {
-            render(view: "edit", model: [userInstance: userInstance])
+            render(view: "reen_edit", model: [userInstance: userInstance])
             return
         }
 

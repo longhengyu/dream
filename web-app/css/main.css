@@ -6135,6 +6135,11 @@ a.changecolor {
 
 .tabel-custom{
 	font-size: 14px !important;
+    table-layout: fixed;
+}
+
+.tabel-custom td {
+    word-wrap:break-word;
 }
 
 .vcenter {
