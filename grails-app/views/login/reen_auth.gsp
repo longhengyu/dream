@@ -44,7 +44,7 @@
 
                             <div class="row">
                                 <div class="col-sm-12 checkbox">
-                                    <p class="text-left"><input type="checkbox" class="checkbox" name="${SecureServiceImpl.getRememberMeParam()}" id="remember_me" checked="checked" />
+                                    <p class="text-left"><input style="width:1.3em; bottom:1px;" type="checkbox" class="checkbox" name="${SecureServiceImpl.getRememberMeParam()}" id="remember_me" checked="checked" />
                                         <g:message code='login.label.remember.me'/></p>
                                 </div><!-- /.col -->
                             </div><!-- /.row -->
