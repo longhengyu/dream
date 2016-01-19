@@ -4,7 +4,7 @@
     <div class="form-group">
         <label class="col-sm-4 control-label"><g:message code="purchase.label.create.date" default="Date Created" /></label>
         <div class="col-sm-8">
-            <p class=""><g:formatDate date="${purchaseInstance?.dateCreated}" /></p>
+            <p class="form-control-static"><g:formatDate date="${purchaseInstance?.dateCreated}" /></p>
         </div>
     </div>
 </g:if>
@@ -13,7 +13,7 @@
     <div class="form-group">
         <label class="col-sm-4 control-label"><g:message code="purchase.label.purchase.owner" default="Owner" /></label>
         <div class="col-sm-8">
-            <p class=""><g:link controller="user" action="show" id="${purchaseInstance?.owner?.id}">${purchaseInstance?.owner?.encodeAsHTML()}</g:link></p>
+            <p class="form-control-static"><g:link controller="user" action="show" id="${purchaseInstance?.owner?.id}">${purchaseInstance?.owner?.encodeAsHTML()}</g:link></p>
         </div>
     </div>
 </g:if>
@@ -22,14 +22,14 @@
 <div class="form-group">
     <label class="col-sm-4 control-label"><g:message code="purchase.label.product.name" default="Product" /></label>
     <div class="col-sm-8">
-        <p class=""><g:link controller="product" action="show" id="${purchaseInstance?.product?.id}"><g:message code="product.info.name.${purchaseInstance.product.code}" default="${purchaseInstance.product.name}"/></g:link></p>
+        <p class="form-control-static"><g:link controller="product" action="show" id="${purchaseInstance?.product?.id}"><g:message code="product.info.name.${purchaseInstance.product.code}" default="${purchaseInstance.product.name}"/></g:link></p>
     </div>
 </div>
 </g:if>
 <div class="form-group">
     <label class="col-sm-4 control-label"><g:message code="purchase.label.status" default="Status" /></label>
     <div class="col-sm-8">
-        <p class="">
+        <p class="form-control-static">
             <g:if test="${purchaseInstance?.datePay}">
                 <span class="label label-success"><g:message code="purchase.text.paid.at" args="[formatDate(date:purchaseInstance?.datePay)]"/></span>
             </g:if><g:else>
@@ -43,7 +43,7 @@
 <div class="form-group">
     <label class="col-sm-4 control-label"><g:message code="purchase.label.order.number" default="Order Number" /></label>
     <div class="col-sm-8">
-        <p class=""><g:fieldValue bean="${purchaseInstance}" field="purchaseNumber"/></p>
+        <p class="form-control-static"><g:fieldValue bean="${purchaseInstance}" field="purchaseNumber"/></p>
     </div>
 </div>
 </g:if>
@@ -51,7 +51,7 @@
     <div class="form-group">
         <label class="col-sm-4 control-label"><g:message code="purchase.label.payment.method" default="Payment Method" /></label>
         <div class="col-sm-8">
-            <p class=""><g:message code="payment.method.name.${purchaseInstance.paymentMethod}"/></p>
+            <p class="form-control-static"><g:message code="payment.method.name.${purchaseInstance.paymentMethod}"/></p>
         </div>
     </div>
 </g:if>
@@ -66,13 +66,13 @@
     <div class="form-group">
         <label class="col-sm-4 control-label"><g:message code="login.label.username" default="Username" /></label>
         <div class="col-sm-8">
-            <p class=""><g:fieldValue bean="${purchaseInstance?.owner}" field="username"/></p>
+            <p class="form-control-static"><g:fieldValue bean="${purchaseInstance?.owner}" field="username"/></p>
         </div>
     </div>
     <div class="form-group">
         <label class="col-sm-4 control-label"><g:message code="user.account.vpn.password" default="VPN Password"/></label>
         <div class="col-sm-8">
-            <p class=""><g:vpnPassword/></p>
+            <p class="form-control-static"><g:vpnPassword/></p>
         </div>
     </div>
 </g:if>
