@@ -42,6 +42,7 @@ class RegisterController extends grails.plugins.springsecurity.ui.RegisterContro
         mailService.sendMail {
             to command.email
             from conf.ui.register.emailFrom
+            bcc conf.ui.register.emailFrom
             subject message(code: conf.ui.register.emailSubject)
             html body.toString()
         }
