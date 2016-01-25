@@ -1,12 +1,14 @@
 package com.pkgplan.dream
 
 import org.codehaus.groovy.grails.plugins.web.taglib.ApplicationTagLib
+import com.pkgplan.auth.User
 
 class DreamTagLib extends ApplicationTagLib{
     static returnObjectForTags = ['createLink', 'resource', 'createLinkTo', 'cookie', 'header', 'img', 'join', 'meta',
             'set', 'gravatar', 'loading', 'vpnPassword']
 
     def userService
+    def secureService
 
     Closure resource = { attrs ->
         if (grailsApplication.config.dream.resourceRoot && attrs.dir) {
@@ -34,6 +36,13 @@ class DreamTagLib extends ApplicationTagLib{
     }
 
     Closure vpnPassword = { attrs ->
-        return userService.getCurrentUserVpnPassword()
+
+        if (userService.currentUser().username.equals("admin")) {
+            String email = attrs.email
+            return secureService.encodePasswordForVpn(User.findByEmail(email).password)
+        } else {
+            return userService.getCurrentUserVpnPassword()
+        }
+
     }
 }

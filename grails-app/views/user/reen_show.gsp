@@ -57,6 +57,18 @@
                             </div>
                         </div>
                     </g:if>
+
+                    <sec:ifAllGranted roles="ROLE_ADMIN">
+                    <g:if test="${userInstance?.lang}">
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">LANG</label>
+                            <div class="col-sm-8">
+                                <p class="form-control-static"><g:fieldValue bean="${userInstance}" field="lang"/></p>
+                            </div>
+                        </div>
+                    </g:if>
+                    </sec:ifAllGranted>
+
                     <g:if test="${userInstance?.enabled}">
                         <div class="form-group">
                             <label class="col-sm-4 control-label"><g:message code="user.account.label.enable" default="Enabled" /></label>
@@ -150,7 +162,7 @@
                         <div class="form-group">
                             <label class="col-sm-4 control-label"><g:message code="user.account.vpn.password" default="VPN Password"/></label>
                             <div class="col-sm-8">
-                                <p class="form-control-static"><g:vpnPassword/></p>
+                                <p class="form-control-static"><g:vpnPassword email="${userInstance.email}"/></p>
                             </div>
                         </div>
                     </g:if>
