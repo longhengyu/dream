@@ -67,6 +67,19 @@
                             </li>
                         </g:if>
 
+                        <g:if test="${exeResult}">
+                            <li class="fieldcontain">
+                                <span id="users-label" class="property-label">在线用户</span>
+
+                            <g:if test="${exeResult.rc == 0}">
+                            <g:each in="${exeResult.sysout.split('\n')}" var="u">
+                                ${u}<br>
+                            </g:each>
+                            </g:if>
+
+                            </li>
+                        </g:if>
+
                     </ol>
                     <div class="form-horizontal">
                         <div class="form-actions text-right">

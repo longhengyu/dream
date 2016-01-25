@@ -3,8 +3,14 @@ package com.pkgplan.dream
 import grails.plugins.springsecurity.Secured
 import org.springframework.dao.DataIntegrityViolationException
 
+import net.neoremind.sshxcute.core.Result;
+
+
+
 @Secured(['ROLE_ADMIN'])
 class ServerController {
+
+    def HelperService
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
@@ -14,7 +20,7 @@ class ServerController {
 
     def list(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        [serverInstanceList: Server.list(params), serverInstanceTotal: Server.count()]
+        render (view: "reen_list", model: [serverInstanceList: Server.list(params), serverInstanceTotal: Server.count()])
     }
 
     def create() {
@@ -33,6 +39,9 @@ class ServerController {
     }
 
     def show(Long id) {
+
+
+
         def serverInstance = Server.get(id)
         if (!serverInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'server.label', default: 'Server'), id])
@@ -40,7 +49,9 @@ class ServerController {
             return
         }
 
-        [serverInstance: serverInstance]
+        Result res = HelperService.executeRemoteScript(serverInstance.hostname + ".dream-vpn.com", "root", "yuaixing", "/root/uselog.sh")
+
+        render (view: "reen_show", model: [serverInstance: serverInstance, exeResult: res])
     }
 
     def edit(Long id) {

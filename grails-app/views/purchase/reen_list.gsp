@@ -45,7 +45,7 @@
                     <g:each in="${purchaseInstanceList}" status="i" var="purchaseInstance">
                     <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
                         <sec:ifAllGranted roles="ROLE_ADMIN">
-                            <td class="vcenter"><g:link action="show" id="${purchaseInstance.id}">${fieldValue(bean: purchaseInstance, field: "owner")}</g:link></td>
+                            <td class="vcenter link_line"><g:link action="show" id="${purchaseInstance.id}">${fieldValue(bean: purchaseInstance, field: "owner")}</g:link></td>
                         </sec:ifAllGranted>
                         <td class="vcenter" ><g:message code="product.info.name.${purchaseInstance.product.code}" default="${purchaseInstance.product.name}"/></td>
                         <td class="vcenter" ><g:formatDate date="${purchaseInstance.dateCreated}" /></td>
