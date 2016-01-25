@@ -49,7 +49,7 @@ class ServerController {
             return
         }
 
-        Result res = HelperService.executeRemoteScript(serverInstance.hostname + ".dream-vpn.com", "root", "yuaixing", "/root/uselog.sh")
+        Result res = HelperService.executeRemoteScript(serverInstance.hostname + ".dream-vpn.com", grailsApplication.config.dream.server["username"], grailsApplication.config.dream.server["password"], grailsApplication.config.dream.server["script"])
 
         render (view: "reen_show", model: [serverInstance: serverInstance, exeResult: res])
     }

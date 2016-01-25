@@ -39,6 +39,7 @@ class HelperService extends WebTierService{
             CustomTask echo = new ExecShellScript(script);
             ssh.connect();
             Result res = ssh.exec(echo);
+            log.info(res.sysout)
             return res
         } catch (TaskExecFailException e) {
             System.out.println(e.getMessage());
