@@ -63,7 +63,7 @@
                         <div class="form-group">
                             <label class="col-sm-4 control-label"><g:message code="server.capacity.label" default="Capacity" /></label>
                             <div class="col-sm-8">
-                                <p class="form-control-static"><g:fieldValue bean="${serverInstance}" field="capacity"/></p>
+                                <p class="form-control-static">${serverInstance.users.size()} / <g:fieldValue bean="${serverInstance}" field="capacity"/></p>
                             </div>
                         </div>
                     </g:if>
@@ -85,7 +85,11 @@
                             <div class="col-sm-8">
                                 <p class="form-control-static">
                                 <g:each in="${serverInstance.users}" var="u">
-                                    <span class="property-value" aria-labelledby="users-label"><g:link controller="user" action="show" id="${u.id}">${u?.encodeAsHTML()}</g:link></span>
+
+                                    <span class="property-value
+                                        <g:if test="${u?.dateExpired > new java.util.Date()}">
+                                        </g:if><g:else>red</g:else>
+                                        " aria-labelledby="users-label"><g:link controller="user" action="show" id="${u.id}">${u?.encodeAsHTML()}</g:link></span>
                                 </g:each>
                                 </p>
                             </div>
@@ -112,7 +116,7 @@
                             <g:each in="${exeResult.sysout.split('\n')}" status="i"  var="u">
                                 <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 
-                                    <td class="${u.contains('still') ? 'red' : ''}">${u}</td>
+                                    <td class="${u.contains('still') ? 'green' : ''}">${u}</td>
 
 
                                 </tr>
